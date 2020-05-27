@@ -1,6 +1,22 @@
+@import url(//db.onlinewebfonts.com/c/0ba9253983e3a7a7cc896e85b1ceb2be?family=Futura+PT+Web+Book);
+@import url(//db.onlinewebfonts.com/c/23fab04cd09bfa1bae2991c14b0b546f?family=NimbusRomD);
+@font-face {font-family: "Futura PT Web Book";
+            src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot");
+            src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot?#iefix") format("embedded-opentype"),
+                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff2") format("woff2"),
+                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff") format("woff"),
+                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.ttf") format("truetype"),
+                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.svg#Futura PT Web Book") format("svg"); }
+
+@font-face {font-family: "NimbusRomD";
+            src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot");
+            src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot?#iefix") format("embedded-opentype"),
+                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff2") format("woff2"),
+                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff") format("woff"),
+                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.ttf") format("truetype"),
+                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.svg#NimbusRomD") format("svg"); }
 /*START VARIABLES*/
 :root{
-
     /*color*/
     --color-bkg-primary: #fff;
     --color-bkg-secondary: #f2f2f2;
@@ -9,8 +25,8 @@
     --color-font-dark: #000;
 
     /*Font*/
-    --font-title: 'futura PT Book', 'sans serif';
-    --font-text: 'nimbus Roman D Regular', 'serif';
+    --font-title: 'Futura PT Web Book', 'sans serif';
+    --font-text: 'NimbusRomD', 'serif';
 }
 /*END VARIABLES*/
 /*START GENERALITY*/
