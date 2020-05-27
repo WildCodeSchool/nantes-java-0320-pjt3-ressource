@@ -1,13 +1,13 @@
-package com.wildcodeschool.ressources;
+package com.wildcodeschool.ressource;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RessourcesApplication {
+public class RessourceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RessourcesApplication.class, args);
+		SpringApplication.run(RessourceApplication.class, args);
 	}
 
 }

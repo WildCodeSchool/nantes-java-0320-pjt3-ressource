@@ -1,10 +1,10 @@
-package com.wildcodeschool.ressources;
+package com.wildcodeschool.ressource;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RessourcesApplicationTests {
+class RessourceApplicationTests {
 
 	@Test
 	void contextLoads() {
