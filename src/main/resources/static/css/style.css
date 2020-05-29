@@ -78,7 +78,7 @@
 }
 
 .card-product-info {
-    width: 95.5%;
+    width: 95.4%;
     border: 1px solid black;
     border-top: 0px;
     padding: 0.5rem;
@@ -93,11 +93,40 @@
 /*END GENERALITY*/
 /*START HEADER*/
 .header-header {
+    display: flex;
+    margin:2rem 2rem 3rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-header img {
+    flex-basis: 5%;
+    width: 4vh;
+}
+.header-search {
+    position: relative;
+    flex-basis: 40%;
+}
 
+.header-search button {
+    background: none;
+    border-style: none;
+    position: absolute;
+    top: 23%;
+    left: 98%;
 }
 
 .header-search-bar {
-
+    padding-left: 0.7rem;
+    width: 100%;
+    border-radius: 10px;
+    height: 1.7rem;
+    border: 1px solid lightgray;
+}
+.header-icons {
+    flex-basis: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem
 }
 
 /*END HEADER*/
