@@ -8,11 +8,11 @@ public class ProductController {
 
     @GetMapping("/results")
     public String result() {
-        return "/results";
+        return "results";
     }
 
     @GetMapping("/product")
     public String product() {
-        return "/product";
+        return "product";
     }
 }
