@@ -1,5 +1,5 @@
 @import url(//db.onlinewebfonts.com/c/0ba9253983e3a7a7cc896e85b1ceb2be?family=Futura+PT+Web+Book);
-@import url(//db.onlinewebfonts.com/c/23fab04cd09bfa1bae2991c14b0b546f?family=NimbusRomD);
+@import url(//db.onlinewebfonts.com/c/2bf40ab72ea4897a3fd9b6e48b233a19?family=Garamond);
 
 @font-face {
     font-family: "Futura PT Web Book";
@@ -12,13 +12,13 @@
 }
 
 @font-face {
-    font-family: "NimbusRomD";
-    src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot");
-    src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.svg#NimbusRomD") format("svg");
+    font-family: "Garamond";
+    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot");
+    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.svg#Garamond") format("svg");
 }
 
 /*START VARIABLES*/
@@ -32,7 +32,7 @@
 
     /*Font*/
     --font-title: 'Futura PT Web Book', 'sans serif';
-    --font-text: 'NimbusRomD', 'serif';
+    --font-text: 'Garamond', 'serif';
 }
 
 /*END VARIABLES*/
