@@ -1,10 +1,10 @@
 @import url('style.css');
 
-.product-section-top{
+.product-section-top {
     background-color: var(--color-bkg-secondary);
 }
 
-.product-container-top{
+.product-container-top {
     display: flex;
     justify-content: space-around;
     height: 40rem;
@@ -19,17 +19,20 @@
     position: relative;
     margin: auto;
 }
+
 .mySlides {
     width: 100%;
     height: 100%;
 }
-.mySlides img{
-    width:100%;
-    height:100%;
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
     background: center;
 }
+
 /* Next & previous buttons */
-.product-prev{
+.product-prev {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -63,29 +66,31 @@
 
 /* fin image*/
 
-.product-description{
+.product-description {
     width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.product-description p, .product-description h3, .product-description a, .product-description div form  {
+
+.product-description p, .product-description h3, .product-description a, .product-description div form {
     margin-top: 1rem;
     margin-bottom: 0.8rem;
     text-align: center;
 }
-.product-button-top{
+
+.product-button-top {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2.5rem;
     padding-bottom: 1.5rem;
-
 }
 
-.product-button{
+.product-button {
     position: relative;
 }
-.product-button-meeting, .product-button-wishlist{
+
+.product-button-meeting, .product-button-wishlist {
     width: 18rem;
     height: 3.5rem;
     font-size: 1rem;
@@ -94,31 +99,35 @@
     border-radius: 10px;
     font-family: var(--font-text);
 }
-.product-button-meeting{
+
+.product-button-meeting {
     background-color: var(--color-bkg-button);
     color: var(--color-font-light);
 }
-.fa-suitcase{
+
+.product-button .fa-suitcase {
     color: #B7B7B7;
     position: absolute;
     top: 15px;
     left: 23%;
     font-size: 1.5rem;
 }
-.product-button-wishlist{
+
+.product-button-wishlist {
     background-color: #B7B7B7;
 }
 
-.fa-heart{
+.product-button .fa-heart {
     position: absolute;
     top: 15px;
     left: 23%;
     font-size: 1.5rem;
 }
 
-h4{
+h4 {
     text-align: center;
 }
+
 /* card  bas */
 .card-product {
     padding: 0;
@@ -147,6 +156,6 @@ h4{
 }
 
 /* card carousel*/
-.product-more-product{
+.product-more-product {
     display: flex;
 }
