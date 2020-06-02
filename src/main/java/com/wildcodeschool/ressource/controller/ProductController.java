@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProductController {
 
-    @GetMapping("/result")
+    @GetMapping("/results")
     public String result() {
-        return "/result";
+        return "results";
     }
 
     @GetMapping("/product")
     public String product() {
 
-        return "/product";
+        return "product";
     }
 }

@@ -1,22 +1,28 @@
 @import url(//db.onlinewebfonts.com/c/0ba9253983e3a7a7cc896e85b1ceb2be?family=Futura+PT+Web+Book);
-@import url(//db.onlinewebfonts.com/c/23fab04cd09bfa1bae2991c14b0b546f?family=NimbusRomD);
-@font-face {font-family: "Futura PT Web Book";
-            src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot");
-            src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot?#iefix") format("embedded-opentype"),
-                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff2") format("woff2"),
-                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff") format("woff"),
-                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.ttf") format("truetype"),
-                 url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.svg#Futura PT Web Book") format("svg"); }
+@import url(//db.onlinewebfonts.com/c/2bf40ab72ea4897a3fd9b6e48b233a19?family=Garamond);
 
-@font-face {font-family: "NimbusRomD";
-            src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot");
-            src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot?#iefix") format("embedded-opentype"),
-                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff2") format("woff2"),
-                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff") format("woff"),
-                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.ttf") format("truetype"),
-                 url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.svg#NimbusRomD") format("svg"); }
+@font-face {
+    font-family: "Futura PT Web Book";
+    src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot");
+    src: url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/0ba9253983e3a7a7cc896e85b1ceb2be.svg#Futura PT Web Book") format("svg");
+}
+
+@font-face {
+    font-family: "Garamond";
+    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot");
+    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.svg#Garamond") format("svg");
+}
+
 /*START VARIABLES*/
-:root{
+:root {
     /*color*/
     --color-bkg-primary: #fff;
     --color-bkg-secondary: #f2f2f2;
@@ -26,26 +32,101 @@
 
     /*Font*/
     --font-title: 'Futura PT Web Book', 'sans serif';
-    --font-text: 'NimbusRomD', 'serif';
+    --font-text: 'Garamond', 'serif';
 }
+
 /*END VARIABLES*/
 /*START GENERALITY*/
-*{
+* {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.card-product{
-
+/* CARD PRODUCT */
+.card-product {
+    padding: 0;
+    margin-right: 2rem;
+    width: 350px;
+    margin-bottom: 3rem;
 }
+
+.card-product-image {
+    height: 268px;
+    width: 100%;
+    border: 1px solid black;
+    position: relative;
+}
+
+.card-product-image:hover {
+    opacity: 0.5;
+}
+
+.card-product-image:hover > .card-product-image-hover {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 50%;
+    font-size: 2.5rem;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.card-product-image-hover {
+    display: none;
+}
+
+.card-product-info {
+    width: 95.4%;
+    border: 1px solid black;
+    border-top: 0px;
+    padding: 0.5rem;
+    font-family: var(--font-text);
+    line-height: 1.4rem;
+}
+
+.card-product-info-supplier {
+    font-weight: bold;
+}
+
 /*END GENERALITY*/
 /*START HEADER*/
-.header-header{
-
+.header-header {
+    display: flex;
+    margin:2rem 2rem 3rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-header img {
+    flex-basis: 5%;
+    width: 4vh;
+}
+.header-search {
+    position: relative;
+    flex-basis: 40%;
 }
 
-.header-search-bar{
-
+.header-search button {
+    background: none;
+    border-style: none;
+    position: absolute;
+    top: 23%;
+    left: 98%;
 }
+
+.header-search-bar {
+    padding-left: 0.7rem;
+    width: 100%;
+    border-radius: 10px;
+    height: 1.7rem;
+    border: 1px solid lightgray;
+}
+.header-icons {
+    flex-basis: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 2rem
+}
+
 /*END HEADER*/
