@@ -1,5 +1,11 @@
 @import url('style.css');
 
+h4{
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem;
+}
 .product-section-top {
     background-color: var(--color-bkg-secondary);
 }
@@ -145,7 +151,7 @@ h4 {
 .card-product-info {
     width: 95.5%;
     border: 1px solid black;
-    border-top: 0px;
+    border-top: 0;
     padding: 0.5rem;
     font-family: var(--font-text);
     line-height: 1.4rem;
@@ -156,6 +162,45 @@ h4 {
 }
 
 /* card carousel*/
-.product-more-product {
+
+.carousel-container{
     display: flex;
+    position: relative;
+    transition: transform 0.3s;
 }
+.product-carousel{
+    position:relative;
+}
+.product-carousel-bot {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+.product-carousel-bot2{
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.carousel-next  {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("../image/products/icons8-chevron-droit-30.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: -40px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.carousel-prev {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("../image/products/icons8-chevron-droit-30.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: -40px;
+    top: 50%;
+    cursor: pointer;
+}
+
