@@ -96,7 +96,7 @@
     padding: 0.8rem;
     font-family: var(--font-text);
     line-height: 1.4rem;
-    width: 70%;
+    width: 95%;
 }
 
 .card-product-info-name {
@@ -104,6 +104,14 @@
     font-size: 1.5rem;
     padding: 0.5rem 0.5rem 0.7rem 0;
     font-weight: bolder;
+}
+
+.card-product-info-descr {
+    width: 70%;
+}
+
+.card-product-image-rs {
+    display: none;
 }
 
 /*END GENERALITY*/
@@ -149,4 +157,32 @@
     justify-content: space-evenly;
     font-size: 3rem;
 }
+
 /*END HEADER*/
+
+@media screen and (max-width: 767px) {
+
+    .card-product {
+        width: 90%;
+        margin-right: 0;
+    }
+
+    .card-product-mobile-rs {
+        display: flex;
+        width: 94%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-product-image-rs {
+        display: flex;
+        flex-basis: 20%;
+        justify-content: space-between;
+        font-size: 1.5rem;
+    }
+
+    .card-product-info {
+        padding-top: 0.5rem;
+    }
+
+}

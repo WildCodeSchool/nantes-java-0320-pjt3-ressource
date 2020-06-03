@@ -30,3 +30,11 @@ for (let i = 0; i < sliders.length; i++) {
     }
 }
 
+// Sticky nav bar
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('.results-header-mobile').addClass('sticky');
+    } else {
+        $('.results-header-mobile').removeClass('sticky');
+    }
+});

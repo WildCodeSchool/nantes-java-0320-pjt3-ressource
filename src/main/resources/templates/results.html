@@ -6,340 +6,430 @@
     <link href="css/results.css" rel="stylesheet">
 </head>
 <body>
-<header th:replace="fragments/header.html :: header">
+<header th:replace="fragments/header.html :: header"></header>
+<header class="results-header-mobile">
+    <div>
+        <h1><span>we</span>source</h1>
+    </div>
+    <div class="results-header-mobile-buttons">
+        <form action="" class="results-filter-form">
+            <button class="filter">Filter <span><i class="fas fa-chevron-down"></i></span></button>
+        </form>
+        <form action="" class="results-header-mobile-sort-form">
+            <label class="results-header-mobile-sort">
+                <select>
+                    <option selected>Sort By</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </label>
+        </form>
+    </div>
 </header>
-<div class="results-back">
-    <a href="#">&#10094; Go Back</a>
-</div>
-<main class="results">
-    <div class="results-filters">
-        <div class="filters filters-material">
-            <h4 class="filters-title">Material</h4>
-            <div>
-                <label class="results-filters-radio" for="woven">Woven
-                    <input id="woven" name="material" type="radio" value="woven">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-
-            <div>
-                <label class="results-filters-radio" for="knit">Knit
-                    <input id="knit" name="material" type="radio" value="knit">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
+<main>
+    <div class="results-menu-nav">
+        <div>
+            <a><i class="fas fa-home"></i></a>
+            <p>Home</p>
         </div>
-        <div class="filters filters-weave">
-            <h4 class="filters-title">Fabric pattern</h4>
-            <ul>
-                <li>Taffata</li>
-                <li>Twill</li>
-                <li>Satin</li>
-                <li>Ottoman</li>
-                <li>Oxford</li>
-                <li>Jacquard</li>
-                <li>Jersey</li>
-                <li>Rib</li>
-                <li>Fleece</li>
-                <li>Piqué</li>
-                <li>Interlock</li>
-                <li>Milano</li>
-            </ul>
+        <div>
+            <a><i class="fas fa-search"></i></a>
+            <p>Search</p>
         </div>
-        <div class="filters filters-composition">
-            <h4 class="filters-title">Main Composition</h4>
-            <ul id="table-composition">
-                <li>Cotton</li>
-                <li>Wool</li>
-                <li>Linen</li>
-                <li>Silk</li>
-                <li>Viscose</li>
-                <li>Acetate</li>
-                <li>Modal</li>
-                <li>Cupro</li>
-                <li>Lyocell</li>
-                <li>Polyester</li>
-            </ul>
-            <a class="filters-see-more" href="#" id="more-Composition">Click here to see more</a>
+        <div>
+            <a><i class="fas fa-heart"></i></a>
+            <p>Wishlist</p>
         </div>
-        <div class="filters filters-origin">
-            <h4 class="filters-title">Origin</h4>
-            <div>
-                <label class="results-filters-radio" for="italy">Italy
-                    <input id="italy" name="country" type="radio" value="italy">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="india">India
-                    <input id="india" name="country" type="radio" value="india">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="japan">Japan
-                    <input id="japan" name="country" type="radio" value="japan">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="turkey">Turkey
-                    <input id="turkey" name="country" type="radio" value="turkey">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <a class="filters-see-more" href="#" id="more-origin">Click here to see more</a>
-        </div>
-        <div class="filters filters-supplier">
-            <h4 class="filters-title">Supplier</h4>
-            <div>
-                <label class="results-filters-radio" for="gruppoCinque">GruppoCinque
-                    <input id="gruppoCinque" name="gruppoCinque" type="radio" value="gruppoCinque">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="hironen">Hironen
-                    <input id="hironen" name="hironen" type="radio" value="hironen">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="seteriArgenti">SeteriArgenti
-                    <input id="seteriArgenti" name="seteriArgenti" type="radio" value="seteriArgenti">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <a class="filters-see-more" href="#" id="more-supplier">Click here to see more</a>
-        </div>
-        <div class="filters filters-price">
-            <h4 class="filters-title">Price range (in €)</h4>
-            <ul id="table-price">
-                <li>1 to 3.99</li>
-                <li>4 to 6.99</li>
-                <li>7 to 9.99</li>
-                <li>10 to 12.99</li>
-                <li>13 to 15.99</li>
-                <li>16 to 18.99</li>
-                <li>19 to 21.99</li>
-                <li>22 to 24.99</li>
-                <li>25 to 27.99</li>
-                <li>28 to 30.99</li>
-                <li>31 and +</li>
-            </ul>
-        </div>
-        <div class="filters filters-weight ui-content">
-            <h4 class="filters-title">Weight (in grams)</h4>
-            <div class="sliders-div">
-                <div class="sliders">
-                    <input class="slider" id="slider-weight" max="235" min="30" type="range" value="30">
-                    <input class="slider slider2" id="slider-weight-2" max="500" min="236" type="range" value="500">
-                </div>
-                <div class="sliders-p">
-                    <p id="slider-width-tag-1">30</p>
-                    <p id="slider-width-tag-2">500</p>
-                </div>
-            </div>
-        </div>
-        <div class="filters filters-width">
-            <h4 class="filters-title">Width (in centimeters)</h4>
-            <div class="sliders-div">
-                <div class="sliders">
-                    <input class="slider" id="slider-width" max="137" min="75" type="range" value="75">
-                    <input class="slider slider2" id="slider-width-2" max="200" min="138" type="range" value="200">
-                </div>
-                <div class="sliders-p">
-                    <p id="slider-weight-tag-1">75</p>
-                    <p id="slider-weight-tag-2">200</p>
-                </div>
-            </div>
-        </div>
-        <div class="filters filters-certifications">
-            <h4 class="filters-title">Certifications</h4>
-            <div>
-                <label class="results-filters-radio" for="gots">GOTS
-                    <input id="gots" name="certification" type="radio" value="gots">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="grs">GRS
-                    <input id="grs" name="certification" type="radio" value="grs">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <label class="results-filters-radio" for="ecovero">EcoVero
-                    <input id="ecovero" name="certification" type="radio" value="ecovero">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <a class="filters-see-more" href="#" id="more-certification">Click here to see more</a>
+        <div>
+            <a><i class="fas fa-suitcase"></i></a>
+            <p>Meetings</p>
         </div>
     </div>
-    <div class="results-results">
-        <div class="results-title_sort">
-            <h4 class="results-title">Your actual research : </h4>
-            <form action="" class="results-sort-form">
-                <label class="results-sort-select">
-                    <select>
-                        <option selected>Sort By</option>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
-                </label>
-            </form>
-        </div>
+    <div class="results-back">
+        <a href="#">&#10094; Go Back</a>
+    </div>
+    <div class="results">
+        <div class="results-filters">
+            <div class="filters filters-material">
+                <h4 class="filters-title">Material</h4>
+                <div>
+                    <label class="results-filters-radio" for="woven">Woven
+                        <input id="woven" name="material" type="radio" value="woven">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
 
-        <div class="results-products">
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norwood-agua" src="/image/Norwood-agua.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Norwood</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                <div>
+                    <label class="results-filters-radio" for="knit">Knit
+                        <input id="knit" name="material" type="radio" value="knit">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="High-River" src="/image/High-River.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
+            <div class="filters filters-weave">
+                <h4 class="filters-title">Fabric pattern</h4>
+                <ul>
+                    <li>Taffata</li>
+                    <li>Twill</li>
+                    <li>Satin</li>
+                    <li>Ottoman</li>
+                    <li>Oxford</li>
+                    <li>Jacquard</li>
+                    <li>Jersey</li>
+                    <li>Rib</li>
+                    <li>Fleece</li>
+                    <li>Piqué</li>
+                    <li>Interlock</li>
+                    <li>Milano</li>
+                </ul>
+            </div>
+            <div class="filters filters-composition">
+                <h4 class="filters-title">Main Composition</h4>
+                <ul id="table-composition">
+                    <li>Cotton</li>
+                    <li>Wool</li>
+                    <li>Linen</li>
+                    <li>Silk</li>
+                    <li>Viscose</li>
+                    <li>Acetate</li>
+                    <li>Modal</li>
+                    <li>Cupro</li>
+                    <li>Lyocell</li>
+                    <li>Polyester</li>
+                </ul>
+                <a class="filters-see-more" href="#" id="more-Composition">Click here to see more</a>
+            </div>
+            <div class="filters filters-origin">
+                <h4 class="filters-title">Origin</h4>
+                <div>
+                    <label class="results-filters-radio" for="italy">Italy
+                        <input id="italy" name="country" type="radio" value="italy">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">High River</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                <div>
+                    <label class="results-filters-radio" for="india">India
+                        <input id="india" name="country" type="radio" value="india">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="results-filters-radio" for="japan">Japan
+                        <input id="japan" name="country" type="radio" value="japan">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="results-filters-radio" for="turkey">Turkey
+                        <input id="turkey" name="country" type="radio" value="turkey">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <a class="filters-see-more" href="#" id="more-origin">Click here to see more</a>
+            </div>
+            <div class="filters filters-supplier">
+                <h4 class="filters-title">Supplier</h4>
+                <div>
+                    <label class="results-filters-radio" for="gruppoCinque">GruppoCinque
+                        <input id="gruppoCinque" name="gruppoCinque" type="radio" value="gruppoCinque">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="results-filters-radio" for="hironen">Hironen
+                        <input id="hironen" name="hironen" type="radio" value="hironen">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div>
+                    <label class="results-filters-radio" for="seteriArgenti">SeteriArgenti
+                        <input id="seteriArgenti" name="seteriArgenti" type="radio" value="seteriArgenti">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <a class="filters-see-more" href="#" id="more-supplier">Click here to see more</a>
+            </div>
+            <div class="filters filters-price">
+                <h4 class="filters-title">Price range (in €)</h4>
+                <ul id="table-price">
+                    <li>1 to 3.99</li>
+                    <li>4 to 6.99</li>
+                    <li>7 to 9.99</li>
+                    <li>10 to 12.99</li>
+                    <li>13 to 15.99</li>
+                    <li>16 to 18.99</li>
+                    <li>19 to 21.99</li>
+                    <li>22 to 24.99</li>
+                    <li>25 to 27.99</li>
+                    <li>28 to 30.99</li>
+                    <li>31 and +</li>
+                </ul>
+            </div>
+            <div class="filters filters-weight ui-content">
+                <h4 class="filters-title">Weight (in grams)</h4>
+                <div class="sliders-div">
+                    <div class="sliders">
+                        <input class="slider" id="slider-weight" max="235" min="30" type="range" value="30">
+                        <input class="slider slider2" id="slider-weight-2" max="500" min="236" type="range" value="500">
+                    </div>
+                    <div class="sliders-p">
+                        <p id="slider-width-tag-1">30</p>
+                        <p id="slider-width-tag-2">500</p>
+                    </div>
                 </div>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Country-yellow" src="/image/Country-yellow.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
+            <div class="filters filters-width">
+                <h4 class="filters-title">Width (in centimeters)</h4>
+                <div class="sliders-div">
+                    <div class="sliders">
+                        <input class="slider" id="slider-width" max="137" min="75" type="range" value="75">
+                        <input class="slider slider2" id="slider-width-2" max="200" min="138" type="range" value="200">
                     </div>
-                </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Country</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    <div class="sliders-p">
+                        <p id="slider-weight-tag-1">75</p>
+                        <p id="slider-weight-tag-2">200</p>
+                    </div>
                 </div>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Jura-burgundy" src="/image/Jura-burgundy.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
+            <div class="filters filters-certifications">
+                <h4 class="filters-title">Certifications</h4>
+                <div>
+                    <label class="results-filters-radio" for="gots">GOTS
+                        <input id="gots" name="certification" type="radio" value="gots">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Jura</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                <div>
+                    <label class="results-filters-radio" for="grs">GRS
+                        <input id="grs" name="certification" type="radio" value="grs">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
+                <div>
+                    <label class="results-filters-radio" for="ecovero">EcoVero
+                        <input id="ecovero" name="certification" type="radio" value="ecovero">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <a class="filters-see-more" href="#" id="more-certification">Click here to see more</a>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Venezia" src="/image/Venezia.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Venezia</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
+        </div>
+        <div class="results-results">
+            <div class="results-title_sort">
+                <h4 class="results-title">Your actual research : </h4>
+                <form action="" class="results-sort-form">
+                    <label class="results-sort-select">
+                        <select>
+                            <option selected>Sort By</option>
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                    </label>
+                </form>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Durance-purple" src="/image/Durance-purple.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
+
+            <div class="results-products">
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Norwood-agua" src="/image/Norwood-agua.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Norwood</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
                     </div>
                 </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Durance</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Balmoral-prune" src="/image/Balmoral-prune.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="High-River" src="/image/High-River.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">High River</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
                     </div>
                 </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Balmoral</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Country-yellow" src="/image/Country-yellow.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Country</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
                     </div>
                 </div>
-                <div class="card-product-info">
-                    <p class="card-product-info-name">Norgate</p>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Jura-burgundy" src="/image/Jura-burgundy.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Jura</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    </div>
+                </div>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Venezia" src="/image/Venezia.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Venezia</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    </div>
+                </div>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Durance-purple" src="/image/Durance-purple.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Durance</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    </div>
+                </div>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Balmoral-prune" src="/image/Balmoral-prune.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Balmoral</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    </div>
+                </div>
+                <div class="card-product">
+                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                    <div class="card-product-image">
+                        <a href="/product"><img alt="Norgate" src="/image/Norgate.JPG"></a>
+                        <div class="card-product-image-hover">
+                            <a><i class="fas fa-heart"></i></a>
+                            <a><i class="fas fa-suitcase"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-product-info">
+                        <div class="card-product-mobile-rs">
+                            <p class="card-product-info-name">Norgate</p>
+                            <div class="card-product-image-rs">
+                                <a><i class="fas fa-heart"></i></a>
+                                <a><i class="fas fa-suitcase"></i></a>
+                            </div>
+                        </div>
+                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
+                            /
+                            <span>Draping</span> / <span>Natural stretch</span>
+                        </p>
+                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
 <script src="/js/results.js" type="text/javascript"></script>
 </body>
 </html>
