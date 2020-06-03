@@ -24,9 +24,6 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
 }
 
-/* caroussel 2eme partie de page */
-
-
 /* carousel 2ème partie de la page */
 class Carousel {
 
@@ -76,6 +73,7 @@ class Carousel {
     prev(){
         this.gotoItem(this.currentItem - this.options.slidesToScroll)
     }
+
     /**
      * @param {number} index
      * deplace l"element vers l'élément ciblé
@@ -99,7 +97,6 @@ class Carousel {
         let div = document.createElement('div')
         div.setAttribute('class', className)
         return div
-
     }
 }
 

@@ -6,6 +6,7 @@ h4{
     font-size: 2rem;
     margin: 1rem;
 }
+
 .product-section-top {
     background-color: var(--color-bkg-secondary);
 }
@@ -201,4 +202,3 @@ h4{
     top: 50%;
     cursor: pointer;
 }
-
