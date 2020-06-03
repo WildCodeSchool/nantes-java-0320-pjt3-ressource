@@ -117,8 +117,7 @@
 }
 
 .header-header img {
-    flex-basis: 6%;
-    width: 6vh;
+    width: 96px;
 }
 
 .header-search {
@@ -150,5 +149,4 @@
     justify-content: space-evenly;
     font-size: 3rem;
 }
-
 /*END HEADER*/

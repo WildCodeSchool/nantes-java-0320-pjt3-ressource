@@ -5,17 +5,18 @@
     padding-left: 2rem;
 }
 
-
-.results-back a{
+.results-back a {
     text-decoration: none;
     color: var(--color-font-dark);
 }
+
 .results-back {
     margin-left: 5rem;
     font-family: var(--font-title);
     font-size: 2rem;
     margin-bottom: 2rem;
 }
+
 .results-back:hover {
     cursor: pointer;
 }
@@ -219,7 +220,6 @@
 }
 
 /* RESULTS PRODUCT */
-
 .results-results {
     margin-left: 3rem;
     flex-basis: 90%;
@@ -253,12 +253,10 @@
     pointer-events: none;
 }
 
-
 /* IE11 hide native button (thanks Matt!) */
 select::-ms-expand {
     display: none;
 }
-
 
 .results-sort-form select {
     -webkit-appearance: none;
