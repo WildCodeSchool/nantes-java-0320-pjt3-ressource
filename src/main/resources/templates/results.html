@@ -9,8 +9,7 @@
 <header th:replace="fragments/header.html :: header">
 </header>
 <div class="results-back">
-    <a>&#10094;</a>
-    <a>Go Back</a>
+    <a href="#">&#10094; Go Back</a>
 </div>
 <main class="results">
        <div class="results-filters">
@@ -31,7 +30,7 @@
             </div>
         </div>
         <div class="filters filters-weave">
-            <h4 class="filters-title">Weave</h4>
+            <h4 class="filters-title">Fabric pattern</h4>
             <ul>
                 <li>Taffata</li>
                 <li>Twill</li>
@@ -48,7 +47,7 @@
             </ul>
         </div>
         <div class="filters filters-composition">
-            <h4 class="filters-title">Composition</h4>
+            <h4 class="filters-title">Main Composition</h4>
             <ul id="table-composition">
                 <li>Cotton</li>
                 <li>Wool</li>
@@ -61,9 +60,10 @@
                 <li>Lyocell</li>
                 <li>Polyester</li>
             </ul>
+            <a id="more-Composition" class="filters-see-more" href="#">Click here to see more</a>
         </div>
         <div class="filters filters-origin">
-            <h4 class="filters-title">Country of Origin</h4>
+            <h4 class="filters-title">Origin</h4>
             <div>
                 <label for="italy" class="results-filters-radio">Italy
                     <input id="italy" name="country" type="radio" value="italy">
@@ -81,8 +81,6 @@
                     <input id="japan" name="country" type="radio" value="japan">
                     <span class="checkmark"></span>
                 </label>
-
-
             </div>
             <div>
                 <label for="turkey" class="results-filters-radio">Turkey
@@ -90,6 +88,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
+            <a id="more-origin" class="filters-see-more" href="#">Click here to see more</a>
         </div>
         <div class="filters filters-supplier">
             <h4 class="filters-title">Supplier</h4>
@@ -111,6 +110,7 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
+            <a id="more-supplier" class="filters-see-more" href="#">Click here to see more</a>
         </div>
         <div class="filters filters-price">
             <h4 class="filters-title">Price range (in €)</h4>
@@ -174,15 +174,29 @@
                     <span class="checkmark"></span>
                 </label>
             </div>
+            <a id="more-certification" class="filters-see-more" href="#">Click here to see more</a>
         </div>
     </div>
     <div class="results-results">
-        <h4 class="results-title">Your actual research : </h4>
+        <div class="results-title_sort">
+            <h4 class="results-title">Your actual research : </h4>
+            <form action="" class="results-sort-form">
+                <label class="results-sort-select">
+                    <select>
+                        <option selected>Sort By</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </label>
+            </form>
+        </div>
+
         <div class="results-products">
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Norwood-agua.JPG" alt="Norwood-agua">
+                    <a href="/product"><img src="/image/Norwood-agua.JPG" alt="Norwood-agua"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -199,7 +213,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/High-River.JPG" alt="High-River">
+                    <a href="/product"><img src="/image/High-River.JPG" alt="High-River"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -216,7 +230,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Country-yellow.JPG" alt="Country-yellow">
+                    <a href="/product"><img src="/image/Country-yellow.JPG" alt="Country-yellow"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -233,7 +247,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Jura-burgundy.JPG" alt="Jura-burgundy">
+                    <a href="/product"><img src="/image/Jura-burgundy.JPG" alt="Jura-burgundy"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -250,7 +264,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Venezia.JPG" alt="Venezia">
+                    <a href="/product"><img src="/image/Venezia.JPG" alt="Venezia"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -267,7 +281,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Durance-purple.JPG" alt="Durance-purple">
+                    <a href="/product"><img src="/image/Durance-purple.JPG" alt="Durance-purple"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -284,7 +298,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Balmoral-prune.JPG" alt="Balmoral-prune">
+                    <a href="/product"><img src="/image/Balmoral-prune.JPG" alt="Balmoral-prune"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -301,7 +315,7 @@
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <img src="/image/Norgate.JPG" alt="Norgate">
+                    <a href="/product"><img src="/image/Norgate.JPG" alt="Norgate"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>

@@ -72,7 +72,7 @@
     position: relative;
 }
 
-.card-product-image:hover > img {
+.card-product-image:hover > a img {
     opacity: 0.3;
 }
 
