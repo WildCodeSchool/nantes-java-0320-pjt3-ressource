@@ -130,10 +130,6 @@ h4{
     font-size: 1.5rem;
 }
 
-h4 {
-    text-align: center;
-}
-
 /* card  bas */
 .card-product {
     padding: 0;
@@ -162,19 +158,21 @@ h4 {
 }
 
 /* card carousel*/
-
 .carousel-container{
     display: flex;
     position: relative;
     transition: transform 0.3s;
 }
+
 .product-carousel{
     position:relative;
 }
+
 .product-carousel-bot {
     margin-left: 3em;
     margin-right: 3em;
 }
+
 .product-carousel-bot2{
     margin-left: 3em;
     margin-right: 3em;
