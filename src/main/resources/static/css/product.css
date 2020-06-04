@@ -1,5 +1,13 @@
 @import url('style.css');
 
+
+h4 {
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem;
+}
+
 .product-section-top {
     background-color: var(--color-bkg-secondary);
 }
@@ -124,38 +132,52 @@
     font-size: 1.5rem;
 }
 
-h4 {
-    text-align: center;
-}
-
-/* card  bas */
-.card-product {
-    padding: 0;
-    margin-right: 2rem;
-    width: 350px;
-    margin-bottom: 3rem;
-}
-
-.card-product-image {
-    height: 268px;
-    width: 100%;
-    border: 1px solid black;
-}
-
-.card-product-info {
-    width: 95.5%;
-    border: 1px solid black;
-    border-top: 0px;
-    padding: 0.5rem;
-    font-family: var(--font-text);
-    line-height: 1.4rem;
-}
-
-.card-product-info-supplier {
-    font-weight: bold;
-}
 
 /* card carousel*/
-.product-more-product {
+.carousel-container {
     display: flex;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.product-carousel {
+    position: relative;
+}
+
+.product-carousel-bot {
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.product-carousel-bot2 {
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.carousel-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("../image/products/icons8-chevron-droit-30.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: -40px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.carousel-prev {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("../image/products/icons8-chevron-gauche-30.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: -40px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.product-body {
+    overflow: hidden;
 }
