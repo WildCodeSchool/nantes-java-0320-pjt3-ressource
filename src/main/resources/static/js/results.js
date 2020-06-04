@@ -30,3 +30,21 @@ for (let i = 0; i < sliders.length; i++) {
     }
 }
 
+// Sticky nav bar
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('.results-header-mobile').addClass('sticky');
+    } else {
+        $('.results-header-mobile').removeClass('sticky');
+    }
+});
+
+
+let search = document.getElementById("search-icon-nav");
+let navMenu = document.getElementById("results-menu-nav");
+let navSearch = document.getElementById("results-nav-search");
+
+search.onclick = function () {
+    navMenu.style.display = "none";
+    navSearch.classList.toggle('show');
+};
