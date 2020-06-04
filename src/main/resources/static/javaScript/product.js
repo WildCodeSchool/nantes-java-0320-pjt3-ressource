@@ -57,7 +57,7 @@ class Carousel {
     /**
      Applique les bonnes dimmention aux élément du carousel
      */
-    createNavigation (){
+    createNavigation() {
         let nextButton = this.createDivWithClass('carousel-next')
         let prevButton = this.createDivWithClass('carousel-prev')
         this.root.appendChild(nextButton)
@@ -66,11 +66,11 @@ class Carousel {
         prevButton.addEventListener('click', this.prev.bind(this))
     }
 
-    next(){
+    next() {
         this.gotoItem(this.currentItem + this.options.slidesToScroll)
     }
 
-    prev(){
+    prev() {
         this.gotoItem(this.currentItem - this.options.slidesToScroll)
     }
 
@@ -78,13 +78,13 @@ class Carousel {
      * @param {number} index
      * deplace l"element vers l'élément ciblé
      */
-    gotoItem (index){
-        if(index <0){
+    gotoItem(index) {
+        if (index < 0) {
             index = this.items.length - this.options.slidesVisible
-        }else  if (index >= this.items.length){
+        } else if (index >= this.items.length) {
             index = 0
         }
-        let translateX = index * -365
+        let translateX = index * -444
         this.container.style.transform = 'translate3d(' + translateX + 'px, 0, 0)'
         this.currentItem = index
     }

@@ -1,5 +1,5 @@
 @import url(//db.onlinewebfonts.com/c/0ba9253983e3a7a7cc896e85b1ceb2be?family=Futura+PT+Web+Book);
-@import url(//db.onlinewebfonts.com/c/2bf40ab72ea4897a3fd9b6e48b233a19?family=Garamond);
+@import url(//db.onlinewebfonts.com/c/23fab04cd09bfa1bae2991c14b0b546f?family=NimbusRomD);
 
 @font-face {
     font-family: "Futura PT Web Book";
@@ -12,13 +12,13 @@
 }
 
 @font-face {
-    font-family: "Garamond";
-    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot");
-    src: url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.eot?#iefix") format("embedded-opentype"),
-    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff2") format("woff2"),
-    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.ttf") format("truetype"),
-    url("//db.onlinewebfonts.com/t/2bf40ab72ea4897a3fd9b6e48b233a19.svg#Garamond") format("svg");
+    font-family: "NimbusRomD";
+    src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot");
+    src: url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.svg#NimbusRomD") format("svg");
 }
 
 /*START VARIABLES*/
@@ -29,10 +29,13 @@
     --color-bkg-button: #70ad47;
     --color-font-light: #fff;
     --color-font-dark: #000;
+    --color-bkg-product: #fbfbfb;
+    --color-border: #BDBDBD;
+    --color-border-product: #ededed;
 
     /*Font*/
     --font-title: 'Futura PT Web Book', 'sans serif';
-    --font-text: 'Garamond', 'serif';
+    --font-text: 'NimbusRomD', 'serif';
 }
 
 /*END VARIABLES*/
@@ -47,28 +50,39 @@
 .card-product {
     padding: 0;
     margin-right: 2rem;
-    width: 350px;
+    width: 410px;
     margin-bottom: 3rem;
+    border: 1px solid var(--color-border-product);
+    background-color: var(--color-bkg-product)
+}
+
+.card-product-info-supplier {
+    padding: 0.7rem;
+    font-family: var(--font-title);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card-product-image img {
+    height: 268px;
+    width: 100%;
 }
 
 .card-product-image {
-    height: 268px;
-    width: 100%;
-    border: 1px solid black;
     position: relative;
 }
 
-.card-product-image:hover {
-    opacity: 0.5;
+.card-product-image:hover > a img {
+    opacity: 0.3;
 }
 
 .card-product-image:hover > .card-product-image-hover {
     display: flex;
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 25%;
     width: 50%;
-    font-size: 2.5rem;
+    font-size: 3rem;
     justify-content: space-around;
     cursor: pointer;
 }
@@ -78,55 +92,98 @@
 }
 
 .card-product-info {
-    width: 95.4%;
-    border: 1px solid black;
-    border-top: 0px;
-    padding: 0.5rem;
+    border-top: 0;
+    padding: 0.8rem;
     font-family: var(--font-text);
     line-height: 1.4rem;
+    width: 95%;
 }
 
-.card-product-info-supplier {
-    font-weight: bold;
+.card-product-info-name {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    padding: 0.5rem 0.5rem 0.7rem 0;
+    font-weight: bolder;
+}
+
+.card-product-info-descr {
+    width: 70%;
+}
+
+.card-product-image-rs {
+    display: none;
 }
 
 /*END GENERALITY*/
+
 /*START HEADER*/
 .header-header {
     display: flex;
-    margin:2rem 2rem 3rem 2rem;
+    margin: 2rem 2rem 3rem 5rem;
     align-items: center;
     justify-content: space-between;
 }
+
 .header-header img {
-    flex-basis: 5%;
-    width: 4vh;
+    width: 96px;
 }
+
 .header-search {
     position: relative;
-    flex-basis: 40%;
+    flex-basis: 66%;
 }
 
 .header-search button {
     background: none;
     border-style: none;
     position: absolute;
-    top: 23%;
-    left: 98%;
+    top: 20%;
+    left: 1%;
+    font-size: 1.5rem;
 }
 
 .header-search-bar {
-    padding-left: 0.7rem;
+    padding-left: 2.7rem;
     width: 100%;
-    border-radius: 10px;
-    height: 1.7rem;
+    border-radius: 15px;
+    height: 2.5rem;
     border: 1px solid lightgray;
+    font-size: 1.3rem;
+    outline: 0;
 }
+
 .header-icons {
     flex-basis: 10%;
     display: flex;
     justify-content: space-evenly;
-    font-size: 2rem
+    font-size: 3rem;
 }
 
 /*END HEADER*/
+
+@media screen and (max-width: 767px) {
+
+    .card-product {
+        width: 90%;
+        margin-right: 0;
+    }
+
+    .card-product-mobile-rs {
+        display: flex;
+        width: 94%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-product-image-rs {
+        display: flex;
+        flex-basis: 20%;
+        justify-content: space-between;
+        font-size: 1.5rem;
+    }
+
+    .card-product-info {
+        padding-top: 0.5rem;
+    }
+
+}
