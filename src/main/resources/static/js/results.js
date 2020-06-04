@@ -38,3 +38,13 @@ $(window).on("scroll", function () {
         $('.results-header-mobile').removeClass('sticky');
     }
 });
+
+
+let search = document.getElementById("search-icon-nav");
+let navMenu = document.getElementById("results-menu-nav");
+let navSearch = document.getElementById("results-nav-search");
+
+search.onclick = function () {
+    navMenu.style.display = "none";
+    navSearch.classList.toggle('show');
+};

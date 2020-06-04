@@ -28,13 +28,13 @@
     </div>
 </header>
 <main>
-    <div class="results-menu-nav">
+    <div class="results-menu-nav" id="results-menu-nav">
         <div>
             <a><i class="fas fa-home"></i></a>
             <p>Home</p>
         </div>
         <div>
-            <a><i class="fas fa-search"></i></a>
+            <a id="search-icon-nav"><i class="fas fa-search"></i></a>
             <p>Search</p>
         </div>
         <div>
@@ -45,6 +45,12 @@
             <a><i class="fas fa-suitcase"></i></a>
             <p>Meetings</p>
         </div>
+    </div>
+    <div class="results-menu-nav" id="results-nav-search">
+        <form action="" class="header-search" method="get">
+            <input class="header-search-bar" id="header-search-bar" name="searching" placeholder="Search by ..."  type="text">
+            <button><i class="fas fa-search"></i></button>
+        </form>
     </div>
     <div class="results-back">
         <a href="#">&#10094; Go Back</a>
@@ -132,19 +138,19 @@
                 <h4 class="filters-title">Supplier</h4>
                 <div>
                     <label class="results-filters-radio" for="gruppoCinque">GruppoCinque
-                        <input id="gruppoCinque" name="gruppoCinque" type="radio" value="gruppoCinque">
+                        <input id="gruppoCinque" name="supplier" type="radio" value="gruppoCinque">
                         <span class="checkmark"></span>
                     </label>
                 </div>
                 <div>
                     <label class="results-filters-radio" for="hironen">Hironen
-                        <input id="hironen" name="hironen" type="radio" value="hironen">
+                        <input id="hironen" name="supplier" type="radio" value="hironen">
                         <span class="checkmark"></span>
                     </label>
                 </div>
                 <div>
                     <label class="results-filters-radio" for="seteriArgenti">SeteriArgenti
-                        <input id="seteriArgenti" name="seteriArgenti" type="radio" value="seteriArgenti">
+                        <input id="seteriArgenti" name="supplier" type="radio" value="seteriArgenti">
                         <span class="checkmark"></span>
                     </label>
                 </div>

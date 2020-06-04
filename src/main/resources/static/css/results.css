@@ -289,10 +289,13 @@ select:-moz-focusring {
     display: none;
 }
 
+#results-nav-search {
+    display: none;
+}
 
 /* MOBILE VERSION */
 
-@media screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
 
     .results-header-mobile {
         display: flex;
@@ -435,4 +438,17 @@ select:-moz-focusring {
         font-family: var(--font-title);
         font-size: 1rem;
     }
+
+    #results-nav-search.show {
+        display: initial;
+    }
+
+    .header-search-bar {
+        margin-left: 0.8rem;
+        width: 83%;
+    }
+    .header-search button {
+        left: 7%;
+    }
+
 }
