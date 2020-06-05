@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link th:href="@{css/home.css}" rel="stylesheet" type="text/css">
+    <title>Wesource | home</title>
+</head>
+<body>
+    <main class="home-body">
+        <section class="home-main">
+            <header>
+                <div class="home-logo"></div>
+                <div class="home-btn-connection">
+                    <a class="home-btn-join" href="#">Apply to join</a>
+                    <a class="home-btn-sign-in" href="#">Sign in</a>
+                </div>
+            </header>
+            <div class="home-search">
+                <div class="home-search-catchphrase">
+                    <p>Find fabrics</p>
+                    <p>everywhere in the world</p>
+                </div>
+                <div class="home-search-box">
+                    <p>Enter your requests : fabric pattern, composition or origin</p>
+                    <form action="/results" method="post">
+                        <div class="home-search-bar-container">
+                            <i class="fas fa-search home-search-icon"></i>
+                            <input type="search" class="home-search-bar">
+                        </div>
+                    </form>
+                    <p><a href="#">Apply to join</a> and access a new way of global sourcing</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-news">
+            <h2>What's new ?</h2>
+            <div class="home-container-news">
+                <div class="home-tag-news">
+                    <div class="home-new">
+                        <h4>Recently added</h4>
+                    </div>
+                    <p>Find out our novelties and think about your next collection</p>
+                </div>
+                <div class="home-tag-news">
+                    <div class="home-picks">
+                        <h4>Wesource's picks</h4>
+                    </div>
+                    <p>Discover our recommandations from Wesource's expert team</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-natural-fibers">
+            <h2>Natural Fibers</h2>
+            <div class="home-container-fibers">
+                <div class="home-fibers-img-width-xl">
+                    <div class="home-type-fibers home-type-fibers-1">
+                        <h4>Cotton</h4>
+                    </div>
+                    <p>Softness and breathability have made cotton the world 's most popular natural fibre</p>
+                </div>
+                <div class="home-fibers-img-width-xs">
+                    <div class="home-type-fibers home-type-fibers-2">
+                        <h4>Wool</h4>
+                    </div>
+                    <p>From chic to rustic, discover many different ways to use wool</p>
+                </div>
+                <div class="home-fibers-img-width-xs">
+                    <div class="home-type-fibers home-type-fibers-3">
+                        <h4>Silk</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                </div>
+                <div class="home-fibers-img-width-xl">
+                    <div class="home-type-fibers home-type-fibers-4">
+                        <h4>Linen</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-human-made">
+            <h2>Human Made</h2>
+            <div class="home-container-made">
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-1">
+                        <h4>Acelate</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-2">
+                        <h4>Cupro</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-3">
+                        <h4>Lyocell</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-4">
+                        <h4>Modal</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-5">
+                        <h4>Polyester</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xs">
+                    <div class="home-human-made-img home-human-made-6">
+                        <h4>Viscose</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xl">
+                    <div class="home-human-made-img home-human-made-7">
+                        <h4>Jacquards</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+                <div class="home-human-made-xl">
+                    <div class="home-human-made-img home-human-made-8">
+                        <h4>Designs</h4>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur</p>
+                </div>
+            </div>
+        </section>
+        <section class="home-options">
+            <h2>Need more options ?</h2>
+            <div class="home-container-options">
+                <h4 class="home-option">Japanese fabrics</h4>
+                <h4 class="home-option">Crepe</h4>
+                <h4 class="home-option">Corduroy</h4>
+                <h4 class="home-option">Twill</h4>
+                <h4 class="home-option">Satin</h4>
+                <h4 class="home-option">Jersey</h4>
+                <h4 class="home-option">Oxford</h4>
+                <h4 class="home-option">Poplin</h4>
+                <h4 class="home-option">Denim</h4>
+                <h4 class="home-option">Taffeta</h4>
+                <h4 class="home-option">Italian fabrics</h4>
+                <h4 class="home-option">Crepe back satin</h4>
+            </div>
+        </section>
+        <section class="home-partners">
+            <h2>Our trusted partners</h2>
+            <div class="home-container-partners">
+                <div class="home-partner">
+                    <div class="home-partner-img home-partner-1">
+                        <h4>Hironen</h4>
+                    </div>
+                    <p>Synthetic fabrics, Fukui, Japan</p>
+                </div>
+                <div class="home-partner">
+                    <div class="home-partner-img home-partner-2">
+                        <h4>Seterie Argenti</h4>
+                    </div>
+                    <p>Prints & Designs, Tavernerio Como, Italy</p>
+                </div>
+                <div class="home-partner">
+                    <div class="home-partner-img home-partner-3">
+                        <h4>Velcorex</h4>
+                    </div>
+                    <p>Cords & Workwear fabrics, Saint-Amarin, France</p>
+                </div>
+            </div>
+        </section>
+        <footer class="home-footer">
+            <div class="home-container-footer">
+                <div class="home-footer-link">
+                    <h4>Discover Wesource</h4>
+                    <p>About us</p>
+                    <p>Sign in</p>
+                    <p>Careers</p>
+                </div>
+                <div class="home-footer-link">
+                    <h4>Legal</h4>
+                    <p>Terms and condition</p>
+                    <p>Privacy</p>
+                    <p>Cookies</p>
+                </div>
+                <div class="home-footer-link">
+                    <h4>Help</h4>
+                    <p>Contact</p>
+                    <p>FAQS</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
