@@ -161,6 +161,7 @@
 
 /*END HEADER*/
 
+/* MOBILE */
 @media only screen and (max-width: 767px) {
 
     .card-product {
@@ -186,4 +187,25 @@
         padding-top: 0.5rem;
     }
 
+}
+
+/* TABLET */
+@media only screen and (min-width: 768px)and (max-width: 1240px) {
+    .header-header {
+        margin: 2rem 2rem 2rem 2rem;
+    }
+
+    .header-search {
+        position: relative;
+        flex-basis: 55%;
+    }
+
+    .header-search-bar {
+        height: 2.3rem;
+    }
+
+    .header-icons {
+        flex-basis: 16%;
+        font-size: 2.5rem;
+    }
 }
