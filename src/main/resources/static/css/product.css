@@ -7,6 +7,13 @@ h4 {
     font-size: 2rem;
     margin: 1rem;
 }
+p{
+    font-family: var(--font-text);
+}
+
+#product-text-after-title{
+    text-align: center;
+}
 
 .product-section-top {
     background-color: var(--color-bkg-secondary);
@@ -132,7 +139,6 @@ h4 {
     font-size: 1.5rem;
 }
 
-
 /* card carousel*/
 .carousel-container {
     display: flex;
@@ -180,4 +186,101 @@ h4 {
 
 .product-body {
     overflow: hidden;
+}
+
+/*  test carousel **********************************************************************   */
+.slick-slider{
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.section-product-bot{
+    position: relative;
+}
+/* like  */
+.arrow_prev_like, .arrow_next_like{
+    position: absolute;
+    top: 40%;
+}
+.arrow_prev_like, .fas fa-chevron-left{
+    left: 10px;
+    font-size: 3rem;
+}
+
+.arrow_next_like, .fa-chevron-right{
+    right: 25px;
+    font-size: 3rem;
+}
+
+/* review  */
+.arrow_prev_rev, .arrow_next_rev{
+    position: absolute;
+    top: 40%;
+}
+.arrow_prev_rev, .fas fa-chevron-left{
+    left: 10px;
+    font-size: 3rem;
+}
+
+.arrow_next_rev, .fa-chevron-right{
+    right: 25px;
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .product-container-top {
+        display: flex;
+        padding-top: 1.5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-slideshow-container {
+        width: 90%;
+        position: relative;
+        margin: auto;
+    }
+
+    .product-description {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .mySlides img {
+        width: 100%;
+        height: 350px;
+        margin-top: 2rem;
+        padding-top: 15rem;
+    }
+
+    .product-next, .product-prev {
+        top: 70%;
+    }
+
+    .product-section-top {
+        height: 1100px;
+    }
+
+    .product-button-top {
+        align-self: flex-end;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .product-button {
+        margin: 1rem;
+    }
+
+    .product-button .fa-suitcase, .product-button .fa-heart {
+        left: 45px;
+    }
+
+    .product-section-top {
+        display: grid;
+    }
 }
