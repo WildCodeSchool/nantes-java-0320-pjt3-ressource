@@ -74,6 +74,10 @@ let radiosSupplier = $('.results-filters-radio-input-supplier');
 let divRadiosSupplier = $('.results-filters-radio-table-supplier');
 clicking(radiosSupplier, divRadiosSupplier);
 
+let radiosCert = $('.results-filters-radio-input-cert');
+let divRadiosCert = $('.results-filters-radio-table-cert');
+clicking(radiosCert, divRadiosCert);
+
 function clicking(radios, divRadios) {
     radios.click(function () {
         divRadios.removeClass("clicked");
