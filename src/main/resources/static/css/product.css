@@ -7,11 +7,12 @@ h4 {
     font-size: 2rem;
     margin: 1rem;
 }
-p{
+
+p {
     font-family: var(--font-text);
 }
 
-#product-text-after-title{
+#product-text-after-title {
     text-align: center;
 }
 
@@ -139,90 +140,44 @@ p{
     font-size: 1.5rem;
 }
 
-/* card carousel*/
-.carousel-container {
-    display: flex;
-    position: relative;
-    transition: transform 0.3s;
-}
-
-.product-carousel {
-    position: relative;
-}
-
-.product-carousel-bot {
-    margin-left: 4em;
-    margin-right: 4em;
-}
-
-.product-carousel-bot2 {
-    margin-left: 4em;
-    margin-right: 4em;
-}
-
-.carousel-next {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("../image/products/icons8-chevron-droit-30.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    right: -40px;
-    top: 50%;
-    cursor: pointer;
-}
-
-.carousel-prev {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("../image/products/icons8-chevron-gauche-30.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    left: -40px;
-    top: 50%;
-    cursor: pointer;
-}
-
-.product-body {
-    overflow: hidden;
-}
-
-/*  test carousel **********************************************************************   */
-.slick-slider{
+/*  carousel*/
+.slick-slider {
     margin-left: 4rem;
     margin-right: 4rem;
 }
 
-.section-product-bot{
+.section-product-bot {
     position: relative;
 }
+
 /* like  */
-.arrow_prev_like, .arrow_next_like{
+.arrow_prev_like, .arrow_next_like {
     position: absolute;
     top: 40%;
 }
-.arrow_prev_like, .fas fa-chevron-left{
+
+.arrow_prev_like, .fas fa-chevron-left {
     left: 10px;
     font-size: 3rem;
 }
 
-.arrow_next_like, .fa-chevron-right{
+.arrow_next_like, .fa-chevron-right {
     right: 25px;
     font-size: 3rem;
 }
 
 /* review  */
-.arrow_prev_rev, .arrow_next_rev{
+.arrow_prev_rev, .arrow_next_rev {
     position: absolute;
     top: 40%;
 }
-.arrow_prev_rev, .fas fa-chevron-left{
+
+.arrow_prev_rev, .fas fa-chevron-left {
     left: 10px;
     font-size: 3rem;
 }
 
-.arrow_next_rev, .fa-chevron-right{
+.arrow_next_rev, .fa-chevron-right {
     right: 25px;
     font-size: 3rem;
 }

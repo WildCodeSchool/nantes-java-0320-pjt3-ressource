@@ -25,7 +25,7 @@ function showSlides(n) {
 }
 
 /* carousel bottom **/
-$(document).ready(function(){
+$(document).ready(function () {
     $('.product-carousel-bot').slick({
         dots: false,
         infinite: false,
@@ -33,8 +33,8 @@ $(document).ready(function(){
         slidesToShow: 4,
         slidesToScroll: 4,
         arrows: true,
-        prevArrow:'.arrow_prev_like',
-        nextArrow:'.arrow_next_like',
+        prevArrow: '.arrow_prev_like',
+        nextArrow: '.arrow_next_like',
         responsive: [
             {
                 breakpoint: 1500,
@@ -71,8 +71,8 @@ $(document).ready(function(){
         slidesToShow: 4,
         slidesToScroll: 4,
         arrows: true,
-        prevArrow:'.arrow_prev_rev',
-        nextArrow:'.arrow_next_rev',
+        prevArrow: '.arrow_prev_rev',
+        nextArrow: '.arrow_next_rev',
         responsive: [
             {
                 breakpoint: 1500,
