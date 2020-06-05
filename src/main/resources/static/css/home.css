@@ -1,0 +1,524 @@
+@import url('style.css');
+
+/*START MAIN*/
+/*Generality*/
+:root{
+    --heigth-tag: 250px;
+}
+
+.home-main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("/image/home-page/Home_back.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.home-body h2{
+    font-size: 4rem;
+    font-weight: 200;
+    padding: 1rem;
+    font-family: var(--font-title);
+}
+
+.home-body h4{
+    white-space: nowrap;
+}
+
+.home-body p, .home-body a{
+    font-family: var(--font-text);
+}
+/*Header*/
+.home-main header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 18%;
+    min-height: 120px;
+}
+
+.home-logo{
+    width: 96px;
+    height: 96px;
+    margin-left: 3rem;
+    background-image: url("/image/home-page/Logo Wesource v1.png");
+    background-size: cover;
+}
+
+.home-btn-connection{
+    display: flex;
+    width: 500px;
+    height: 80%;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.home-btn-connection a{
+    text-decoration: none;
+    text-align: center;
+    width: 200px;
+    padding: 0.4rem 0;
+    font-size: 1rem;
+}
+
+.home-btn-join{
+    background-color: #000;
+    color: #fff;
+}
+
+.home-btn-sign-in{
+    background-color: #fff;
+    color: #000;
+}
+/*Search*/
+.home-search{
+    padding: 0 0 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.home-search-catchphrase{
+    margin-bottom: 1rem;
+}
+
+.home-search-catchphrase > p{
+    font-size: 4rem;
+    color: #fff;
+    font-family: var(--font-title);
+}
+
+.home-search-box{
+    width: 500px;
+    max-width: 90%;
+    height: 175px;
+    padding-left: 2rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.home-search-bar-container{
+    position: relative;
+}
+
+.home-search-bar{
+    width: 420px;
+    max-width: 100%;
+    height: 25px;
+    padding-left: 2rem;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+.home-search-icon{
+    position: absolute;
+    left: 10px;
+    top: 5px;
+}
+/*END MAIN*/
+/*START NEWS*/
+.home-news{
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.home-container-news{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home-tag-news{
+    flex-grow: 1;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-new, .home-picks{
+    height: var(--heigth-tag);
+    position: relative;
+}
+
+.home-container-news h4{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-title);
+}
+
+.home-new{
+    background-image: url("/image/home-page/Recently added.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+
+}
+
+.home-picks{
+    background-image: url("/image/home-page/Ressource picks.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*END NEWS*/
+/*START FIBERS*/
+.home-natural-fibers{
+    background-color: #f2f2f2;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.home-container-fibers{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home-fibers-img-width-xl{
+    flex-grow: 2;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-fibers-img-width-xs{
+    flex-grow: 1;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-type-fibers{
+    height: var(--heigth-tag);
+    position: relative;
+}
+
+.home-type-fibers h4{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-title);
+}
+
+.home-type-fibers-1{
+    background-image: url("/image/home-page/Acetate.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.home-type-fibers-2{
+    background-image: url("/image/home-page/Wool.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.home-type-fibers-3{
+    background-image: url("/image/home-page/Silk.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.home-type-fibers-4{
+    background-image: url("/image/home-page/Linen.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*END FIBERS*/
+/*START HUMAN MADE*/
+.home-human-made{
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.home-container-made{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home-human-made-xs{
+    min-width: 300px;
+    flex-grow: 1;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-human-made-xl{
+    width: 100%;
+    flex-grow: 1;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-human-made-img{
+    height: var(--heigth-tag);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+}
+
+.home-human-made-img h4{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-title);
+}
+
+.home-human-made-1{
+    background-image: url("/image/home-page/Acetate.jpg");
+}
+
+.home-human-made-2{
+    background-image: url("/image/home-page/Cupro.jpg");
+}
+
+.home-human-made-3{
+    background-image: url("/image/home-page/Lyocell.jpg");
+}
+
+.home-human-made-4{
+    background-image: url("/image/home-page/Modal.jpeg");
+}
+
+.home-human-made-5{
+    background-image: url("/image/home-page/Polyester.jpeg");
+}
+
+.home-human-made-6{
+    background-image: url("/image/home-page/Viscose.jpg");
+}
+
+.home-human-made-7{
+    background-image: url("/image/home-page/Jacquards.jpg");
+    background-position: 50% 0;
+}
+
+.home-human-made-8{
+    background-image: url("/image/home-page/Prints.jpg");
+    background-position: 50% 0;
+}
+/*END HUMAN MADE*/
+/*START OPTIONS*/
+.home-options{
+    background-color: #f2f2f2;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.home-container-options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+.home-option{
+    text-align: center;
+    padding: 0.5rem 2rem;
+    margin: 0.5rem;
+    border: 1px solid #000;
+    flex-grow: 1;
+    max-width: max-content;
+    font-size: 1.9rem;
+    font-weight: 200;
+    font-family: var(--font-text);
+}
+/*END OPTIONS*/
+/*START PARTNERS*/
+.home-partners{
+    background-color: #f2f2f2;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.home-container-partners{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home-partner{
+    min-width: 300px;
+    flex-grow: 1;
+    height: calc(var(--heigth-tag) + 2rem);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-partner-img{
+    height: var(--heigth-tag);
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+}
+
+.home-partner-img h4{
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 200;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-title);
+}
+
+.home-partner-1{
+    background-image: url("/image/home-page/Hironen (2).jpg");
+}
+
+.home-partner-2{
+    background-image: url("/image/home-page/Seterie Argenti.jpg");
+}
+
+.home-partner-3{
+    background-image: url("/image/home-page/Velcorex photo usine drone.JPG");
+}
+/*END PARTNERS*/
+/*START FOOTER*/
+.home-footer{
+    width: 100%;
+    background-image: url("/image/home-page/Home_back.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.home-container-footer{
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+.home-footer-link{
+    background-color: #fff;
+    width: 250px;
+    height: 200px;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+.home-footer h4{
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-family: var(--font-title);
+    margin-bottom: 1rem;
+}
+
+.home-footer p{
+    font-size: 1.2rem;
+}
+/*END FOOTER*/
+
+@media only screen and (max-width: 1130px) {
+
+    .home-container-footer{
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .home-footer-link{
+        flex-grow: 1;
+        width: 180px;
+        max-width: 250px;
+        margin: 2rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .home-body section{
+        padding: 2rem 0 1rem 0;
+    }
+
+    .home-body h2{
+        text-align: center;
+    }
+
+    .home-body h4 {
+        white-space: pre-wrap;
+    }
+
+    .home-main{
+        justify-content: space-evenly;
+    }
+
+    .home-logo{
+        margin: 0;
+    }
+
+    .home-main header {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 250px;
+    }
+
+    .home-btn-connection {
+        display: flex;
+        width: auto;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .home-btn-connection a{
+        margin: 1rem 0;
+    }
+
+    .home-search{
+        padding: 0 0 5rem 0;
+        align-items: center;
+    }
+
+    .home-search-catchphrase{
+        text-align: center;
+    }
+
+    .home-search-box{
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .home-search-box form{
+        max-width: 80%;
+    }
+
+    .home-human-made-xs{
+        min-width: auto;
+    }
+}
