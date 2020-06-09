@@ -2,6 +2,7 @@ package com.wildcodeschool.ressource.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="origin")
@@ -14,7 +15,7 @@ public class Origin {
     private String country;
 
     @OneToMany( mappedBy = "origin") //TODO product
-    private List<Product> products = new ArrayList<>()
+    private List<Product> products = new ArrayList<>();
 
     public Origin(){
 

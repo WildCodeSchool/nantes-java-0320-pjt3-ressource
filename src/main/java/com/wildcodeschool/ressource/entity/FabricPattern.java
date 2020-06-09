@@ -14,7 +14,7 @@ public class FabricPattern {
     private String name;
 
     @OneToMany( mappedBy = "fabricPattern")
-    private List<Product> products = new ArrayList<>()
+    private List<Product> products = new ArrayList<>();
 
     public FabricPattern(){
 
