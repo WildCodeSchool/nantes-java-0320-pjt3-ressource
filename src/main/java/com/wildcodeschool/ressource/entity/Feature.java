@@ -3,7 +3,7 @@ package com.wildcodeschool.ressource.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import
+
 
 @Entity
 @Table(name = "feature")

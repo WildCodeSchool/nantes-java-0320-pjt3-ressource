@@ -60,21 +60,14 @@
             <div class="filters filters-material">
                 <h4 class="filters-title">Material</h4>
                 <div class="results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-material">
-                        <label class="results-filters-radio" for="woven">Woven
-                            <input class="results-filters-radio-input-material" id="woven" name="material" type="radio"
-                                   value="woven">
+                    <div class="results-filters-radio-table-material" th:each="material : ${materials}">
+                        <label class="results-filters-radio"  for= th:for="${material.name}" th:text="${material.name}">
+                            <input class="results-filters-radio-input-material" id="${material.name}" name="material" type="radio"
+                                   value="${material.id}">
                             <span class="checkmark"></span>
                         </label>
                     </div>
 
-                    <div class="results-filters-radio-table-material">
-                        <label class="results-filters-radio" for="knit">Knit
-                            <input class="results-filters-radio-input-material" id="knit" name="material" type="radio"
-                                   value="knit">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
                 </div>
             </div>
             <div class="filters filters-weave">
