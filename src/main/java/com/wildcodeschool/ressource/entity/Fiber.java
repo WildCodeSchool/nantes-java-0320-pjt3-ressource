@@ -1,0 +1,47 @@
+package com.wildcodeschool.ressource.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="fiber")
+public class Fiber {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(mappedBy = "fiber_id")
+    private Fiber fiber;
+
+    public Fiber(){
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Fiber getFiber() {
+        return fiber;
+    }
+
+    public void setFiber(Fiber fiber) {
+        this.fiber = fiber;
+    }
+}
+
