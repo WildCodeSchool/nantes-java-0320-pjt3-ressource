@@ -14,7 +14,7 @@ public class Origin {
 
     private String country;
 
-    @OneToMany( mappedBy = "origin") //TODO product
+    @OneToMany( mappedBy = "origin")
     private List<Product> products = new ArrayList<>();
 
     public Origin(){

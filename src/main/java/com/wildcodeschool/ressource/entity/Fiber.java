@@ -12,9 +12,8 @@ public class Fiber {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(mappedBy = "fiber_id")
-    private Fiber fiber;
+    @OneToMany(mappedBy = "fiber")
+    private List <Composition> compositions = new ArraList<>();
 
     public Fiber(){
 
