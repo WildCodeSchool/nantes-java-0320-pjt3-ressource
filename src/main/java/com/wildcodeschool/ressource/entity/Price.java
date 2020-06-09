@@ -16,7 +16,7 @@ public class Price {
 
     private String price;
 
-    @OneToMany(mappedBy = "price") //TODO product
+    @OneToMany(mappedBy = "price")
     private List<Product> products = new ArrayList<>();
 
     public Price() {
