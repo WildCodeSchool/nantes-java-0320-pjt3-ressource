@@ -1,10 +1,8 @@
 package com.wildcodeschool.ressource.entity;
 
-import org.graalvm.compiler.virtual.phases.ea.EffectList;
-import sun.util.resources.Bundles;
-
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "price")
