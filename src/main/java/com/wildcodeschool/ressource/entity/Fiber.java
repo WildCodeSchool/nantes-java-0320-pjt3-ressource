@@ -3,7 +3,7 @@ package com.wildcodeschool.ressource.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="fiber")
+@Table(name = "fiber")
 public class Fiber {
 
     @Id
@@ -13,9 +13,9 @@ public class Fiber {
     private String name;
 
     @OneToMany(mappedBy = "fiber")
-    private List <Composition> compositions = new ArraList<>();
+    private final List<Composition> compositions = new ArraList<>();
 
-    public Fiber(){
+    public Fiber() {
 
     }
 

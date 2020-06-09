@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="origin")
+@Table(name = "origin")
 public class Origin {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String country;
 
-    @OneToMany( mappedBy = "origin")
+    @OneToMany(mappedBy = "origin")
     private List<Product> products = new ArrayList<>();
 
-    public Origin(){
+    public Origin() {
 
     }
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name="fabric_pattern")
+@Table(name = "fabric_pattern")
 public class FabricPattern {
 
     @Id
@@ -13,10 +13,10 @@ public class FabricPattern {
 
     private String name;
 
-    @OneToMany( mappedBy = "fabricPattern")
+    @OneToMany(mappedBy = "fabricPattern")
     private List<Product> products = new ArrayList<>();
 
-    public FabricPattern(){
+    public FabricPattern() {
 
     }
 

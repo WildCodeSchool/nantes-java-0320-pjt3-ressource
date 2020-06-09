@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name="price")
+@Table(name = "price")
 public class Price {
 
     @Id
@@ -16,10 +16,10 @@ public class Price {
 
     private String price;
 
-    @OneToMany( mappedBy = "price") //TODO product
+    @OneToMany(mappedBy = "price") //TODO product
     private List<Product> products = new ArrayList<>();
 
-    public Price(){
+    public Price() {
 
     }
 

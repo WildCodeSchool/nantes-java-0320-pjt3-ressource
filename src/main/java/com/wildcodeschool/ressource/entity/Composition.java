@@ -3,7 +3,7 @@ package com.wildcodeschool.ressource.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="composition")
+@Table(name = "composition")
 public class Composition {
 
     @Id
@@ -15,12 +15,12 @@ public class Composition {
     private Fiber fiber;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private Double pourcentage;
 
-    public Composition(){
+    public Composition() {
 
     }
 
