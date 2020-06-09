@@ -4,6 +4,8 @@
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>Product</title>
     <link rel="stylesheet" th:href="@{css/product.css}" type="text/css">
+    <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css"/>
+    <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
@@ -58,10 +60,9 @@
             </div>
         </div>
     </section>
-    <section class="product-bottom">
+    <section class="section-product-bot">
         <h4>You may also like</h4>
-        <p>These propositions are not the results of an algorithm and these fabrics were carefully selected by our
-            team</p>
+        <p id="product-text-after-title">These propositions are not the results of an algorithm and these fabrics were carefully selected by our team</p>
         <div class="product-carousel-bot">
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
@@ -314,8 +315,17 @@
                 </div>
             </div>
         </div>
+        <div class="arrow_prev_like">
+            <span><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="arrow_next_like">
+            <span><i class="fas fa-chevron-right"></i></span>
+        </div>
+    </section>
+    <section class="section-product-bot">
         <h4>Recently viewed</h4>
-        <div class="product-carousel-bot2">
+        <div class="product-carousel-bottom-review">
+
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
@@ -567,8 +577,19 @@
                 </div>
             </div>
         </div>
+        <div class="arrow_prev_rev">
+            <span><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="arrow_next_rev">
+            <span><i class="fas fa-chevron-right"></i></span>
+        </div>
     </section>
 </main>
-<script src="javaScript/product.js" type="text/javascript"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
+<script src="js/productcar.js" type="text/javascript"></script>
 </body>
 </html>
