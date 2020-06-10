@@ -61,164 +61,43 @@
                 <h4 class="filters-title">Material</h4>
                 <div class="results-filters-radio-mobile">
                     <div class="results-filters-radio-table-material" th:each="material : ${materials}">
-                        <label class="results-filters-radio"  for= th:for="${material.name}" th:text="${material.name}">
-                            <input class="results-filters-radio-input-material" id="${material.name}" name="material" type="radio"
-                                   value="${material.id}">
+                        <label class="results-filters-radio" th:for="${material.name}" for="material">
+                            <span th:text="${material.name}"></span>
+                            <input class="results-filters-radio-input-material" th:id="${material.name}" id="material" name="material" type="radio"
+                                   th:value="${material.id}">
                             <span class="checkmark"></span>
                         </label>
                     </div>
-
                 </div>
             </div>
             <div class="filters filters-weave">
                 <h4 class="filters-title">Fabric pattern</h4>
                 <div class="filters-table results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="taffata" name="fabric" type="radio"
-                               value="taffata">
-                        <label class="results-filters-radio" for="taffata">Taffata</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="twill" name="fabric" type="radio"
-                               value="twill">
-                        <label class="results-filters-radio" for="twill">Twill</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="satin" name="fabric" type="radio"
-                               value="satin">
-                        <label class="results-filters-radio" for="satin">Satin</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="ottoman" name="fabric" type="radio"
-                               value="ottoman">
-                        <label class="results-filters-radio" for="ottoman">Ottoman</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="oxford" name="fabric" type="radio"
-                               value="oxford">
-                        <label class="results-filters-radio" for="oxford">Oxford</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="jacquard" name="fabric" type="radio"
-                               value="jacquard">
-                        <label class="results-filters-radio" for="jacquard">Jacquard</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="jersey" name="fabric" type="radio"
-                               value="jersey">
-                        <label class="results-filters-radio" for="jersey">Jersey</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="rib" name="fabric" type="radio"
-                               value="rib">
-                        <label class="results-filters-radio" for="rib">Rib</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="fleece" name="fabric" type="radio"
-                               value="fleece">
-                        <label class="results-filters-radio" for="fleece">Fleece</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="pique" name="fabric" type="radio"
-                               value="pique">
-                        <label class="results-filters-radio" for="pique">Piqué</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="interlock" name="fabric" type="radio"
-                               value="interlock">
-                        <label class="results-filters-radio" for="interlock">Interlock</label>
-                    </div>
-                    <div class="results-filters-radio-table-fabric">
-                        <input class="results-filters-radio-input-fabric" id="milano" name="fabric" type="radio"
-                               value="milano">
-                        <label class="results-filters-radio" for="milano">Milano</label>
+                    <div class="results-filters-radio-table-fabric" th:each="fabricPattern : ${fabricPatterns}">
+                        <input class="results-filters-radio-input-fabric" th:id="${fabricPattern.name}" name="fabric" type="radio"
+                               th:value="${fabricPattern.id}">
+                        <label class="results-filters-radio" th:for="${fabricPattern.name}" th:text="${fabricPattern.name}">Taffata</label>
                     </div>
                 </div>
             </div>
             <div class="filters filters-composition">
                 <h4 class="filters-title">Main Composition</h4>
                 <div class="filters-table results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="cotton" name="composition" type="radio"
-                               value="cotton">
-                        <label class="results-filters-radio" for="cotton">Cotton</label>
+                    <div class="results-filters-radio-table-compo" th:each="composition : ${compositions}">
+                        <input class="results-filters-radio-input-compo" th:id="${composition.name}" name="composition" type="radio"
+                               th:value="${composition.id}">
+                        <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
                     </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="wool" name="composition" type="radio"
-                               value="wool">
-                        <label class="results-filters-radio" for="wool">Wool</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="linen" name="composition" type="radio"
-                               value="linen">
-                        <label class="results-filters-radio" for="linen">Linen</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="silk" name="composition" type="radio"
-                               value="silk">
-                        <label class="results-filters-radio" for="silk">Silk</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="viscose" name="composition" type="radio"
-                               value="viscose">
-                        <label class="results-filters-radio" for="viscose">Viscose</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="acetate" name="composition" type="radio"
-                               value="acetate">
-                        <label class="results-filters-radio" for="acetate">Acetate</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="modal" name="composition" type="radio"
-                               value="modal">
-                        <label class="results-filters-radio" for="modal">Modal</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="cupro" name="composition" type="radio"
-                               value="cupro">
-                        <label class="results-filters-radio" for="cupro">Cupro</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="lyocell" name="composition" type="radio"
-                               value="lyocell">
-                        <label class="results-filters-radio" for="lyocell">Lyocell</label>
-                    </div>
-                    <div class="results-filters-radio-table-compo">
-                        <input class="results-filters-radio-input-compo" id="polyester" name="composition" type="radio"
-                               value="polyester">
-                        <label class="results-filters-radio" for="polyester">Polyester</label>
-                    </div>
-                </div>
                 <a class="filters-see-more" href="#" id="more-Composition">Click here to see more</a>
             </div>
             <div class="filters filters-origin">
                 <h4 class="filters-title">Origin</h4>
                 <div class="results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-origin">
-                        <label class="results-filters-radio" for="italy">Italy
-                            <input class="results-filters-radio-input-origin" id="italy" name="country" type="radio"
-                                   value="italy">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-origin">
-                        <label class="results-filters-radio" for="india">India
-                            <input class="results-filters-radio-input-origin" id="india" name="country" type="radio"
-                                   value="india">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-origin">
-                        <label class="results-filters-radio" for="japan">Japan
-                            <input class="results-filters-radio-input-origin" id="japan" name="country" type="radio"
-                                   value="japan">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-origin">
-                        <label class="results-filters-radio" for="turkey">Turkey
-                            <input class="results-filters-radio-input-origin" id="turkey" name="country" type="radio"
-                                   value="turkey">
+                    <div class="results-filters-radio-table-origin" th:each="origin : ${origins}">
+                        <label class="results-filters-radio" th:for="${origin.country}">
+                            <span th:text="${origin.country}">Italy</span>
+                            <input class="results-filters-radio-input-origin" th:id="${origin.country}" name="country" type="radio"
+                                   th:value="${origin.id}">
                             <span class="checkmark"></span>
                         </label>
                     </div>

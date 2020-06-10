@@ -532,7 +532,7 @@ select:-moz-focusring {
         width: 100%;
     }
 
-    .results-filters-radio-mobile span {
+    .checkmark {
         display: none;
     }
 

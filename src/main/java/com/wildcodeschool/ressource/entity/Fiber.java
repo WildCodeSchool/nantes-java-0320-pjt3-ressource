@@ -1,6 +1,8 @@
 package com.wildcodeschool.ressource.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "fiber")
@@ -13,12 +15,11 @@ public class Fiber {
     private String name;
 
     @OneToMany(mappedBy = "fiber")
-    private final List<Composition> compositions = new ArraList<>();
+    private final List<Composition> compositions = new ArrayList<>();
 
     public Fiber() {
 
     }
-
     public Long getId() {
         return id;
     }
@@ -35,12 +36,8 @@ public class Fiber {
         this.name = name;
     }
 
-    public Fiber getFiber() {
-        return fiber;
-    }
-
-    public void setFiber(Fiber fiber) {
-        this.fiber = fiber;
+    public List<Composition> getCompositions() {
+        return compositions;
     }
 }
 
