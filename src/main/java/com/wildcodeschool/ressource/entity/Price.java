@@ -18,9 +18,7 @@ public class Price {
     @OneToMany(mappedBy = "price")
     private List<Product> products = new ArrayList<>();
 
-    public Price() {
-
-    }
+    public Price() {    }
 
     public Long getId() {
         return id;

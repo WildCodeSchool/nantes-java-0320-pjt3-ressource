@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -41,6 +43,8 @@ public class ProductController {
     private OriginRepository originRepository;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private PriceRepository priceRepository;
 
     @GetMapping("/results")
     public String result(Model model) {
@@ -57,6 +61,15 @@ public class ProductController {
         Page<Company> supplierSub = companyRepository.findAll(PageSupplier);
         List<Company> suppliers = supplierSub.get().collect(Collectors.toList());
 
+        Pageable PageCert = PageRequest.of(0, 3);
+        Page<Certification> certificationSub = certificationRepository.findAll(PageSupplier);
+        List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
+
+        List<Product> products = productRepository.findAll();
+        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("certifications", certifications);
+        model.addAttribute("prices", priceRepository.findAll());
+        model.addAttribute("companies", suppliers);
         model.addAttribute("origins", origins);
         model.addAttribute("compositions", mainCompo);
         model.addAttribute("materials", materialRepository.findAll());
@@ -75,4 +88,5 @@ public class ProductController {
 
         return "product";
     }
+
 }

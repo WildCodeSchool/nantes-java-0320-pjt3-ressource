@@ -61,10 +61,11 @@
                 <h4 class="filters-title">Material</h4>
                 <div class="results-filters-radio-mobile">
                     <div class="results-filters-radio-table-material" th:each="material : ${materials}">
-                        <label class="results-filters-radio" th:for="${material.name}" for="material">
+                        <label class="results-filters-radio" for="material" th:for="${material.name}">
                             <span th:text="${material.name}"></span>
-                            <input class="results-filters-radio-input-material" th:id="${material.name}" id="material" name="material" type="radio"
-                                   th:value="${material.id}">
+                            <input class="results-filters-radio-input-material" id="material" name="material"
+                                   th:id="${material.name}" th:value="${material.id}"
+                                   type="radio">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -74,9 +75,11 @@
                 <h4 class="filters-title">Fabric pattern</h4>
                 <div class="filters-table results-filters-radio-mobile">
                     <div class="results-filters-radio-table-fabric" th:each="fabricPattern : ${fabricPatterns}">
-                        <input class="results-filters-radio-input-fabric" th:id="${fabricPattern.name}" name="fabric" type="radio"
-                               th:value="${fabricPattern.id}">
-                        <label class="results-filters-radio" th:for="${fabricPattern.name}" th:text="${fabricPattern.name}">Taffata</label>
+                        <input class="results-filters-radio-input-fabric" name="fabric" th:id="${fabricPattern.name}"
+                               th:value="${fabricPattern.id}"
+                               type="radio">
+                        <label class="results-filters-radio" th:for="${fabricPattern.name}"
+                               th:text="${fabricPattern.name}">Taffata</label>
                     </div>
                 </div>
             </div>
@@ -84,10 +87,12 @@
                 <h4 class="filters-title">Main Composition</h4>
                 <div class="filters-table results-filters-radio-mobile">
                     <div class="results-filters-radio-table-compo" th:each="composition : ${compositions}">
-                        <input class="results-filters-radio-input-compo" th:id="${composition.name}" name="composition" type="radio"
-                               th:value="${composition.id}">
+                        <input class="results-filters-radio-input-compo" name="composition" th:id="${composition.name}"
+                               th:value="${composition.id}"
+                               type="radio">
                         <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
                     </div>
+                </div>
                 <a class="filters-see-more" href="#" id="more-Composition">Click here to see more</a>
             </div>
             <div class="filters filters-origin">
@@ -96,8 +101,9 @@
                     <div class="results-filters-radio-table-origin" th:each="origin : ${origins}">
                         <label class="results-filters-radio" th:for="${origin.country}">
                             <span th:text="${origin.country}">Italy</span>
-                            <input class="results-filters-radio-input-origin" th:id="${origin.country}" name="country" type="radio"
-                                   th:value="${origin.id}">
+                            <input class="results-filters-radio-input-origin" name="country" th:id="${origin.country}"
+                                   th:value="${origin.id}"
+                                   type="radio">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -106,28 +112,12 @@
             </div>
             <div class="filters filters-supplier">
                 <h4 class="filters-title">Supplier</h4>
-                <div class="results-filters-radio-mobile">
+                <div class="results-filters-radio-mobile" th:each="company: ${companies}">
                     <div class="results-filters-radio-table-supplier">
-                        <label class="results-filters-radio" for="gruppoCinque">GruppoCinque
-                            <input class="results-filters-radio-input-supplier" id="gruppoCinque" name="supplier"
-                                   type="radio"
-                                   value="gruppoCinque">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-supplier">
-                        <label class="results-filters-radio" for="hironen">Hironen
-                            <input class="results-filters-radio-input-supplier" id="hironen" name="supplier"
-                                   type="radio"
-                                   value="hironen">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-supplier">
-                        <label class="results-filters-radio" for="seteriArgenti">SeteriArgenti
-                            <input class="results-filters-radio-input-supplier" id="seteriArgenti" name="supplier"
-                                   type="radio"
-                                   value="seteriArgenti">
+                        <label class="results-filters-radio" th:for="${company.name}">
+                            <span th:text="${company.name}"></span>
+                            <input class="results-filters-radio-input-supplier" name="supplier" th:id="${company.name}"
+                                   th:value="${company.id}" type="radio">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -137,49 +127,12 @@
             <div class="filters filters-price">
                 <h4 class="filters-title">Price range (in €)</h4>
                 <div class="filters-table results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="1" name="price" type="radio" value="1">
-                        <label class="results-filters-radio" for="1">1 to 3.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="4" name="price" type="radio" value="4">
-                        <label class="results-filters-radio" for="4">4 to 6.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="7" name="price" type="radio" value="7">
-                        <label class="results-filters-radio" for="7">7 to 9.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="10" name="price" type="radio" value="10">
-                        <label class="results-filters-radio" for="10">10 to 12.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="13" name="price" type="radio" value="13">
-                        <label class="results-filters-radio" for="13">13 to 15.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="16" name="price" type="radio" value="16">
-                        <label class="results-filters-radio" for="16">16 to 18.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="19" name="price" type="radio" value="19">
-                        <label class="results-filters-radio" for="19">19 to 21.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="22" name="price" type="radio" value="22">
-                        <label class="results-filters-radio" for="22">22 to 24.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="25" name="price" type="radio" value="25">
-                        <label class="results-filters-radio" for="25">25 to 27.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="28" name="price" type="radio" value="28">
-                        <label class="results-filters-radio" for="28">28 to 30.99</label>
-                    </div>
-                    <div class="results-filters-radio-table-price">
-                        <input class="results-filters-radio-input-price" id="31" name="price" type="radio" value="31">
-                        <label class="results-filters-radio" for="31">31 and +</label>
+                    <div class="results-filters-radio-table-price" th:each="price : ${prices}">
+                        <input class="results-filters-radio-input-price" name="price" th:id="${price.id}"
+                               th:value="${price.id}"
+                               type="radio">
+                        <label class="results-filters-radio" th:for="${price.id}" th:text="${price.price}">1 to
+                            3.99</label>
                     </div>
                 </div>
             </div>
@@ -212,24 +165,12 @@
             <div class="filters filters-certifications">
                 <h4 class="filters-title">Certifications</h4>
                 <div class="results-filters-radio-mobile">
-                    <div class="results-filters-radio-table-cert">
-                        <label class="results-filters-radio" for="gots">GOTS
-                            <input class="results-filters-radio-input-cert" id="gots" name="certification" type="radio"
-                                   value="gots">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-cert">
-                        <label class="results-filters-radio" for="grs">GRS
-                            <input class="results-filters-radio-input-cert" id="grs" name="certification" type="radio"
-                                   value="grs">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="results-filters-radio-table-cert">
-                        <label class="results-filters-radio" for="ecovero">EcoVero
-                            <input class="results-filters-radio-input-cert" id="ecovero" name="certification" type="radio"
-                                   value="ecovero">
+                    <div class="results-filters-radio-table-cert" th:each="certification : ${certifications}">
+                        <label class="results-filters-radio" th:for="${certification.name}">
+                            <span th:text="${certification.name}">GOTS</span>
+                            <input class="results-filters-radio-input-cert" name="certification"
+                                   th:id="${certification.name}" th:value="${certification.id}"
+                                   type="radio">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -253,10 +194,11 @@
             </div>
 
             <div class="results-products">
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+                <div class="card-product" th:each="product : ${products}">
+                    <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX SINCE 1828</h4></a>
                     <div class="card-product-image">
-                        <a href="/product"><img alt="Norwood-agua" src="/image/Norwood-agua.JPG"></a>
+                        <a href="/product"><img alt="Norwood-agua"
+                                                th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                         <div class="card-product-image-hover">
                             <a><i class="fas fa-heart"></i></a>
                             <a><i class="fas fa-suitcase"></i></a>
@@ -264,177 +206,23 @@
                     </div>
                     <div class="card-product-info">
                         <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Norwood</p>
+                            <p class="card-product-info-name" th:text="${product.reference}">Norwood</p>
                             <div class="card-product-image-rs">
                                 <a><i class="fas fa-heart"></i></a>
                                 <a><i class="fas fa-suitcase"></i></a>
                             </div>
                         </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
+                        <p class="card-product-info-descr"><span th:text="${product.feature.fabric.fabric}"></span> /
+                            <span th:text="${product.feature.handFeel.handFeel}"></span> /
+                            <span th:text="${product.feature.finishing.finishing}"></span> /
+                            <span th:text="${product.feature.look.look}"></span> /
+                            <span th:each="property : ${product.feature.technicalProperties}"
+                                  th:text="${property.technicalProperty}">Natural stretch</span>
                         </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="High-River" src="/image/High-River.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">High River</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
+                        <p class="card-product-info-compo" >
+                            <span th:each="composition : ${product.compositions}"><span th:text="|${composition.pourcentage} % |"></span>
+                            <span th:text="|${composition.fiber.name} &nbsp;|"></span></span>
                         </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Country-yellow" src="/image/Country-yellow.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Country</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Jura-burgundy" src="/image/Jura-burgundy.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Jura</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Venezia" src="/image/Venezia.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Venezia</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Durance-purple" src="/image/Durance-purple.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Durance</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Balmoral-prune" src="/image/Balmoral-prune.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Balmoral</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                    </div>
-                </div>
-                <div class="card-product">
-                    <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                    <div class="card-product-image">
-                        <a href="/product"><img alt="Norgate" src="/image/Norgate.JPG"></a>
-                        <div class="card-product-image-hover">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <div class="card-product-info">
-                        <div class="card-product-mobile-rs">
-                            <p class="card-product-info-name">Norgate</p>
-                            <div class="card-product-image-rs">
-                                <a><i class="fas fa-heart"></i></a>
-                                <a><i class="fas fa-suitcase"></i></a>
-                            </div>
-                        </div>
-                        <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> / <span>Millwashed</span>
-                            / <span>Draping</span> / <span>Natural stretch</span>
-                        </p>
-                        <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
                     </div>
                 </div>
             </div>

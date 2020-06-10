@@ -29,6 +29,7 @@ public class TechnicalProperty {
     }
 
     public String getTechnicalProperty() {
+
         return technicalProperty;
     }
 
