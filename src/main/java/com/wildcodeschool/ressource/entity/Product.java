@@ -82,6 +82,10 @@ public class Product {
     @JoinColumn(name = "feature_id")
     private Feature feature;
 
+    @ManyToOne
+    @JoinColumn (name="company_id")
+    private Company company;
+
     public Product() {}
 
     public Long getId() {
@@ -250,5 +254,13 @@ public class Product {
 
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
