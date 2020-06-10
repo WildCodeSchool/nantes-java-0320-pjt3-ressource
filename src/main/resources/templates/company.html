@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link th:href="@{css/company.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+    <title>Company</title>
+</head>
+<body>
+    <header th:replace="fragments/header.html :: header"></header>
+    <main class="company-main">
+        <article class="company-top">
+            <p class="company-back-link">Home - Our trusted partners - Velcorex</p>
+            <div class="company-container-main-grid">
+                <section class="company-situation">
+                    <div class="company-map">
+                        <div class="company-filter-map">14 Rue du<br>Commandant Marceau,<br>68555 Saint-Amarin</div>
+                    </div>
+                    <div class="company-from-the-sky"></div>
+                </section>
+                <section class="company-ceo">
+                    <div class="company-ceo-description">
+                        <ul class="company-container-ceo-description">
+                            <li>
+                                <h4>Date of creation</h4>
+                                <p>1828</p>
+                            </li>
+                            <li>
+                                <h4>know how</h4>
+                                <p>Corduroy / Workwear / Sportswear</p>
+                            </li>
+                            <li>
+                                <h4>Number of employees</h4>
+                                <p>50 (30 women / 20 men)</p>
+                            </li>
+                            <li>
+                                <h4>Industrial park</h4>
+                                <p>Dyeing and velvet brush</p>
+                            </li>
+                            <li>
+                                <h4>Average minimum of production</h4>
+                                <p>500m</p>
+                            </li>
+                            <li>
+                                <h4>Certifications</h4>
+                                <p>Organic cotton / BCI</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="company-ceo-photo"></div>
+                    <div class="company-ceo-words">
+                        <h2>A PRO-ACTIVE COMPANY</h2>
+                        <p>Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit.
+                            Aliquid, at debitis delectus,
+                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
+                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
+                        <p class="company-name-ceo">Pierre SCHMITT - CEO</p>
+                    </div>
+                </section>
+                <section class="company-thumbnails-service-one">
+                    <div class="company-thumbnails-service-one-left"></div>
+                    <div class="company-thumbnails-service-one-middle"></div>
+                    <div class="company-thumbnails-service-one-right"></div>
+                </section>
+                <section class="company-container-sercice-one">
+                    <div class="company-words-sercice-one">
+                        <h2>ATTENTION TO DETAIL</h2>
+                        <p>Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit.
+                            Aliquid, at debitis delectus,
+                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
+                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
+                        <p class="company-name-manager-service-one">Daniel - QUALITY MANAGER</p>
+                    </div>
+                    <div class="company-photo-service-one"></div>
+                </section>
+                <section class="company-thumbnails-service-two">
+                    <div class="company-thumbnails-service-two-left"></div>
+                    <div class="company-thumbnails-service-two-middle"></div>
+                    <div class="company-thumbnails-service-two-right"></div>
+                </section>
+                <section class="company-container-sercice-two">
+                    <div class="company-photo-service-two"></div>
+                    <div class="company-words-sercice-two">
+                        <h2>TO REINVENT OURSELVES EACH SEASON</h2>
+                        <p>Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit.
+                            Aliquid, at debitis delectus,
+                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
+                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
+                        <p class="company-name-manager-service-tow">Karine - HEAD OF COLLECTION</p>
+                    </div>
+                </section>
+            </div>
+            <section class="company-end-words">
+                <div class="company-end-photo">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Architecto dolores enim error et ex expedita harum iusto laborum.</p>
+                </div>
+            </section>
+        </article>
+        <article class="company-bottom">
+            <!--TODO : fragment results-->
+        </article>
+    </main>
+</body>
+</html>
