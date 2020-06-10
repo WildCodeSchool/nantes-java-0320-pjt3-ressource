@@ -19,9 +19,9 @@ public class Company {
     private String specialities;
     private Long employeesNumber;
     private String ceoWords;
-    private  String serviceLeftWords;
-    private  String ServiceRightWords;
-    private  String pictureWords;
+    private String serviceLeftWords;
+    private String ServiceRightWords;
+    private String pictureWords;
 
     @OneToMany(mappedBy = "company")
     private List<Product> products = new ArrayList<>();

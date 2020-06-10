@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -21,7 +21,7 @@ public class Product {
     @Column(name = "design_number")
     private Long designNumber;
 
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     private Integer width;
@@ -41,11 +41,11 @@ public class Product {
     @Column(name = "production_leadtime")
     private Integer productionLeadtime;
 
-    @Column(name = "washing_comments", columnDefinition="TEXT")
+    @Column(name = "washing_comments", columnDefinition = "TEXT")
     private String washingComments;
 
     @ManyToOne
-    @JoinColumn(name="material_id")
+    @JoinColumn(name = "material_id")
     private Material material;
 
     @OneToMany(mappedBy = "product")
@@ -53,14 +53,14 @@ public class Product {
 
     @ManyToMany
     @JoinTable(name = "product_certification",
-               joinColumns = @JoinColumn(name = "product_id"),
-               inverseJoinColumns = @JoinColumn(name = "certification_id"))
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "certification_id"))
     private List<Certification> certifications = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "product_care_label",
-               joinColumns = @JoinColumn(name = "product_id"),
-               inverseJoinColumns = @JoinColumn(name = "care_label_id"))
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "care_label_id"))
     private List<CareLabel> careLabels = new ArrayList<>();
 
     @ManyToOne
@@ -83,10 +83,11 @@ public class Product {
     private Feature feature;
 
     @ManyToOne
-    @JoinColumn (name="company_id")
+    @JoinColumn(name = "company_id")
     private Company company;
 
-    public Product() {}
+    public Product() {
+    }
 
     public Long getId() {
         return id;
