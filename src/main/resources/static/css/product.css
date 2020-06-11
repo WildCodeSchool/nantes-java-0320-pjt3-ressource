@@ -1,7 +1,7 @@
 @import url('style.css');
 
 
-h4 {
+h3 {
     font-family: var(--font-title);
     text-align: center;
     font-size: 2rem;
@@ -10,7 +10,23 @@ h4 {
 
 p {
     font-family: var(--font-text);
+}
+
+.product-text-top {
+    text-align: left;
+    margin-left: 3%;
+    margin-bottom: 1rem;
+    font-family: var(--font-title);
+}
+
+.product-text-after-title {
     text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.product-title {
+    font-family: var(--font-title);
 }
 
 .product-section-top {
@@ -81,7 +97,7 @@ p {
 /* fin image*/
 
 .product-description {
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,6 +107,10 @@ p {
     margin-top: 1rem;
     margin-bottom: 0.8rem;
     text-align: center;
+}
+
+.product-description p {
+    font-size: 1rem;
 }
 
 .product-button-top {
@@ -112,6 +132,7 @@ p {
     padding-right: 3rem;
     border-radius: 10px;
     font-family: var(--font-text);
+    border: transparent;
 }
 
 .product-button-meeting {
@@ -120,7 +141,7 @@ p {
 }
 
 .product-button .fa-suitcase {
-    color: #B7B7B7;
+    color: white;
     position: absolute;
     top: 15px;
     left: 23%;
@@ -194,6 +215,7 @@ p {
         width: 90%;
         position: relative;
         margin: auto;
+        margin-top: 6rem;
     }
 
     .product-description {
@@ -216,7 +238,7 @@ p {
     }
 
     .product-section-top {
-        height: 1100px;
+        height: 1200px;
     }
 
     .product-button-top {
@@ -238,60 +260,3 @@ p {
     }
 }
 
-@media only screen and (max-width: 767px) {
-
-    .product-container-top {
-        display: flex;
-        padding-top: 1.5rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .product-slideshow-container {
-        width: 90%;
-        position: relative;
-        margin: auto;
-    }
-
-    .product-description {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
-
-    .mySlides img {
-        width: 100%;
-        height: 350px;
-        margin-top: 2rem;
-        padding-top: 15rem;
-    }
-
-    .product-next, .product-prev {
-        top: 70%;
-    }
-
-    .product-section-top {
-        height: 1100px;
-    }
-
-    .product-button-top {
-        align-self: flex-end;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .product-button {
-        margin: 1rem;
-    }
-
-    .product-button .fa-suitcase, .product-button .fa-heart {
-        left: 45px;
-    }
-
-    .product-section-top {
-        display: grid;
-    }
-}
