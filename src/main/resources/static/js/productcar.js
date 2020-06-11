@@ -31,7 +31,7 @@ $(document).ready(function () {
         infinite: false,
         speed: 300,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 1,
         arrows: true,
         prevArrow: '.arrow_prev_like',
         nextArrow: '.arrow_next_like',
@@ -40,8 +40,7 @@ $(document).ready(function () {
                 breakpoint: 1500,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
+                    slidesToScroll: 1,
                     dots: false
                 }
             },
@@ -49,7 +48,7 @@ $(document).ready(function () {
                 breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
+                    slidesToScroll: 1,
                 }
             },
             {
@@ -69,7 +68,7 @@ $(document).ready(function () {
         infinite: false,
         speed: 300,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 1,
         arrows: true,
         prevArrow: '.arrow_prev_rev',
         nextArrow: '.arrow_next_rev',
@@ -78,17 +77,15 @@ $(document).ready(function () {
                 breakpoint: 1500,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
+                    slidesToScroll: 1,
                     dots: false,
-                    centerMode: true,
                 }
             },
             {
                 breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
+                    slidesToScroll: 1
                 }
             },
             {
@@ -96,7 +93,7 @@ $(document).ready(function () {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    centerMode: true,
+                    centerMode: false,
                 }
             }
             // You can unslick at a given breakpoint now by adding:
