@@ -48,7 +48,7 @@ public class ProductController {
 
     @GetMapping("/results")
     public String result(Model model) {
-        //TODO : ajax to retrieve the next pages
+
         Pageable PageFiber = PageRequest.of(0, 12);
         Page<Fiber> FiberSub = fiberRepository.findAll(PageFiber);
         List<Fiber> mainCompo = FiberSub.get().collect(Collectors.toList());
@@ -65,7 +65,6 @@ public class ProductController {
         Page<Certification> certificationSub = certificationRepository.findAll(PageSupplier);
         List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
 
-        List<Product> products = productRepository.findAll();
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("certifications", certifications);
         model.addAttribute("prices", priceRepository.findAll());

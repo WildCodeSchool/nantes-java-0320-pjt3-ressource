@@ -112,7 +112,6 @@
     display: inline-block;
 }
  span::first-letter{
-
     text-transform: uppercase;
 }
 

@@ -195,9 +195,10 @@
 
             <div class="results-products">
                 <div class="card-product" th:each="product : ${products}">
-                    <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX SINCE 1828</h4></a>
+                    <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
+                        SINCE 1828</h4></a>
                     <div class="card-product-image">
-                        <a href="/product"><img alt="Norwood-agua"
+                        <a href="/product"><img th:alt="${product.imageProducts.get(0).image}"
                                                 th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                         <div class="card-product-image-hover">
                             <a><i class="fas fa-heart"></i></a>
@@ -219,9 +220,11 @@
                             <span th:each="property : ${product.feature.technicalProperties}"
                                   th:text="${property.technicalProperty}">Natural stretch</span>
                         </p>
-                        <p class="card-product-info-compo" >
-                            <span th:each="composition : ${product.compositions}"><span th:text="|${composition.pourcentage} % |"></span>
-                            <span th:text="|${composition.fiber.name} &nbsp;|"></span></span>
+                        <p class="card-product-info-compo">
+                            <span th:each="composition : ${product.compositions}">
+                                <span th:text="|${composition.pourcentage} % |"></span>
+                                <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                            </span>
                         </p>
                     </div>
                 </div>
