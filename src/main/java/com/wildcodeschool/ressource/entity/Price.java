@@ -1,5 +1,6 @@
 package com.wildcodeschool.ressource.entity;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,7 @@ public class Price {
     @OneToMany(mappedBy = "price")
     private List<Product> products = new ArrayList<>();
 
-    public Price() {
-
-    }
+    public Price() {    }
 
     public Long getId() {
         return id;

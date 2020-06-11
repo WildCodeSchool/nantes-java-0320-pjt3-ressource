@@ -1,8 +1,8 @@
 package com.wildcodeschool.ressource.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "fiber")
@@ -20,7 +20,6 @@ public class Fiber {
     public Fiber() {
 
     }
-
     public Long getId() {
         return id;
     }
