@@ -86,22 +86,23 @@ public class ProductController {
             model.addAttribute("name", "origin");
         } else if (filter.equals("more-composition")) {
             List<Fiber> fibers = fiberRepository.findAll();
-            model.addAttribute("lists",fibers.subList(12, fibers.size()));
+            model.addAttribute("lists", fibers.subList(12, fibers.size()));
             model.addAttribute("name", "composition");
         } else if (filter.equals("more-supplier")) {
             List<Company> companies = companyRepository.findAll();
-            model.addAttribute("lists",companies.subList(4, companies.size()));
+            model.addAttribute("lists", companies.subList(4, companies.size()));
             model.addAttribute("name", "supplier");
         } else if (filter.equals("more-certification")) {
             List<Certification> certifications = certificationRepository.findAll();
-            model.addAttribute("lists",certifications.subList(4, certifications.size()));
+            model.addAttribute("lists", certifications.subList(4, certifications.size()));
             model.addAttribute("name", "certification");
         }
         return "listsToSeeMore";
     }
+
     @PostMapping("/results")
     public String postResult() {
-        return "results";
+        return "redirect:/results";
     }
 
     @GetMapping("/product")
