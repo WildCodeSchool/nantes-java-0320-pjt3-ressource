@@ -9,6 +9,6 @@ public class CompanyController {
     @GetMapping("/company")
     public String company() {
 
-        return "/company";
+        return "company";
     }
 }
