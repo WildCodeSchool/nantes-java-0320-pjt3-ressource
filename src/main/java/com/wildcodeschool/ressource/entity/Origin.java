@@ -6,6 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "origin")
+
 public class Origin {
 
     @Id

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -77,6 +78,27 @@ public class ProductController {
         return "results";
     }
 
+    @GetMapping("/results/more/{filter}")
+    public String moreFilter(@PathVariable String filter, Model model) {
+        if (filter.equals("more-origin")) {
+            List<Origin> origins = originRepository.findAll();
+            model.addAttribute("lists", origins.subList(4, origins.size()));
+            model.addAttribute("name", "origin");
+        } else if (filter.equals("more-composition")) {
+            List<Fiber> fibers = fiberRepository.findAll();
+            model.addAttribute("lists",fibers.subList(12, fibers.size()));
+            model.addAttribute("name", "composition");
+        } else if (filter.equals("more-supplier")) {
+            List<Company> companies = companyRepository.findAll();
+            model.addAttribute("lists",companies.subList(4, companies.size()));
+            model.addAttribute("name", "supplier");
+        } else if (filter.equals("more-certification")) {
+            List<Certification> certifications = certificationRepository.findAll();
+            model.addAttribute("lists",certifications.subList(4, certifications.size()));
+            model.addAttribute("name", "certification");
+        }
+        return "listsToSeeMore";
+    }
     @PostMapping("/results")
     public String postResult() {
         return "results";

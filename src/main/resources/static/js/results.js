@@ -95,3 +95,38 @@ filter.onclick = function () {
     resultsResults.classList.toggle('active');
     $('body').toggleClass('color');
 };
+
+/* FILTERS CLICK HERE TO SEE MORE */
+let clickHere = document.getElementsByClassName('filters-see-more');
+
+Array.prototype.forEach.call(clickHere, link => {
+    link.onclick = function () {
+        fetch('/results/more/' + this.id)
+            .then(function (response) {
+                return response.text()
+            }).then(function (content) {
+                let parser = new DOMParser();
+                let html = parser.parseFromString(content, 'text/html');
+                let result;
+                let divs;
+                if (link.id === 'more-origin') {
+                    result = document.getElementById('filter-origin');
+                    divs = html.getElementsByClassName('results-filters-radio-table-origin');
+                } else if (link.id === 'more-composition') {
+                    result = document.getElementById('filter-composition');
+                    divs = html.getElementsByClassName('results-filters-radio-table-compo');
+
+                } else if (link.id === 'more-supplier') {
+                    result = document.getElementById('filter-supplier');
+                    divs = html.getElementsByClassName('results-filters-radio-table-supplier');
+                } else if (link.id === 'more-certification') {
+                    result = document.getElementById('filter-certification');
+                    divs = html.getElementsByClassName('results-filters-radio-table-cert');
+                }
+                Array.prototype.forEach.call(divs, div => {
+                    result.append(div);
+                })
+
+        });
+    }
+});
