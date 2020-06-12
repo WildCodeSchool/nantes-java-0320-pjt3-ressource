@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<div class="results-filters-radio-mobile"  th:if="${name == 'supplier'}">
+<div class="results-filters-radio-mobile" id="filter-more-supplier" th:if="${name == 'supplier'}">
     <div class="results-filters-radio-table-supplier" th:each="list: ${lists}">
         <label class="results-filters-radio" th:for="${list.name}">
             <span th:text="${list.name}"></span>
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="results-filters-radio-mobile" th:if="${name == 'origin'}">
+<div class="results-filters-radio-mobile" id="filter-more-origin" th:if="${name == 'origin'}">
     <div class="results-filters-radio-table-origin" th:each="list: ${lists}">
         <label class="results-filters-radio" th:for="${list.country}">
             <span th:text="${list.country}">Italy</span>
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div class="filters-table results-filters-radio-mobile" th:if="${name == 'composition'}">
+<div class="filters-table results-filters-radio-mobile" id="filter-more-composition" th:if="${name == 'composition'}">
     <div class="results-filters-radio-table-compo" th:each="list : ${lists}">
         <input class="results-filters-radio-input-compo" name="composition" th:id="${list.name}"
                th:value="${list.id}"
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<div class="results-filters-radio-mobile" th:if="${name == 'certification'}">
+<div class="results-filters-radio-mobile" id="filter-more-certification" th:if="${name == 'certification'}">
     <div class="results-filters-radio-table-cert" th:each="list : ${lists}">
         <label class="results-filters-radio" th:for="${list.name}">
             <span th:text="${list.name}">GOTS</span>

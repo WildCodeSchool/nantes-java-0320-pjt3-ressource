@@ -116,7 +116,7 @@
 }
 
 
-.filters-see-more {
+.click-here {
     align-self: center;
     color: var(--color-bkg-button);
     margin-top: 2rem;
@@ -331,6 +331,9 @@ select:-moz-focusring {
     display: none;
 }
 
+.filters-see-less {
+    display: none;
+}
 /* ----------------------------MOBILE VERSION--------------------------- */
 
 @media only screen and (max-width: 767px) {
