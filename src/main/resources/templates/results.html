@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>Results</title>
@@ -85,7 +85,7 @@
             </div>
             <div class="filters filters-composition">
                 <h4 class="filters-title">Main Composition</h4>
-                <div class="filters-table results-filters-radio-mobile">
+                <div class="filters-table results-filters-radio-mobile" id="filter-composition">
                     <div class="results-filters-radio-table-compo" th:each="composition : ${compositions}">
                         <input class="results-filters-radio-input-compo" name="composition" th:id="${composition.name}"
                                th:value="${composition.id}"
@@ -93,11 +93,11 @@
                         <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
                     </div>
                 </div>
-                <a class="filters-see-more" href="#" id="more-Composition">Click here to see more</a>
+                <a class="filters-see-more" id="more-composition">Click here to see more</a>
             </div>
             <div class="filters filters-origin">
                 <h4 class="filters-title">Origin</h4>
-                <div class="results-filters-radio-mobile">
+                <div class="results-filters-radio-mobile" id="filter-origin">
                     <div class="results-filters-radio-table-origin" th:each="origin : ${origins}">
                         <label class="results-filters-radio" th:for="${origin.country}">
                             <span th:text="${origin.country}">Italy</span>
@@ -108,12 +108,12 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" href="#" id="more-origin">Click here to see more</a>
+                <a class="filters-see-more"  id="more-origin">Click here to see more</a>
             </div>
             <div class="filters filters-supplier">
                 <h4 class="filters-title">Supplier</h4>
-                <div class="results-filters-radio-mobile" th:each="company: ${companies}">
-                    <div class="results-filters-radio-table-supplier">
+                <div class="results-filters-radio-mobile" id="filter-supplier" >
+                    <div class="results-filters-radio-table-supplier" th:each="company: ${companies}">
                         <label class="results-filters-radio" th:for="${company.name}">
                             <span th:text="${company.name}"></span>
                             <input class="results-filters-radio-input-supplier" name="supplier" th:id="${company.name}"
@@ -122,7 +122,7 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" href="#" id="more-supplier">Click here to see more</a>
+                <a class="filters-see-more" id="more-supplier">Click here to see more</a>
             </div>
             <div class="filters filters-price">
                 <h4 class="filters-title">Price range (in €)</h4>
@@ -164,7 +164,7 @@
             </div>
             <div class="filters filters-certifications">
                 <h4 class="filters-title">Certifications</h4>
-                <div class="results-filters-radio-mobile">
+                <div class="results-filters-radio-mobile" id="filter-certification">
                     <div class="results-filters-radio-table-cert" th:each="certification : ${certifications}">
                         <label class="results-filters-radio" th:for="${certification.name}">
                             <span th:text="${certification.name}">GOTS</span>
@@ -175,7 +175,7 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" href="#" id="more-certification">Click here to see more</a>
+                <a class="filters-see-more" id="more-certification">Click here to see more</a>
             </div>
         </div>
         <div class="results-results" id="results-results">
