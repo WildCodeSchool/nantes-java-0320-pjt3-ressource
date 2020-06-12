@@ -93,7 +93,8 @@
                         <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-composition">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-composition">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-composition">Click here to see less</a>
             </div>
             <div class="filters filters-origin">
                 <h4 class="filters-title">Origin</h4>
@@ -108,11 +109,12 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more"  id="more-origin">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-origin">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-origin">Click here to see less</a>
             </div>
             <div class="filters filters-supplier">
                 <h4 class="filters-title">Supplier</h4>
-                <div class="results-filters-radio-mobile" id="filter-supplier" >
+                <div class="results-filters-radio-mobile" id="filter-supplier">
                     <div class="results-filters-radio-table-supplier" th:each="company: ${companies}">
                         <label class="results-filters-radio" th:for="${company.name}">
                             <span th:text="${company.name}"></span>
@@ -122,7 +124,8 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-supplier">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-supplier">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-supplier">Click here to see less</a>
             </div>
             <div class="filters filters-price">
                 <h4 class="filters-title">Price range (in €)</h4>
@@ -175,7 +178,8 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-certification">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-certification">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-certification">Click here to see less</a>
             </div>
         </div>
         <div class="results-results" id="results-results">
