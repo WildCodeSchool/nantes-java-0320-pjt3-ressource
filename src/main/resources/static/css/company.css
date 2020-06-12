@@ -1,0 +1,319 @@
+/*START COMPANY-TOP*/
+.company-back-link{
+    margin-left: 3rem;
+    font-family: var(--font-title);
+}
+.company-container-main-grid{
+    padding: 2rem 2rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 0.6fr 0.8fr 0.6fr 0.8fr;
+    gap: 1rem 1rem;
+}
+/*START COMPANY-MAP*/
+.company-situation {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "photo map";
+}
+
+.company-map {
+    grid-area: map;
+    background-image: url("../image/company/Map.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+}
+
+.company-filter-map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(000, 000, 000, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: capitalize;
+    color: transparent;
+    user-select: none;
+    font-size: 2rem;
+    font-family: var(--font-title);
+}
+
+.company-from-the-sky {
+    grid-area: photo;
+    background-image: url("../image/company/Velcorex photo usine drone logo.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*ANIMATION*/
+.company-filter-map:hover{
+    background-color: rgba(000, 000, 000, 0.5);
+    color: #fff;
+    user-select: text;
+}
+/*END COMPANY-MAP*/
+
+/*START COMPANY-CEO*/
+.company-ceo{
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 1.1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "description ceo ceo-words";
+}
+
+.company-ceo-description{
+    grid-area: description;
+    background-color: #f2f2f2;
+}
+
+.company-container-ceo-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.company-container-ceo-description li{
+    margin: 0.2rem 0;
+}
+
+.company-container-ceo-description h4{
+    font-family: var(--font-title);
+}
+
+.company-ceo-photo{
+    grid-area: ceo;
+    background-image: url("../image/company/Pierre Schmitt.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-ceo-words{
+    grid-area: ceo-words;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.company-ceo-words h2{
+    font-family: var(--font-title);
+    font-weight: 200;
+}
+
+.company-name-ceo {
+    font-family: var(--font-title);
+}
+/*END COMPANY-CEO*/
+
+/*START THUMBNAILS-SERVICE-ONE*/
+.company-thumbnails-service-one{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "thumbnails-one-left thumbnails-one-middle thumbnails-one-right";
+}
+
+.company-thumbnails-service-one-left{
+    grid-area: thumbnails-one-left;
+    background-image: url("../image/company/Personnel 2.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-thumbnails-service-one-middle{
+    grid-area: thumbnails-one-middle;
+    background-image: url("../image/company/Intérieur usine 6.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-thumbnails-service-one-right{
+    grid-area: thumbnails-one-right;
+    background-image: url("../image/company/Personnel 5.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*END THUMBNAILS-SERVICE-ONE*/
+
+/*START WORDS SERVICE ONE*/
+.company-container-sercice-one{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "words-service-one photo-service-one";
+}
+
+.company-words-sercice-one{
+    grid-area: words-service-one;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.company-words-sercice-one h2{
+    font-family: var(--font-title);
+    font-weight: 200;
+}
+
+.company-words-sercice-one p, .company-words-sercice-one h2{
+    text-align: end;
+}
+
+.company-name-manager-service-one {
+    font-family: var(--font-title);
+}
+
+.company-photo-service-one{
+    grid-area: photo-service-one;
+    background-image: url("../image/company/Intérieur usine 4.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*END WORDS SERVICE ONE*/
+
+/*START THUMBNAILS-SERVICE-TWO*/
+.company-thumbnails-service-two{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "thumbnails-two-left thumbnails-two-middle thumbnails-two-right";
+}
+
+.company-thumbnails-service-two-left{
+    grid-area: thumbnails-two-left;
+    background-image: url("../image/company/Intérieur usine 7.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-thumbnails-service-two-middle{
+    grid-area: thumbnails-two-middle;
+    background-image: url("../image/company/Personnel 4.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-thumbnails-service-two-right{
+    grid-area: thumbnails-two-right;
+    background-image: url("../image/company/Personnel 1.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+/*END THUMBNAILS-SERVICE-TWO*/
+
+/*START WORDS SERVICE TWO*/
+.company-container-sercice-two{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem 1rem;
+    grid-template-areas: "photo-service-two words-service-two";
+}
+
+.company-photo-service-two{
+    grid-area: photo-service-two;
+    background-image: url("../image/company/Personnel 3.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.company-words-sercice-two{
+    grid-area: words-service-two;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.company-words-sercice-two h2{
+    font-family: var(--font-title);
+    font-weight: 200;
+}
+
+.company-name-manager-service-two {
+    font-family: var(--font-title);
+}
+/*END WORDS SERVICE TWO*/
+
+/*START END WORDS*/
+.company-end-words{
+    height: 60vh;
+    background-image: url("../image/company/Intérieur usine 5.JPG");
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+}
+
+.company-end-words p{
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    right: 15%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: var(--font-title);
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+}
+/*END END WORDS*/
+
+/*MOBILE*/
+@media only screen and (max-width: 767px) {
+    .company-situation {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "photo" "map";
+    }
+
+    .company-ceo{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "description" "ceo" "ceo-words";
+    }
+
+    .company-thumbnails-service-one{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "thumbnails-one-left" "thumbnails-one-middle" "thumbnails-one-right";
+    }
+
+    .company-container-sercice-one{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "photo-service-one" "words-service-one";
+    }
+
+    .company-words-sercice-one{
+        align-items: flex-start;
+    }
+
+    .company-words-sercice-one p, .company-words-sercice-one h2{
+        text-align: start;
+    }
+
+    .company-thumbnails-service-two{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "thumbnails-two-left" "thumbnails-two-middle" "thumbnails-two-right";
+    }
+
+    .company-container-sercice-two{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "photo-service-two" "words-service-two";
+    }
+}
+/*END COMPANY-TOP*/

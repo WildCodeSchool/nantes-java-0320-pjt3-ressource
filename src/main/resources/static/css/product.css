@@ -1,7 +1,7 @@
 @import url('style.css');
 
 
-h4 {
+h3 {
     font-family: var(--font-title);
     text-align: center;
     font-size: 2rem;
@@ -10,11 +10,23 @@ h4 {
 
 p {
     font-family: var(--font-text);
-
 }
 
-.product-bottom p {
+.product-text-top {
+    text-align: left;
+    margin-left: 3%;
+    margin-bottom: 1rem;
+    font-family: var(--font-title);
+}
+
+.product-text-after-title {
     text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.product-title {
+    font-family: var(--font-title);
 }
 
 .product-section-top {
@@ -85,7 +97,7 @@ p {
 /* fin image*/
 
 .product-description {
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,6 +107,10 @@ p {
     margin-top: 1rem;
     margin-bottom: 0.8rem;
     text-align: center;
+}
+
+.product-description p {
+    font-size: 1rem;
 }
 
 .product-button-top {
@@ -116,6 +132,7 @@ p {
     padding-right: 3rem;
     border-radius: 10px;
     font-family: var(--font-text);
+    border: transparent;
 }
 
 .product-button-meeting {
@@ -124,7 +141,7 @@ p {
 }
 
 .product-button .fa-suitcase {
-    color: #B7B7B7;
+    color: white;
     position: absolute;
     top: 15px;
     left: 23%;
@@ -142,54 +159,46 @@ p {
     font-size: 1.5rem;
 }
 
-
-/* card carousel*/
-.carousel-container {
-    display: flex;
-    position: relative;
-    transition: transform 0.3s;
+/*  carousel*/
+.slick-slider {
+    margin-left: 4rem;
+    margin-right: 4rem;
 }
 
-.product-carousel {
+.section-product-bot {
     position: relative;
 }
 
-.product-carousel-bot {
-    margin-left: 4em;
-    margin-right: 4em;
-}
-
-.product-carousel-bot2 {
-    margin-left: 4em;
-    margin-right: 4em;
-}
-
-.carousel-next {
+/* like  */
+.arrow_prev_like, .arrow_next_like {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("../image/products/icons8-chevron-droit-30.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    right: -40px;
-    top: 50%;
-    cursor: pointer;
+    top: 40%;
 }
 
-.carousel-prev {
+.arrow_prev_like, .fas fa-chevron-left {
+    left: 10px;
+    font-size: 3rem;
+}
+
+.arrow_next_like, .fa-chevron-right {
+    right: 25px;
+    font-size: 3rem;
+}
+
+/* review  */
+.arrow_prev_rev, .arrow_next_rev {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("../image/products/icons8-chevron-gauche-30.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    left: -40px;
-    top: 50%;
-    cursor: pointer;
+    top: 40%;
 }
 
-.product-body {
-    overflow: hidden;
+.arrow_prev_rev, .fas fa-chevron-left {
+    left: 10px;
+    font-size: 3rem;
+}
+
+.arrow_next_rev, .fa-chevron-right {
+    right: 25px;
+    font-size: 3rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -206,6 +215,7 @@ p {
         width: 90%;
         position: relative;
         margin: auto;
+        margin-top: 6rem;
     }
 
     .product-description {
@@ -228,7 +238,7 @@ p {
     }
 
     .product-section-top {
-        height: 1100px;
+        height: 1200px;
     }
 
     .product-button-top {
@@ -249,3 +259,4 @@ p {
         display: grid;
     }
 }
+

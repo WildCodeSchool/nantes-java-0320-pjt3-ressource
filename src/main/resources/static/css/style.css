@@ -56,6 +56,11 @@
     background-color: var(--color-bkg-product)
 }
 
+.card-product a{
+    text-decoration: none;
+    color: #000;
+}
+
 .card-product-info-supplier {
     padding: 0.7rem;
     font-family: var(--font-title);

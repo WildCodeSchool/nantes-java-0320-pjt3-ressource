@@ -101,6 +101,20 @@
     outline: none;
     margin-right: 0.2rem;
 }
+.filters label, span {
+    text-transform: lowercase;
+}
+.filters label::first-letter{
+    text-transform: uppercase;
+}
+
+ span{
+    display: inline-block;
+}
+ span::first-letter{
+    text-transform: uppercase;
+}
+
 
 .filters-see-more {
     align-self: center;
@@ -121,6 +135,7 @@
     margin: 0;
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 .filters-table input {
@@ -532,8 +547,8 @@ select:-moz-focusring {
         width: 100%;
     }
 
-    .results-filters-radio-mobile span {
-        display: none;
+    .checkmark {
+        display: none !important;
     }
 
     .filters-table div {

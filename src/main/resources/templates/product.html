@@ -4,11 +4,13 @@
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>Product</title>
     <link rel="stylesheet" th:href="@{css/product.css}" type="text/css">
+    <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css"/>
+    <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <main class="product-body">
-    <p>Home - Our trusted partners - Velcorex - Results - Country</p>
+    <p class="product-text-top">Home - Our trusted partners - Velcorex - Results - Country</p>
     <section class="product-section-top">
         <div class="product-container-top">
             <div class="product-slideshow-container">
@@ -30,9 +32,10 @@
                 <a class="product-next" onclick="plusSlides(1)">&#10095;</a>
             </div>
             <div class="product-description">
-                <h3>Velcorex Logo</h3>
-                <p><b>COUNTRY</b></p>
-                <p><b>Corduroy / Soft handfeel / Millwashed Draping / Natural stretch</b></p>
+                <a href="/company"><img
+                        src="https://via.placeholder.com/160x100.png?text=LOGO+Certification"></a>
+                <p class="product-title">COUNTRY</p>
+                <p><b>Corduroy / Soft handfeel / Millwashed <br>Draping / Natural stretch</b></p>
                 <p><b><u>Composition:</u></b> 100% cotton</p>
                 <p><b><u>Usable width:</u></b> 138 centimerters</p>
                 <p><b><u>Weight:</u></b> 480 grams</p>
@@ -58,10 +61,10 @@
             </div>
         </div>
     </section>
-    <section class="product-bottom">
-        <h4>You may also like</h4>
-        <p>These propositions are not the results of an algorithm and these fabrics were carefully selected by our
-            team</p>
+    <section class="section-product-bot">
+        <h3>You may also like</h3>
+        <p class="product-text-after-title">These propositions are not the results of an algorithm and these fabrics
+            were carefully selected by our team</p>
         <div class="product-carousel-bot">
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
@@ -314,8 +317,17 @@
                 </div>
             </div>
         </div>
-        <h4>Recently viewed</h4>
-        <div class="product-carousel-bot2">
+        <div class="arrow_prev_like">
+            <span><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="arrow_next_like">
+            <span><i class="fas fa-chevron-right"></i></span>
+        </div>
+    </section>
+    <section class="section-product-bot">
+        <h3>Recently viewed</h3>
+        <div class="product-carousel-bottom-review">
+
             <div class="card-product">
                 <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
@@ -567,8 +579,19 @@
                 </div>
             </div>
         </div>
+        <div class="arrow_prev_rev">
+            <span><i class="fas fa-chevron-left"></i></span>
+        </div>
+        <div class="arrow_next_rev">
+            <span><i class="fas fa-chevron-right"></i></span>
+        </div>
     </section>
 </main>
-<script src="javaScript/product.js" type="text/javascript"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
+<script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
+<script src="js/productcar.js" type="text/javascript"></script>
 </body>
 </html>
