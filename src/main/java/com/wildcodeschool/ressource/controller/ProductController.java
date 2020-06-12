@@ -63,7 +63,7 @@ public class ProductController {
         List<Company> suppliers = supplierSub.get().collect(Collectors.toList());
 
         Pageable PageCert = PageRequest.of(0, 3);
-        Page<Certification> certificationSub = certificationRepository.findAll(PageSupplier);
+        Page<Certification> certificationSub = certificationRepository.findAll(PageCert);
         List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
 
         model.addAttribute("products", productRepository.findAll());
