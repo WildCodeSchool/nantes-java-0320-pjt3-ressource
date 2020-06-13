@@ -609,7 +609,6 @@ select:-moz-focusring {
 /* TABLET */
 @media only screen and (min-width: 768px)and (max-width: 1240px) {
 
-
     .results-back {
         margin-left: 3rem;
         font-size: 1.5rem;
@@ -647,8 +646,12 @@ select:-moz-focusring {
     }
 
     .results-products {
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
+
 
     .results-title {
         font-size: 1.5rem;
