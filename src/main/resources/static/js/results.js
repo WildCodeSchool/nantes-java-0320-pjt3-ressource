@@ -1,3 +1,4 @@
+
 //Tags on each side
 let tag_width_1 = document.getElementById("slider-width-tag-1");
 let tag_width_2 = document.getElementById("slider-width-tag-2");

@@ -13,7 +13,7 @@
 .results-back {
     margin-left: 5rem;
     font-family: var(--font-title);
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
 }
 
@@ -23,9 +23,9 @@
 
 /* FILTERS */
 .results-filters {
-    flex-basis: 25%;
+    flex-basis: 33%;
     border-right: 2px solid var(--color-bkg-secondary);
-    padding-right: 2.5rem;
+    /*! padding-right: 2.5rem; */
 }
 
 .filters {
@@ -101,26 +101,17 @@
     outline: none;
     margin-right: 0.2rem;
 }
-.filters label, span {
-    text-transform: lowercase;
-}
-.filters label::first-letter{
-    text-transform: uppercase;
-}
-
- span{
-    display: inline-block;
-}
- span::first-letter{
-    text-transform: uppercase;
-}
-
 
 .click-here {
     align-self: center;
     color: var(--color-bkg-button);
     margin-top: 2rem;
     margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.click-here:hover {
+    cursor: pointer;
 }
 
 .filters-table {
@@ -318,8 +309,14 @@ select:-moz-focusring {
 }
 
 .results-products {
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;
+    flex-wrap: wrap;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0 1rem;
+    grid-template-areas: ". . .";
+    width: 95%;
 }
 
 /* ------------------------------DIVS ONLY FOR MOBILE-------------------------- */
@@ -334,6 +331,15 @@ select:-moz-focusring {
 .filters-see-less {
     display: none;
 }
+.results-header-mobile div h1 {
+    font-family: var(--font-logo-thin);
+    letter-spacing: 0.15rem;
+}
+.results-header-mobile div h1 span{
+    font-family: var(--font-logo-bold);
+    font-weight: lighter;
+    font-size: 2.3rem;
+}
 /* ----------------------------MOBILE VERSION--------------------------- */
 
 @media only screen and (max-width: 767px) {
@@ -344,7 +350,7 @@ select:-moz-focusring {
         background-color: var(--color-bkg-button);
         color: var(--color-font-light);
         align-items: center;
-        padding: 1.5rem 0 0.5rem 0;
+        padding: 0.5rem 0;
         border-radius: 0 0 25px 25px;
         overflow: hidden;
         z-index: 99;
@@ -450,7 +456,10 @@ select:-moz-focusring {
     }
 
     .results-products {
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
 
     .results-header-mobile-sort-form {
@@ -599,6 +608,7 @@ select:-moz-focusring {
 
 /* TABLET */
 @media only screen and (min-width: 768px)and (max-width: 1240px) {
+
 
     .results-back {
         margin-left: 3rem;

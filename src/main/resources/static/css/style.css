@@ -1,5 +1,7 @@
 @import url(//db.onlinewebfonts.com/c/0ba9253983e3a7a7cc896e85b1ceb2be?family=Futura+PT+Web+Book);
 @import url(//db.onlinewebfonts.com/c/23fab04cd09bfa1bae2991c14b0b546f?family=NimbusRomD);
+@import url(//db.onlinewebfonts.com/c/d14035f6b1afeabafbee4abb2ebf0fc6?family=COCOGOOSE);
+@import url(//db.onlinewebfonts.com/c/b6ec2562bef462b4dc49e9cc5d04845e?family=CocogoosePro-Thin);
 
 @font-face {
     font-family: "Futura PT Web Book";
@@ -21,6 +23,26 @@
     url("//db.onlinewebfonts.com/t/23fab04cd09bfa1bae2991c14b0b546f.svg#NimbusRomD") format("svg");
 }
 
+@font-face {
+    font-family: "COCOGOOSE";
+    src: url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.eot");
+    src: url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/d14035f6b1afeabafbee4abb2ebf0fc6.svg#COCOGOOSE") format("svg");
+}
+
+@font-face {
+    font-family: "CocogoosePro-Thin";
+    src: url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.eot");
+    src: url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/b6ec2562bef462b4dc49e9cc5d04845e.svg#CocogoosePro-Thin") format("svg");
+}
+
 /*START VARIABLES*/
 :root {
     /*color*/
@@ -36,6 +58,8 @@
     /*Font*/
     --font-title: 'Futura PT Web Book', 'sans serif';
     --font-text: 'NimbusRomD', 'serif';
+    --font-logo-bold: 'COCOGOOSE';
+    --font-logo-thin: 'CocogoosePro-Thin';
 }
 
 /*END VARIABLES*/
@@ -49,8 +73,8 @@
 /* CARD PRODUCT */
 .card-product {
     padding: 0;
-    margin-right: 2rem;
-    width: 410px;
+    /*margin-right: 2rem;*/
+    /*width: 410px;*/
     margin-bottom: 3rem;
     border: 1px solid var(--color-border-product);
     background-color: var(--color-bkg-product)
@@ -107,14 +131,16 @@
 .card-product-info-name {
     font-family: var(--font-title);
     font-size: 1.5rem;
-    padding: 0.5rem 0.5rem 0.7rem 0;
+    padding: 0 0.5rem 0.7rem 0;
     font-weight: bolder;
 }
 
 .card-product-info-descr {
-    width: 70%;
+    width: 90%;
 }
-
+.card-product-info-compo {
+    padding-top: 0.5rem;
+}
 .card-product-image-rs {
     display: none;
 }
@@ -161,7 +187,7 @@
     flex-basis: 10%;
     display: flex;
     justify-content: space-evenly;
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 /*END HEADER*/

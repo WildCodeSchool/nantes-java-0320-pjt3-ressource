@@ -78,7 +78,7 @@
                         <input class="results-filters-radio-input-fabric" name="fabric" th:id="${fabricPattern.name}"
                                th:value="${fabricPattern.id}"
                                type="radio">
-                        <label class="results-filters-radio" th:for="${fabricPattern.name}"
+                        <label class="results-filters-radio filter-table-item" th:for="${fabricPattern.name}"
                                th:text="${fabricPattern.name}">Taffata</label>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         <input class="results-filters-radio-input-compo" name="composition" th:id="${composition.name}"
                                th:value="${composition.id}"
                                type="radio">
-                        <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
+                        <label class="results-filters-radio filter-table-item" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
                     </div>
                 </div>
                 <a class="filters-see-more click-here" id="more-composition">Click here to see more</a>
@@ -184,7 +184,7 @@
         </div>
         <div class="results-results" id="results-results">
             <div class="results-title_sort">
-                <h4 class="results-title">Your actual research : </h4>
+                <h4 class="results-title">Your research : </h4>
                 <form action="" class="results-sort-form">
                     <label class="results-sort-select">
                         <select>
@@ -217,9 +217,9 @@
                                 <a><i class="fas fa-suitcase"></i></a>
                             </div>
                         </div>
-                        <p class="card-product-info-descr"><span th:text="${product.feature.fabric.fabric}"></span> /
-                            <span th:text="${product.feature.handFeel.handFeel}"></span> /
-                            <span th:text="${product.feature.finishing.finishing}"></span> /
+                        <p class="card-product-info-descr"><span th:text="|${product.feature.fabric.fabric} / |"></span>
+                            <span th:text="|${product.feature.handFeel.handFeel} / |"></span>
+                            <span th:text="|${product.feature.finishing.finishing} / |"></span>
                             <span th:text="${product.feature.look.look}"></span> /
                             <span th:each="property : ${product.feature.technicalProperties}"
                                   th:text="${property.technicalProperty}">Natural stretch</span>
