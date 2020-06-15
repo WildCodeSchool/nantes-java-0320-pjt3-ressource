@@ -80,7 +80,7 @@
     background-color: var(--color-bkg-product)
 }
 
-.card-product a{
+.card-product a {
     text-decoration: none;
     color: #000;
 }
@@ -138,9 +138,11 @@
 .card-product-info-descr {
     width: 90%;
 }
+
 .card-product-info-compo {
     padding-top: 0.5rem;
 }
+
 .card-product-image-rs {
     display: none;
 }
