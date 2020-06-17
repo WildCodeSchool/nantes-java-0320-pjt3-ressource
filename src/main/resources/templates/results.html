@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <th:block th:include="fragments/head.html :: head"></th:block>
+    <th:block th:include="fragments/head.html :: head"> </th:block>
     <title>Results</title>
     <link th:href="@{/css/results.css}" rel="stylesheet">
 </head>
@@ -27,32 +27,7 @@
     </div>
 </header>
 <main>
-    <div class="results-menu-nav" id="results-menu-nav">
-        <div>
-            <a href="/"><i class="fas fa-home"></i></a>
-            <p>Home</p>
-        </div>
-        <div>
-            <a id="search-icon-nav"><i class="fas fa-search"></i></a>
-            <p>Search</p>
-        </div>
-        <div>
-            <a><i class="fas fa-heart"></i></a>
-            <p>Wishlist</p>
-        </div>
-        <div>
-            <a><i class="fas fa-suitcase"></i></a>
-            <p>Meetings</p>
-        </div>
-    </div>
-    <div class="results-menu-nav" id="results-nav-search">
-        <a class="menu-nav-arrow-left" id="menu-nav-arrow-left"><i class="fas fa-arrow-left"></i></a>
-        <form action="" class="header-search" method="get">
-            <input class="header-search-bar" id="header-search-bar" name="searching" placeholder="Search by ..."
-                   type="text">
-            <button><i class="fas fa-search"></i></button>
-        </form>
-    </div>
+    <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
     <div class="results-back">
         <a href="#">&#10094; Go Back</a>
     </div>
