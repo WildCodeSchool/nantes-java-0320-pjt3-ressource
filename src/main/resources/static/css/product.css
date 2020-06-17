@@ -109,6 +109,15 @@ p {
     text-align: center;
 }
 
+.product-description-logo-company{
+    width: 9rem;
+}
+
+.product-description a img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .product-description p {
     font-size: 1rem;
 }
@@ -225,6 +234,8 @@ p {
         align-items: center;
         margin-bottom: 2rem;
     }
+
+
 
     .mySlides img {
         width: 100%;

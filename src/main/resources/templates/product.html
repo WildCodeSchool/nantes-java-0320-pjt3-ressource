@@ -15,34 +15,37 @@
         <div class="product-container-top">
             <div class="product-slideshow-container">
                 <div class="mySlides">
-                    <img src="image/products/Acetate.jpg">
+                    <img th:src="@{image/product_images/{product}(product= ${product.imageProducts.get(0).image})}">
                 </div>
-
-                <div class="mySlides">
-                    <img src="image/products/Cupro.jpg">
-                </div>
-
-                <div class="mySlides">
-                    <img src="image/products/Lyocell.jpg">
-                </div>
-                <div class="mySlides">
-                    <img src="image/product_images/Norgate.JPG">
-                </div>
+                <!--
                 <a class="product-prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="product-next" onclick="plusSlides(1)">&#10095;</a>
+                -->
             </div>
             <div class="product-description">
+                <div class="product-description-logo-company">
                 <a href="/company"><img
-                        src="https://via.placeholder.com/160x100.png?text=LOGO+Velcorex"></a>
-                <p class="product-title">COUNTRY</p>
-                <p><b>Corduroy / Soft handfeel / Millwashed <br>Draping / Natural stretch</b></p>
-                <p><b><u>Composition:</u></b> 100% cotton</p>
-                <p><b><u>Usable width:</u></b> 138 centimerters</p>
-                <p><b><u>Weight:</u></b> 480 grams</p>
-                <p><b><u>Price range:</u></b> 13 to 15,99€</p>
-                <p><b><u>Certifications </u></b></p>
-                <a href="https://placeholder.com"><img
-                        src="https://via.placeholder.com/150x50.png?text=LOGO+Certification"></a>
+                        th:src="@{image/logo_company/{company}(company= ${product.company.getLogo()})}"></a>
+                </div>
+                    <p class="product-title" th:text="${product.reference}">COUNTRY</p>
+                <p> <span th:text="${product.feature.fabric.fabric}"></span> /
+                    <span th:text="${product.feature.handFeel.handFeel}"></span> /
+                    <span th:text="${product.feature.finishing.finishing}"></span> /
+                    <span th:text="${product.feature.look.look}"></span> /
+                    <span th:each="property : ${product.feature.technicalProperties}"></span> </p>
+                <p><b><u>Composition: </u></b> <span th:each="composition : ${product.compositions}">
+                        <span th:text="|${composition.pourcentage} % |"></span>
+                        <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                </span></p>
+                <p></p>
+                <p><b><u>Usable width: </u></b><span th:text="${product.width}"> 138 centimeters</span></p>
+                <p><b><u>Weight: </u></b> <span th:text="${product.weight}"></span></p>
+                <p><b><u>Price range: </u></b><span th:text="${product.price.price}"> 13 to 15,99€</span></p>
+                <p><b><u>Certifications: </u></b></p>
+                <!--TODO: Mettre image a la place de name quand on auras les images du client dans la db  -->
+                <span th:each="certification : ${product.certifications}">
+                    <span th:text="${certification.name}"></span>
+                </span>
                 <a href="#">Download the complete technical sheet</a>
             </div>
         </div>

@@ -198,7 +198,7 @@
                     <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
                         SINCE 1828</h4></a>
                     <div class="card-product-image">
-                        <a href="/product"><img th:alt="${product.imageProducts.get(0).image}"
+                        <a href="/product/{}"><img th:alt="${product.imageProducts.get(0).image}"
                                                 th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                         <div class="card-product-image-hover">
                             <a><i class="fas fa-heart"></i></a>
