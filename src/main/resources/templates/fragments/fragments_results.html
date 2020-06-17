@@ -8,7 +8,7 @@
 <div class="results"
      th:fragment="results (materials, fabricPatterns, compositions, origins, companies, prices,
                            certifications, search, products, iscompany, companyName)">
-    <div class="results-filters" id="results-filters">
+    <form class="results-filters" id="results-filters">
         <div class="filters filters-material">
             <h4 class="filters-title">Material</h4>
             <div class="results-filters-radio-mobile">
@@ -134,7 +134,7 @@
             <a class="filters-see-more click-here" id="more-certification">Click here to see more</a>
             <a class="filters-see-less click-here" id="less-certification">Click here to see less</a>
         </div>
-    </div>
+    </form>
     <div class="results-results" id="results-results">
         <div class="results-title_sort">
             <h4 th:if="${not iscompany}" class="results-title" th:text="|Your research : ${search}|">Your research : </h4>
@@ -153,10 +153,10 @@
 
         <div class="results-products">
             <div class="card-product" th:each="product : ${products}">
-                <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
+                <a  th:href="@{/company(id = ${product.company.id})}" href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
                     SINCE 1828</h4></a>
                 <div class="card-product-image">
-                    <a href="/product"><img th:alt="${product.imageProducts.get(0).image}"
+                    <a th:href="@{/product(reference = ${product.id})}" href="/product"><img th:alt="${product.imageProducts.get(0).image}"
                                             th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
