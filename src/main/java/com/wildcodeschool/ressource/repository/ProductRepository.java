@@ -47,3 +47,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             nativeQuery = true)
     List<Long> findAllIdBySearching(@Param("search") String search);
 }
+

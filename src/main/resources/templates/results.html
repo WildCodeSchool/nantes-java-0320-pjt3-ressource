@@ -111,8 +111,10 @@
                         </label>
                     </div>
                 </div>
+
                 <a class="filters-see-more click-here" id="more-origin">Click here to see more</a>
                 <a class="filters-see-less click-here" id="less-origin">Click here to see less</a>
+              
             </div>
             <div class="filters filters-supplier">
                 <h4 class="filters-title">Supplier</h4>
@@ -204,8 +206,9 @@
                     <a href="/company"><h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
                         SINCE 1828</h4></a>
                     <div class="card-product-image">
-                        <a href="/product"><img th:alt="${product.imageProducts.get(0).image}"
-                                                th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
+                        <a th:href="@{/product?reference={id}(id=${product.id})}"><img
+                                th:alt="${product.imageProducts.get(0).image}"
+                                th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                         <div class="card-product-image-hover">
                             <a><i class="fas fa-heart"></i></a>
                             <a><i class="fas fa-suitcase"></i></a>

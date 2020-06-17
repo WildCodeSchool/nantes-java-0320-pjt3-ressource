@@ -86,6 +86,20 @@ public class Product {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @ManyToMany
+    @JoinTable(name = "proposition_list",
+            joinColumns = @JoinColumn(name = "product_id_origin"),
+            inverseJoinColumns = @JoinColumn(name = "product_id_linked"))
+    private List<Product> products = new ArrayList<>();
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public Product() {
     }
 
