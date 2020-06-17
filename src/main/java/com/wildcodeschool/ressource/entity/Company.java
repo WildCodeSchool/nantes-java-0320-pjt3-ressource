@@ -15,16 +15,48 @@ public class Company {
 
     private String name;
     private String logo;
+    private String pictureFromSky;
+    private String companyMap;
+    private String address;
+
     private Date creationDate;
-    private String specialities;
-    private Long employeesNumber;
+    private String knowhow;
+    private String employeesNumber;
+    private String industrialPark;
+    private String averageProduction;
+    private String certifications;
+
+    private String ceoPhoto;
+    private String ceoTitle;
     private String ceoWords;
-    private String serviceLeftWords;
-    private String ServiceRightWords;
-    private String pictureWords;
+    private String ceoName;
+
+    private String thumbnailOneTopLeft;
+    private String thumbnailOneTopMiddle;
+    private String thumbnailOneTopRight;
+    private String thumbnailOneSideWords;
+    private String serviceTopTitle;
+    private String serviceTopWords;
+    private String serviceTopName;
+    private String serviceTopFunction;
+
+    private String thumbnailTwoTopLeft;
+    private String thumbnailTwoTopMiddle;
+    private String thumbnailTwoTopRight;
+    private String thumbnailTwoSideWords;
+    private String serviceBottomTitle;
+    private String serviceBottomWords;
+    private String serviceBottomName;
+    private String serviceBottomFunction;
+
+    private String endPhoto;
+    private String endWords;
 
     @OneToMany(mappedBy = "company")
     private List<Product> products = new ArrayList<>();
+
+    public Company() {
+    }
 
     public Long getId() {
         return id;
@@ -50,6 +82,30 @@ public class Company {
         this.logo = logo;
     }
 
+    public String getPictureFromSky() {
+        return pictureFromSky;
+    }
+
+    public void setPictureFromSky(String pictureFromSky) {
+        this.pictureFromSky = pictureFromSky;
+    }
+
+    public String getCompanyMap() {
+        return companyMap;
+    }
+
+    public void setCompanyMap(String companyMap) {
+        this.companyMap = companyMap;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }
@@ -58,20 +114,60 @@ public class Company {
         this.creationDate = creationDate;
     }
 
-    public String getSpecialities() {
-        return specialities;
+    public String getKnowhow() {
+        return knowhow;
     }
 
-    public void setSpecialities(String specialities) {
-        this.specialities = specialities;
+    public void setKnowhow(String knowhow) {
+        this.knowhow = knowhow;
     }
 
-    public Long getEmployeesNumber() {
+    public String getEmployeesNumber() {
         return employeesNumber;
     }
 
-    public void setEmployeesNumber(Long employeesNumber) {
+    public void setEmployeesNumber(String employeesNumber) {
         this.employeesNumber = employeesNumber;
+    }
+
+    public String getIndustrialPark() {
+        return industrialPark;
+    }
+
+    public void setIndustrialPark(String industrialPark) {
+        this.industrialPark = industrialPark;
+    }
+
+    public String getAverageProduction() {
+        return averageProduction;
+    }
+
+    public void setAverageProduction(String averageProduction) {
+        this.averageProduction = averageProduction;
+    }
+
+    public String getCertifications() {
+        return certifications;
+    }
+
+    public void setCertifications(String certifications) {
+        this.certifications = certifications;
+    }
+
+    public String getCeoPhoto() {
+        return ceoPhoto;
+    }
+
+    public void setCeoPhoto(String ceoPhoto) {
+        this.ceoPhoto = ceoPhoto;
+    }
+
+    public String getCeoTitle() {
+        return ceoTitle;
+    }
+
+    public void setCeoTitle(String ceoTitle) {
+        this.ceoTitle = ceoTitle;
     }
 
     public String getCeoWords() {
@@ -82,28 +178,156 @@ public class Company {
         this.ceoWords = ceoWords;
     }
 
-    public String getServiceLeftWords() {
-        return serviceLeftWords;
+    public String getCeoName() {
+        return ceoName;
     }
 
-    public void setServiceLeftWords(String serviceLeftWords) {
-        this.serviceLeftWords = serviceLeftWords;
+    public void setCeoName(String ceoName) {
+        this.ceoName = ceoName;
     }
 
-    public String getServiceRightWords() {
-        return ServiceRightWords;
+    public String getThumbnailOneTopLeft() {
+        return thumbnailOneTopLeft;
     }
 
-    public void setServiceRightWords(String serviceRightWords) {
-        ServiceRightWords = serviceRightWords;
+    public void setThumbnailOneTopLeft(String thumbnailOneTopLeft) {
+        this.thumbnailOneTopLeft = thumbnailOneTopLeft;
     }
 
-    public String getPictureWords() {
-        return pictureWords;
+    public String getThumbnailOneTopMiddle() {
+        return thumbnailOneTopMiddle;
     }
 
-    public void setPictureWords(String pictureWords) {
-        this.pictureWords = pictureWords;
+    public void setThumbnailOneTopMiddle(String thumbnailOneTopMiddle) {
+        this.thumbnailOneTopMiddle = thumbnailOneTopMiddle;
+    }
+
+    public String getThumbnailOneTopRight() {
+        return thumbnailOneTopRight;
+    }
+
+    public void setThumbnailOneTopRight(String thumbnailOneTopRight) {
+        this.thumbnailOneTopRight = thumbnailOneTopRight;
+    }
+
+    public String getThumbnailOneSideWords() {
+        return thumbnailOneSideWords;
+    }
+
+    public void setThumbnailOneSideWords(String thumbnailOneSideWords) {
+        this.thumbnailOneSideWords = thumbnailOneSideWords;
+    }
+
+    public String getServiceTopTitle() {
+        return serviceTopTitle;
+    }
+
+    public void setServiceTopTitle(String serviceTopTitle) {
+        this.serviceTopTitle = serviceTopTitle;
+    }
+
+    public String getServiceTopWords() {
+        return serviceTopWords;
+    }
+
+    public void setServiceTopWords(String serviceTopWords) {
+        this.serviceTopWords = serviceTopWords;
+    }
+
+    public String getServiceTopName() {
+        return serviceTopName;
+    }
+
+    public void setServiceTopName(String serviceTopName) {
+        this.serviceTopName = serviceTopName;
+    }
+
+    public String getServiceTopFunction() {
+        return serviceTopFunction;
+    }
+
+    public void setServiceTopFunction(String serviceTopFunction) {
+        this.serviceTopFunction = serviceTopFunction;
+    }
+
+    public String getThumbnailTwoTopLeft() {
+        return thumbnailTwoTopLeft;
+    }
+
+    public void setThumbnailTwoTopLeft(String thumbnailTwoTopLeft) {
+        this.thumbnailTwoTopLeft = thumbnailTwoTopLeft;
+    }
+
+    public String getThumbnailTwoTopMiddle() {
+        return thumbnailTwoTopMiddle;
+    }
+
+    public void setThumbnailTwoTopMiddle(String thumbnailTwoTopMiddle) {
+        this.thumbnailTwoTopMiddle = thumbnailTwoTopMiddle;
+    }
+
+    public String getThumbnailTwoTopRight() {
+        return thumbnailTwoTopRight;
+    }
+
+    public void setThumbnailTwoTopRight(String thumbnailTwoTopRight) {
+        this.thumbnailTwoTopRight = thumbnailTwoTopRight;
+    }
+
+    public String getThumbnailTwoSideWords() {
+        return thumbnailTwoSideWords;
+    }
+
+    public void setThumbnailTwoSideWords(String thumbnailTwoSideWords) {
+        this.thumbnailTwoSideWords = thumbnailTwoSideWords;
+    }
+
+    public String getServiceBottomTitle() {
+        return serviceBottomTitle;
+    }
+
+    public void setServiceBottomTitle(String serviceBottomTitle) {
+        this.serviceBottomTitle = serviceBottomTitle;
+    }
+
+    public String getServiceBottomWords() {
+        return serviceBottomWords;
+    }
+
+    public void setServiceBottomWords(String serviceBottomWords) {
+        this.serviceBottomWords = serviceBottomWords;
+    }
+
+    public String getServiceBottomName() {
+        return serviceBottomName;
+    }
+
+    public void setServiceBottomName(String serviceBottomName) {
+        this.serviceBottomName = serviceBottomName;
+    }
+
+    public String getServiceBottomFunction() {
+        return serviceBottomFunction;
+    }
+
+    public void setServiceBottomFunction(String serviceBottomFunction) {
+        this.serviceBottomFunction = serviceBottomFunction;
+    }
+
+    public String getEndPhoto() {
+        return endPhoto;
+    }
+
+    public void setEndPhoto(String endPhoto) {
+        this.endPhoto = endPhoto;
+    }
+
+    public String getEndWords() {
+        return endWords;
+    }
+
+    public void setEndWords(String endWords) {
+        this.endWords = endWords;
     }
 
     public List<Product> getProducts() {

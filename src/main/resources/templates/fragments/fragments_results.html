@@ -138,7 +138,7 @@
     <div class="results-results" id="results-results">
         <div class="results-title_sort">
             <h4 th:if="${not iscompany}" class="results-title" th:text="|Your research : ${search}|">Your research : </h4>
-            <h4 th:if="${iscompany}" class="results-title" th:text="${companyName}'s fabrics |">Your research : </h4>
+            <h4 th:if="${iscompany}" class="results-title" th:text="|${companyName}'s fabrics |">Your research : </h4>
             <form th:if="${not iscompany}" action="" class="results-sort-form">
                 <label class="results-sort-select">
                     <select>
