@@ -8,14 +8,36 @@ h3 {
     margin: 1rem;
 }
 
-p {
-    font-family: var(--font-text);
+h5 {
+    font-family: var(--font-title);
+    text-align: center;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+}
+
+.product-description h3, .product-description a, .product-description div form {
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
 }
 
 .product-text-top {
     text-align: left;
     margin-left: 3%;
     margin-bottom: 1rem;
+    display: flex;
+}
+
+.product-description p, .product-description a {
+    font-family: var(--font-text);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.product-text-top a, .product-text-top a:link, .product-text-top a:visited, .product-text-top a:focus, .product-text-top a:hover, .product-text-top a:active {
+    text-decoration: none;
+    outline: none;
+    color: var(--color-font-dark);
     font-family: var(--font-title);
 }
 
@@ -23,10 +45,6 @@ p {
     text-align: center;
     font-size: 1.4rem;
     margin-bottom: 2rem;
-}
-
-.product-title {
-    font-family: var(--font-title);
 }
 
 .product-section-top {
@@ -101,25 +119,16 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 }
 
-.product-description p, .product-description h3, .product-description a, .product-description div form {
-    margin-top: 1rem;
-    margin-bottom: 0.8rem;
-    text-align: center;
+.product-description a img {
+    width: 11rem;
 }
 
-.product-description-logo-company{
-    width: 9rem;
-}
-
-.product-description a img{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.product-description p {
-    font-size: 1rem;
+.product-logo-certif span img {
+    max-width: 4rem;
+    margin: 0.5rem;
 }
 
 .product-button-top {
@@ -136,11 +145,11 @@ p {
 .product-button-meeting, .product-button-wishlist {
     width: 18rem;
     height: 3.5rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding-left: 5rem;
     padding-right: 3rem;
     border-radius: 10px;
-    font-family: var(--font-text);
+    font-family: var(--font-title);
     border: transparent;
 }
 
@@ -212,6 +221,14 @@ p {
 
 @media only screen and (max-width: 767px) {
 
+    h5 {
+        margin: 1rem;
+    }
+
+    .product-description p {
+        margin: 0.8rem;
+    }
+
     .product-container-top {
         display: flex;
         padding-top: 1.5rem;
@@ -228,20 +245,18 @@ p {
     }
 
     .product-description {
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 2rem;
     }
 
-
-
     .mySlides img {
         width: 100%;
         height: 350px;
         margin-top: 2rem;
-        padding-top: 15rem;
+        padding-top: 16rem;
     }
 
     .product-next, .product-prev {
