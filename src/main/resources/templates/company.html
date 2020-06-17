@@ -3,101 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <th:block th:include="fragments/head.html :: head"></th:block>
-    <link th:href="@{css/company.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/company.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
     <title>Company</title>
-</head>
+</head><a th:href="@{/company?id={id}(id = ${product.company.id})}">
 <body>
     <header th:replace="fragments/header.html :: header"></header>
-    <main class="company-main">
+    <main class="company-main" th:object="${company}">
         <article class="company-top">
-            <p class="company-back-link">Home - Our trusted partners - Velcorex</p>
+            <ul class="company-back-link">
+                <li><a href="/">Home</a></li>
+                <li>-</li>
+                <li><a href="/">Our trusted partners</a></li>
+                <li>-</li>
+                <li th:text="*{name}"></li>
+            </ul>
             <div class="company-container-main-grid">
                 <section class="company-situation">
                     <div class="company-map">
-                        <div class="company-filter-map">14 Rue du<br>Commandant Marceau,<br>68555 Saint-Amarin</div>
+                        <img th:src="@{image/company/{company}(company = *{companyMap})}" alt="map of company">
+                        <div class="company-filter-map" th:text="*{address}"></div>
                     </div>
-                    <div class="company-from-the-sky"></div>
+                    <div class="company-from-the-sky">
+                        <img th:src="@{image/company/{company}(company = *{pictureFromSky})}" alt="picture of company from the sky">
+                    </div>
                 </section>
                 <section class="company-ceo">
                     <div class="company-ceo-description">
                         <ul class="company-container-ceo-description">
                             <li>
                                 <h4>Date of creation</h4>
-                                <p>1828</p>
+                                <p th:text="*{creationDate}"></p>
                             </li>
                             <li>
                                 <h4>know how</h4>
-                                <p>Corduroy / Workwear / Sportswear</p>
+                                <p th:text="*{knowhow}"></p>
                             </li>
                             <li>
                                 <h4>Number of employees</h4>
-                                <p>50 (30 women / 20 men)</p>
+                                <p th:text="*{employeesNumber}"></p>
                             </li>
                             <li>
                                 <h4>Industrial park</h4>
-                                <p>Dyeing and velvet brush</p>
+                                <p th:text="*{industrialPark}"></p>
                             </li>
                             <li>
                                 <h4>Average minimum of production</h4>
-                                <p>500m</p>
+                                <p th:text="*{averageProduction}"></p>
                             </li>
                             <li>
                                 <h4>Certifications</h4>
-                                <p>Organic cotton / BCI</p>
+                                <p th:text="*{certifications}"></p>
                             </li>
                         </ul>
                     </div>
-                    <div class="company-ceo-photo"></div>
+                    <div class="company-ceo-photo">
+                        <img th:src="@{image/company/{company}(company = *{ceoPhoto})}" alt="ceo photo">
+                    </div>
                     <div class="company-ceo-words">
-                        <h2>A PRO-ACTIVE COMPANY</h2>
-                        <p>Lorem ipsum dolor sit amet,
-                            consectetur adipisicing elit.
-                            Aliquid, at debitis delectus,
-                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
-                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
-                        <p class="company-name-ceo">Pierre SCHMITT - CEO</p>
+                        <h2 th:text="*{ceoTitle}"></h2>
+                        <p th:text="*{ceoWords}"></p>
+                        <p class="company-name-ceo" th:text="|*{ceoName} - CEO|"></p>
                     </div>
                 </section>
                 <section class="company-thumbnails-service-one">
-                    <div class="company-thumbnails-service-one-left"></div>
-                    <div class="company-thumbnails-service-one-middle"></div>
-                    <div class="company-thumbnails-service-one-right"></div>
-                </section>
-                <section class="company-container-sercice-one">
-                    <div class="company-words-sercice-one">
-                        <h2>ATTENTION TO DETAIL</h2>
-                        <p>Lorem ipsum dolor sit amet,
-                            consectetur adipisicing elit.
-                            Aliquid, at debitis delectus,
-                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
-                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
-                        <p class="company-name-manager-service-one">Daniel - QUALITY MANAGER</p>
+                    <div class="company-thumbnails-service-one-left">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopLeft})}" alt="thumbnails of service one">
                     </div>
-                    <div class="company-photo-service-one"></div>
+                    <div class="company-thumbnails-service-one-middle">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopMiddle})}" alt="thumbnails of service one">
+                    </div>
+                    <div class="company-thumbnails-service-one-right">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopRight})}" alt="thumbnails of service one">
+                    </div>
+                </section>
+                <section class="company-container-service-one">
+                    <div class="company-words-service-one">
+                        <h2 th:text="*{serviceTopTitle}"></h2>
+                        <p th:text="*{serviceTopWords}"></p>
+                        <p class="company-name-manager-service-one" th:text="|*{serviceTopName} - *{ServiceTopFunction}"></p>
+                    </div>
+                    <div class="company-photo-service-one">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailOneSideWords})}" alt="thumbnails of service one">
+                    </div>
                 </section>
                 <section class="company-thumbnails-service-two">
-                    <div class="company-thumbnails-service-two-left"></div>
-                    <div class="company-thumbnails-service-two-middle"></div>
-                    <div class="company-thumbnails-service-two-right"></div>
+                    <div class="company-thumbnails-service-two-left">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopLeft})}" alt="thumbnails of service two">
+                    </div>
+                    <div class="company-thumbnails-service-two-middle">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopMiddle})}" alt="thumbnails of service two">
+                    </div>
+                    <div class="company-thumbnails-service-two-right">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopRight})}" alt="thumbnails of service two">
+                    </div>
                 </section>
-                <section class="company-container-sercice-two">
-                    <div class="company-photo-service-two"></div>
-                    <div class="company-words-sercice-two">
-                        <h2>TO REINVENT OURSELVES EACH SEASON</h2>
-                        <p>Lorem ipsum dolor sit amet,
-                            consectetur adipisicing elit.
-                            Aliquid, at debitis delectus,
-                            dolorum itaque laboriosam mollitia officia porro sit tenetur voluptas voluptate?
-                            Corporis dignissimos enim eos molestias omnis, quae quia.</p>
-                        <p class="company-name-manager-service-tow">Karine - HEAD OF COLLECTION</p>
+                <section class="company-container-service-two">
+                    <div class="company-photo-service-two">
+                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoSideWords})}" alt="thumbnails of service two">
+                    </div>
+                    <div class="company-words-service-two">
+                        <h2 th:text="*{serviceBottomTitle}"></h2>
+                        <p th:text="*{serviceBottomWords}"></p>
+                        <p class="company-name-manager-service-tow" th:text="|*{serviceBottomName} - *{serviceBottomFunction}|"></p>
                     </div>
                 </section>
             </div>
             <section class="company-end-words">
                 <div class="company-end-photo">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Architecto dolores enim error et ex expedita harum iusto laborum.</p>
+                    <img th:src="@{image/company/{company}(company = *{endPhoto})}" alt="last photo of company">
+                    <p th:text="*{endWords}"></p>
                 </div>
             </section>
         </article>
