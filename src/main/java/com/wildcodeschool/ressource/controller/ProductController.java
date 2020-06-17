@@ -133,7 +133,7 @@ public class ProductController {
     public String product(Model model, @RequestParam Long reference) {
 
         Optional<Product> optionalProduct = productRepository.findById(reference);
-        ((Optional) optionalProduct).ifPresent(product -> model.addAttribute("product", product));
+        optionalProduct.ifPresent(product -> model.addAttribute("product", product));
         return "product";
     }
 
