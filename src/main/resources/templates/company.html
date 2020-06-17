@@ -6,7 +6,7 @@
     <link th:href="@{/css/company.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
     <title>Company</title>
-</head><a th:href="@{/company?id={id}(id = ${product.company.id})}">
+</head>
 <body>
     <header th:replace="fragments/header.html :: header"></header>
     <main class="company-main" th:object="${company}">
