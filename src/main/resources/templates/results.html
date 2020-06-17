@@ -91,7 +91,8 @@
                         <input class="results-filters-radio-input-compo" name="composition" th:id="${composition.name}"
                                th:value="${composition.id}"
                                type="radio">
-                        <label class="results-filters-radio filter-table-item" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
+                        <label class="results-filters-radio filter-table-item" th:for="${composition.name}"
+                               th:text="${composition.name}">Cotton</label>
                     </div>
                 </div>
                 <a class="filters-see-more click-here" id="more-composition">Click here to see more</a>
@@ -219,16 +220,21 @@
                             </div>
                         </div>
                         <p class="card-product-info-descr"><span th:text="|${product.feature.fabric.fabric} / |"></span>
-                            <a th:href="@{/results(search = ${product.feature.handFeel.handFeel})}"><span th:text="|${product.feature.handFeel.handFeel} / |"></span></a>
-                            <a th:href="@{/results(search = ${product.feature.finishing.finishing})}"><span th:text="|${product.feature.finishing.finishing} / |"></span></a>
-                            <a th:href="@{/results(search = ${product.feature.look.look})}"><span th:text="${product.feature.look.look}"></span></a> /
-                            <a th:each="property : ${product.feature.technicalProperties}" th:href="@{/results(search = ${property.technicalProperty})}">
+                            <a th:href="@{/results(search = ${product.feature.handFeel.handFeel})}"><span
+                                    th:text="|${product.feature.handFeel.handFeel} / |"></span></a>
+                            <a th:href="@{/results(search = ${product.feature.finishing.finishing})}"><span
+                                    th:text="|${product.feature.finishing.finishing} / |"></span></a>
+                            <a th:href="@{/results(search = ${product.feature.look.look})}"><span
+                                    th:text="${product.feature.look.look}"></span></a> /
+                            <a th:each="property : ${product.feature.technicalProperties}"
+                               th:href="@{/results(search = ${property.technicalProperty})}">
                                 <span th:text="${property.technicalProperty}">Natural stretch</span></a>
                         </p>
                         <p class="card-product-info-compo">
                             <span th:each="composition : ${product.compositions}">
                                 <span th:text="|${composition.pourcentage} % |"></span>
-                                <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                                <a th:href="@{/results(search = ${composition.fiber.name})}"><span
+                                        th:text="|${composition.fiber.name} &nbsp;|"></span></a>
                             </span>
                         </p>
                     </div>
