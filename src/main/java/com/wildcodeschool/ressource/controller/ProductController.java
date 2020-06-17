@@ -1,6 +1,9 @@
 package com.wildcodeschool.ressource.controller;
 
-import com.wildcodeschool.ressource.entity.*;
+import com.wildcodeschool.ressource.entity.Certification;
+import com.wildcodeschool.ressource.entity.Company;
+import com.wildcodeschool.ressource.entity.Fiber;
+import com.wildcodeschool.ressource.entity.Origin;
 import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,12 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Controller
@@ -45,7 +48,7 @@ public class ProductController {
     private PriceRepository priceRepository;
 
     @GetMapping("/results")
-    public String result(Model model) {
+    public String result(Model model, @RequestParam(defaultValue = "", required = false) String search) {
 
         Pageable PageFiber = PageRequest.of(0, 12);
         Page<Fiber> FiberSub = fiberRepository.findAll(PageFiber);
@@ -62,8 +65,9 @@ public class ProductController {
         Pageable PageCert = PageRequest.of(0, 3);
         Page<Certification> certificationSub = certificationRepository.findAll(PageCert);
         List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
-
-        model.addAttribute("products", productRepository.findAll());
+        List<Long> productsId = productRepository.findAllIdBySearching(search);
+        model.addAttribute("search", search);
+        model.addAttribute("products", productRepository.findAllByIdIn(productsId));
         model.addAttribute("certifications", certifications);
         model.addAttribute("prices", priceRepository.findAll());
         model.addAttribute("companies", suppliers);
@@ -75,31 +79,56 @@ public class ProductController {
         return "results";
     }
 
-    @GetMapping("/results/more/{filter}")
-    public String moreFilter(@PathVariable String filter, Model model) {
+    @GetMapping("/results/more/{filter}/{all}")
+    public String moreFilter(@PathVariable String filter, Model model, @PathVariable Boolean all) {
+        int size;
+        int start;
         if (filter.equals("more-origin")) {
             List<Origin> origins = originRepository.findAll();
-            model.addAttribute("lists", origins.subList(4, origins.size()));
+            if (all) {
+                size = origins.size();
+                start = 4;
+            } else {
+                size = 4;
+                start = 0;
+            }
+            model.addAttribute("lists", origins.subList(start, size));
             model.addAttribute("name", "origin");
         } else if (filter.equals("more-composition")) {
             List<Fiber> fibers = fiberRepository.findAll();
-            model.addAttribute("lists", fibers.subList(12, fibers.size()));
+            if (all) {
+                size = fibers.size();
+                start = 12;
+            } else {
+                size = 12;
+                start = 0;
+            }
+            model.addAttribute("lists", fibers.subList(start, size));
             model.addAttribute("name", "composition");
         } else if (filter.equals("more-supplier")) {
             List<Company> companies = companyRepository.findAll();
-            model.addAttribute("lists", companies.subList(4, companies.size()));
+            if (all) {
+                size = companies.size();
+                start = 4;
+            } else {
+                size = 4;
+                start = 0;
+            }
+            model.addAttribute("lists", companies.subList(start, size));
             model.addAttribute("name", "supplier");
         } else if (filter.equals("more-certification")) {
             List<Certification> certifications = certificationRepository.findAll();
-            model.addAttribute("lists", certifications.subList(4, certifications.size()));
+            if (all) {
+                size = certifications.size();
+                start = 4;
+            } else {
+                size = 4;
+                start = 0;
+            }
+            model.addAttribute("lists", certifications.subList(start, size));
             model.addAttribute("name", "certification");
         }
         return "listsToSeeMore";
-    }
-
-    @PostMapping("/results")
-    public String postResult() {
-        return "redirect:/results";
     }
 
     @GetMapping("/product")

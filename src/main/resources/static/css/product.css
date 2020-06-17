@@ -176,7 +176,10 @@ h5 {
     left: 23%;
     font-size: 1.5rem;
 }
-
+/* Card product */
+.card-product {
+    margin-right: 2rem;
+}
 /*  carousel*/
 .slick-slider {
     margin-left: 4rem;

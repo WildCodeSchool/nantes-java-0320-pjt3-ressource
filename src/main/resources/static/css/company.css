@@ -1,8 +1,25 @@
 /*START COMPANY-TOP*/
 .company-back-link{
     margin-left: 3rem;
+    display: flex;
+    align-items: baseline;
+}
+
+.company-back-link li {
+    margin-right: 0.5rem;
     font-family: var(--font-title);
 }
+
+.company-back-link a {
+    font-family: var(--font-title);
+    text-decoration: none;
+    color: #000;
+}
+
+.company-back-link a:hover {
+    text-decoration: underline;
+}
+
 .company-container-main-grid{
     padding: 2rem 2rem 1rem 2rem;
     display: grid;
@@ -14,17 +31,15 @@
 .company-situation {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 300px;
     gap: 1rem 1rem;
     grid-template-areas: "photo map";
 }
 
 .company-map {
     grid-area: map;
-    background-image: url("../image/company/Map.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
     position: relative;
+    display: flex;
 }
 
 .company-filter-map {
@@ -43,11 +58,21 @@
     font-family: var(--font-title);
 }
 
+.company-map img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
 .company-from-the-sky {
     grid-area: photo;
-    background-image: url("../image/company/Velcorex photo usine drone logo.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-from-the-sky img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 /*ANIMATION*/
 .company-filter-map:hover{
@@ -61,7 +86,7 @@
 .company-ceo{
     display: grid;
     grid-template-columns: 0.9fr 1fr 1.1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 300px;
     gap: 1rem 1rem;
     grid-template-areas: "description ceo ceo-words";
 }
@@ -88,9 +113,13 @@
 
 .company-ceo-photo{
     grid-area: ceo;
-    background-image: url("../image/company/Pierre Schmitt.jpg");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-ceo-photo img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .company-ceo-words{
@@ -115,43 +144,55 @@
 .company-thumbnails-service-one{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px;
     gap: 1rem 1rem;
     grid-template-areas: "thumbnails-one-left thumbnails-one-middle thumbnails-one-right";
 }
 
 .company-thumbnails-service-one-left{
     grid-area: thumbnails-one-left;
-    background-image: url("../image/company/Personnel 2.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-one-left img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .company-thumbnails-service-one-middle{
     grid-area: thumbnails-one-middle;
-    background-image: url("../image/company/Intérieur usine 6.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-one-middle img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .company-thumbnails-service-one-right{
     grid-area: thumbnails-one-right;
-    background-image: url("../image/company/Personnel 5.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-one-right img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 /*END THUMBNAILS-SERVICE-ONE*/
 
 /*START WORDS SERVICE ONE*/
-.company-container-sercice-one{
+.company-container-service-one{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 250px;
     gap: 1rem 1rem;
     grid-template-areas: "words-service-one photo-service-one";
 }
 
-.company-words-sercice-one{
+.company-words-service-one{
     grid-area: words-service-one;
     display: flex;
     flex-direction: column;
@@ -160,12 +201,12 @@
     padding: 1rem;
 }
 
-.company-words-sercice-one h2{
+.company-words-service-one h2{
     font-family: var(--font-title);
     font-weight: 200;
 }
 
-.company-words-sercice-one p, .company-words-sercice-one h2{
+.company-words-service-one p, .company-words-service-one h2{
     text-align: end;
 }
 
@@ -175,9 +216,13 @@
 
 .company-photo-service-one{
     grid-area: photo-service-one;
-    background-image: url("../image/company/Intérieur usine 4.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-photo-service-one img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 /*END WORDS SERVICE ONE*/
 
@@ -185,50 +230,66 @@
 .company-thumbnails-service-two{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px;
     gap: 1rem 1rem;
     grid-template-areas: "thumbnails-two-left thumbnails-two-middle thumbnails-two-right";
 }
 
 .company-thumbnails-service-two-left{
     grid-area: thumbnails-two-left;
-    background-image: url("../image/company/Intérieur usine 7.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-two-left img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .company-thumbnails-service-two-middle{
     grid-area: thumbnails-two-middle;
-    background-image: url("../image/company/Personnel 4.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-two-middle img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .company-thumbnails-service-two-right{
     grid-area: thumbnails-two-right;
-    background-image: url("../image/company/Personnel 1.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
+}
+
+.company-thumbnails-service-two-right img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
 }
 /*END THUMBNAILS-SERVICE-TWO*/
 
 /*START WORDS SERVICE TWO*/
-.company-container-sercice-two{
+.company-container-service-two{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 250px;
     gap: 1rem 1rem;
     grid-template-areas: "photo-service-two words-service-two";
 }
 
 .company-photo-service-two{
     grid-area: photo-service-two;
-    background-image: url("../image/company/Personnel 3.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
+    display: flex;
 }
 
-.company-words-sercice-two{
+.company-photo-service-two img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.company-words-service-two{
     grid-area: words-service-two;
     display: flex;
     flex-direction: column;
@@ -236,7 +297,7 @@
     padding: 1rem;
 }
 
-.company-words-sercice-two h2{
+.company-words-service-two h2{
     font-family: var(--font-title);
     font-weight: 200;
 }
@@ -249,9 +310,6 @@
 /*START END WORDS*/
 .company-end-words{
     height: 60vh;
-    background-image: url("../image/company/Intérieur usine 5.JPG");
-    background-size: cover;
-    background-position: 50% 50%;
     position: relative;
 }
 
@@ -268,10 +326,26 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+.company-end-photo {
+    display: flex;
+    height: 100%;
+}
+
+.company-end-photo img {
+    max-width: 100%;
+    object-position: center;
+    object-fit: cover;
+}
 /*END END WORDS*/
 
 /*MOBILE*/
 @media only screen and (max-width: 767px) {
+
+    .company-back-link {
+        margin-left: 2rem;
+    }
+
     .company-situation {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
@@ -290,17 +364,17 @@
         grid-template-areas: "thumbnails-one-left" "thumbnails-one-middle" "thumbnails-one-right";
     }
 
-    .company-container-sercice-one{
+    .company-container-service-one{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: "photo-service-one" "words-service-one";
     }
 
-    .company-words-sercice-one{
+    .company-words-service-one{
         align-items: flex-start;
     }
 
-    .company-words-sercice-one p, .company-words-sercice-one h2{
+    .company-words-service-one p, .company-words-service-one h2{
         text-align: start;
     }
 
@@ -310,7 +384,7 @@
         grid-template-areas: "thumbnails-two-left" "thumbnails-two-middle" "thumbnails-two-right";
     }
 
-    .company-container-sercice-two{
+    .company-container-service-two{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: "photo-service-two" "words-service-two";

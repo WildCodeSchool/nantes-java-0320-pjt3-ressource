@@ -29,7 +29,7 @@
 <main>
     <div class="results-menu-nav" id="results-menu-nav">
         <div>
-            <a><i class="fas fa-home"></i></a>
+            <a href="/"><i class="fas fa-home"></i></a>
             <p>Home</p>
         </div>
         <div>
@@ -46,6 +46,7 @@
         </div>
     </div>
     <div class="results-menu-nav" id="results-nav-search">
+        <a class="menu-nav-arrow-left" id="menu-nav-arrow-left"><i class="fas fa-arrow-left"></i></a>
         <form action="" class="header-search" method="get">
             <input class="header-search-bar" id="header-search-bar" name="searching" placeholder="Search by ..."
                    type="text">
@@ -78,7 +79,7 @@
                         <input class="results-filters-radio-input-fabric" name="fabric" th:id="${fabricPattern.name}"
                                th:value="${fabricPattern.id}"
                                type="radio">
-                        <label class="results-filters-radio" th:for="${fabricPattern.name}"
+                        <label class="results-filters-radio filter-table-item" th:for="${fabricPattern.name}"
                                th:text="${fabricPattern.name}">Taffata</label>
                     </div>
                 </div>
@@ -90,10 +91,12 @@
                         <input class="results-filters-radio-input-compo" name="composition" th:id="${composition.name}"
                                th:value="${composition.id}"
                                type="radio">
-                        <label class="results-filters-radio" th:for="${composition.name}" th:text="${composition.name}">Cotton</label>
+                        <label class="results-filters-radio filter-table-item" th:for="${composition.name}"
+                               th:text="${composition.name}">Cotton</label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-composition">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-composition">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-composition">Click here to see less</a>
             </div>
             <div class="filters filters-origin">
                 <h4 class="filters-title">Origin</h4>
@@ -108,7 +111,10 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-origin">Click here to see more</a>
+
+                <a class="filters-see-more click-here" id="more-origin">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-origin">Click here to see less</a>
+              
             </div>
             <div class="filters filters-supplier">
                 <h4 class="filters-title">Supplier</h4>
@@ -122,7 +128,8 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-supplier">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-supplier">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-supplier">Click here to see less</a>
             </div>
             <div class="filters filters-price">
                 <h4 class="filters-title">Price range (in €)</h4>
@@ -175,12 +182,13 @@
                         </label>
                     </div>
                 </div>
-                <a class="filters-see-more" id="more-certification">Click here to see more</a>
+                <a class="filters-see-more click-here" id="more-certification">Click here to see more</a>
+                <a class="filters-see-less click-here" id="less-certification">Click here to see less</a>
             </div>
         </div>
         <div class="results-results" id="results-results">
             <div class="results-title_sort">
-                <h4 class="results-title">Your actual research : </h4>
+                <h4 class="results-title" th:text="|Your research : ${search}|">Your research : </h4>
                 <form action="" class="results-sort-form">
                     <label class="results-sort-select">
                         <select>
@@ -214,17 +222,22 @@
                                 <a><i class="fas fa-suitcase"></i></a>
                             </div>
                         </div>
-                        <p class="card-product-info-descr"><span th:text="${product.feature.fabric.fabric}"></span> /
-                            <span th:text="${product.feature.handFeel.handFeel}"></span> /
-                            <span th:text="${product.feature.finishing.finishing}"></span> /
-                            <span th:text="${product.feature.look.look}"></span> /
-                            <span th:each="property : ${product.feature.technicalProperties}"
-                                  th:text="${property.technicalProperty}">Natural stretch</span>
+                        <p class="card-product-info-descr"><span th:text="|${product.feature.fabric.fabric} / |"></span>
+                            <a th:href="@{/results(search = ${product.feature.handFeel.handFeel})}"><span
+                                    th:text="|${product.feature.handFeel.handFeel} / |"></span></a>
+                            <a th:href="@{/results(search = ${product.feature.finishing.finishing})}"><span
+                                    th:text="|${product.feature.finishing.finishing} / |"></span></a>
+                            <a th:href="@{/results(search = ${product.feature.look.look})}"><span
+                                    th:text="${product.feature.look.look}"></span></a> /
+                            <a th:each="property : ${product.feature.technicalProperties}"
+                               th:href="@{/results(search = ${property.technicalProperty})}">
+                                <span th:text="${property.technicalProperty}">Natural stretch</span></a>
                         </p>
                         <p class="card-product-info-compo">
                             <span th:each="composition : ${product.compositions}">
                                 <span th:text="|${composition.pourcentage} % |"></span>
-                                <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                                <a th:href="@{/results(search = ${composition.fiber.name})}"><span
+                                        th:text="|${composition.fiber.name} &nbsp;|"></span></a>
                             </span>
                         </p>
                     </div>
