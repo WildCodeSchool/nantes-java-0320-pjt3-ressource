@@ -1,9 +1,6 @@
 package com.wildcodeschool.ressource.controller;
 
-import com.wildcodeschool.ressource.entity.Certification;
-import com.wildcodeschool.ressource.entity.Company;
-import com.wildcodeschool.ressource.entity.Fiber;
-import com.wildcodeschool.ressource.entity.Origin;
+import com.wildcodeschool.ressource.entity.*;
 import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,12 +8,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -130,8 +130,10 @@ public class ProductController {
     }
 
     @GetMapping("/product")
-    public String product() {
+    public String product(Model model, @RequestParam Long reference) {
 
+        Optional<Product> optionalProduct = productRepository.findById(reference);
+        optionalProduct.ifPresent(product -> model.addAttribute("product", product));
         return "product";
     }
 
