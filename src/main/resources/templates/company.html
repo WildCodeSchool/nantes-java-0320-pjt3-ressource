@@ -5,6 +5,7 @@
     <th:block th:include="fragments/head.html :: head"></th:block>
     <link th:href="@{/css/company.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/results.css}" rel="stylesheet">
     <title>Company</title>
 </head>
 <body>
@@ -117,7 +118,9 @@
             </section>
         </article>
         <article class="company-bottom">
-            <!--TODO : fragment results-->
+            <div th:block  th:replace="fragments/fragments_results.html :: results (${materials}, ${fabricPatterns},
+    ${compositions}, ${origins}, ${companies}, ${prices}, ${certifications}, ${null}, ${products}, ${true}, *{name})">
+            </div>
         </article>
     </main>
 </body>
