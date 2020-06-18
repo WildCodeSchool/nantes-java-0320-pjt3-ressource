@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -85,7 +86,7 @@ public class ProductController {
             List<Origin> origins = originRepository.findAll();
             if (all) {
                 size = origins.size();
-                start = 4;
+                start = 0;
             } else {
                 size = 4;
                 start = 0;
@@ -96,7 +97,7 @@ public class ProductController {
             List<Fiber> fibers = fiberRepository.findAll();
             if (all) {
                 size = fibers.size();
-                start = 12;
+                start = 0;
             } else {
                 size = 12;
                 start = 0;
@@ -107,7 +108,7 @@ public class ProductController {
             List<Company> companies = companyRepository.findAll();
             if (all) {
                 size = companies.size();
-                start = 4;
+                start = 0;
             } else {
                 size = 4;
                 start = 0;
@@ -118,7 +119,7 @@ public class ProductController {
             List<Certification> certifications = certificationRepository.findAll();
             if (all) {
                 size = certifications.size();
-                start = 4;
+                start = 0;
             } else {
                 size = 4;
                 start = 0;
@@ -127,6 +128,51 @@ public class ProductController {
             model.addAttribute("name", "certification");
         }
         return "listsToSeeMore";
+    }
+
+    @GetMapping("/results/filter")
+    public String filter(Model model, @RequestParam(defaultValue = "", required = false) String material,
+                         @RequestParam(defaultValue = "", required = false) String fabric,
+                         @RequestParam(defaultValue = "", required = false) String fiber,
+                         @RequestParam(defaultValue = "", required = false) String country,
+                         @RequestParam(defaultValue = "", required = false) String supplier,
+                         @RequestParam(defaultValue = "", required = false) String price,
+                         @RequestParam(defaultValue = "", required = false) Integer sliderWeightMin,
+                         @RequestParam(defaultValue = "", required = false) Integer sliderWeightMax,
+                         @RequestParam(defaultValue = "", required = false) Integer sliderWidthMin,
+                         @RequestParam(defaultValue = "", required = false) Integer sliderWidthMax,
+                         @RequestParam(defaultValue = "", required = false) String certification) {
+
+        List<Long> productsId = productRepository.findAllIdWithFilter(fabric, country, material, supplier, certification,
+                                                    fiber, sliderWeightMin, sliderWeightMax, sliderWidthMin,
+                                                    sliderWidthMax, price);
+        Pageable PageFiber = PageRequest.of(0, 12);
+        Page<Fiber> FiberSub = fiberRepository.findAll(PageFiber);
+        List<Fiber> mainCompo = FiberSub.get().collect(Collectors.toList());
+
+        Pageable PageOrigin = PageRequest.of(0, 4);
+        Page<Origin> originSub = originRepository.findAll(PageOrigin);
+        List<Origin> origins = originSub.get().collect(Collectors.toList());
+
+        Pageable PageSupplier = PageRequest.of(0, 4);
+        Page<Company> supplierSub = companyRepository.findAll(PageSupplier);
+        List<Company> suppliers = supplierSub.get().collect(Collectors.toList());
+
+        Pageable PageCert = PageRequest.of(0, 3);
+        Page<Certification> certificationSub = certificationRepository.findAll(PageCert);
+        List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
+        String search = "";
+        model.addAttribute("search", search);
+        model.addAttribute("products", productRepository.findAllByIdIn(productsId));
+        model.addAttribute("certifications", certifications);
+        model.addAttribute("prices", priceRepository.findAll());
+        model.addAttribute("companies", suppliers);
+        model.addAttribute("origins", origins);
+        model.addAttribute("compositions", mainCompo);
+        model.addAttribute("materials", materialRepository.findAll());
+        model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
+
+        return "results";
     }
 
     @GetMapping("/product")
