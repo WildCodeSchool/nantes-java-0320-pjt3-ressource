@@ -58,9 +58,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             " LEFT JOIN composition compo ON compo.product_id = p.id" +
             " LEFT JOIN fiber ON compo.fiber_id = fiber.id" +
             " LEFT JOIN price ON price.id = p.price_id" +
-            " WHERE (fp.id IS NULL OR fp.id LIKE :fpId)" +
-            " AND (ori.id IS NULL OR ori.id LIKE :oriId)" +
-            " AND (mat.id IS NULL OR mat.id LIKE %:matId)" +
+            " WHERE (fp.id IS NULL OR fp.id LIKE %:fpId%)" +
+            " AND (ori.id IS NULL OR ori.id LIKE %:oriId%)" +
+            " AND (mat.id IS NULL OR mat.id LIKE %:matId%)" +
             " AND (sup.id IS NULL OR sup.id LIKE %:supId%)" +
             " AND (cert.id IS NULL OR cert.id LIKE %:certId%)" +
             " AND (fiber.id IS NULL OR fiber.id LIKE %:fiberId%)" +
@@ -71,8 +71,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Long> findAllIdWithFilter(@Param("fpId") String fpId, @Param("oriId") String oriId,
                                    @Param("matId") String matId, @Param("supId") String supId,
                                    @Param("certId") String certId, @Param("fiberId") String fiberId,
-                                   @Param("weightMin") Integer weightMin, @Param("weightMax") Integer weightMax,
-                                   @Param("widthMin") Integer widthMin, @Param("widthMax") Integer widthMax,
+                                   @Param("weightMin") String weightMin, @Param("weightMax") String weightMax,
+                                   @Param("widthMin") String widthMin, @Param("widthMax") String widthMax,
                                    @Param("priceId") String priceId);
 }
 

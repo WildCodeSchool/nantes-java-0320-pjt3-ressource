@@ -30,10 +30,10 @@
 
 <div class="filters-table results-filters-radio-mobile" id="filter-more-composition" th:if="${name == 'composition'}">
     <div class="results-filters-radio-table-compo" th:each="list : ${lists}">
-        <input class="results-filters-radio-input-compo" name="composition" th:id="${list.name}"
+        <input class="results-filters-radio-input-compo" name="fiber" th:id="${list.name}"
                th:value="${list.id}"
                type="radio">
-        <label class="results-filters-radio" th:for="${list.name}" th:text="${list.name}">Cotton</label>
+        <label class="results-filters-radio filter-table-item" th:for="${list.name}" th:text="${list.name}">Cotton</label>
     </div>
 </div>
 

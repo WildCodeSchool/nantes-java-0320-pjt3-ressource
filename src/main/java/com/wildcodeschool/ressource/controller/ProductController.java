@@ -86,7 +86,7 @@ public class ProductController {
             List<Origin> origins = originRepository.findAll();
             if (all) {
                 size = origins.size();
-                start = 0;
+                start = 4;
             } else {
                 size = 4;
                 start = 0;
@@ -97,7 +97,7 @@ public class ProductController {
             List<Fiber> fibers = fiberRepository.findAll();
             if (all) {
                 size = fibers.size();
-                start = 0;
+                start = 12;
             } else {
                 size = 12;
                 start = 0;
@@ -108,7 +108,7 @@ public class ProductController {
             List<Company> companies = companyRepository.findAll();
             if (all) {
                 size = companies.size();
-                start = 0;
+                start = 4;
             } else {
                 size = 4;
                 start = 0;
@@ -119,7 +119,7 @@ public class ProductController {
             List<Certification> certifications = certificationRepository.findAll();
             if (all) {
                 size = certifications.size();
-                start = 0;
+                start = 4;
             } else {
                 size = 4;
                 start = 0;
@@ -137,10 +137,10 @@ public class ProductController {
                          @RequestParam(defaultValue = "", required = false) String country,
                          @RequestParam(defaultValue = "", required = false) String supplier,
                          @RequestParam(defaultValue = "", required = false) String price,
-                         @RequestParam(defaultValue = "", required = false) Integer sliderWeightMin,
-                         @RequestParam(defaultValue = "", required = false) Integer sliderWeightMax,
-                         @RequestParam(defaultValue = "", required = false) Integer sliderWidthMin,
-                         @RequestParam(defaultValue = "", required = false) Integer sliderWidthMax,
+                         @RequestParam(defaultValue = "", required = false) String sliderWeightMin,
+                         @RequestParam(defaultValue = "", required = false) String sliderWeightMax,
+                         @RequestParam(defaultValue = "", required = false) String sliderWidthMin,
+                         @RequestParam(defaultValue = "", required = false) String sliderWidthMax,
                          @RequestParam(defaultValue = "", required = false) String certification) {
 
         List<Long> productsId = productRepository.findAllIdWithFilter(fabric, country, material, supplier, certification,
