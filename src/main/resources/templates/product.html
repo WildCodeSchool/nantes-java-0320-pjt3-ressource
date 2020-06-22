@@ -10,39 +10,47 @@
 <body>
 <header th:replace="fragments/header.html :: header"></header>
 <main class="product-body">
-    <p class="product-text-top">Home - Our trusted partners - Velcorex - Results - Country</p>
+    <div class="product-text-top">
+        <a href="/"><p>Home - </p></a>
+        <a href="/"><p> Our trusted partners - </p></a>
+        <a th:href="@{/company?id={id}(id = ${product.company.id})}"><p th:text="|${product.company.name} - |"> Velcorex - </p></a>
+        <a href="/results"><p> Results - </p></a>
+        <a th:href="@{/product?reference={id}(id=${product.id})}"><p th:text="${product.reference}"> Country</p></a>
+    </div>
     <section class="product-section-top">
         <div class="product-container-top">
             <div class="product-slideshow-container">
                 <div class="mySlides">
-                    <img src="image/products/Acetate.jpg">
+                    <img th:src="@{image/product_images/{product}(product= ${product.imageProducts.get(0).image})}">
                 </div>
-
-                <div class="mySlides">
-                    <img src="image/products/Cupro.jpg">
-                </div>
-
-                <div class="mySlides">
-                    <img src="image/products/Lyocell.jpg">
-                </div>
-                <div class="mySlides">
-                    <img src="image/product_images/Norgate.JPG">
-                </div>
+                <!--
                 <a class="product-prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="product-next" onclick="plusSlides(1)">&#10095;</a>
+                -->
             </div>
             <div class="product-description">
-                <a href="/company"><img
-                        src="https://via.placeholder.com/160x100.png?text=LOGO+Velcorex"></a>
-                <p class="product-title">COUNTRY</p>
-                <p><b>Corduroy / Soft handfeel / Millwashed <br>Draping / Natural stretch</b></p>
-                <p><b><u>Composition:</u></b> 100% cotton</p>
-                <p><b><u>Usable width:</u></b> 138 centimerters</p>
-                <p><b><u>Weight:</u></b> 480 grams</p>
-                <p><b><u>Price range:</u></b> 13 to 15,99€</p>
-                <p><b><u>Certifications </u></b></p>
-                <a href="https://placeholder.com"><img
-                        src="https://via.placeholder.com/150x50.png?text=LOGO+Certification"></a>
+                <a th:href="@{/company?id={id}(id = ${product.company.id})}"><img
+                        th:src="@{image/logo_company/{company}(company= ${product.company.getLogo()})}"></a>
+                <h5 th:text="${product.reference}">COUNTRY</h5>
+                <p><span th:text="${product.feature.fabric.fabric}"></span> /
+                    <span th:text="${product.feature.handFeel.handFeel}"></span> /
+                    <span th:text="${product.feature.finishing.finishing}"></span> / <br>
+                    <span th:text="${product.feature.look.look}"></span> /
+                    <span th:each="property : ${product.feature.technicalProperties}"
+                          th:text="${property.technicalProperty}">Natural stretch</span>
+                <p><b><u>Composition: </u></b> <span th:each="composition : ${product.compositions}">
+                        <span th:text="|${composition.pourcentage} % |"></span>
+                        <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                </span></p>
+                <p><b><u>Usable width: </u></b><span
+                        th:text="|${product.width} centimeters|"> 138 centimeters</span></p>
+                <p><b><u>Weight: </u></b> <span th:text="|${product.weight} grams / sqm |"></span></p>
+                <p><b><u>Price range: </u></b><span th:text="|${product.price.price} € |"> 13 to 15,99€</span></p>
+                <p><b><u>Certifications: </u></b></p>
+                <div class="product-logo-certif">
+                    <span th:each="certification : ${product.certifications}">
+                    <img th:src="@{image/logo_certification/{image}(image= ${certification.image})}"></span>
+                </div>
                 <a href="#">Download the complete technical sheet</a>
             </div>
         </div>
@@ -66,10 +74,12 @@
         <p class="product-text-after-title">These propositions are not the results of an algorithm and these fabrics
             were carefully selected by our team</p>
         <div class="product-carousel-bot">
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
+            <div class="card-product" th:each="product :${product.products}">
+                <h4 class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX SINCE 1828</h4>
                 <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
+                    <a th:href="@{/product?reference={id}(id=${product.id})}"><img
+                            th:alt="${product.imageProducts.get(0).image}"
+                            th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -77,245 +87,28 @@
                 </div>
                 <div class="card-product-info">
                     <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
+                        <p class="card-product-info-name" th:text="${product.reference}">Norgate</p>
                         <div class="card-product-image-rs">
                             <a><i class="fas fa-heart"></i></a>
                             <a><i class="fas fa-suitcase"></i></a>
                         </div>
                     </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
+                    <p class="card-product-info-descr"><span th:text="${product.feature.fabric.fabric}"></span> /
+                        <span th:text="${product.feature.handFeel.handFeel}"></span> /
+                        <span th:text="${product.feature.finishing.finishing}"></span> /
+                        <span th:text="${product.feature.look.look}"></span> /
+                        <span th:each="property : ${product.feature.technicalProperties}"
+                              th:text="${property.technicalProperty}">Natural stretch</span>
                     </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
+                    <p class="card-product-info-compo">
+                            <span th:each="composition : ${product.compositions}">
+                                <span th:text="|${composition.pourcentage} % |"></span>
+                                <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                            </span>
+                    </p>
                 </div>
             </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
-            <div class="card-product">
-                <h4 class="card-product-info-supplier">VELCOREX SINCE 1828</h4>
-                <div class="card-product-image">
-                    <a href="/product"><img alt="Norgate" src="/image/product_images/Norgate.JPG"></a>
-                    <div class="card-product-image-hover">
-                        <a><i class="fas fa-heart"></i></a>
-                        <a><i class="fas fa-suitcase"></i></a>
-                    </div>
-                </div>
-                <div class="card-product-info">
-                    <div class="card-product-mobile-rs">
-                        <p class="card-product-info-name">Norgate</p>
-                        <div class="card-product-image-rs">
-                            <a><i class="fas fa-heart"></i></a>
-                            <a><i class="fas fa-suitcase"></i></a>
-                        </div>
-                    </div>
-                    <p class="card-product-info-descr"><span>Corduroy</span> / <span>Soft handfeel</span> /
-                        <span>Millwashed</span>
-                        /
-                        <span>Draping</span> / <span>Natural stretch</span>
-                    </p>
-                    <p class="card-product-info-compo">98% cotton 2% Elasthanne</p>
-                </div>
-            </div>
+
         </div>
         <div class="arrow_prev_like">
             <span><i class="fas fa-chevron-left"></i></span>

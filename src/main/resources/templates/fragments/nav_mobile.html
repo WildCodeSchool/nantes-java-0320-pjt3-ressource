@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="nav">
+<div class="results-menu-nav" id="results-menu-nav">
+    <div>
+        <a href="/"><i class="fas fa-home"></i></a>
+        <p>Home</p>
+    </div>
+    <div>
+        <a id="search-icon-nav"><i class="fas fa-search"></i></a>
+        <p>Search</p>
+    </div>
+    <div>
+        <a><i class="fas fa-heart"></i></a>
+        <p>Wishlist</p>
+    </div>
+    <div>
+        <a><i class="fas fa-suitcase"></i></a>
+        <p>Meetings</p>
+    </div>
+</div>
+<div class="results-menu-nav" id="results-nav-search">
+    <a class="menu-nav-arrow-left" id="menu-nav-arrow-left"><i class="fas fa-arrow-left"></i></a>
+    <form action="/results" class="header-search" method="get">
+        <input class="header-search-bar" id="header-search-bar" name="search" placeholder="Modify you research"
+               type="text">
+        <button><i class="fas fa-search"></i></button>
+    </form>
+</div>
+</body>
+</html>
