@@ -1,9 +1,8 @@
 @import url('style.css');
 @import url('admin_sidebar.css');
 
-/* SIDE BAR */
 
-h2 {
+.admin-admin h2 {
     font-weight: 300;
 }
 
@@ -28,5 +27,5 @@ h2 {
 }
 
 .admin-table-management i {
-    color: #70ad47;
+    color: var(--color-bkg-button);
 }
