@@ -1,0 +1,31 @@
+@import url('style.css');
+@import url('admin_sidebar.css');
+
+
+.admin-admin h2 {
+    font-weight: 300;
+}
+
+.admin-btn-new {
+    background-color: white;
+    color: var(--color-bkg-button);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.admin-btn-new i {
+    color: var(--color-bkg-button);
+}
+
+.admin-btn-new:hover {
+    background-color: var(--color-bkg-button);
+    color: white;
+}
+
+.admin-btn-new:hover > i {
+    color: white;
+}
+
+.admin-table-management i {
+    color: var(--color-bkg-button);
+}
