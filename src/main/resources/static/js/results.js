@@ -59,33 +59,38 @@ function hideShow() {
 }
 
 /* color of the label when radio button clicked */
-let radiosPrice = $('.results-filters-radio-input-price');
-let divRadiosPrice = $('.results-filters-radio-table-price');
-clicking(radiosPrice, divRadiosPrice);
 
-let radiosCompo = $('.results-filters-radio-input-compo');
-let divRadiosCompo = $('.results-filters-radio-table-compo');
-clicking(radiosCompo, divRadiosCompo);
+initClicking();
 
-let radiosFabric = $('.results-filters-radio-input-fabric');
-let divRadiosFabric = $('.results-filters-radio-table-fabric');
-clicking(radiosFabric, divRadiosFabric);
+function initClicking() {
+    let radiosPrice = $('.results-filters-radio-input-price');
+    let divRadiosPrice = $('.results-filters-radio-table-price');
 
-let radiosMaterial = $('.results-filters-radio-input-material');
-let divRadiosMaterial = $('.results-filters-radio-table-material');
-clicking(radiosMaterial, divRadiosMaterial);
+    let radiosCompo = $('.results-filters-radio-input-compo');
+    let divRadiosCompo = $('.results-filters-radio-table-compo');
 
-let radiosOrigin = $('.results-filters-radio-input-origin');
-let divRadiosOrigin = $('.results-filters-radio-table-origin');
-clicking(radiosOrigin, divRadiosOrigin);
+    let radiosFabric = $('.results-filters-radio-input-fabric');
+    let divRadiosFabric = $('.results-filters-radio-table-fabric');
 
-let radiosSupplier = $('.results-filters-radio-input-supplier');
-let divRadiosSupplier = $('.results-filters-radio-table-supplier');
-clicking(radiosSupplier, divRadiosSupplier);
+    let radiosMaterial = $('.results-filters-radio-input-material');
+    let divRadiosMaterial = $('.results-filters-radio-table-material');
 
-let radiosCert = $('.results-filters-radio-input-cert');
-let divRadiosCert = $('.results-filters-radio-table-cert');
-clicking(radiosCert, divRadiosCert);
+    let radiosOrigin = $('.results-filters-radio-input-origin');
+    let divRadiosOrigin = $('.results-filters-radio-table-origin');
+
+    let radiosSupplier = $('.results-filters-radio-input-supplier');
+    let divRadiosSupplier = $('.results-filters-radio-table-supplier');
+
+    let radiosCert = $('.results-filters-radio-input-cert');
+    let divRadiosCert = $('.results-filters-radio-table-cert');
+    clicking(radiosCompo, divRadiosCompo);
+    clicking(radiosPrice, divRadiosPrice);
+    clicking(radiosFabric, divRadiosFabric);
+    clicking(radiosMaterial, divRadiosMaterial);
+    clicking(radiosOrigin, divRadiosOrigin);
+    clicking(radiosSupplier, divRadiosSupplier);
+    clicking(radiosCert, divRadiosCert);
+}
 
 function clicking(radios, divRadios) {
     radios.click(function () {
@@ -140,9 +145,11 @@ Array.prototype.forEach.call(clickHere, link => {
             let result = document.getElementById(idName);
             let divs = html.getElementsByClassName(className);
             for(let i = 0; i < divs.length; i++) {
-                result.append(divs[i]);
+                result.append(divs[i].cloneNode(true));
             }
+            initClicking();
         });
+
         this.style.display = 'none';
         less.style.display = 'initial';
     }
@@ -184,6 +191,7 @@ Array.prototype.forEach.call(clickHereLess, link => {
             let result = document.getElementById(idName);
             let divs = html.getElementById(idChanged);
             result.innerHTML = divs.innerHTML;
+            initClicking();
         });
         this.style.display = 'none';
         let more = document.getElementById(filter);
