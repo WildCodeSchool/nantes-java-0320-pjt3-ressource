@@ -47,32 +47,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             nativeQuery = true)
     List<Long> findAllIdBySearching(@Param("search") String search);
 
-
-    @Query(value = "SELECT DISTINCT p.id FROM product p" +
-            " LEFT JOIN fabric_pattern fp ON p.fabric_pattern_id = fp.id" +
-            " LEFT JOIN material mat ON p.material_id = mat.id" +
-            " LEFT JOIN origin ori ON p.origin_id = ori.id" +
-            " LEFT JOIN company sup ON p.company_id = sup.id" +
-            " LEFT JOIN product_certification pcert ON p.id = pcert.product_id" +
-            " LEFT JOIN certification cert ON cert.id = pcert.certification_id" +
-            " LEFT JOIN composition compo ON compo.product_id = p.id" +
-            " LEFT JOIN fiber ON compo.fiber_id = fiber.id" +
-            " LEFT JOIN price ON price.id = p.price_id" +
-            " WHERE (fp.id IS NULL OR fp.id LIKE %:fpId%)" +
-            " AND (ori.id IS NULL OR ori.id LIKE %:oriId%)" +
-            " AND (mat.id IS NULL OR mat.id LIKE %:matId%)" +
-            " AND (sup.id IS NULL OR sup.id LIKE %:supId%)" +
-            " AND (cert.id IS NULL OR cert.id LIKE %:certId%)" +
-            " AND (fiber.id IS NULL OR fiber.id LIKE %:fiberId%)" +
-            " AND (price.id IS NULL OR price.id LIKE %:priceId%)" +
-            " AND (p.weight IS NULL OR p.weight BETWEEN :weightMin AND :weightMax)" +
-            " AND (p.width IS NULL OR p.width BETWEEN :widthMin AND :widthMax)",
-            nativeQuery = true)
-    List<Long> findAllIdWithFilter(@Param("fpId") String fpId, @Param("oriId") String oriId,
-                                   @Param("matId") String matId, @Param("supId") String supId,
-                                   @Param("certId") String certId, @Param("fiberId") String fiberId,
-                                   @Param("weightMin") String weightMin, @Param("weightMax") String weightMax,
-                                   @Param("widthMin") String widthMin, @Param("widthMax") String widthMax,
-                                   @Param("priceId") String priceId);
 }
 

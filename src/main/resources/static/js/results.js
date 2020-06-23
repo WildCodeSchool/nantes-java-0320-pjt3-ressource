@@ -18,7 +18,7 @@ for (let i = 0; i < sliders.length; i++) {
     }
 
     sliders[i].oninput = function () {
-        if ((this.value >=75  && this.value <= 137 && this.id === "slider-weight")) {
+        if ((this.value >= 75 && this.value <= 137 && this.id === "slider-weight")) {
             tag_width_1.innerHTML = this.value;
         } else if ((this.value >= 138 && this.value <= 200) && this.id === "slider-weight-2") {
             tag_width_2.innerHTML = this.value;
@@ -144,7 +144,7 @@ Array.prototype.forEach.call(clickHere, link => {
             let html = parser.parseFromString(content, 'text/html');
             let result = document.getElementById(idName);
             let divs = html.getElementsByClassName(className);
-            for(let i = 0; i < divs.length; i++) {
+            for (let i = 0; i < divs.length; i++) {
                 result.append(divs[i].cloneNode(true));
             }
             initClicking();
