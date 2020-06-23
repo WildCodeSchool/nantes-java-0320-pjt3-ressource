@@ -18,13 +18,13 @@ for (let i = 0; i < sliders.length; i++) {
     }
 
     sliders[i].oninput = function () {
-        if ((this.value >= 30 && this.value <= 235 && this.id === "slider-weight")) {
+        if ((this.value >= 75 && this.value <= 137 && this.id === "slider-weight")) {
             tag_width_1.innerHTML = this.value;
-        } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-weight-2") {
+        } else if ((this.value >= 138 && this.value <= 200) && this.id === "slider-weight-2") {
             tag_width_2.innerHTML = this.value;
-        } else if ((this.value >= 75 && this.value <= 137) && this.id === "slider-width") {
+        } else if ((this.value >= 30 && this.value <= 235) && this.id === "slider-width") {
             tag_weight_1.innerHTML = this.value;
-        } else if ((this.value >= 138 && this.value <= 200) && this.id === "slider-width-2") {
+        } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-width-2") {
             tag_weight_2.innerHTML = this.value;
         }
     }
@@ -59,33 +59,38 @@ function hideShow() {
 }
 
 /* color of the label when radio button clicked */
-let radiosPrice = $('.results-filters-radio-input-price');
-let divRadiosPrice = $('.results-filters-radio-table-price');
-clicking(radiosPrice, divRadiosPrice);
 
-let radiosCompo = $('.results-filters-radio-input-compo');
-let divRadiosCompo = $('.results-filters-radio-table-compo');
-clicking(radiosCompo, divRadiosCompo);
+initClicking();
 
-let radiosFabric = $('.results-filters-radio-input-fabric');
-let divRadiosFabric = $('.results-filters-radio-table-fabric');
-clicking(radiosFabric, divRadiosFabric);
+function initClicking() {
+    let radiosPrice = $('.results-filters-radio-input-price');
+    let divRadiosPrice = $('.results-filters-radio-table-price');
 
-let radiosMaterial = $('.results-filters-radio-input-material');
-let divRadiosMaterial = $('.results-filters-radio-table-material');
-clicking(radiosMaterial, divRadiosMaterial);
+    let radiosCompo = $('.results-filters-radio-input-compo');
+    let divRadiosCompo = $('.results-filters-radio-table-compo');
 
-let radiosOrigin = $('.results-filters-radio-input-origin');
-let divRadiosOrigin = $('.results-filters-radio-table-origin');
-clicking(radiosOrigin, divRadiosOrigin);
+    let radiosFabric = $('.results-filters-radio-input-fabric');
+    let divRadiosFabric = $('.results-filters-radio-table-fabric');
 
-let radiosSupplier = $('.results-filters-radio-input-supplier');
-let divRadiosSupplier = $('.results-filters-radio-table-supplier');
-clicking(radiosSupplier, divRadiosSupplier);
+    let radiosMaterial = $('.results-filters-radio-input-material');
+    let divRadiosMaterial = $('.results-filters-radio-table-material');
 
-let radiosCert = $('.results-filters-radio-input-cert');
-let divRadiosCert = $('.results-filters-radio-table-cert');
-clicking(radiosCert, divRadiosCert);
+    let radiosOrigin = $('.results-filters-radio-input-origin');
+    let divRadiosOrigin = $('.results-filters-radio-table-origin');
+
+    let radiosSupplier = $('.results-filters-radio-input-supplier');
+    let divRadiosSupplier = $('.results-filters-radio-table-supplier');
+
+    let radiosCert = $('.results-filters-radio-input-cert');
+    let divRadiosCert = $('.results-filters-radio-table-cert');
+    clicking(radiosCompo, divRadiosCompo);
+    clicking(radiosPrice, divRadiosPrice);
+    clicking(radiosFabric, divRadiosFabric);
+    clicking(radiosMaterial, divRadiosMaterial);
+    clicking(radiosOrigin, divRadiosOrigin);
+    clicking(radiosSupplier, divRadiosSupplier);
+    clicking(radiosCert, divRadiosCert);
+}
 
 function clicking(radios, divRadios) {
     radios.click(function () {
@@ -131,21 +136,20 @@ Array.prototype.forEach.call(clickHere, link => {
             className = 'results-filters-radio-table-cert';
             less = document.getElementById('less-certification');
         }
-        fetch('/results/more/' + this.id + '/' + all)
+        fetch('/results/more/' + link.id + '/' + all)
             .then(function (response) {
                 return response.text()
             }).then(function (content) {
             let parser = new DOMParser();
             let html = parser.parseFromString(content, 'text/html');
-            let result;
-            let divs;
-            result = document.getElementById(idName);
-            divs = html.getElementsByClassName(className);
-            Array.prototype.forEach.call(divs, div => {
-                result.append(div);
-            });
-
+            let result = document.getElementById(idName);
+            let divs = html.getElementsByClassName(className);
+            for (let i = 0; i < divs.length; i++) {
+                result.append(divs[i].cloneNode(true));
+            }
+            initClicking();
         });
+
         this.style.display = 'none';
         less.style.display = 'initial';
     }
@@ -187,6 +191,7 @@ Array.prototype.forEach.call(clickHereLess, link => {
             let result = document.getElementById(idName);
             let divs = html.getElementById(idChanged);
             result.innerHTML = divs.innerHTML;
+            initClicking();
         });
         this.style.display = 'none';
         let more = document.getElementById(filter);

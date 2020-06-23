@@ -46,5 +46,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             " OR (tp.technicalProperty IS NOT NULL AND tp.technicalProperty LIKE %:search%)",
             nativeQuery = true)
     List<Long> findAllIdBySearching(@Param("search") String search);
+
 }
 

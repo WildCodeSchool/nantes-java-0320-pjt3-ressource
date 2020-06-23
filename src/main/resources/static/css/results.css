@@ -333,6 +333,25 @@ select:-moz-focusring {
     font-size: 2.3rem;
 }
 
+.filters-submit {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:6rem;
+}
+
+.filters-submit button {
+    width: 20%;
+    background-color: var(--color-bkg-button);
+    border: none;
+    color: var(--color-font-light);
+    font-size: 1rem;
+    padding: 0.4rem 0;
+    margin-top:2rem;
+
+}
+
 /* ----------------------------MOBILE VERSION--------------------------- */
 
 @media only screen and (max-width: 767px) {
@@ -539,10 +558,6 @@ select:-moz-focusring {
             border: none
         }
 
-    }
-
-    .filters-certifications {
-        margin-bottom: 3rem;
     }
 
     .results-filters-radio-table-material.clicked,
