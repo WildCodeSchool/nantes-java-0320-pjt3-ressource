@@ -1,0 +1,28 @@
+@import url('style.css');
+
+.admin-login-title{
+    color: var(--color-bkg-button);
+}
+
+.admin-login-title h2 {
+    font-family: var(--font-logo-bold);
+}
+
+.admin-login-title h2 span {
+    font-family: var(--font-logo-thin);
+}
+
+.btn {
+    background-color: var(--color-bkg-button);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+    color: var(--color-bkg-button);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid var(--color-bkg-button);
+    box-shadow: 0 1px 0 0 var(--color-bkg-button);
+}

@@ -51,10 +51,13 @@
     margin-bottom: 2rem;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly]), .select-wrapper input.select-dropdown:focus {
+input[type=text]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus,
+input[type=password]:not(.browser-default):focus:not([readonly]){
     border-bottom: 1px solid var(--color-bkg-button);
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly])+label {
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
     color: var(--color-bkg-button);
 }
