@@ -11,4 +11,9 @@ public class AdminController {
     public String adminAdmin() {
         return "admin_admin";
     }
+
+    @GetMapping("/admin/companies")
+    public String adminCompanies() {
+        return "admin-companies";
+    }
 }
