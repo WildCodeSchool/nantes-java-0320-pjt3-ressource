@@ -9,7 +9,7 @@
      th:fragment="results (materials, fabricPatterns, compositions, origins, companies, prices,
                            certifications, search, products, iscompany, companyName)">
     <form action="/results/filter" class="results-filters" id="results-filters" method="get">
-        <input name="search" th:value="${search}" type="hidden">
+        <input name="search" th:value="${search}" type="hidden" id="search">
         <div class="filters filters-material">
             <h4 class="filters-title">Material</h4>
             <div class="results-filters-radio-mobile">
@@ -160,7 +160,7 @@
             </form>
         </div>
 
-        <div class="results-products">
+        <div class="results-products" id="results-products">
             <div class="card-product" th:each="product : ${products}">
                 <a href="/company" th:href="@{/company(id = ${product.company.id})}"><h4
                         class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX

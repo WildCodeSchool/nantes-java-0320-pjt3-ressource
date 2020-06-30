@@ -92,14 +92,37 @@ function initClicking() {
     clicking(radiosCert, divRadiosCert);
 }
 
+let radiosClicked = {};
+
 function clicking(radios, divRadios) {
     radios.click(function () {
         divRadios.removeClass("clicked");
         $(this).filter(':checked').closest(divRadios).addClass("clicked");
+        radiosClicked[this.name] = this.value;
+        radioFilter();
     });
 }
 
-/* FILTERS OPEN */
+function radioFilter() {
+    //TODO ADD range values
+    let searchValue = document.getElementById("search");
+    let params ="search=" + searchValue.value + "&";
+    for(let radio in radiosClicked){
+        params += radio + "=" + radiosClicked[radio] + "&";
+    }
+    fetch('/results/filter?' + params)
+        .then(function (response) {
+            return response.text()
+        }).then(function (content) {
+        let parser = new DOMParser();
+        let html = parser.parseFromString(content, 'text/html');
+        let result = document.getElementById('results-products');
+        result.innerHTML = html.getElementById('results-products').innerHTML;
+    })
+}
+
+
+/* FILTERS OPEN  MOBILE*/
 let filter = document.getElementById("mobile-filter");
 let resultFilter = document.getElementById("results-filters");
 let resultsResults = document.getElementById("results-results");
@@ -198,3 +221,4 @@ Array.prototype.forEach.call(clickHereLess, link => {
         more.style.display = 'initial';
     }
 });
+
