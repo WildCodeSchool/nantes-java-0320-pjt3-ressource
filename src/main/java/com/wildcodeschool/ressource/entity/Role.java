@@ -14,4 +14,31 @@ public class Role {
 
     @OneToMany(mappedBy = "role")
     private List<Admin> admin;
+
+    public Role() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Admin> getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(List<Admin> admin) {
+        this.admin = admin;
+    }
 }
