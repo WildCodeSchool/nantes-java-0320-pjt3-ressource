@@ -29,3 +29,41 @@
 .admin-table-management i {
     color: var(--color-bkg-button);
 }
+
+.btn-create {
+    background-color: var(--color-bkg-button);
+}
+.btn-create:hover {
+    background-color: var(--color-bkg-button);
+}
+
+.dropdown-content li > span {
+    color: var(--color-bkg-button);
+}
+
+
+.modal form label {
+    font-size: 1.2rem;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #e6e4e6;
+}
+
+.modal-content h4 {
+    margin-bottom: 2rem;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus,
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid var(--color-bkg-button);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label{
+    color: var(--color-bkg-button);
+}
+

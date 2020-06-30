@@ -1,0 +1,47 @@
+@import url('admin_sidebar.css');
+
+h1{
+    font-family: var(--font-title);
+}
+
+.admin-product{
+    margin-right: 3rem;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #E8E4E4;
+}
+
+.dropdown-content li > span {
+    color: var(--color-bkg-button);
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid var(--color-bkg-button) !important;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: var(--color-bkg-button);
+}
+
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid var(--color-bkg-button);
+}
+
+input[type=number]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid var(--color-bkg-button);
+    box-shadow: 0 1px 0 0 var(--color-bkg-button);
+}
+
+input[type=number]:not(.browser-default):focus:not([readonly])+label{
+    color: var(--color-bkg-button);
+}
+
+[type="checkbox"]:checked+span:not(.lever):before {
+    border-right: 2px solid var(--color-bkg-button);
+    border-bottom: 2px solid var(--color-bkg-button);
+}
+
+.btn{
+    background-color: var(--color-bkg-button);
+}
