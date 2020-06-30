@@ -12,7 +12,6 @@ public class AdminController {
         return "admin_admin";
     }
 
-
     @GetMapping("/admin/product")
     public String adminProduct() {
         return "productAdmin";
