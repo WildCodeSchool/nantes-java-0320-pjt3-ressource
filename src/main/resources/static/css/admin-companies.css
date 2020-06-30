@@ -1,0 +1,100 @@
+@import "admin_sidebar.css";
+@import url('style.css');
+
+.admin-company {
+    box-sizing: border-box;
+    padding-left: 300px;
+}
+
+.admin-company input, .admin-company label {
+    font-size: 0.8rem !important;
+}
+
+.prefix {
+    border-radius: 10px;
+}
+
+.form-admin-company legend div{
+    border-radius: 10px;
+    font-size: 2rem;
+    width: 50px;
+}
+
+.admin-company-legend-select {
+    width: auto !important;
+    padding: 0 1rem !important;
+}
+
+.input-field .prefix {
+    border-radius: 10px;
+    font-size: 2rem;
+    width: 50px;
+}
+
+.fieldset-green {
+    border-radius: 10px;
+    border-color: #70ad47;
+}
+
+.fieldset-gray {
+    border-radius: 10px;
+    border-color: lightgray;
+}
+
+.form-admin-company > .row {
+    margin: 1rem 0;
+}
+
+.admin-company fieldset {
+    padding: 0;
+}
+
+.img-company-fixed {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.img-company-fixed img {
+    width: 100%;
+}
+
+/* label color */
+.admin-company .input-field label {
+    color: #000 !important;
+}
+
+/* label color */
+.admin-company .file-path::placeholder {
+    color: #000 !important;
+}
+
+/* label focus color */
+.admin-company .input-field input[type=text]:focus + label {
+    color: #70ad47 !important;
+}
+
+/* label focus color */
+.admin-company .input-field textarea:focus + label {
+    color: #70ad47 !important;
+}
+
+/* label underline focus color */
+.admin-company .input-field input[type=text]:focus {
+    border-bottom: 1px solid #70ad47 !important;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+/* label underline focus color */
+.admin-company .input-field textarea:focus {
+    border-bottom: 1px solid #70ad47 !important;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.admin-company .dropdown-content li>a, .dropdown-content li>span {
+    color: #70ad47 !important;
+}
+
+.admin-company .select-dropdown li.disabled, .select-dropdown li.disabled>span, .select-dropdown li.optgroup {
+    color: #000 !important;
+}
