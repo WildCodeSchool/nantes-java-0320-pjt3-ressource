@@ -6,6 +6,11 @@
     padding-left: 300px;
 }
 
+#legend-select-companies {
+    width: max-content;
+    padding: 0 1rem;
+}
+
 .admin-company input, .admin-company label {
     font-size: 0.8rem !important;
 }
@@ -56,7 +61,7 @@
 }
 
 .img-company-fixed img {
-    width: 100%;
+    width: 95%;
 }
 
 /* label color */
