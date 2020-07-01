@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link rel="stylesheet" th:href="@{/css/admin_admin.css}" type="text/css">
+</head>
+
+<body>
+<header th:replace="fragments/admin_header.html :: admin-header"></header>
+<main class="admin-admin">
+    <h2>Admin Management</h2>
+    <button class="admin-btn-new waves-effect waves-light btn-large modal-trigger" data-target="modal1" href="#modal1">
+        <i class="material-icons left">add</i>Add New Admin
+    </button>
+
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <div class="col s12">
+                <h4>ADD NEW ADMIN</h4>
+            </div>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input class="validate" id="user_name" name="username" type="text">
+                        <label for="user_name">Username</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="roles" name="role">
+                            <option disabled selected value="">Choose a role</option>
+                            <option value="1">ALL</option>
+                            <option value="2">MODIFY PAGES</option>
+                            <option value="3">PRODUCTS</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input class="validate" id="email" name="email" type="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="validate" id="password" name="password" type="password">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input class="validate" id="confirm_password" name="passwordConfirm"
+                               type="password">
+                        <label for="confirm_password">Confirm Password</label>
+                    </div>
+                    <button class="btn-create col s2 offset-s10 modal-close waves-effect waves-green btn">Create
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <table class="striped admin-table-management">
+        <thead>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>alvin@gmail.com</td>
+            <td>ALL</td>
+            <td>
+                <a href="#"><i class="material-icons">edit</i></a>
+                <a href="#"><i class="material-icons">delete</i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>freelance@gmail.com</td>
+            <td>Products</td>
+            <td>
+                <a href="#"><i class="material-icons">edit</i></a>
+                <a href="#"><i class="material-icons">delete</i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<!--JavaScript at end of body for optimized loading-->
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/admin_admin.js" type="text/JavaScript"></script>
+</body>
+
+</html>

@@ -1,7 +1,6 @@
 package com.wildcodeschool.ressource.entity;
 
 import com.sun.istack.NotNull;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class Product {
     private FabricPattern fabricPattern;
 
     @OneToMany(mappedBy = "product")
-    private List<Composition> compositions;
+    private List<Composition> compositions = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "feature_id")
@@ -92,15 +91,15 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "product_id_linked"))
     private List<Product> products = new ArrayList<>();
 
+    public Product() {
+    }
+
     public List<Product> getProducts() {
         return products;
     }
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
-
-    public Product() {
     }
 
     public Long getId() {

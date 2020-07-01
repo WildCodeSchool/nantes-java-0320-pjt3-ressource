@@ -19,7 +19,7 @@ public class Company {
     private String companyMap;
     private String address;
 
-    private Date creationDate;
+    private String creationDate;
     private String knowhow;
     private String employeesNumber;
     private String industrialPark;
@@ -106,11 +106,11 @@ public class Company {
         this.address = address;
     }
 
-    public Date getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 

@@ -5,6 +5,7 @@ let tag_weight_1 = document.getElementById("slider-weight-tag-1");
 let tag_weight_2 = document.getElementById("slider-weight-tag-2");
 let sliders = document.getElementsByClassName('slider');
 
+let radiosClicked = {};
 for (let i = 0; i < sliders.length; i++) {
 
     if (sliders[i].id === "slider-weight") {
@@ -18,92 +19,95 @@ for (let i = 0; i < sliders.length; i++) {
     }
 
     sliders[i].oninput = function () {
-        if ((this.value >= 30 && this.value <= 235 && this.id === "slider-weight")) {
+        if ((this.value >= 75 && this.value <= 137 && this.id === "slider-weight")) {
             tag_width_1.innerHTML = this.value;
-        } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-weight-2") {
+        } else if ((this.value >= 138 && this.value <= 200) && this.id === "slider-weight-2") {
             tag_width_2.innerHTML = this.value;
-        } else if ((this.value >= 75 && this.value <= 137) && this.id === "slider-width") {
+        } else if ((this.value >= 30 && this.value <= 235) && this.id === "slider-width") {
             tag_weight_1.innerHTML = this.value;
-        } else if ((this.value >= 138 && this.value <= 200) && this.id === "slider-width-2") {
+        } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-width-2") {
             tag_weight_2.innerHTML = this.value;
         }
-    }
+    };
+
+    sliders[i].addEventListener('mouseup', function () {
+        filters(this);
+    });
+
+    sliders[i].addEventListener('touchend', function () {
+        filters(this);
+    })
 }
 
-// Sticky nav bar
-$(window).on("scroll", function () {
-    if ($(window).scrollTop()) {
-        $('.results-header-mobile').addClass('sticky');
-    } else {
-        $('.results-header-mobile').removeClass('sticky');
-    }
-});
-
-/* SEARCH MODIFY ON MOBILE */
-let search = document.getElementById("search-icon-nav");
-let navMenu = document.getElementById("results-menu-nav");
-let navSearch = document.getElementById("results-nav-search");
-let menuBack = document.getElementById("menu-nav-arrow-left");
-
-search.onclick = function () {
-    hideShow();
-};
-
-menuBack.onclick = function () {
-    hideShow();
-};
-
-function hideShow() {
-    navMenu.classList.toggle('hide');
-    navSearch.classList.toggle('show');
+/* FUNCTION TO INSERT EACH RADIO ON THE DICTIONARY */
+function filters(radio) {
+    radiosClicked[radio.name] = radio.value;
+    radioFilter();
 }
+
 
 /* color of the label when radio button clicked */
-let radiosPrice = $('.results-filters-radio-input-price');
-let divRadiosPrice = $('.results-filters-radio-table-price');
-clicking(radiosPrice, divRadiosPrice);
 
-let radiosCompo = $('.results-filters-radio-input-compo');
-let divRadiosCompo = $('.results-filters-radio-table-compo');
-clicking(radiosCompo, divRadiosCompo);
+initClicking();
 
-let radiosFabric = $('.results-filters-radio-input-fabric');
-let divRadiosFabric = $('.results-filters-radio-table-fabric');
-clicking(radiosFabric, divRadiosFabric);
+function initClicking() {
+    let radiosPrice = $('.results-filters-radio-input-price');
+    let divRadiosPrice = $('.results-filters-radio-table-price');
 
-let radiosMaterial = $('.results-filters-radio-input-material');
-let divRadiosMaterial = $('.results-filters-radio-table-material');
-clicking(radiosMaterial, divRadiosMaterial);
+    let radiosCompo = $('.results-filters-radio-input-compo');
+    let divRadiosCompo = $('.results-filters-radio-table-compo');
 
-let radiosOrigin = $('.results-filters-radio-input-origin');
-let divRadiosOrigin = $('.results-filters-radio-table-origin');
-clicking(radiosOrigin, divRadiosOrigin);
+    let radiosFabric = $('.results-filters-radio-input-fabric');
+    let divRadiosFabric = $('.results-filters-radio-table-fabric');
 
-let radiosSupplier = $('.results-filters-radio-input-supplier');
-let divRadiosSupplier = $('.results-filters-radio-table-supplier');
-clicking(radiosSupplier, divRadiosSupplier);
+    let radiosMaterial = $('.results-filters-radio-input-material');
+    let divRadiosMaterial = $('.results-filters-radio-table-material');
 
-let radiosCert = $('.results-filters-radio-input-cert');
-let divRadiosCert = $('.results-filters-radio-table-cert');
-clicking(radiosCert, divRadiosCert);
+    let radiosOrigin = $('.results-filters-radio-input-origin');
+    let divRadiosOrigin = $('.results-filters-radio-table-origin');
+
+    let radiosSupplier = $('.results-filters-radio-input-supplier');
+    let divRadiosSupplier = $('.results-filters-radio-table-supplier');
+
+    let radiosCert = $('.results-filters-radio-input-cert');
+    let divRadiosCert = $('.results-filters-radio-table-cert');
+    clicking(radiosCompo, divRadiosCompo);
+    clicking(radiosPrice, divRadiosPrice);
+    clicking(radiosFabric, divRadiosFabric);
+    clicking(radiosMaterial, divRadiosMaterial);
+    clicking(radiosOrigin, divRadiosOrigin);
+    clicking(radiosSupplier, divRadiosSupplier);
+    clicking(radiosCert, divRadiosCert);
+}
 
 function clicking(radios, divRadios) {
     radios.click(function () {
         divRadios.removeClass("clicked");
         $(this).filter(':checked').closest(divRadios).addClass("clicked");
+        filters(this);
     });
 }
 
-/* FILTERS OPEN */
-let filter = document.getElementById("mobile-filter");
-let resultFilter = document.getElementById("results-filters");
-let resultsResults = document.getElementById("results-results");
+/* FETCH TO UPDATE THE RESULTS WHEN EVENT ON FILTERS */
+function radioFilter() {
 
-filter.onclick = function () {
-    resultFilter.classList.toggle('open');
-    resultsResults.classList.toggle('active');
-    $('body').toggleClass('color');
-};
+    let searchValue = document.getElementById("search");
+    let params = "search=" + searchValue.value + "&";
+
+    for (let radio in radiosClicked) {
+        params += radio + "=" + radiosClicked[radio] + "&";
+    }
+    fetch('/results/filter?' + params)
+        .then(function (response) {
+            return response.text()
+        }).then(function (content) {
+        let parser = new DOMParser();
+        let html = parser.parseFromString(content, 'text/html');
+        let result = document.getElementById('results-products');
+        result.innerHTML = html.getElementById('results-products').innerHTML;
+    });
+    window.history.pushState("object or string", "Results", "/results/filter?" + params);
+}
 
 /* FILTERS CLICK HERE TO SEE MORE */
 let clickHere = document.getElementsByClassName('filters-see-more');
@@ -131,21 +135,20 @@ Array.prototype.forEach.call(clickHere, link => {
             className = 'results-filters-radio-table-cert';
             less = document.getElementById('less-certification');
         }
-        fetch('/results/more/' + this.id + '/' + all)
+        fetch('/results/more/' + link.id + '/' + all)
             .then(function (response) {
                 return response.text()
             }).then(function (content) {
             let parser = new DOMParser();
             let html = parser.parseFromString(content, 'text/html');
-            let result;
-            let divs;
-            result = document.getElementById(idName);
-            divs = html.getElementsByClassName(className);
-            Array.prototype.forEach.call(divs, div => {
-                result.append(div);
-            });
-
+            let result = document.getElementById(idName);
+            let divs = html.getElementsByClassName(className);
+            for (let i = 0; i < divs.length; i++) {
+                result.append(divs[i].cloneNode(true));
+            }
+            initClicking();
         });
+
         this.style.display = 'none';
         less.style.display = 'initial';
     }
@@ -187,9 +190,50 @@ Array.prototype.forEach.call(clickHereLess, link => {
             let result = document.getElementById(idName);
             let divs = html.getElementById(idChanged);
             result.innerHTML = divs.innerHTML;
+            initClicking();
         });
         this.style.display = 'none';
         let more = document.getElementById(filter);
         more.style.display = 'initial';
     }
 });
+
+
+/* FILTERS OPEN  MOBILE*/
+let filter = document.getElementById("mobile-filter");
+let resultFilter = document.getElementById("results-filters");
+let resultsResults = document.getElementById("results-results");
+
+filter.onclick = function () {
+    resultFilter.classList.toggle('open');
+    resultsResults.classList.toggle('active');
+    $('body').toggleClass('color');
+};
+
+/* STICKY NAV BAR MOBILE*/
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('.results-header-mobile').addClass('sticky');
+    } else {
+        $('.results-header-mobile').removeClass('sticky');
+    }
+});
+
+/* SEARCH MODIFY ON MOBILE */
+let search = document.getElementById("search-icon-nav");
+let navMenu = document.getElementById("results-menu-nav");
+let navSearch = document.getElementById("results-nav-search");
+let menuBack = document.getElementById("menu-nav-arrow-left");
+
+search.onclick = function () {
+    hideShow();
+};
+
+menuBack.onclick = function () {
+    hideShow();
+};
+
+function hideShow() {
+    navMenu.classList.toggle('hide');
+    navSearch.classList.toggle('show');
+}
