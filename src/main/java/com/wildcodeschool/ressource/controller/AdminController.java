@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -33,13 +34,20 @@ public class AdminController {
 
         List<Admin> admins = adminRepository.findAll();
         List<Role> roles = roleRepository.findAll();
+        model.addAttribute("admin", new Admin());
         model.addAttribute("admins", admins);
         model.addAttribute("roles", roles);
         return "admin_admin";
     }
 
     @PostMapping("/admin/admin/create")
-    public String adminCreate(@ModelAttribute Admin admin) {
+    public String adminCreate(@ModelAttribute Admin admin,
+                              @RequestParam String role) {
+
+        Role role1 = roleRepository.findByRole(role).get();
+        admin.setRole(role1);
+        adminRepository.save(admin);
+
         return "redirect:/admin/admin";
     }
 
