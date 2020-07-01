@@ -186,9 +186,8 @@
                 <p>Carelabel symbol :</p>
                 <div class="input-field col l8">
                     <select multiple class="icons">
-                        //TODO : th:data-icon="@{/image/carelabel/{image}(image=${carelabel.image})}" ne fonctionne pas pour afficher l'icon
-                        <option disabled selected value="">Select carelabel</option>
-                        <option th:each="carelabel: ${carelabels}" th:value="${carelabel.id}" th:text="${carelabel.label}">BLEACH IF NEEDED</option>
+                        <option disabled value="">Select carelabel</option>
+                        <option th:each="carelabel: ${carelabels}" th:value="${carelabel.id}" th:text="${carelabel.label}" th:attr="data-icon=@{/image/carelabel/{image}(image=${carelabel.image})}">BLEACH IF NEEDED</option>
                     </select>
                 </div>
             </div>
@@ -196,9 +195,9 @@
                 <p>Certification :</p>
                 <div class="input-field col l8">
                     <select multiple>
-                        <option disabled selected value="">Select certification</option>
+                        <option disabled value="">Select certification</option>
                         //TODO mettre les icones des certification comme pour les carelabels
-                        <option th:each="certification : ${certifications}"  th:value="${certification.id}" th:text="${certification.name}">GOTS</option>
+                        <option th:each="certification : ${certifications}"  th:value="${certification.id}" th:text="${certification.name}" th:attr="data-icon=@{/image/logo_certification/{image}(image=${certification.image})}">GOTS</option>
                     </select>
                 </div>
             </div>
