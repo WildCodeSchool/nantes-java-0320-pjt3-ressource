@@ -17,13 +17,13 @@
         <form action="" class="col s10">
             <div class="row">
                 <div class="input-field col s6">
-                    <input class="validate" id="first_name" placeholder="Search by reference" type="text">
+                    <input class="validate" id="first_name" type="text">
                     <label for="first_name">Reference</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="reference" placeholder="Reference" type="text">
+                    <input class="validate" id="reference" type="text">
                     <label for="reference">Reference</label>
                 </div>
                 <div class="col l4"></div>
@@ -34,18 +34,17 @@
                         <option value="2">GRUPPOCINQUE</option>
                         <option value="3">HIRONEN</option>
                     </select>
-                    <label for="select-company">Company</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l12">
-                    <input class="validate" id="description" placeholder="Description" type="text">
+                    <textarea class="materialize-textarea" id="description"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s4">
-                    <input class="validate" id="design_number" placeholder="Placeholder" type="text">
+                    <input class="validate" id="design_number" type="text">
                     <label for="design_number">Design number</label>
                 </div>
                 <div class="input-field col s4">
@@ -54,7 +53,6 @@
                         <option value="1">Woven</option>
                         <option value="2">Knit</option>
                     </select>
-                    <label for="select_material">Select material</label>
                 </div>
                 <div class="input-field col s4">
                     <select>
@@ -63,7 +61,6 @@
                         <option value="2">INTERLOCK</option>
                         <option value="3">JACQUARD</option>
                     </select>
-                    <label>Select Weave</label>
                 </div>
             </div>
             <div class="row col l12">
@@ -75,7 +72,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber1">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number">
@@ -90,7 +86,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber2">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number">
@@ -105,7 +100,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber3">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number">
@@ -122,7 +116,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber4">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number">
@@ -137,7 +130,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber5">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number">
@@ -152,7 +144,6 @@
                             <option value="2">ACETATE</option>
                             <option value="2">ACRYLIC</option>
                         </select>
-                        <label for="fiber6">Materialize Select</label>
                     </div>
                     <div class="input-field col l1">
                         <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number">
@@ -162,21 +153,17 @@
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="ov-width" placeholder="Overall width" type="number">
-                    <label for="ov-width">Overall width</label>
+                    <input class="validate" id="width" type="number">
+                    <label for="width">Width</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="us-width" placeholder="Usable Width" type="number">
-                    <label for="us-width">Usable width</label>
-                </div>
-                <div class="input-field col l4">
-                    <input class="validate" id="weight" placeholder="Weight" type="number">
+                    <input class="validate" id="weight" type="number">
                     <label for="weight">Weight</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="pieceLenght" placeholder="Piece Length" type="number">
+                    <input class="validate" id="pieceLenght" type="number">
                     <label for="pieceLenght">Piece Length</label>
                 </div>
                 <div class="input-field col l4">
@@ -186,7 +173,6 @@
                         <option value="2">India</option>
                         <option value="2">Italy</option>
                     </select>
-                    <label for="fiber5">Select fabric origin </label>
                 </div>
                 <div class="input-field col l4">
                     <select id="price">
@@ -195,26 +181,25 @@
                         <option value="2">4 to 6,99</option>
                         <option value="2">7 to 9,99</option>
                     </select>
-                    <label for="price">Select price range</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cMoq" placeholder="Collection MOQ" type="number">
+                    <input class="validate" id="cMoq" type="number">
                     <label for="cMoq">Collection MOQ</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="Pmoq" placeholder="Production MOQ" type="number">
+                    <input class="validate" id="Pmoq" type="number">
                     <label for="Pmoq">Production MOQ</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cLeadtime" placeholder="Collection Leadtime" type="number">
+                    <input class="validate" id="cLeadtime" type="number">
                     <label for="cLeadtime">Collection Leadtime</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="pLeadtime" placeholder="Production Leadtime" type="number">
+                    <input class="validate" id="pLeadtime" type="number">
                     <label for="pLeadtime">Production Leadtime</label>
                 </div>
             </div>
@@ -227,7 +212,6 @@
                         <option data-icon="image" value="">WASH 30 MODERATE</option>
                         <option data-icon="image" value="">WASH 30 DELICATE</option>
                     </select>
-                    <label>Select carelabel</label>
                 </div>
                 <div class="input-field col l4">
                     <select class="icons">
@@ -236,7 +220,6 @@
                         <option data-icon="image" value="">DO NOT BLEACH</option>
                         <option data-icon="image" value="">NON-CHLORINE BLEACH IF NEEDED</option>
                     </select>
-                    <label>Select carelabel</label>
                 </div>
                 <div class="input-field col l4">
                     <select class="icons">
@@ -245,7 +228,6 @@
                         <option data-icon="image" value="">DRY NORMAL MEDIUM HEAT</option>
                         <option data-icon="image" value="">NO TUMBLE DRY</option>
                     </select>
-                    <label>Select carelabel</label>
                 </div>
             </div>
             <div class="row">
@@ -256,7 +238,6 @@
                         <option data-icon="image" value="">IRON MAX TEMP 150</option>
                         <option data-icon="image" value="">IRON MAX TEMP 200</option>
                     </select>
-                    <label>Select carelabel</label>
                 </div>
                 <div class="input-field col l4">
                     <select class="icons">
@@ -265,97 +246,87 @@
                         <option data-icon="image" value="">DRY CLEANING MODERATE</option>
                         <option data-icon="image" value="">DO NOT DRYCLEAN</option>
                     </select>
-                    <label>Select carelabel</label>
                 </div>
             </div>
             <div class="row">
                 <p>Certification :</p>
                 <div class="input-field col l6">
                     <select multiple>
-                        <option value="" disabled selected>Select certification</option>
-                        <option value="1" data-icon="image">GOTS</option>
-                        <option value="2" data-icon="image">FSC</option>
-                        <option value="3" data-icon="image">ECOVERO</option>
+                        <option disabled selected value="">Select certification</option>
+                        <option data-icon="image" value="1">GOTS</option>
+                        <option data-icon="image" value="2">FSC</option>
+                        <option data-icon="image" value="3">ECOVERO</option>
                     </select>
-                    <label>Select certifications</label>
                 </div>
             </div>
             <div class="row">
                 <p>Technical properties :</p>
-                <div class="input-field col l4">
+                <div class="input-field col l6">
                     <select multiple>
-                        <option value="" disabled selected>Select your technical properties</option>
+                        <option disabled selected value="">Select your technical properties</option>
                         <option value="1">QUICK DRY</option>
                         <option value="2">WATER ABSORBENT</option>
                         <option value="3">BI-STRETCH</option>
                     </select>
-                    <label>Ability to select multiple technical properties </label>
                 </div>
                 <div class="input-field col l4">
                     <select>
-                        <option value="" disabled selected>Select fabric</option>
+                        <option disabled selected value="">Select fabric</option>
                         <option value="1">CREPE</option>
                         <option value="2">CREPE BACK SATIN</option>
                         <option value="3">BATISTE</option>
                     </select>
-                    <label>Select fabric </label>
-                </div>
-                <div class="input-field col l4">
-                    <select>
-                        <option value="" disabled selected>Select handfeel</option>
-                        <option value="1">DRY HANDFEEL</option>
-                        <option value="2">TECHNICAL TOUCH</option>
-                        <option value="3">SOFT TOUCH</option>
-                    </select>
-                    <label>Select handfeel </label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
                     <select>
-                        <option value="" disabled selected>Select finishing</option>
+                        <option disabled selected value="">Select handfeel</option>
+                        <option value="1">DRY HANDFEEL</option>
+                        <option value="2">TECHNICAL TOUCH</option>
+                        <option value="3">SOFT TOUCH</option>
+                    </select>
+                </div>
+                <div class="input-field col l4">
+                    <select>
+                        <option disabled selected value="">Select finishing</option>
                         <option value="1">NON IRON</option>
                         <option value="2">VINTAGE FINISHING</option>
                         <option value="3">WRINKLE FINISHING</option>
                     </select>
-                    <label>Select finishing </label>
                 </div>
                 <div class="input-field col l4">
                     <select>
-                        <option value="" disabled selected>Select look</option>
+                        <option disabled selected value="">Select look</option>
                         <option value="1">WORKWEAR</option>
                         <option value="2">VINTAGE</option>
                         <option value="3">SPORTSWEAR</option>
                     </select>
-                    <label>Select look</label>
                 </div>
             </div>
-            <div class="col s5 file-field input-field">
+            <div class="col l6 file-field input-field">
                 <p>Picture : </p>
                 <div class="btn">
                     <i class="large material-icons">archive</i>
                     <input type="file">
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload file">
+                    <input class="file-path validate" type="text">
                 </div>
             </div>
             <div class="row">
-                <button class="col s4 offset-s4 btn waves-effect waves-light" type="submit" name="action">Apply
+                <button class="col s2 offset-s5 btn waves-effect waves-light" name="action" type="submit">Apply
                     <i class="material-icons right">send</i>
                 </button>
             </div>
         </form>
     </section>
-
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="/js/sidebar.js" type="text/JavaScript"></script>
 <script src="/js/productAdmin.js" type="text/javascript"></script>
-
 </body>
 </html>
