@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="input-field col s6">
                     <input class="validate" id="first_name" type="text">
-                    <label for="first_name">Reference</label>
+                    <label for="first_name">Search by reference</label>
                 </div>
             </div>
             <div class="row">
@@ -28,11 +28,9 @@
                 </div>
                 <div class="col l4"></div>
                 <div class="input-field col l4">
-                    <select id="select-company">
+                    <select id="select-company" >
                         <option disabled selected value="">Select company</option>
-                        <option value="1">BRICKS</option>
-                        <option value="2">GRUPPOCINQUE</option>
-                        <option value="3">HIRONEN</option>
+                        <option th:each="company: ${companies}" th:value="${company.id}" th:text="${company.name}">BRICKS</option>
                     </select>
                 </div>
             </div>
@@ -50,16 +48,13 @@
                 <div class="input-field col s4">
                     <select id="select_material">
                         <option disabled selected value="">Select material</option>
-                        <option value="1">Woven</option>
-                        <option value="2">Knit</option>
+                        <option th:each="material: ${materials}" th:value="${material.id}" th:text="${material.name}">Woven</option>
                     </select>
                 </div>
                 <div class="input-field col s4">
                     <select>
-                        <option disabled selected value="">Select Weave</option>
-                        <option value="1">FLEECE</option>
-                        <option value="2">INTERLOCK</option>
-                        <option value="3">JACQUARD</option>
+                        <option disabled selected value="">Select Fabric Pattern</option>
+                        <option th:each="fabricPattern :${fabricPatterns}" th:value="${fabricPattern.id}" th:text="${fabricPattern.name}">FLEECE</option>
                     </select>
                 </div>
             </div>
@@ -68,9 +63,7 @@
                     <div class="input-field col l3">
                         <select id="fiber1">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -82,9 +75,7 @@
                     <div class="input-field col l3">
                         <select id="fiber2">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -96,9 +87,7 @@
                     <div class="input-field col l3">
                         <select id="fiber3">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -112,9 +101,7 @@
                     <div class="input-field col l3">
                         <select id="fiber4">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -126,9 +113,7 @@
                     <div class="input-field col l3">
                         <select id="fiber5">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -140,9 +125,7 @@
                     <div class="input-field col l3">
                         <select id="fiber6">
                             <option disabled selected value="">Select fiber</option>
-                            <option value="1">ABACA</option>
-                            <option value="2">ACETATE</option>
-                            <option value="2">ACRYLIC</option>
+                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
                         </select>
                     </div>
                     <div class="input-field col l1">
@@ -169,17 +152,13 @@
                 <div class="input-field col l4">
                     <select id="origin">
                         <option disabled selected value="">Select origin</option>
-                        <option value="1">Belgium</option>
-                        <option value="2">India</option>
-                        <option value="2">Italy</option>
+                        <option th:each="origin : ${origins}" th:value="${origin.id}"th:text="${origin.country}" >Belgium</option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select id="price">
                         <option disabled selected value="">Select price range</option>
-                        <option value="1">1 to 3,99</option>
-                        <option value="2">4 to 6,99</option>
-                        <option value="2">7 to 9,99</option>
+                        <option th:each="price : ${prices}" th:value="${price.id}" th:text="|${price.price} Euros |">1 to 3,99</option>
                     </select>
                 </div>
             </div>
@@ -205,76 +184,36 @@
             </div>
             <div class="row">
                 <p>Carelabel symbol :</p>
-                <div class="input-field col l4">
-                    <select class="icons">
+                <div class="input-field col l8">
+                    <select multiple class="icons">
+                        //TODO : th:data-icon="@{/image/carelabel/{image}(image=${carelabel.image})}" ne fonctionne pas pour afficher l'icon
                         <option disabled selected value="">Select carelabel</option>
-                        <option data-icon="image" value="">WASH 30 REGULAR</option>
-                        <option data-icon="image" value="">WASH 30 MODERATE</option>
-                        <option data-icon="image" value="">WASH 30 DELICATE</option>
-                    </select>
-                </div>
-                <div class="input-field col l4">
-                    <select class="icons">
-                        <option disabled selected value="">Select carelabel</option>
-                        <option data-icon="image" value="">BLEACH IF NEEDED</option>
-                        <option data-icon="image" value="">DO NOT BLEACH</option>
-                        <option data-icon="image" value="">NON-CHLORINE BLEACH IF NEEDED</option>
-                    </select>
-                </div>
-                <div class="input-field col l4">
-                    <select class="icons">
-                        <option disabled selected value="">Select carelabel</option>
-                        <option data-icon="image" value="">DRY NORMAL LOW HEAT</option>
-                        <option data-icon="image" value="">DRY NORMAL MEDIUM HEAT</option>
-                        <option data-icon="image" value="">NO TUMBLE DRY</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col l4">
-                    <select class="icons">
-                        <option disabled selected value="">Select carelabel</option>
-                        <option data-icon="image" value="">IRON MAX TEMP 110</option>
-                        <option data-icon="image" value="">IRON MAX TEMP 150</option>
-                        <option data-icon="image" value="">IRON MAX TEMP 200</option>
-                    </select>
-                </div>
-                <div class="input-field col l4">
-                    <select class="icons">
-                        <option disabled selected value="">Select carelabel</option>
-                        <option data-icon="image" value="">DRY CLEANING REGULAR</option>
-                        <option data-icon="image" value="">DRY CLEANING MODERATE</option>
-                        <option data-icon="image" value="">DO NOT DRYCLEAN</option>
+                        <option th:each="carelabel: ${carelabels}" th:value="${carelabel.id}" th:text="${carelabel.label}">BLEACH IF NEEDED</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <p>Certification :</p>
-                <div class="input-field col l6">
+                <div class="input-field col l8">
                     <select multiple>
                         <option disabled selected value="">Select certification</option>
-                        <option data-icon="image" value="1">GOTS</option>
-                        <option data-icon="image" value="2">FSC</option>
-                        <option data-icon="image" value="3">ECOVERO</option>
+                        //TODO mettre les icones des certification comme pour les carelabels
+                        <option th:each="certification : ${certifications}"  th:value="${certification.id}" th:text="${certification.name}">GOTS</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <p>Technical properties :</p>
-                <div class="input-field col l6">
+                <div class="input-field col l8">
                     <select multiple>
                         <option disabled selected value="">Select your technical properties</option>
-                        <option value="1">QUICK DRY</option>
-                        <option value="2">WATER ABSORBENT</option>
-                        <option value="3">BI-STRETCH</option>
+                        <option th:each="technicalPropertie : ${technicalProperties}" th:value="${technicalPropertie.id}" th:text="${technicalPropertie.technicalProperty}">QUICK DRY</option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select>
                         <option disabled selected value="">Select fabric</option>
-                        <option value="1">CREPE</option>
-                        <option value="2">CREPE BACK SATIN</option>
-                        <option value="3">BATISTE</option>
+                        <option th:each="fabric : ${fabrics}" th:value="${fabric.id}" th:text="${fabric.fabric}">CREPE</option>
                     </select>
                 </div>
             </div>
@@ -282,25 +221,19 @@
                 <div class="input-field col l4">
                     <select>
                         <option disabled selected value="">Select handfeel</option>
-                        <option value="1">DRY HANDFEEL</option>
-                        <option value="2">TECHNICAL TOUCH</option>
-                        <option value="3">SOFT TOUCH</option>
+                        <option th:each="handfeel : ${handfeels}" th:value="${handfeel.id}" th:text="${handfeel.handFeel}">DRY HANDFEEL</option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select>
                         <option disabled selected value="">Select finishing</option>
-                        <option value="1">NON IRON</option>
-                        <option value="2">VINTAGE FINISHING</option>
-                        <option value="3">WRINKLE FINISHING</option>
+                        <option th:each="finishing : ${finishings}" th:value="${finishing.id}" th:text="${finishing.finishing}">NON IRON</option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select>
                         <option disabled selected value="">Select look</option>
-                        <option value="1">WORKWEAR</option>
-                        <option value="2">VINTAGE</option>
-                        <option value="3">SPORTSWEAR</option>
+                        <option th:each="look : ${looks}" th:value="${look.id}" th:text="${look.look}">WORKWEAR</option>
                     </select>
                 </div>
             </div>
