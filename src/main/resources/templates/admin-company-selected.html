@@ -7,6 +7,17 @@
 <body>
 <section id="newCompanySelected" th:object="${companySelected}">
     <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div id="legend-company-name" class="center-align light-green darken-1">Company's name</div>
+            </legend>
+            <div class="input-field col s12">
+                <input th:field="*{name}" class="validate" id="company-name" type="text">
+                <label class="active" for="company-name">Company's name</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
         <fieldset class="col s5 fieldset-gray">
             <legend>
                 <div class="center-align grey lighten-2">1</div>
