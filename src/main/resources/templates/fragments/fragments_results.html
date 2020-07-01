@@ -9,7 +9,8 @@
      th:fragment="results (materials, fabricPatterns, compositions, origins, companies, prices,
                            certifications, search, products, iscompany, companyName)">
     <form action="/results/filter" class="results-filters" id="results-filters" method="get">
-        <input name="search" th:value="${search}" type="hidden" id="search">
+        <input id="search" name="search" th:value="${search}" type="hidden">
+        <input name="submit" th:value="true" type="hidden">
         <div class="filters filters-material">
             <h4 class="filters-title">Material</h4>
             <div class="results-filters-radio-mobile">

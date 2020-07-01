@@ -5,6 +5,7 @@ let tag_weight_1 = document.getElementById("slider-weight-tag-1");
 let tag_weight_2 = document.getElementById("slider-weight-tag-2");
 let sliders = document.getElementsByClassName('slider');
 
+let radiosClicked = {};
 for (let i = 0; i < sliders.length; i++) {
 
     if (sliders[i].id === "slider-weight") {
@@ -27,7 +28,20 @@ for (let i = 0; i < sliders.length; i++) {
         } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-width-2") {
             tag_weight_2.innerHTML = this.value;
         }
-    }
+    };
+
+    sliders[i].addEventListener('mouseup', function () {
+        filters(this);
+    });
+
+    sliders[i].addEventListener('touchend', function () {
+        filters(this);
+    })
+}
+
+function filters(radio) {
+    radiosClicked[radio.name] = radio.value;
+    radioFilter();
 }
 
 // Sticky nav bar
@@ -92,22 +106,20 @@ function initClicking() {
     clicking(radiosCert, divRadiosCert);
 }
 
-let radiosClicked = {};
-
 function clicking(radios, divRadios) {
     radios.click(function () {
         divRadios.removeClass("clicked");
         $(this).filter(':checked').closest(divRadios).addClass("clicked");
-        radiosClicked[this.name] = this.value;
-        radioFilter();
+        filters(this);
     });
 }
 
 function radioFilter() {
-    //TODO ADD range values
+
     let searchValue = document.getElementById("search");
-    let params ="search=" + searchValue.value + "&";
-    for(let radio in radiosClicked){
+    let params = "search=" + searchValue.value + "&";
+
+    for (let radio in radiosClicked) {
         params += radio + "=" + radiosClicked[radio] + "&";
     }
     fetch('/results/filter?' + params)

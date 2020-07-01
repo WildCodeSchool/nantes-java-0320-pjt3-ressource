@@ -141,7 +141,8 @@ public class ProductController {
                           @RequestParam(defaultValue = "30", required = false) Long sliderWidthMin,
                           @RequestParam(defaultValue = "500", required = false) Long sliderWidthMax,
                           @RequestParam(defaultValue = "", required = false) Long certification,
-                          @RequestParam(defaultValue = "", required = false) String search) {
+                          @RequestParam(defaultValue = "", required = false) String search,
+                          @RequestParam(defaultValue = "false", required = false) boolean submit) {
 
         List<Long> productsId = productRepository.findAllIdBySearching(search);
         List<Product> allProducts = productRepository.findAllByIdIn(productsId);
@@ -192,12 +193,38 @@ public class ProductController {
                     }
                     return false;
                 })
-
-
                 .collect(Collectors.toList());
 
         model.addAttribute("products", productsWFilter);
+        if (!submit) {
+            return "products_filter";
+        }
 
-        return "products_filter";
+        Pageable PageFiber = PageRequest.of(0, 12);
+        Page<Fiber> FiberSub = fiberRepository.findAll(PageFiber);
+        List<Fiber> mainCompo = FiberSub.get().collect(Collectors.toList());
+
+        Pageable PageOrigin = PageRequest.of(0, 4);
+        Page<Origin> originSub = originRepository.findAll(PageOrigin);
+        List<Origin> origins = originSub.get().collect(Collectors.toList());
+
+        Pageable PageSupplier = PageRequest.of(0, 4);
+        Page<Company> supplierSub = companyRepository.findAll(PageSupplier);
+        List<Company> suppliers = supplierSub.get().collect(Collectors.toList());
+
+        Pageable PageCert = PageRequest.of(0, 3);
+        Page<Certification> certificationSub = certificationRepository.findAll(PageCert);
+        List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
+
+        model.addAttribute("search", search);
+        model.addAttribute("certifications", certifications);
+        model.addAttribute("prices", priceRepository.findAll());
+        model.addAttribute("companies", suppliers);
+        model.addAttribute("origins", origins);
+        model.addAttribute("compositions", mainCompo);
+        model.addAttribute("materials", materialRepository.findAll());
+        model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
+
+        return "results";
     }
 }
