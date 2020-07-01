@@ -10,6 +10,7 @@ let passc = document.getElementById("passwordConfirm");
 
 pass.addEventListener("focusout", function () {
     if (this.value !== passc.value) {
+        console.log("hole")
         passc.classList.remove("valid");
         passc.classList.add("invalid");
     } else {
@@ -19,7 +20,8 @@ pass.addEventListener("focusout", function () {
 });
 
 passc.addEventListener("keyup", function () {
-    if (this.value !== passc.value) {
+    if (this.value !== pass.value) {
+        console.log("hola")
         passc.classList.remove("valid");
         passc.classList.add("invalid");
     } else {
@@ -27,4 +29,3 @@ passc.addEventListener("keyup", function () {
         passc.classList.add("valid");
     }
 });
-

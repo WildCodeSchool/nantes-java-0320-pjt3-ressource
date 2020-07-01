@@ -70,3 +70,7 @@ input[type=number]:not(.browser-default):focus:not([readonly]) + label {
 .input-field textarea:focus + label {
     color: #70ad47 !important;
 }
+
+[type="checkbox"]+span:not(.lever) {
+    color: var(--color-bkg-button);
+}
