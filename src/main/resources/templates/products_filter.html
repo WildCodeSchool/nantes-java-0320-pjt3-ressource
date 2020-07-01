@@ -39,11 +39,12 @@
                     <span th:text="${property.technicalProperty}">Natural stretch</span></a>
             </p>
             <p class="card-product-info-compo">
-                            <span th:each="composition : ${product.compositions}">
-                                <span th:text="|${composition.pourcentage} % |"></span>
-                                <a th:href="@{/results(search = ${composition.fiber.name})}"><span
-                                        th:text="|${composition.fiber.name} &nbsp;|"></span></a>
-                            </span>
+                <span th:each="composition : ${product.compositions}">
+                    <span th:text="|${composition.pourcentage} % |"></span>
+                    <a th:href="@{/results(search = ${composition.fiber.name})}">
+                        <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                    </a>
+                </span>
             </p>
         </div>
     </div>
