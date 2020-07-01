@@ -46,10 +46,6 @@
     font-size: 1.2rem;
 }
 
-.select-wrapper input.select-dropdown {
-    color: #e6e4e6;
-}
-
 .modal-content h4 {
     margin-bottom: 2rem;
 }
@@ -67,3 +63,6 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label{
     color: var(--color-bkg-button);
 }
 
+input[type="text"]:not(.browser-default).validate + label, .input-field label {
+    color:#000
+}

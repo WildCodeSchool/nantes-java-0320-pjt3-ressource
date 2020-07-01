@@ -29,33 +29,31 @@
             <form class="col s12" action="/admin/admin/create" method="post">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input class="validate" id="user_name" name="username" placeholder="Username" type="text">
+                        <input class="validate" id="user_name" name="username" type="text">
                         <label for="user_name">Username</label>
                     </div>
                     <div class="input-field col s6">
                         <select id="roles" name="role">
                             <option disabled selected value="">Choose your option</option>
                             <option value="1" th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}">ALL</option>
-
                         </select>
-                        <label for="roles">Role</label>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input class="validate" id="email" name="email" placeholder="@" type="email">
+                        <input class="validate" id="email" name="email" type="email">
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field col s6">
-                        <input class="validate" id="password" name="password" placeholder="Password" type="password">
+                        <input class="validate" id="password" name="password" type="password">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="validate" id="confirm_password" name="passwordConfirm"
-                               placeholder="Confirm Password" type="password">
+                               type="password">
                         <label for="confirm_password">Confirm Password</label>
                     </div>
                     <button class="btn-create col s2 offset-s10 modal-close waves-effect waves-green btn">Create
