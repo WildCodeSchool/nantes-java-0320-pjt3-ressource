@@ -39,38 +39,12 @@ for (let i = 0; i < sliders.length; i++) {
     })
 }
 
+/* FUNCTION TO INSERT EACH RADIO ON THE DICTIONARY */
 function filters(radio) {
     radiosClicked[radio.name] = radio.value;
     radioFilter();
 }
 
-// Sticky nav bar
-$(window).on("scroll", function () {
-    if ($(window).scrollTop()) {
-        $('.results-header-mobile').addClass('sticky');
-    } else {
-        $('.results-header-mobile').removeClass('sticky');
-    }
-});
-
-/* SEARCH MODIFY ON MOBILE */
-let search = document.getElementById("search-icon-nav");
-let navMenu = document.getElementById("results-menu-nav");
-let navSearch = document.getElementById("results-nav-search");
-let menuBack = document.getElementById("menu-nav-arrow-left");
-
-search.onclick = function () {
-    hideShow();
-};
-
-menuBack.onclick = function () {
-    hideShow();
-};
-
-function hideShow() {
-    navMenu.classList.toggle('hide');
-    navSearch.classList.toggle('show');
-}
 
 /* color of the label when radio button clicked */
 
@@ -114,6 +88,7 @@ function clicking(radios, divRadios) {
     });
 }
 
+/* FETCH TO UPDATE THE RESULTS WHEN EVENT ON FILTERS */
 function radioFilter() {
 
     let searchValue = document.getElementById("search");
@@ -130,20 +105,9 @@ function radioFilter() {
         let html = parser.parseFromString(content, 'text/html');
         let result = document.getElementById('results-products');
         result.innerHTML = html.getElementById('results-products').innerHTML;
-    })
+    });
+    window.history.pushState("object or string", "Results", "/results/filter?" + params);
 }
-
-
-/* FILTERS OPEN  MOBILE*/
-let filter = document.getElementById("mobile-filter");
-let resultFilter = document.getElementById("results-filters");
-let resultsResults = document.getElementById("results-results");
-
-filter.onclick = function () {
-    resultFilter.classList.toggle('open');
-    resultsResults.classList.toggle('active');
-    $('body').toggleClass('color');
-};
 
 /* FILTERS CLICK HERE TO SEE MORE */
 let clickHere = document.getElementsByClassName('filters-see-more');
@@ -234,3 +198,42 @@ Array.prototype.forEach.call(clickHereLess, link => {
     }
 });
 
+
+/* FILTERS OPEN  MOBILE*/
+let filter = document.getElementById("mobile-filter");
+let resultFilter = document.getElementById("results-filters");
+let resultsResults = document.getElementById("results-results");
+
+filter.onclick = function () {
+    resultFilter.classList.toggle('open');
+    resultsResults.classList.toggle('active');
+    $('body').toggleClass('color');
+};
+
+/* STICKY NAV BAR MOBILE*/
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('.results-header-mobile').addClass('sticky');
+    } else {
+        $('.results-header-mobile').removeClass('sticky');
+    }
+});
+
+/* SEARCH MODIFY ON MOBILE */
+let search = document.getElementById("search-icon-nav");
+let navMenu = document.getElementById("results-menu-nav");
+let navSearch = document.getElementById("results-nav-search");
+let menuBack = document.getElementById("menu-nav-arrow-left");
+
+search.onclick = function () {
+    hideShow();
+};
+
+menuBack.onclick = function () {
+    hideShow();
+};
+
+function hideShow() {
+    navMenu.classList.toggle('hide');
+    navSearch.classList.toggle('show');
+}
