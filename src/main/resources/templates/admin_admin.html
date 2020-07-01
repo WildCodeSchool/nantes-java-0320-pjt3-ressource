@@ -26,7 +26,7 @@
             <div class="col s12">
                 <h4>ADD NEW ADMIN</h4>
             </div>
-            <form class="col s12">
+            <form class="col s12" action="/admin/admin/create" method="post">
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="validate" id="user_name" name="username" placeholder="Username" type="text">
@@ -35,9 +35,8 @@
                     <div class="input-field col s6">
                         <select id="roles" name="role">
                             <option disabled selected value="">Choose your option</option>
-                            <option value="1">ALL</option>
-                            <option value="2">MODIFY PAGES</option>
-                            <option value="3">PRODUCTS</option>
+                            <option value="1" th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}">ALL</option>
+
                         </select>
                         <label for="roles">Role</label>
                     </div>
@@ -62,7 +61,6 @@
                     <button class="btn-create col s2 offset-s10 modal-close waves-effect waves-green btn">Create
                     </button>
                 </div>
-
             </form>
         </div>
     </div>
@@ -74,17 +72,9 @@
         <th>Action</th>
         </thead>
         <tbody>
-        <tr>
-            <td>alvin@gmail.com</td>
-            <td>ALL</td>
-            <td>
-                <a href="#"><i class="material-icons">edit</i></a>
-                <a href="#"><i class="material-icons">delete</i></a>
-            </td>
-        </tr>
-        <tr>
-            <td>freelance@gmail.com</td>
-            <td>Products</td>
+        <tr th:each="admin : ${admins}">
+            <td th:text="${admin.email}">alvin@gmail.com</td>
+            <td th:text="${admin.role.role}">ALL</td>
             <td>
                 <a href="#"><i class="material-icons">edit</i></a>
                 <a href="#"><i class="material-icons">delete</i></a>
