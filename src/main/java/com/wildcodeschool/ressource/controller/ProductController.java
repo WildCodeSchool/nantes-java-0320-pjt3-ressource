@@ -136,12 +136,13 @@ public class ProductController {
                           @RequestParam(defaultValue = "", required = false) Long country,
                           @RequestParam(defaultValue = "", required = false) Long supplier,
                           @RequestParam(defaultValue = "", required = false) Long price,
-                          @RequestParam(defaultValue = "", required = false) Long sliderWeightMin,
-                          @RequestParam(defaultValue = "", required = false) Long sliderWeightMax,
-                          @RequestParam(defaultValue = "", required = false) Long sliderWidthMin,
-                          @RequestParam(defaultValue = "", required = false) Long sliderWidthMax,
+                          @RequestParam(defaultValue = "75", required = false) Long sliderWeightMin,
+                          @RequestParam(defaultValue = "200", required = false) Long sliderWeightMax,
+                          @RequestParam(defaultValue = "30", required = false) Long sliderWidthMin,
+                          @RequestParam(defaultValue = "500", required = false) Long sliderWidthMax,
                           @RequestParam(defaultValue = "", required = false) Long certification,
-                          @RequestParam(defaultValue = "", required = false) String search) {
+                          @RequestParam(defaultValue = "", required = false) String search,
+                          @RequestParam(defaultValue = "false", required = false) boolean submit) {
 
         List<Long> productsId = productRepository.findAllIdBySearching(search);
         List<Product> allProducts = productRepository.findAllByIdIn(productsId);
@@ -192,9 +193,13 @@ public class ProductController {
                     }
                     return false;
                 })
-
-
                 .collect(Collectors.toList());
+
+        model.addAttribute("products", productsWFilter);
+        if (!submit) {
+            return "products_filter";
+        }
+
         Pageable PageFiber = PageRequest.of(0, 12);
         Page<Fiber> FiberSub = fiberRepository.findAll(PageFiber);
         List<Fiber> mainCompo = FiberSub.get().collect(Collectors.toList());
@@ -212,7 +217,6 @@ public class ProductController {
         List<Certification> certifications = certificationSub.get().collect(Collectors.toList());
 
         model.addAttribute("search", search);
-        model.addAttribute("products", productsWFilter);
         model.addAttribute("certifications", certifications);
         model.addAttribute("prices", priceRepository.findAll());
         model.addAttribute("companies", suppliers);

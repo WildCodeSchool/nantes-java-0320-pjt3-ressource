@@ -9,7 +9,8 @@
      th:fragment="results (materials, fabricPatterns, compositions, origins, companies, prices,
                            certifications, search, products, iscompany, companyName)">
     <form action="/results/filter" class="results-filters" id="results-filters" method="get">
-        <input name="search" th:value="${search}" type="hidden">
+        <input id="search" name="search" th:value="${search}" type="hidden">
+        <input name="submit" th:value="true" type="hidden">
         <div class="filters filters-material">
             <h4 class="filters-title">Material</h4>
             <div class="results-filters-radio-mobile">
@@ -160,7 +161,7 @@
             </form>
         </div>
 
-        <div class="results-products">
+        <div class="results-products" id="results-products">
             <div class="card-product" th:each="product : ${products}">
                 <a href="/company" th:href="@{/company(id = ${product.company.id})}"><h4
                         class="card-product-info-supplier" th:text="${product.company.name}">VELCOREX
@@ -194,11 +195,12 @@
                             <span th:text="${property.technicalProperty}">Natural stretch</span></a>
                     </p>
                     <p class="card-product-info-compo">
-                            <span th:each="composition : ${product.compositions}">
-                                <span th:text="|${composition.pourcentage} % |"></span>
-                                <a th:href="@{/results(search = ${composition.fiber.name})}"><span
-                                        th:text="|${composition.fiber.name} &nbsp;|"></span></a>
-                            </span>
+                        <span th:each="composition : ${product.compositions}">
+                            <span th:text="|${composition.pourcentage} % |"></span>
+                            <a th:href="@{/results(search = ${composition.fiber.name})}">
+                                <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                            </a>
+                        </span>
                     </p>
                 </div>
             </div>
