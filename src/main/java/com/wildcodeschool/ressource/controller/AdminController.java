@@ -1,10 +1,13 @@
 package com.wildcodeschool.ressource.controller;
 
+import com.wildcodeschool.ressource.entity.Product;
 import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -48,6 +51,9 @@ public class AdminController {
     @Autowired
     private LookRepository lookRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @GetMapping("/admin")
     public String adminLogin() {
         return "admin_login";
@@ -81,5 +87,40 @@ public class AdminController {
         model.addAttribute("looks", lookRepository.findAll());
 
         return "productAdmin";
+    }
+
+    @PostMapping("/admin/products")
+    public Product create(@RequestBody Product product){
+
+        return productRepository.save(product) ;
+    }
+
+    @PutMapping("/admin/products/{reference}")
+    public Product update(@PathVariable String reference, @RequestBody Product product){
+
+        Product productToUpdate = productRepository.findByReference(reference);
+        productToUpdate.setDesignNumber(product.getDesignNumber());
+        productToUpdate.setDescription(product.getDescription());
+        productToUpdate.setWidth(product.getWidth());
+        productToUpdate.setWeight(product.getWeight());
+        productToUpdate.setPieceLength(product.getPieceLength());
+        productToUpdate.setCollectionMOQ(product.getCollectionMOQ());
+        productToUpdate.setProductionMOQ(product.getProductionMOQ());
+        productToUpdate.setCollectionLeadtime(product.getCollectionLeadtime());
+        productToUpdate.setProductionLeadtime(product.getProductionLeadtime());
+        productToUpdate.setWashingComments(product.getWashingComments());
+        productToUpdate.setMaterial(product.getMaterial());
+        productToUpdate.setImageProducts(product.getImageProducts());
+        productToUpdate.setCertifications(product.getCertifications());
+        productToUpdate.setCareLabels(product.getCareLabels());
+        productToUpdate.setOrigin(product.getOrigin());
+        productToUpdate.setPrice(product.getPrice());
+        productToUpdate.setFabricPattern(product.getFabricPattern());
+        productToUpdate.setCompositions(product.getCompositions());
+        productToUpdate.setFeature(product.getFeature());
+        productToUpdate.setCompany(product.getCompany());
+        productToUpdate.setProducts(product.getProducts());
+
+        return productRepository.save(productToUpdate);
     }
 }
