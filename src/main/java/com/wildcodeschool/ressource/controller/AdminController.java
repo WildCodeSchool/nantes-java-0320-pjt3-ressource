@@ -85,6 +85,7 @@ public class AdminController {
         model.addAttribute("handfeels", handFeelRepository.findAll());
         model.addAttribute("finishings", finishingRepository.findAll());
         model.addAttribute("looks", lookRepository.findAll());
+        model.addAttribute("products", productRepository.findAll());
 
         return "productAdmin";
     }
