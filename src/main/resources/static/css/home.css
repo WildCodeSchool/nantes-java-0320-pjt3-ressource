@@ -20,7 +20,7 @@
 .home-body h2{
     font-size: 4rem;
     font-weight: 200;
-    padding: 1rem;
+    padding: 1rem 1rem 0.6rem 1rem;
     font-family: var(--font-title);
 }
 
@@ -41,8 +41,8 @@
 }
 
 .home-logo{
-    width: 96px;
-    height: 96px;
+    width: 64px;
+    height: 64px;
     margin-left: 3rem;
     background-image: url("/image/home-page/Logo Wesource v1.png");
     background-size: cover;
@@ -67,15 +67,17 @@
 .home-btn-join{
     background-color: #000;
     color: #fff;
+    font-family: 'Futura PT Web Book' !important;
 }
 
 .home-btn-sign-in{
     background-color: #fff;
     color: #000;
+    font-family: 'Futura PT Web Book' !important;
 }
 /*Search*/
 .home-search{
-    padding: 0 0 5rem 3rem;
+    padding: 0 0 3rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -86,16 +88,16 @@
 }
 
 .home-search-catchphrase > p{
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: #fff;
     font-family: var(--font-title);
 }
 
 .home-search-box{
-    width: 500px;
+    width: 310px;
     max-width: 90%;
-    height: 175px;
-    padding-left: 2rem;
+    height: 120px;
+    padding-left: 1.5rem;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -103,28 +105,34 @@
     align-items: start;
 }
 
+.home-search-box p, .home-search-box a{
+    font-size: 0.6rem;
+}
+
 .home-search-bar-container{
     position: relative;
 }
 
 .home-search-bar{
-    width: 420px;
+    width: 260px;
     max-width: 100%;
-    height: 25px;
+    height: 20px;
     padding-left: 2rem;
     border: 1px solid #000;
     border-radius: 10px;
+    outline: none;
 }
 
 .home-search-icon{
     position: absolute;
     left: 10px;
     top: 5px;
+    font-size: 0.8rem;
 }
 /*END MAIN*/
 /*START NEWS*/
 .home-news{
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
 .home-container-news{
@@ -176,10 +184,17 @@
 /*START FIBERS*/
 .home-natural-fibers{
     background-color: #f2f2f2;
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
-.home-container-fibers{
+.home-container-fibers1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home-container-fibers2{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -247,10 +262,24 @@
 /*END FIBERS*/
 /*START HUMAN MADE*/
 .home-human-made{
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
-.home-container-made{
+.home-container-made1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home-container-made2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home-container-made3{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -333,7 +362,7 @@
 /*START OPTIONS*/
 .home-options{
     background-color: #f2f2f2;
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
 .home-container-options{
@@ -358,7 +387,7 @@
 /*START PARTNERS*/
 .home-partners{
     background-color: #f2f2f2;
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
 }
 
 .home-container-partners{
