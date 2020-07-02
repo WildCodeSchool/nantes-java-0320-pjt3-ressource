@@ -365,23 +365,24 @@
     padding: 1rem 2rem 1rem 2rem;
 }
 
-.home-container-options{
+.home-container-options1{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 1rem;
+}
+
+.home-container-options2{
+    display: flex;
 }
 
 .home-option{
     text-align: center;
-    padding: 0.5rem 2rem;
-    margin: 0.5rem;
+    padding: 0.3rem 1.5vw;
+    margin: 1.2vw;
     border: 1px solid #000;
-    flex-grow: 1;
-    max-width: max-content;
-    font-size: 1.9rem;
+    font-size: 2.5vw;
     font-weight: 200;
     font-family: var(--font-text);
+    display: flex;
+    align-items: center;
 }
 /*END OPTIONS*/
 /*START PARTNERS*/
@@ -447,45 +448,40 @@
 }
 
 .home-container-footer{
-    display: flex;
-    justify-content: flex-start;
-    padding: 1rem 1rem 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 1rem 1rem;
+    padding: 1rem 3rem 1rem 5rem;
+    justify-items: center;
 }
 
 .home-footer-link{
     background-color: #fff;
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    min-height: 170px;
+    min-width: 170px;
     padding: 1rem;
-    margin: 2rem;
 }
 
 .home-footer h4{
-    font-size: 1.5rem;
-    font-weight: 200;
-    font-family: var(--font-title);
-    margin-bottom: 1rem;
+font-size: 1.5rem;
+font-weight: 200;
+font-family: var(--font-title);
+margin-bottom: 1rem;
 }
 
 .home-footer p{
-    font-size: 1.2rem;
+font-size: 1.2rem;
 }
 /*END FOOTER*/
 
-@media only screen and (max-width: 1130px) {
+@media only screen and (max-width: 825px) {
 
     .home-container-footer{
+        grid-template-columns: 1fr 1fr 1fr;
         justify-content: center;
-        align-items: center;
         padding: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .home-footer-link{
-        flex-grow: 1;
-        width: 180px;
-        max-width: 250px;
-        margin: 2rem 1rem;
     }
 }
 
@@ -549,5 +545,15 @@
 
     .home-human-made-xs{
         min-width: auto;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .home-container-footer{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-content: center;
+        padding: 1rem;
     }
 }
