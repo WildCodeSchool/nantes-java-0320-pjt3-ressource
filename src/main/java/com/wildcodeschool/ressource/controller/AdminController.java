@@ -83,9 +83,9 @@ public class AdminController {
 
     @PostMapping("/admin/admin/create")
     public String adminCreate(@ModelAttribute Admin admin,
-                              @RequestParam String role) {
+                              @RequestParam Long role) {
 
-        Role role1 = roleRepository.findByRole(role).get();
+        Role role1 = roleRepository.findById(role).get();
         admin.setRole(role1);
         adminRepository.save(admin);
 

@@ -31,33 +31,37 @@
                     <div class="input-field col s6">
                         <input class="validate" id="user_name" name="username" type="text" th:field="*{username}">
                         <label for="user_name">Username</label>
+                        <span class="helper-text" data-error="Missing username" ></span>
                     </div>
                     <div class="input-field col s6">
-                        <select id="roles" name="role">
-                            <option disabled selected value="">Choose your option</option>
+                        <select class="validate" id="roles" name="role">
+                            <option disabled selected value="select">Choose your option</option>
                             <option th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}">ALL</option>
                         </select>
+                        <span class="helper-text" id="select-error"></span>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input class="validate" id="email" name="email" type="email"  th:field="*{email}">
                         <label for="email">Email</label>
+                        <span class="helper-text" data-error="Missing email" ></span>
                     </div>
                     <div class="input-field col s6">
                         <input class="validate" id="password" name="password" type="password"  th:field="*{password}">
                         <label for="password">Password</label>
+                        <span class="helper-text" data-error="Missing password" ></span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="passwordConfirm" name="passwordConfirm"
-                               type="password" placeholder="Confirm Password">
+                               type="password">
                         <label for="passwordConfirm">Confirm Password</label>
-                        <span class="helper-text" data-error="not ok" ></span>
+                        <span class="helper-text" data-error="Missing password confirmation" ></span>
                     </div>
-                    <button id="create" class="btn-create col s2 offset-s10 modal-close waves-effect waves-green btn">Create</button>
+                    <button id="create" class="btn-create col s2 offset-s10 waves-effect waves-green btn">Create</button>
+
                 </div>
             </form>
         </div>
