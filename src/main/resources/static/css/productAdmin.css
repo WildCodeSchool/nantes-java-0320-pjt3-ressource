@@ -1,10 +1,10 @@
 @import url('admin_sidebar.css');
 
-h1{
+h1 {
     font-family: var(--font-title);
 }
 
-.admin-product{
+.admin-product {
     margin-right: 3rem;
 }
 
@@ -16,11 +16,11 @@ h1{
     color: var(--color-bkg-button);
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly]){
+input[type=text]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid var(--color-bkg-button) !important;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly])+label {
+input[type=text]:not(.browser-default):focus:not([readonly]) + label {
     color: var(--color-bkg-button);
 }
 
@@ -28,20 +28,49 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label {
     border-bottom: 1px solid var(--color-bkg-button);
 }
 
-input[type=number]:not(.browser-default):focus:not([readonly]){
+input[type=number]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid var(--color-bkg-button);
     box-shadow: 0 1px 0 0 var(--color-bkg-button);
 }
 
-input[type=number]:not(.browser-default):focus:not([readonly])+label{
+input[type=number]:not(.browser-default):focus:not([readonly]) + label {
     color: var(--color-bkg-button);
 }
 
-[type="checkbox"]:checked+span:not(.lever):before {
+[type="checkbox"]:checked + span:not(.lever):before {
     border-right: 2px solid var(--color-bkg-button);
     border-bottom: 2px solid var(--color-bkg-button);
 }
 
-.btn{
+.btn, .btn:hover {
     background-color: var(--color-bkg-button);
+}
+
+.input-field label {
+    color: #000 !important;
+}
+
+.file-path::placeholder {
+    color: #000 !important;
+}
+
+.input-field input[type=text]:focus {
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #000 !important;
+}
+
+.input-field textarea:focus {
+    border-bottom: 1px solid #70ad47 !important;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field textarea:focus + label {
+    color: #70ad47 !important;
+}
+
+[type="checkbox"]+span:not(.lever) {
+    color: var(--color-bkg-button);
 }

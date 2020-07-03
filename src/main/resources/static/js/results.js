@@ -5,6 +5,7 @@ let tag_weight_1 = document.getElementById("slider-weight-tag-1");
 let tag_weight_2 = document.getElementById("slider-weight-tag-2");
 let sliders = document.getElementsByClassName('slider');
 
+let radiosClicked = {};
 for (let i = 0; i < sliders.length; i++) {
 
     if (sliders[i].id === "slider-weight") {
@@ -27,36 +28,23 @@ for (let i = 0; i < sliders.length; i++) {
         } else if ((this.value >= 236 && this.value <= 500) && this.id === "slider-width-2") {
             tag_weight_2.innerHTML = this.value;
         }
-    }
+    };
+
+    sliders[i].addEventListener('mouseup', function () {
+        filters(this);
+    });
+
+    sliders[i].addEventListener('touchend', function () {
+        filters(this);
+    })
 }
 
-// Sticky nav bar
-$(window).on("scroll", function () {
-    if ($(window).scrollTop()) {
-        $('.results-header-mobile').addClass('sticky');
-    } else {
-        $('.results-header-mobile').removeClass('sticky');
-    }
-});
-
-/* SEARCH MODIFY ON MOBILE */
-let search = document.getElementById("search-icon-nav");
-let navMenu = document.getElementById("results-menu-nav");
-let navSearch = document.getElementById("results-nav-search");
-let menuBack = document.getElementById("menu-nav-arrow-left");
-
-search.onclick = function () {
-    hideShow();
-};
-
-menuBack.onclick = function () {
-    hideShow();
-};
-
-function hideShow() {
-    navMenu.classList.toggle('hide');
-    navSearch.classList.toggle('show');
+/* FUNCTION TO INSERT EACH RADIO ON THE DICTIONARY */
+function filters(radio) {
+    radiosClicked[radio.name] = radio.value;
+    radioFilter();
 }
+
 
 /* color of the label when radio button clicked */
 
@@ -96,19 +84,30 @@ function clicking(radios, divRadios) {
     radios.click(function () {
         divRadios.removeClass("clicked");
         $(this).filter(':checked').closest(divRadios).addClass("clicked");
+        filters(this);
     });
 }
 
-/* FILTERS OPEN */
-let filter = document.getElementById("mobile-filter");
-let resultFilter = document.getElementById("results-filters");
-let resultsResults = document.getElementById("results-results");
+/* FETCH TO UPDATE THE RESULTS WHEN EVENT ON FILTERS */
+function radioFilter() {
 
-filter.onclick = function () {
-    resultFilter.classList.toggle('open');
-    resultsResults.classList.toggle('active');
-    $('body').toggleClass('color');
-};
+    let searchValue = document.getElementById("search");
+    let params = "search=" + searchValue.value + "&";
+
+    for (let radio in radiosClicked) {
+        params += radio + "=" + radiosClicked[radio] + "&";
+    }
+    fetch('/results/filter?' + params)
+        .then(function (response) {
+            return response.text()
+        }).then(function (content) {
+        let parser = new DOMParser();
+        let html = parser.parseFromString(content, 'text/html');
+        let result = document.getElementById('results-products');
+        result.innerHTML = html.getElementById('results-products').innerHTML;
+    });
+    window.history.pushState("object or string", "Results", "/results/filter?" + params + "submit=true");
+}
 
 /* FILTERS CLICK HERE TO SEE MORE */
 let clickHere = document.getElementsByClassName('filters-see-more');
@@ -198,3 +197,43 @@ Array.prototype.forEach.call(clickHereLess, link => {
         more.style.display = 'initial';
     }
 });
+
+
+/* FILTERS OPEN  MOBILE*/
+let filter = document.getElementById("mobile-filter");
+let resultFilter = document.getElementById("results-filters");
+let resultsResults = document.getElementById("results-results");
+
+filter.onclick = function () {
+    resultFilter.classList.toggle('open');
+    resultsResults.classList.toggle('active');
+    $('body').toggleClass('color');
+};
+
+/* STICKY NAV BAR MOBILE*/
+$(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+        $('.results-header-mobile').addClass('sticky');
+    } else {
+        $('.results-header-mobile').removeClass('sticky');
+    }
+});
+
+/* SEARCH MODIFY ON MOBILE */
+let search = document.getElementById("search-icon-nav");
+let navMenu = document.getElementById("results-menu-nav");
+let navSearch = document.getElementById("results-nav-search");
+let menuBack = document.getElementById("menu-nav-arrow-left");
+
+search.onclick = function () {
+    hideShow();
+};
+
+menuBack.onclick = function () {
+    hideShow();
+};
+
+function hideShow() {
+    navMenu.classList.toggle('hide');
+    navSearch.classList.toggle('show');
+}

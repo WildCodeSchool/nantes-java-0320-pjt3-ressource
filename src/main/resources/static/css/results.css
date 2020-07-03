@@ -352,6 +352,9 @@ select:-moz-focusring {
 
 }
 
+.filters-submit {
+    display: none;
+}
 /* ----------------------------MOBILE VERSION--------------------------- */
 
 @media only screen and (max-width: 767px) {
@@ -572,6 +575,9 @@ select:-moz-focusring {
         position: absolute;
     }
 
+    .filters-submit {
+        display: flex;
+    }
 }
 
 /* TABLET */
