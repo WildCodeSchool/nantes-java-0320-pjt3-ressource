@@ -106,7 +106,7 @@ function radioFilter() {
         let result = document.getElementById('results-products');
         result.innerHTML = html.getElementById('results-products').innerHTML;
     });
-    window.history.pushState("object or string", "Results", "/results/filter?" + params);
+    window.history.pushState("object or string", "Results", "/results/filter?" + params + "submit=true");
 }
 
 /* FILTERS CLICK HERE TO SEE MORE */
