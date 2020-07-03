@@ -33,9 +33,6 @@ public class AdminController {
     private RoleRepository roleRepository;
 
     @Autowired
-    private CompanyRepository companyRepository;
-
-    @Autowired
     private MaterialRepository materialRepository;
 
     @Autowired
