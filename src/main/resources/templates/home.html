@@ -16,6 +16,11 @@
                     <a class="home-btn-sign-in" href="#">Sign in</a>
                 </div>
             </header>
+            <header class="home-header-mobile">
+                <div>
+                    <h1><span>we</span>source</h1>
+                </div>
+            </header>
             <div class="home-search">
                 <div class="home-search-catchphrase">
                     <p>Find fabrics</p>
@@ -52,7 +57,7 @@
         </section>
         <section class="home-natural-fibers">
             <h2>Natural Fibers</h2>
-            <div class="home-container-fibers">
+            <div class="home-container-fibers1">
                 <div class="home-fibers-img-width-xl">
                     <div class="home-type-fibers home-type-fibers-1">
                         <h4>Cotton</h4>
@@ -65,6 +70,8 @@
                     </div>
                     <p>From chic to rustic, discover many different ways to use wool</p>
                 </div>
+            </div>
+            <div class="home-container-fibers2">
                 <div class="home-fibers-img-width-xs">
                     <div class="home-type-fibers home-type-fibers-3">
                         <h4>Silk</h4>
@@ -81,7 +88,7 @@
         </section>
         <section class="home-human-made">
             <h2>Human Made</h2>
-            <div class="home-container-made">
+            <div class="home-container-made1">
                 <div class="home-human-made-xs">
                     <div class="home-human-made-img home-human-made-1">
                         <h4>Acelate</h4>
@@ -100,6 +107,8 @@
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur</p>
                 </div>
+            </div>
+            <div class="home-container-made2">
                 <div class="home-human-made-xs">
                     <div class="home-human-made-img home-human-made-4">
                         <h4>Modal</h4>
@@ -118,6 +127,8 @@
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur</p>
                 </div>
+            </div>
+            <div class="home-container-made3">
                 <div class="home-human-made-xl">
                     <div class="home-human-made-img home-human-made-7">
                         <h4>Jacquards</h4>
@@ -134,7 +145,7 @@
         </section>
         <section class="home-options">
             <h2>Need more options ?</h2>
-            <div class="home-container-options">
+            <div class="home-container-options1">
                 <h4 class="home-option">Japanese fabrics</h4>
                 <h4 class="home-option">Crepe</h4>
                 <h4 class="home-option">Corduroy</h4>
@@ -142,6 +153,8 @@
                 <h4 class="home-option">Satin</h4>
                 <h4 class="home-option">Jersey</h4>
                 <h4 class="home-option">Oxford</h4>
+            </div>
+            <div class="home-container-options2">
                 <h4 class="home-option">Poplin</h4>
                 <h4 class="home-option">Denim</h4>
                 <h4 class="home-option">Taffeta</h4>
@@ -172,6 +185,7 @@
                 </div>
             </div>
         </section>
+        <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
         <footer class="home-footer">
             <div class="home-container-footer">
                 <div class="home-footer-link">
@@ -194,5 +208,10 @@
             </div>
         </footer>
     </main>
+    <script crossorigin="anonymous"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+    </script>
+    <script src="/js/home.js" type="text/javascript"></script>
 </body>
 </html>
