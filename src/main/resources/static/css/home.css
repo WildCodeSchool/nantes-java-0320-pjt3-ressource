@@ -617,11 +617,15 @@ font-size: 1.2rem;
     .home-header-mobile div h1 {
         font-family: var(--font-logo-thin);
         letter-spacing: 0.15rem;
+        font-size: 2rem;
+        display: flex;
+        align-items: baseline;
     }
 
     .home-header-mobile div h1 span {
         font-family: var(--font-logo-bold);
         font-weight: lighter;
+        font-size: 2.3rem;
     }
 
     .home-header-mobile {
