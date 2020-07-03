@@ -16,6 +16,11 @@
                     <a class="home-btn-sign-in" href="#">Sign in</a>
                 </div>
             </header>
+            <header class="home-header-mobile">
+                <div>
+                    <h1><span>we</span>source</h1>
+                </div>
+            </header>
             <div class="home-search">
                 <div class="home-search-catchphrase">
                     <p>Find fabrics</p>
@@ -180,6 +185,7 @@
                 </div>
             </div>
         </section>
+        <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
         <footer class="home-footer">
             <div class="home-container-footer">
                 <div class="home-footer-link">
@@ -202,5 +208,10 @@
             </div>
         </footer>
     </main>
+    <script crossorigin="anonymous"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+    </script>
+    <script src="/js/home.js" type="text/javascript"></script>
 </body>
 </html>

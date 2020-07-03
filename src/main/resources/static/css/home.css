@@ -17,6 +17,14 @@
     background-position: 50% 50%;
 }
 
+.home-header-mobile {
+    display: none;
+}
+
+.home-header-mobile h1 {
+    display: none;
+}
+
 .home-body h2{
     font-size: 4rem;
     font-weight: 200;
@@ -73,6 +81,7 @@
 .home-btn-sign-in{
     background-color: #fff;
     color: #000;
+    border: 1px solid #000;
     font-family: 'Futura PT Web Book' !important;
 }
 /*Search*/
@@ -546,6 +555,10 @@ font-size: 1.2rem;
     .home-human-made-xs{
         min-width: auto;
     }
+
+    .home-container-footer {
+        padding: 1rem 1rem 5rem 1rem;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -554,6 +567,81 @@ font-size: 1.2rem;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         justify-content: center;
-        padding: 1rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+
+    .home-logo {
+        display: none;
+    }
+
+    .home-search-box {
+        display: none;
+    }
+
+    .home-main {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .home-search {
+        padding-bottom: 1rem;
+    }
+
+    .home-btn-connection {
+        width: 75%;
+    }
+
+    .home-btn-connection a {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .home-container-options1{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .home-container-options2{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .home-option{
+        padding: 0.3rem 1rem;
+        margin: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    .home-header-mobile div h1 {
+        font-family: var(--font-logo-thin);
+        letter-spacing: 0.15rem;
+    }
+
+    .home-header-mobile div h1 span {
+        font-family: var(--font-logo-bold);
+        font-weight: lighter;
+    }
+
+    .home-header-mobile {
+        order: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8vh !important;
+        min-height: 0 !important;
+        background-color: var(--color-bkg-button);
+        color: var(--color-font-light);
+        padding: 0.5rem 0;
+        border-radius: 0 0 25px 25px;
+        overflow: hidden;
+        z-index: 99;
+    }
+
+    .home-header-mobile h1 {
+        display: flex;
+        align-items: center;
     }
 }
