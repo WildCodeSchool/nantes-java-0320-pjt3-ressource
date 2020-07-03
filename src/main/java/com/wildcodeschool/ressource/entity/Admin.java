@@ -22,6 +22,12 @@ public class Admin {
 
     public Admin () {}
 
+    public Admin (String username, String email, String password) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }
