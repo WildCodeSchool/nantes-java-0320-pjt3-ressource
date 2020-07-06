@@ -5,10 +5,13 @@ import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +20,12 @@ public class AdminController {
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private AdminRepository adminRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private MaterialRepository materialRepository;
@@ -69,15 +78,64 @@ public class AdminController {
     }
 
     @GetMapping("/admin/admin")
-    public String adminAdmin() {
+    public String adminAdmin(Model model) {
+
+        List<Admin> admins = adminRepository.findAll();
+        List<Role> roles = roleRepository.findAll();
+        model.addAttribute("admin", new Admin());
+        model.addAttribute("admins", admins);
+        model.addAttribute("roles", roles);
         return "admin_admin";
     }
 
+    @PostMapping("/admin/admin/create")
+    public String adminCreate(@ModelAttribute Admin admin,
+                              @RequestParam Long role) {
+
+        Role role1 = roleRepository.findById(role).get();
+        admin.setRole(role1);
+        adminRepository.save(admin);
+
+        return "redirect:/admin/admin";
+    }
+
     @GetMapping("/admin/companies")
-    public String adminCompanies() {
+    public String adminCompanies(Model model) {
+
+        List<Company> companyList = companyRepository.findAll();
+        model.addAttribute("companies", companyList);
         return "admin-companies";
     }
 
+    @GetMapping("/admin/company/{name}")
+    public String getCompanySelected(@PathVariable String name, Model model) {
+
+        if (name.equals("new")) {
+            Company company = new Company();
+            model.addAttribute("companySelected", company);
+        } else {
+            Optional<Company> optionalCompany = companyRepository.findByName(name);
+            if (optionalCompany.isPresent()) {
+                Company companySelected = optionalCompany.get();
+                model.addAttribute("companySelected", companySelected);
+            }
+        }
+        return "admin-company-selected";
+    }
+
+    @PostMapping("admin/companies")
+    public String postCompany(Company companySelected) {
+
+        Optional<Company> optionalCompany = companyRepository.findByName(companySelected.getName());
+        if (optionalCompany.isPresent()) {
+            Company companyModified = optionalCompany.get();
+            companySelected.setId(companyModified.getId());
+            companyRepository.save(companySelected);
+        } else {
+            companyRepository.save(companySelected);
+        }
+        return "redirect:/admin/companies";
+    }
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 
