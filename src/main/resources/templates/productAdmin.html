@@ -14,21 +14,23 @@
 <main class="admin-product">
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
-        <form action="" class="col s10">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input class="validate" id="first_name" type="text">
-                    <label for="first_name">Search by reference</label>
-                </div>
+        <form>
+        <div class="row">
+            <div class="input-field col s6">
+                <input class="validate" id="referenceSearch" type="text">
+                <label for="referenceSearch">Search by reference</label>
             </div>
+        </div>
+        </form>
+        <form action="/admin/products" method="post" class="col s10">
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="reference" type="text">
+                    <input class="validate" id="reference" type="text" name="reference">
                     <label for="reference">Reference</label>
                 </div>
                 <div class="col l4"></div>
                 <div class="input-field col l4">
-                    <select id="select-company">
+                    <select id="company" name="company">
                         <option disabled selected value="">Select company</option>
                         <option th:each="company: ${companies}" th:text="${company.name}" th:value="${company.id}">
                             BRICKS
@@ -38,17 +40,17 @@
             </div>
             <div class="row">
                 <div class="input-field col l12">
-                    <textarea class="materialize-textarea" id="description"></textarea>
+                    <textarea class="materialize-textarea" id="description" name="description"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s4">
-                    <input class="validate" id="design_number" type="text">
-                    <label for="design_number">Design number</label>
+                    <input class="validate" id="designNumber" type="text" name="designNumber">
+                    <label for="designNumber">Design number</label>
                 </div>
                 <div class="input-field col s4">
-                    <select id="select_material">
+                    <select id="select_material"name="material">
                         <option disabled selected value="">Select material</option>
                         <option th:each="material: ${materials}" th:text="${material.name}" th:value="${material.id}">
                             Woven
@@ -56,7 +58,7 @@
                     </select>
                 </div>
                 <div class="input-field col s4">
-                    <select>
+                    <select name="fabricPattern">
                         <option disabled selected value="">Select Fabric Pattern</option>
                         <option th:each="fabricPattern :${fabricPatterns}" th:text="${fabricPattern.name}"
                                 th:value="${fabricPattern.id}">FLEECE
@@ -67,40 +69,40 @@
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber1">
+                        <select id="fiber1" name="fiber1">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number" step="0.01" name="pourcentageFiber1">
                         <label for="pourcentage-fiber1">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber2">
+                        <select id="fiber2" name="fiber2">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number" step="0.01" name="pourcentageFiber2">
                         <label for="pourcentage-fiber2">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber3">
+                        <select id="fiber3" name="fiber3">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number" step="0.01" name="pourcentageFiber3">
                         <label for="pourcentage-fiber3">Pourcentage</label>
                     </div>
                 </div>
@@ -108,61 +110,61 @@
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber4">
+                        <select id="fiber4" name="fiber4">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number" step="0.01" name="pourcentageFiber4">
                         <label for="pourcentage-fiber4">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber5">
+                        <select id="fiber5" name="fiber5">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number" step="0.01" name="pourcentageFiber5">
                         <label for="pourcentage-fiber5">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber6">
+                        <select id="fiber6" name="fiber6">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="fiber.id">ABACA
+                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
                             </option>
                         </select>
                     </div>
                     <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number">
+                        <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number" step="0.01" name="pourcentageFiber6">
                         <label for="pourcentage-fiber6">Pourcentage</label>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="width" type="number">
+                    <input class="validate" id="width" type="number" name="width">
                     <label for="width">Width</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="weight" type="number">
+                    <input class="validate" id="weight" type="number" name="weight">
                     <label for="weight">Weight</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="pieceLenght" type="number">
-                    <label for="pieceLenght">Piece Length</label>
+                    <input class="validate" id="pieceLength" type="number" name="pieceLength">
+                    <label for="pieceLength">Piece Length</label>
                 </div>
                 <div class="input-field col l4">
-                    <select id="origin">
+                    <select id="origin" name="origin">
                         <option disabled selected value="">Select origin</option>
                         <option th:each="origin : ${origins}" th:text="${origin.country}" th:value="${origin.id}">
                             Belgium
@@ -170,7 +172,7 @@
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select id="price">
+                    <select id="price" name="price">
                         <option disabled selected value="">Select price range</option>
                         <option th:each="price : ${prices}" th:text="|${price.price} Euros |" th:value="${price.id}">1
                             to 3,99
@@ -180,46 +182,45 @@
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cMoq" type="number">
-                    <label for="cMoq">Collection MOQ</label>
+                    <input class="validate" id="collectionMOQ" type="number" name="collectionMOQ">
+                    <label for="collectionMOQ">Collection MOQ</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="Pmoq" type="number">
-                    <label for="Pmoq">Production MOQ</label>
+                    <input class="validate" id="productionMOQ" type="number" name="productionMOQ">
+                    <label for="productionMOQ">Production MOQ</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cLeadtime" type="number">
-                    <label for="cLeadtime">Collection Leadtime</label>
+                    <input class="validate" id="collectionLeadtime" type="number" name="collectionLeadtime">
+                    <label for="collectionLeadtime">Collection Leadtime</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="pLeadtime" type="number">
-                    <label for="pLeadtime">Production Leadtime</label>
+                    <input class="validate" id="productionLeadtime" type="number" name="productionLeadtime">
+                    <label for="productionLeadtime">Production Leadtime</label>
                 </div>
             </div>
             <div class="row">
                 <p>Carelabel symbol :</p>
                 <div class="input-field col l8">
-                    <select class="icons" multiple>
+                    <select class="icons" multiple name="careLabels">
                         <option disabled value="">Select carelabel</option>
                         <option th:attr="data-icon=@{/image/carelabel/{image}(image=${carelabel.image})}" th:each="carelabel: ${carelabels}"
                                 th:text="${carelabel.label}"
-                                th:value="${carelabel.id}">BLEACH IF
-                            NEEDED
+                                th:value="${carelabel.id}">BLEACH IF NEEDED
                         </option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l8">
-                    <textarea class="materialize-textarea" id="washingComments"></textarea>
+                    <textarea class="materialize-textarea" id="washingComments" name="washingComments"></textarea>
                     <label for="washingComments">Washing comments</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l8">
-                    <select multiple>
+                    <select multiple name="certifications">
                         <option disabled value="">Select certification</option>
                         <option th:attr="data-icon=@{/image/logo_certification/{image}(image=${certification.image})}" th:each="certification : ${certifications}"
                                 th:text="${certification.name}"
@@ -231,7 +232,7 @@
             </div>
             <div class="row">
                 <div class="input-field col l8">
-                    <select multiple>
+                    <select multiple name="technicalProperty">
                         <option disabled selected value="">Select your technical properties</option>
                         <option th:each="technicalPropertie : ${technicalProperties}"
                                 th:text="${technicalPropertie.technicalProperty}" th:value="${technicalPropertie.id}">
@@ -240,7 +241,7 @@
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="fabric">
                         <option disabled selected value="">Select fabric</option>
                         <option th:each="fabric : ${fabrics}" th:text="${fabric.fabric}" th:value="${fabric.id}">CREPE
                         </option>
@@ -249,7 +250,7 @@
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <select>
+                    <select name="handFeel">
                         <option disabled selected value="">Select handfeel</option>
                         <option th:each="handfeel : ${handfeels}" th:text="${handfeel.handFeel}"
                                 th:value="${handfeel.id}">DRY HANDFEEL
@@ -257,7 +258,7 @@
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="finishing">
                         <option disabled selected value="">Select finishing</option>
                         <option th:each="finishing : ${finishings}" th:text="${finishing.finishing}"
                                 th:value="${finishing.id}">NON IRON
@@ -265,7 +266,7 @@
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="look">
                         <option disabled selected value="">Select look</option>
                         <option th:each="look : ${looks}" th:text="${look.look}" th:value="${look.id}">WORKWEAR</option>
                     </select>
@@ -276,7 +277,7 @@
                     <p>Picture : </p>
                     <div class="btn">
                         <i class="large material-icons">archive</i>
-                        <input type="file">
+                        <input type="file" name="imageProduct" >
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -285,7 +286,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s8">
-                    <select multiple>
+                    <select multiple name="products">
                         <option disabled value="">Select favorite product</option>
                         <option th:each="product : ${products}" th:text="${product.reference}" th:value="${product.id}">GOTS</option>
                     </select>

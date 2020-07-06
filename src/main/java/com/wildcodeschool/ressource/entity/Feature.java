@@ -40,6 +40,21 @@ public class Feature {
     public Feature() {
     }
 
+    public Feature(Finishing finishing, HandFeel handFeel, Look look, Fabric fabric) {
+        this.finishing = finishing;
+        this.handFeel = handFeel;
+        this.look = look;
+        this.fabric = fabric;
+    }
+
+    public Feature(Finishing finishing, HandFeel handFeel, Look look, Fabric fabric, List<TechnicalProperty> technicalProperties) {
+        this.finishing = finishing;
+        this.handFeel = handFeel;
+        this.look = look;
+        this.fabric = fabric;
+        this.technicalProperties = technicalProperties;
+    }
+
     public Long getId() {
         return id;
     }
