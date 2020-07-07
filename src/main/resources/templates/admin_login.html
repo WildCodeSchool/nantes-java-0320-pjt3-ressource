@@ -18,7 +18,7 @@
         <h2 class="col s4 offset-s5">We<span>ssource</span></h2>
     </div>
     <div class="row">
-        <form class="col s4 offset-s5">
+        <form th:action="@{/login}" method="post" class="col s4 offset-s5">
             <div class="row">
                 <div class="input-field col s6">
                     <input class="validate " id="user_name" name="username" type="text">

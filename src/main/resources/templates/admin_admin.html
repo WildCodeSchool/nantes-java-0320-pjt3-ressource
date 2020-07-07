@@ -26,12 +26,13 @@
             <div class="col s12">
                 <h4>ADD NEW ADMIN</h4>
             </div>
-            <form class="col s12" action="/admin/admin/create" method="post" th:object="${admin}" id="createForm">
+            <form action="/admin/admin/create" class="col s12" id="createForm" method="post" th:object="${admin}">
+                <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input class="validate" id="user_name" name="username" type="text" th:field="*{username}">
+                        <input class="validate" id="user_name" name="username" th:field="*{username}" type="text">
                         <label for="user_name">Username</label>
-                        <span class="helper-text" data-error="Missing username" ></span>
+                        <span class="helper-text" data-error="Missing username"></span>
                     </div>
                     <div class="input-field col s6">
                         <select class="validate" id="roles" name="role">
@@ -43,14 +44,14 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input class="validate" id="email" name="email" type="email"  th:field="*{email}">
+                        <input class="validate" id="email" name="email" th:field="*{email}" type="email">
                         <label for="email">Email</label>
-                        <span class="helper-text" data-error="Missing email" ></span>
+                        <span class="helper-text" data-error="Missing email"></span>
                     </div>
                     <div class="input-field col s6">
-                        <input class="validate" id="password" name="password" type="password"  th:field="*{password}">
+                        <input class="validate" id="password" name="password" th:field="*{password}" type="password">
                         <label for="password">Password</label>
-                        <span class="helper-text" data-error="Missing password" ></span>
+                        <span class="helper-text" data-error="Missing password"></span>
                     </div>
                 </div>
                 <div class="row">
@@ -58,9 +59,10 @@
                         <input id="passwordConfirm" name="passwordConfirm"
                                type="password">
                         <label for="passwordConfirm">Confirm Password</label>
-                        <span class="helper-text" data-error="Missing password confirmation" ></span>
+                        <span class="helper-text" data-error="Missing password confirmation"></span>
                     </div>
-                    <button id="create" class="btn-create col s2 offset-s10 waves-effect waves-green btn">Create</button>
+                    <button class="btn-create col s2 offset-s10 waves-effect waves-green btn" id="create">Create
+                    </button>
 
                 </div>
             </form>

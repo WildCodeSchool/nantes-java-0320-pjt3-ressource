@@ -41,4 +41,5 @@ public class Role {
     public void setAdmin(List<Admin> admin) {
         this.admin = admin;
     }
+
 }
