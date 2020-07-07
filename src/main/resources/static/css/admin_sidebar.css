@@ -47,3 +47,22 @@
 main {
     padding-left: 350px;
 }
+
+.logout-footer.modal-footer {
+    display: flex;
+    justify-content: end;
+    padding-right: 1rem;
+}
+
+.logout-footer form {
+    margin-right: 2rem;
+}
+
+.modal {
+    width:20%;
+}
+
+.btn, .btn:hover {
+    background-color: var(--color-bkg-button);
+}
+
