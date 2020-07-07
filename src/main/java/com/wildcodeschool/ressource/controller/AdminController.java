@@ -1,22 +1,16 @@
 package com.wildcodeschool.ressource.controller;
 
 
-import com.wildcodeschool.ressource.entity.Company;
-import com.wildcodeschool.ressource.repository.CompanyRepository;
-import org.hibernate.tool.schema.internal.exec.GenerationTarget;
 import com.wildcodeschool.ressource.entity.Admin;
+import com.wildcodeschool.ressource.entity.Company;
 import com.wildcodeschool.ressource.entity.Role;
-import com.wildcodeschool.ressource.repository.AdminRepository;
-import com.wildcodeschool.ressource.repository.RoleRepository;
 import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +62,10 @@ public class AdminController {
     @Autowired
     private LookRepository lookRepository;
 
-    @GetMapping("/admin")
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/login")
     public String adminLogin() {
         return "admin_login";
     }
@@ -88,9 +85,14 @@ public class AdminController {
     public String adminCreate(@ModelAttribute Admin admin,
                               @RequestParam Long role) {
 
-        Role role1 = roleRepository.findById(role).get();
-        admin.setRole(role1);
-        adminRepository.save(admin);
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+
+        Optional<Role> optionalRole = roleRepository.findById(role);
+
+        if (optionalRole.isPresent()) {
+            admin.setRole(optionalRole.get());
+            adminRepository.save(admin);
+        }
 
         return "redirect:/admin/admin";
     }
@@ -145,7 +147,7 @@ public class AdminController {
         model.addAttribute("carelabels", careLabelRepository.findAll());
         model.addAttribute("certifications", certificationRepository.findAll());
         model.addAttribute("technicalProperties", technicalPropertyRepository.findAll());
-        model.addAttribute("fabrics",fabricRepository.findAll());
+        model.addAttribute("fabrics", fabricRepository.findAll());
         model.addAttribute("handfeels", handFeelRepository.findAll());
         model.addAttribute("finishings", finishingRepository.findAll());
         model.addAttribute("looks", lookRepository.findAll());
