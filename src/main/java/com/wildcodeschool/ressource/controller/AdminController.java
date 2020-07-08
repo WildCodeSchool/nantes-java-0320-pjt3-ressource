@@ -240,9 +240,9 @@ public class AdminController {
         newFeature.setFinishing(finishingRepository.findById(finishing).get());
         newFeature.setLook(lookRepository.findById(look).get());
         newFeature.setTechnicalProperties(technicalPropertyList);
-        featureRepository.save(newFeature);
+        Feature feature = featureRepository.save(newFeature);
 
-       //TODO: reccuperer l'id de feature
+        productToUpdate.setFeature(feature);
 
         List<Composition> compositionList = new ArrayList<>();
 
