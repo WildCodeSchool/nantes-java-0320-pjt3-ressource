@@ -94,7 +94,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 1}">
+                        <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number" step="0.01" name="pourcentageFiber1" th:value="${product.compositions.get(0).pourcentage}" >
+                        <label for="pourcentage-fiber1">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 1}">
                         <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number" step="0.01" name="pourcentageFiber1">
                         <label for="pourcentage-fiber1">Pourcentage</label>
                     </div>
@@ -118,7 +122,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 2}">
+                        <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number" step="0.01" name="pourcentageFiber2" th:value="${product.compositions.get(1).pourcentage}" >
+                        <label for="pourcentage-fiber2">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 2}">
                         <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number" step="0.01" name="pourcentageFiber2">
                         <label for="pourcentage-fiber2">Pourcentage</label>
                     </div>
@@ -142,7 +150,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 3}">
+                        <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number" step="0.01" name="pourcentageFiber3" th:value="${product.compositions.get(2).pourcentage}" >
+                        <label for="pourcentage-fiber3">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 3}">
                         <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number" step="0.01" name="pourcentageFiber3">
                         <label for="pourcentage-fiber3">Pourcentage</label>
                     </div>
@@ -168,7 +180,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 4}">
+                        <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number" step="0.01" name="pourcentageFiber4" th:value="${product.compositions.get(3).pourcentage}" >
+                        <label for="pourcentage-fiber4">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 4}">
                         <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number" step="0.01" name="pourcentageFiber4">
                         <label for="pourcentage-fiber4">Pourcentage</label>
                     </div>
@@ -192,7 +208,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 5}">
+                        <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number" step="0.01" name="pourcentageFiber5" th:value="${product.compositions.get(4).pourcentage}" >
+                        <label for="pourcentage-fiber5">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 5}">
                         <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number" step="0.01" name="pourcentageFiber5">
                         <label for="pourcentage-fiber5">Pourcentage</label>
                     </div>
@@ -216,7 +236,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
+                    <div class="input-field col l1" th:if ="${product.compositions.size() >= 6}">
+                        <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number" step="0.01" name="pourcentageFiber6" th:value="${product.compositions.get(5).pourcentage}" >
+                        <label for="pourcentage-fiber6">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if ="${product.compositions.size() < 4}">
                         <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number" step="0.01" name="pourcentageFiber6">
                         <label for="pourcentage-fiber6">Pourcentage</label>
                     </div>
@@ -375,7 +399,14 @@
             </div>
             <div class="row">
                 <div class="input-field col s8">
-                    <select multiple name="products">
+                    <select multiple name="products" th:if ="${product.products.size() < 1}">
+                        <option disabled value="">Select favorite product</option>
+                        <option th:each="prod : ${products}"
+                                th:text="${prod.reference}"
+                                th:value="${prod.id}"
+                                >GOTS</option>
+                    </select>
+                    <select multiple name="products" th:if ="${product.products.size() > 1}">
                         <option disabled value="">Select favorite product</option>
                         <option th:each="prod : ${products}"
                                 th:text="${prod.reference}"
