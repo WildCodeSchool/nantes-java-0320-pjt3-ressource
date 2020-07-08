@@ -22,11 +22,11 @@
             <div class="company-container-main-grid">
                 <section class="company-situation">
                     <div class="company-map">
-                        <img th:src="@{image/company/{company}(company = *{companyMap})}" alt="map of company">
+                        <img th:src="@{photo/company/{file}(file = *{companyMap})}" alt="map of company">
                         <div class="company-filter-map" th:text="*{address}"></div>
                     </div>
                     <div class="company-from-the-sky">
-                        <img th:src="@{image/company/{company}(company = *{pictureFromSky})}" alt="picture of company from the sky">
+                        <img th:src="@{photo/company/{file}(file = *{pictureFromSky})}" alt="picture of company from the sky">
                     </div>
                 </section>
                 <section class="company-ceo">

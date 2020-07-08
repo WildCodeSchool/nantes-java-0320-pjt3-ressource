@@ -1,11 +1,14 @@
 package com.wildcodeschool.ressource.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -85,10 +88,10 @@ public class FileSystemStorageService implements StorageService {
      * @return Resource the file
      * @throws StorageFileNotFoundException if the file can't be read
      */
-    /*@Override
-    public Resource loadAsResource(String filename) {
+    @Override
+    public Resource loadAsResource(String filename, int indexLocation) {
         try {
-            Path file = load(filename);
+            Path file = load(filename, indexLocation);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
@@ -99,7 +102,7 @@ public class FileSystemStorageService implements StorageService {
         } catch (MalformedURLException e) {
             throw new StorageFileNotFoundException("Could not read file: " + filename, e);
         }
-    }*/
+    }
 
     /**
      * Delete recursively the storage.location directory

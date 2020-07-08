@@ -41,7 +41,7 @@ public interface StorageService {
      * @param filename
      * @return the file
      */
-    //Resource loadAsResource(String filename);
+    Resource loadAsResource(String filename, int indexLocation);
 
     /**
      * Delete everything in the storage
