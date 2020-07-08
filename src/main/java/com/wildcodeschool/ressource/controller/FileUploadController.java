@@ -83,40 +83,40 @@ public class FileUploadController {
             companySelected.setCeoPhoto(filePictureFromSky.getOriginalFilename());
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (companySelected.getThumbnailOneTopLeft() == null || companySelected.getThumbnailOneTopLeft().equals("")) {
+            companySelected.setThumbnailOneTopLeft(fileCompanyMap.getOriginalFilename());
         }
 
-        if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
-            companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
+        if (companySelected.getThumbnailOneTopMiddle() == null || companySelected.getThumbnailOneTopMiddle().equals("")) {
+            companySelected.setThumbnailOneTopMiddle(filePictureFromSky.getOriginalFilename());
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (companySelected.getThumbnailOneTopRight() == null || companySelected.getThumbnailOneTopRight().equals("")) {
+            companySelected.setThumbnailOneTopRight(fileCompanyMap.getOriginalFilename());
         }
 
-        if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
-            companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
+        if (companySelected.getThumbnailOneSideWords() == null || companySelected.getThumbnailOneSideWords().equals("")) {
+            companySelected.setThumbnailOneSideWords(filePictureFromSky.getOriginalFilename());
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (companySelected.getThumbnailTwoTopLeft() == null || companySelected.getThumbnailTwoTopLeft().equals("")) {
+            companySelected.setThumbnailTwoTopLeft(fileCompanyMap.getOriginalFilename());
         }
 
-        if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
-            companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
+        if (companySelected.getThumbnailTwoTopMiddle() == null || companySelected.getThumbnailTwoTopMiddle().equals("")) {
+            companySelected.setThumbnailTwoTopMiddle(filePictureFromSky.getOriginalFilename());
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (companySelected.getThumbnailTwoTopRight() == null || companySelected.getThumbnailTwoTopRight().equals("")) {
+            companySelected.setThumbnailTwoTopRight(fileCompanyMap.getOriginalFilename());
         }
 
-        if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
-            companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
+        if (companySelected.getThumbnailTwoSideWords() == null || companySelected.getThumbnailTwoSideWords().equals("")) {
+            companySelected.setThumbnailTwoSideWords(filePictureFromSky.getOriginalFilename());
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (companySelected.getThumbnailTwoSideWords() == null || companySelected.getThumbnailTwoSideWords().equals("")) {
+            companySelected.setThumbnailTwoSideWords(fileCompanyMap.getOriginalFilename());
         }
 
         if (optionalCompany.isPresent()) {
