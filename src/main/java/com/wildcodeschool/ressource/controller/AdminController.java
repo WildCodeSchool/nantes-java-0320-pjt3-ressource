@@ -76,7 +76,7 @@ public class AdminController {
     @Autowired
     private FeatureRepository featureRepository;
 
-    @GetMapping("/admin")
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
@@ -323,4 +323,5 @@ public class AdminController {
         }
         return "redirect:/login?logout";
     }
+
 }
