@@ -121,20 +121,6 @@ public class AdminController {
         return "admin-company-selected";
     }
 
-    @PostMapping("admin/companies")
-    public String postCompany(Company companySelected) {
-
-        Optional<Company> optionalCompany = companyRepository.findByName(companySelected.getName());
-        if (optionalCompany.isPresent()) {
-            Company companyModified = optionalCompany.get();
-            companySelected.setId(companyModified.getId());
-            companyRepository.save(companySelected);
-        } else {
-            companyRepository.save(companySelected);
-        }
-        return "redirect:/admin/companies";
-    }
-
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 

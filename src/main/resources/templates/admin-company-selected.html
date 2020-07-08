@@ -25,8 +25,8 @@
             <div>
                 <div class="file-field input-field">
                     <div class="file-path-wrapper">
-                        <input th:field="*{pictureFromSky}" type="file">
-                        <input class="file-path validate" placeholder="upload your image" type="text">
+                        <input th:name="filePictureFromSky" type="file">
+                        <input th:field="*{pictureFromSky}" class="file-path validate" placeholder="upload your image" type="text">
                     </div>
                 </div>
             </div>
@@ -38,8 +38,8 @@
             <div>
                 <div class="file-field input-field">
                     <div class="file-path-wrapper">
-                        <input type="file">
-                        <input class="file-path validate" placeholder="upload your image" type="text">
+                        <input th:name="fileCompanyMap" type="file">
+                        <input th:field="*{companyMap}" class="file-path validate" placeholder="upload your image" type="text">
                     </div>
                 </div>
             </div>
