@@ -20,6 +20,11 @@ public class TechnicalProperty {
     public TechnicalProperty() {
     }
 
+    public TechnicalProperty(String technicalProperty, List<Feature> features) {
+        this.technicalProperty = technicalProperty;
+        this.features = features;
+    }
+
     public Long getId() {
         return id;
     }
