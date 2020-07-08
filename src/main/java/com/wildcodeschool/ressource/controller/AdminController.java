@@ -1,20 +1,20 @@
 package com.wildcodeschool.ressource.controller;
 
+
 import com.wildcodeschool.ressource.entity.*;
 import com.wildcodeschool.ressource.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,6 +67,7 @@ public class AdminController {
     private LookRepository lookRepository;
 
     @Autowired
+
     private ProductRepository productRepository;
 
     @Autowired
@@ -76,6 +77,9 @@ public class AdminController {
     private FeatureRepository featureRepository;
 
     @GetMapping("/admin")
+    private PasswordEncoder passwordEncoder;
+
+    @GetMapping("/login")
     public String adminLogin() {
         return "admin_login";
     }
@@ -95,9 +99,14 @@ public class AdminController {
     public String adminCreate(@ModelAttribute Admin admin,
                               @RequestParam Long role) {
 
-        Role role1 = roleRepository.findById(role).get();
-        admin.setRole(role1);
-        adminRepository.save(admin);
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+
+        Optional<Role> optionalRole = roleRepository.findById(role);
+
+        if (optionalRole.isPresent()) {
+            admin.setRole(optionalRole.get());
+            adminRepository.save(admin);
+        }
 
         return "redirect:/admin/admin";
     }
@@ -303,5 +312,15 @@ public class AdminController {
         model.addAttribute("product", productModified);
 
         return "productAdmin";
+    }
+
+    // http://websystique.com/spring-security/spring-security-4-logout-example/
+    @GetMapping(value = "/logout")
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login?logout";
     }
 }

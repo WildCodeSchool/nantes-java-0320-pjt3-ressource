@@ -1,7 +1,5 @@
 package com.wildcodeschool.ressource.entity;
 
-import org.springframework.context.annotation.EnableMBeanExport;
-
 import javax.persistence.*;
 
 @Entity
@@ -20,9 +18,10 @@ public class Admin {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    public Admin () {}
+    public Admin() {
+    }
 
-    public Admin (String username, String email, String password) {
+    public Admin(String username, String email, String password) {
         this.email = email;
         this.password = password;
         this.username = username;
@@ -67,4 +66,5 @@ public class Admin {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }

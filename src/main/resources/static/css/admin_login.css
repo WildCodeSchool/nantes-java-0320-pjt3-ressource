@@ -12,8 +12,10 @@
     font-family: var(--font-logo-thin);
 }
 
-.btn {
+.btn, .btn:hover {
     background-color: var(--color-bkg-button);
+    margin-left:0.7rem !important;
+    width: 24% !important;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]) + label,
@@ -25,4 +27,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid var(--color-bkg-button);
     box-shadow: 0 1px 0 0 var(--color-bkg-button);
+}
+
+.input-field {
+    width: 77% !important;
 }

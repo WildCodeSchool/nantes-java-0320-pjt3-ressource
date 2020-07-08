@@ -6,23 +6,32 @@
 </head>
 <body>
 <header th:fragment="admin-header">
-    <ul id="sidenav-1" class="sidenav sidenav-fixed">
+    <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
-                <h1>We<span>ssource</span></h1>
+                <h1>We<span>source</span></h1>
                 <div class="admin-header-user">
                     <a href="#"><span class="name">John Doe</span></a>
                     <a href="#"><span class="name">JDoe</span></a>
                     <a href="#"><span class="name">ALL</span></a>
                 </div>
-
             </div>
         </li>
         <li class="divider"></li>
         <li><a href="/admin/admin"><i class="material-icons left">account_box</i>Admin</a></li>
         <li><a href="/admin/companies"><i class="material-icons left">location_city</i>Companies</a></li>
         <li><a href="/admin/product"><i class="material-icons left">star</i>Products</a></li>
+        <li><a class="modal-trigger" href="#modal-logout"><i class="material-icons left">exit_to_app</i>Logout</a></li>
     </ul>
+    <div class="modal" id="modal-logout">
+        <div class="modal-content"> Are you sure you want to logout?</div>
+        <div class="modal-footer logout-footer">
+            <form method="get" action="/logout">
+                <input class="modal-close btn" type="submit" th:value="logout" name="submit">
+            </form>
+            <input class="modal-close btn" type="submit" th:value="cancel" name="submit">
+        </div>
+    </div>
 </header>
 </body>
 </html>
