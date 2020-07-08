@@ -7,6 +7,7 @@ import com.wildcodeschool.ressource.storage.StorageFileNotFoundException;
 import com.wildcodeschool.ressource.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -54,22 +57,94 @@ public class FileUploadController {
                               @RequestParam (defaultValue = "", required = false) MultipartFile fileThumbnailTwoSideWords,
                               @RequestParam (defaultValue = "", required = false) MultipartFile fileEndPhoto) {
 
-
-
-        storageService.store(filePictureFromSky, 0);
-        storageService.store(fileCompanyMap, 0);
-        storageService.store(fileCeoPhoto, 0);
-        storageService.store(fileThumbnailOneTopLeft, 0);
-        storageService.store(fileThumbnailOneTopMiddle, 0);
-        storageService.store(fileThumbnailOneTopRight, 0);
-        storageService.store(fileThumbnailOneSideWords, 0);
-        storageService.store(fileThumbnailTwoTopLeft, 0);
-        storageService.store(fileThumbnailTwoTopMiddle, 0);
-        storageService.store(fileThumbnailTwoTopRight, 0);
-        storageService.store(fileThumbnailTwoSideWords, 0);
-        storageService.store(fileEndPhoto, 0);
-
         Optional<Company> optionalCompany = companyRepository.findByName(companySelected.getName());
+        if (optionalCompany.isPresent()) {
+            Company companyModified = optionalCompany.get();
+            companySelected.setId(companyModified.getId());
+            if (!companyModified.getPictureFromSky().equals(filePictureFromSky.getOriginalFilename())
+                    && !(filePictureFromSky.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getPictureFromSky(), 0);
+            }
+            storageService.deleteByName(filePictureFromSky.getOriginalFilename(), 0);
+            storageService.store(filePictureFromSky, 0);
+
+            if (!companyModified.getCompanyMap().equals(fileCompanyMap.getOriginalFilename())
+                    && !(fileCompanyMap.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getCompanyMap(), 0);
+            }
+            storageService.deleteByName(fileCompanyMap.getOriginalFilename(), 0);
+            storageService.store(fileCompanyMap, 0);
+
+            if (!companyModified.getCeoPhoto().equals(fileCeoPhoto.getOriginalFilename())
+                    && !(fileCeoPhoto.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getCeoPhoto(), 0);
+            }
+            storageService.deleteByName(fileCeoPhoto.getOriginalFilename(), 0);
+            storageService.store(fileCeoPhoto, 0);
+
+            if (!companyModified.getThumbnailOneTopLeft().equals(fileThumbnailOneTopLeft.getOriginalFilename())
+                    && !(fileThumbnailOneTopLeft.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailOneTopLeft(), 0);
+            }
+            storageService.deleteByName(fileThumbnailOneTopLeft.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailOneTopLeft, 0);
+
+            if (!companyModified.getThumbnailOneTopMiddle().equals(fileThumbnailOneTopMiddle.getOriginalFilename())
+                    && !(fileThumbnailOneTopMiddle.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailOneTopMiddle(), 0);
+            }
+            storageService.deleteByName(fileThumbnailOneTopMiddle.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailOneTopMiddle, 0);
+
+            if (!companyModified.getThumbnailOneTopRight().equals(fileThumbnailOneTopRight.getOriginalFilename())
+                    && !(fileThumbnailOneTopRight.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailOneTopRight(), 0);
+            }
+            storageService.deleteByName(fileThumbnailOneTopRight.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailOneTopRight, 0);
+
+            if (!companyModified.getThumbnailOneSideWords().equals(fileThumbnailOneSideWords.getOriginalFilename())
+                    && !(fileThumbnailOneSideWords.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailOneSideWords(), 0);
+            }
+            storageService.deleteByName(fileThumbnailOneSideWords.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailOneSideWords, 0);
+
+            if (!companyModified.getThumbnailTwoTopLeft().equals(fileThumbnailTwoTopLeft.getOriginalFilename())
+                    && !(fileThumbnailTwoTopLeft.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailTwoTopLeft(), 0);
+            }
+            storageService.deleteByName(fileThumbnailTwoTopLeft.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailTwoTopLeft, 0);
+
+            if (!companyModified.getThumbnailTwoTopMiddle().equals(fileThumbnailTwoTopMiddle.getOriginalFilename())
+                    && !(fileThumbnailTwoTopMiddle.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailTwoTopMiddle(), 0);
+            }
+            storageService.deleteByName(fileThumbnailTwoTopMiddle.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailTwoTopMiddle, 0);
+
+            if (!companyModified.getThumbnailTwoTopRight().equals(fileThumbnailTwoTopRight.getOriginalFilename())
+                    && !(fileThumbnailTwoTopRight.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailTwoTopRight(), 0);
+            }
+            storageService.deleteByName(fileThumbnailTwoTopRight.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailTwoTopRight, 0);
+
+            if (!companyModified.getThumbnailTwoSideWords().equals(fileThumbnailTwoSideWords.getOriginalFilename())
+                    && !(fileThumbnailTwoSideWords.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getThumbnailTwoSideWords(), 0);
+            }
+            storageService.deleteByName(fileThumbnailTwoSideWords.getOriginalFilename(), 0);
+            storageService.store(fileThumbnailTwoSideWords, 0);
+
+            if (!companyModified.getEndPhoto().equals(fileEndPhoto.getOriginalFilename())
+                    && !(fileEndPhoto.getOriginalFilename().isEmpty())) {
+                storageService.deleteByName(companyModified.getEndPhoto(), 0);
+            }
+            storageService.deleteByName(fileEndPhoto.getOriginalFilename(), 0);
+            storageService.store(fileEndPhoto, 0);
+        }
 
         if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
             companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
@@ -119,13 +194,7 @@ public class FileUploadController {
             companySelected.setThumbnailTwoSideWords(fileCompanyMap.getOriginalFilename());
         }
 
-        if (optionalCompany.isPresent()) {
-            Company companyModified = optionalCompany.get();
-            companySelected.setId(companyModified.getId());
-            companyRepository.save(companySelected);
-        } else {
-            companyRepository.save(companySelected);
-        }
+        companyRepository.save(companySelected);
         return "redirect:/admin/companies";
     }
 

@@ -46,6 +46,6 @@ public interface StorageService {
     /**
      * Delete everything in the storage
      */
-    void deleteAll(int indexLocation);
+    void deleteByName(String fileName, int indexLocation);
 
 }

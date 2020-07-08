@@ -108,8 +108,17 @@ public class FileSystemStorageService implements StorageService {
      * Delete recursively the storage.location directory
      */
     @Override
-    public void deleteAll(int indexLocation) {
-        FileSystemUtils.deleteRecursively(rootLocation.get(indexLocation).toFile());
+    public void deleteByName(String fileName, int indexLocation) {
+
+        Path file = load(fileName, indexLocation);
+        try {
+            Resource resource = new UrlResource(file.toUri());
+            if (resource.exists() && resource.isReadable()) {
+                FileSystemUtils.deleteRecursively(file.toFile());
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
