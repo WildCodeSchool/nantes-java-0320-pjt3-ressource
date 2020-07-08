@@ -14,25 +14,28 @@
 <main class="admin-product">
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
-        <form>
+        <form action="/admin/products/search" method="post">
         <div class="row">
             <div class="input-field col s6">
-                <input class="validate" id="referenceSearch" type="text">
+                <input class="validate" id="referenceSearch" type="text" name="reference">
                 <label for="referenceSearch">Search by reference</label>
             </div>
         </div>
         </form>
-        <form action="/admin/products" method="post" class="col s10">
+        <form action="/admin/products" method="post" class="col s10" th:object="${product}">
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="reference" type="text" name="reference">
+                    <input class="validate" id="reference" type="text" name="reference" th:field="*{reference}">
                     <label for="reference">Reference</label>
                 </div>
                 <div class="col l4"></div>
                 <div class="input-field col l4">
                     <select id="company" name="company">
                         <option disabled selected value="">Select company</option>
-                        <option th:each="company: ${companies}" th:text="${company.name}" th:value="${company.id}">
+                        <option th:each="comp: ${companies}"
+                                th:text="${comp.name}"
+                                th:value="${comp.id}"
+                                th:selected="${product.company==comp}">
                             BRICKS
                         </option>
                     </select>
@@ -40,19 +43,22 @@
             </div>
             <div class="row">
                 <div class="input-field col l12">
-                    <textarea class="materialize-textarea" id="description" name="description"></textarea>
+                    <textarea class="materialize-textarea" id="description" name="description" th:field="*{description}"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s4">
-                    <input class="validate" id="designNumber" type="text" name="designNumber">
+                    <input class="validate" id="designNumber" type="text" name="designNumber" th:field="*{designNumber}">
                     <label for="designNumber">Design number</label>
                 </div>
                 <div class="input-field col s4">
                     <select id="select_material"name="material">
                         <option disabled selected value="">Select material</option>
-                        <option th:each="material: ${materials}" th:text="${material.name}" th:value="${material.id}">
+                        <option th:each="mat: ${materials}"
+                                th:text="${mat.name}"
+                                th:value="${mat.id}"
+                                th:selected="${product.material==mat}">
                             Woven
                         </option>
                     </select>
@@ -60,8 +66,10 @@
                 <div class="input-field col s4">
                     <select name="fabricPattern">
                         <option disabled selected value="">Select Fabric Pattern</option>
-                        <option th:each="fabricPattern :${fabricPatterns}" th:text="${fabricPattern.name}"
-                                th:value="${fabricPattern.id}">FLEECE
+                        <option th:each="fabricPattern :${fabricPatterns}"
+                                th:text="${fabricPattern.name}"
+                                th:value="${fabricPattern.id}"
+                                th:selected="${product.fabricPattern==fabricPattern}">FLEECE
                         </option>
                     </select>
                 </div>
@@ -69,9 +77,20 @@
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber1" name="fiber1">
+                        <select id="fiber1" name="fiber1" th:if ="${product.compositions.size() < 1}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber1" name="fiber1" th:if ="${product.compositions.size() >= 1}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(0).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -82,9 +101,20 @@
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber2" name="fiber2">
+                        <select id="fiber2" name="fiber2" th:if ="${product.compositions.size() < 2}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber2" name="fiber2"th:if ="${product.compositions.size() >= 2}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(1).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -95,9 +125,20 @@
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber3" name="fiber3">
+                        <select id="fiber3" name="fiber3" th:if ="${product.compositions.size() < 3}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber3" name="fiber3"th:if ="${product.compositions.size() >= 3}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(2).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -110,9 +151,20 @@
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber4" name="fiber4">
+                        <select id="fiber4" name="fiber4" th:if ="${product.compositions.size() < 4}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber4" name="fiber4"th:if ="${product.compositions.size() >= 4}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(3).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -123,9 +175,20 @@
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber5" name="fiber5">
+                        <select id="fiber5" name="fiber5" th:if ="${product.compositions.size() < 5}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber5" name="fiber5"th:if ="${product.compositions.size() >= 5}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(4).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -136,9 +199,20 @@
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber6" name="fiber6">
+                        <select id="fiber6" name="fiber6" th:if ="${product.compositions.size() < 6}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:text="${fiber.name}" th:value="${fiber.id}">ABACA
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber6" name="fiber6"th:if ="${product.compositions.size() == 6}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                                    th:selected="${product.compositions.get(5).fiber==fiber}">ABACA
                             </option>
                         </select>
                     </div>
@@ -150,23 +224,26 @@
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="width" type="number" name="width">
+                    <input class="validate" id="width" type="number" name="width" th:field="*{width}">
                     <label for="width">Width</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="weight" type="number" name="weight">
+                    <input class="validate" id="weight" type="number" name="weight" th:field="*{weight}">
                     <label for="weight">Weight</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="pieceLength" type="number" name="pieceLength">
+                    <input class="validate" id="pieceLength" type="number" name="pieceLength" th:field="*{pieceLength}">
                     <label for="pieceLength">Piece Length</label>
                 </div>
                 <div class="input-field col l4">
                     <select id="origin" name="origin">
                         <option disabled selected value="">Select origin</option>
-                        <option th:each="origin : ${origins}" th:text="${origin.country}" th:value="${origin.id}">
+                        <option th:each="origin : ${origins}"
+                                th:text="${origin.country}"
+                                th:value="${origin.id}"
+                                th:selected="${product.origin==origin}">
                             Belgium
                         </option>
                     </select>
@@ -174,7 +251,10 @@
                 <div class="input-field col l4">
                     <select id="price" name="price">
                         <option disabled selected value="">Select price range</option>
-                        <option th:each="price : ${prices}" th:text="|${price.price} Euros |" th:value="${price.id}">1
+                        <option th:each="price : ${prices}"
+                                th:text="|${price.price} Euros |"
+                                th:value="${price.id}"
+                                th:selected="${product.price==price}">1
                             to 3,99
                         </option>
                     </select>
@@ -182,21 +262,21 @@
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="collectionMOQ" type="number" name="collectionMOQ">
+                    <input class="validate" id="collectionMOQ" type="number" name="collectionMOQ" th:field="*{collectionMOQ}">
                     <label for="collectionMOQ">Collection MOQ</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="productionMOQ" type="number" name="productionMOQ">
+                    <input class="validate" id="productionMOQ" type="number" name="productionMOQ" th:field="*{productionMOQ}">
                     <label for="productionMOQ">Production MOQ</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="collectionLeadtime" type="number" name="collectionLeadtime">
+                    <input class="validate" id="collectionLeadtime" type="number" name="collectionLeadtime" th:field="*{collectionLeadtime}">
                     <label for="collectionLeadtime">Collection Leadtime</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="productionLeadtime" type="number" name="productionLeadtime">
+                    <input class="validate" id="productionLeadtime" type="number" name="productionLeadtime" th:field="*{productionLeadtime}">
                     <label for="productionLeadtime">Production Leadtime</label>
                 </div>
             </div>
@@ -207,14 +287,15 @@
                         <option disabled value="">Select carelabel</option>
                         <option th:attr="data-icon=@{/image/carelabel/{image}(image=${carelabel.image})}" th:each="carelabel: ${carelabels}"
                                 th:text="${carelabel.label}"
-                                th:value="${carelabel.id}">BLEACH IF NEEDED
+                                th:value="${carelabel.id}"
+                                th:selected="${product.careLabels.contains(carelabel)}">BLEACH IF NEEDED
                         </option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l8">
-                    <textarea class="materialize-textarea" id="washingComments" name="washingComments"></textarea>
+                    <textarea class="materialize-textarea" id="washingComments" name="washingComments" th:field="*{washingComments}"></textarea>
                     <label for="washingComments">Washing comments</label>
                 </div>
             </div>
@@ -224,8 +305,8 @@
                         <option disabled value="">Select certification</option>
                         <option th:attr="data-icon=@{/image/logo_certification/{image}(image=${certification.image})}" th:each="certification : ${certifications}"
                                 th:text="${certification.name}"
-                                th:value="${certification.id}">
-                            GOTS
+                                th:value="${certification.id}"
+                                th:selected="${product.certifications.contains(certification)}">GOTS
                         </option>
                     </select>
                 </div>
@@ -235,15 +316,18 @@
                     <select multiple name="technicalProperty">
                         <option disabled selected value="">Select your technical properties</option>
                         <option th:each="technicalPropertie : ${technicalProperties}"
-                                th:text="${technicalPropertie.technicalProperty}" th:value="${technicalPropertie.id}">
-                            QUICK DRY
+                                th:text="${technicalPropertie.technicalProperty}"
+                                th:value="${technicalPropertie.id}"
+                                >QUICK DRY
                         </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select name="fabric">
                         <option disabled selected value="">Select fabric</option>
-                        <option th:each="fabric : ${fabrics}" th:text="${fabric.fabric}" th:value="${fabric.id}">CREPE
+                        <option th:each="fabric : ${fabrics}"
+                                th:text="${fabric.fabric}"
+                                th:value="${fabric.id}">CREPE
                         </option>
                     </select>
                 </div>
@@ -253,7 +337,8 @@
                     <select name="handFeel">
                         <option disabled selected value="">Select handfeel</option>
                         <option th:each="handfeel : ${handfeels}" th:text="${handfeel.handFeel}"
-                                th:value="${handfeel.id}">DRY HANDFEEL
+                                th:value="${handfeel.id}"
+                                >DRY HANDFEEL
                         </option>
                     </select>
                 </div>
@@ -261,14 +346,18 @@
                     <select name="finishing">
                         <option disabled selected value="">Select finishing</option>
                         <option th:each="finishing : ${finishings}" th:text="${finishing.finishing}"
-                                th:value="${finishing.id}">NON IRON
+                                th:value="${finishing.id}"
+                                >NON IRON
                         </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
                     <select name="look">
                         <option disabled selected value="">Select look</option>
-                        <option th:each="look : ${looks}" th:text="${look.look}" th:value="${look.id}">WORKWEAR</option>
+                        <option th:each="look : ${looks}"
+                                th:text="${look.look}"
+                                th:value="${look.id}"
+                               >WORKWEAR</option>
                     </select>
                 </div>
             </div>
@@ -288,7 +377,10 @@
                 <div class="input-field col s8">
                     <select multiple name="products">
                         <option disabled value="">Select favorite product</option>
-                        <option th:each="product : ${products}" th:text="${product.reference}" th:value="${product.id}">GOTS</option>
+                        <option th:each="prod : ${products}"
+                                th:text="${prod.reference}"
+                                th:value="${prod.id}"
+                                th:selected="${product.products.contains(prod)}">GOTS</option>
                     </select>
                 </div>
             </div>

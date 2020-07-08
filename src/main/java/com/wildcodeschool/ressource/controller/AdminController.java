@@ -136,6 +136,7 @@ public class AdminController {
         }
         return "redirect:/admin/companies";
     }
+
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 
@@ -153,53 +154,48 @@ public class AdminController {
         model.addAttribute("finishings", finishingRepository.findAll());
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("product", new Product());
 
         return "productAdmin";
     }
 
-//    @PostMapping("/admin/products")
-//    public Product create(@RequestBody Product product){
-//
-//        return productRepository.save(product) ;
-//    }
-
     @PostMapping("/admin/products")
-    public String update(@RequestParam String reference,
-                         @RequestParam Long designNumber,
-                         @RequestParam String description,
-                         @RequestParam Integer width,
-                         @RequestParam Integer weight,
-                         @RequestParam Integer pieceLength,
-                         @RequestParam Integer collectionMOQ,
-                         @RequestParam Integer productionMOQ,
-                         @RequestParam Integer collectionLeadtime,
-                         @RequestParam Integer productionLeadtime,
-                         @RequestParam String washingComments,
-                         @RequestParam Long material,
-                         @RequestParam(value = "certifications", required = false) Long[] certifications,
-                         @RequestParam(value = "careLabels", required = false) Long[] careLabels,
-                         @RequestParam Long origin,
-                         @RequestParam Long price,
-                         @RequestParam Long fabricPattern,
-                         @RequestParam Long company,
-                         @RequestParam(value = "products", required = false) Long[] products,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber1,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber1,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber2,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber2,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber3,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber3,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber4,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber4,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber5,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber5,
-                         @RequestParam(defaultValue = "0", required = false) Long fiber6,
-                         @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber6,
-                         @RequestParam (value = "technicalProperty", required = false) Long[] technicalProperty,
-                         @RequestParam Long fabric,
-                         @RequestParam Long handFeel,
-                         @RequestParam Long finishing,
-                         @RequestParam Long look) {
+    public String updateCompany(@RequestParam String reference,
+                                @RequestParam Long designNumber,
+                                @RequestParam String description,
+                                @RequestParam Integer width,
+                                @RequestParam Integer weight,
+                                @RequestParam Integer pieceLength,
+                                @RequestParam Integer collectionMOQ,
+                                @RequestParam Integer productionMOQ,
+                                @RequestParam Integer collectionLeadtime,
+                                @RequestParam Integer productionLeadtime,
+                                @RequestParam String washingComments,
+                                @RequestParam Long material,
+                                @RequestParam(value = "certifications", required = false) Long[] certifications,
+                                @RequestParam(value = "careLabels", required = false) Long[] careLabels,
+                                @RequestParam Long origin,
+                                @RequestParam Long price,
+                                @RequestParam Long fabricPattern,
+                                @RequestParam Long company,
+                                @RequestParam(value = "products", required = false) Long[] products,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber1,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber1,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber2,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber2,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber3,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber3,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber4,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber4,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber5,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber5,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber6,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber6,
+                                @RequestParam(value = "technicalProperty", required = false) Long[] technicalProperty,
+                                @RequestParam Long fabric,
+                                @RequestParam Long handFeel,
+                                @RequestParam Long finishing,
+                                @RequestParam Long look) {
 
         Optional<Product> optionalProductToUpdate = productRepository.findByReference(reference);
 
@@ -246,6 +242,8 @@ public class AdminController {
         newFeature.setTechnicalProperties(technicalPropertyList);
         featureRepository.save(newFeature);
 
+       //TODO: reccuperer l'id de feature
+
         List<Composition> compositionList = new ArrayList<>();
 
         if (fiber1 != 0) {
@@ -271,5 +269,38 @@ public class AdminController {
         compositionRepository.saveAll(compositionList);
 
         return "redirect:/admin/product";
+    }
+
+    @PostMapping("/admin/products/search")
+    public String companySearch(Model model, @RequestParam String reference) {
+
+        Product productModified = new Product();
+
+        Optional<Product> optionalProduct = productRepository.findByReference(reference);
+        if (optionalProduct.isPresent()) {
+            productModified = optionalProduct.get();
+        }
+
+
+        model.addAttribute("companies", companyRepository.findAll());
+        model.addAttribute("materials", materialRepository.findAll());
+        model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
+        model.addAttribute("fibers", fiberRepository.findAll());
+        model.addAttribute("origins", originRepository.findAll());
+        model.addAttribute("prices", priceRepository.findAll());
+        model.addAttribute("carelabels", careLabelRepository.findAll());
+        model.addAttribute("certifications", certificationRepository.findAll());
+        model.addAttribute("technicalProperties", technicalPropertyRepository.findAll());
+        model.addAttribute("fabrics", fabricRepository.findAll());
+        model.addAttribute("handfeels", handFeelRepository.findAll());
+        model.addAttribute("finishings", finishingRepository.findAll());
+        model.addAttribute("looks", lookRepository.findAll());
+        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("product", new Product());
+
+        model.addAttribute("product", productModified);
+
+
+        return "productAdmin";
     }
 }
