@@ -7,21 +7,14 @@ import com.wildcodeschool.ressource.storage.StorageFileNotFoundException;
 import com.wildcodeschool.ressource.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Path;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Controllers for a sample web app that deal with file upload and serving
@@ -58,140 +51,206 @@ public class FileUploadController {
                               @RequestParam (defaultValue = "", required = false) MultipartFile fileEndPhoto) {
 
         Optional<Company> optionalCompany = companyRepository.findByName(companySelected.getName());
+
+        String prefix = companySelected.getName() + "-";
+
+        String pictureFromSky = prefix + filePictureFromSky.getOriginalFilename();
+        String companyMap = prefix + fileCompanyMap.getOriginalFilename();
+        String ceoPhoto = prefix + fileCeoPhoto.getOriginalFilename();
+        String thumbnailOneTopLeft = prefix + fileThumbnailOneTopLeft.getOriginalFilename();
+        String thumbnailOneTopMiddle = prefix + fileThumbnailOneTopMiddle.getOriginalFilename();
+        String thumbnailOneTopRight = prefix + fileThumbnailOneTopRight.getOriginalFilename();
+        String thumbnailOneSideWords = prefix + fileThumbnailOneSideWords.getOriginalFilename();
+        String thumbnailTwoTopLeft = prefix + fileThumbnailTwoTopLeft.getOriginalFilename();
+        String thumbnailTwoTopMiddle = prefix + fileThumbnailTwoTopMiddle.getOriginalFilename();
+        String thumbnailTwoTopRight = prefix + fileThumbnailTwoTopRight.getOriginalFilename();
+        String thumbnailTwoSideWords = prefix + fileThumbnailTwoSideWords.getOriginalFilename();
+        String endPhoto = prefix + fileEndPhoto.getOriginalFilename();
+
         if (optionalCompany.isPresent()) {
             Company companyModified = optionalCompany.get();
             companySelected.setId(companyModified.getId());
-            if (!companyModified.getPictureFromSky().equals(filePictureFromSky.getOriginalFilename())
-                    && !(filePictureFromSky.getOriginalFilename().isEmpty())) {
+
+            if (!(companyModified.getPictureFromSky() == null)
+                && !companyModified.getPictureFromSky().equals(pictureFromSky)
+                && !filePictureFromSky.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getPictureFromSky(), 0);
             }
             storageService.deleteByName(filePictureFromSky.getOriginalFilename(), 0);
-            storageService.store(filePictureFromSky, 0);
+            storageService.store(filePictureFromSky, 0, pictureFromSky);
 
-            if (!companyModified.getCompanyMap().equals(fileCompanyMap.getOriginalFilename())
-                    && !(fileCompanyMap.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getCompanyMap() == null)
+                    && !companyModified.getCompanyMap().equals(companyMap)
+                    && !fileCompanyMap.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getCompanyMap(), 0);
             }
-            storageService.deleteByName(fileCompanyMap.getOriginalFilename(), 0);
-            storageService.store(fileCompanyMap, 0);
+            storageService.deleteByName(companyMap, 0);
+            storageService.store(fileCompanyMap, 0, companyMap);
 
-            if (!companyModified.getCeoPhoto().equals(fileCeoPhoto.getOriginalFilename())
-                    && !(fileCeoPhoto.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getCeoPhoto() == null)
+                    && !companyModified.getCeoPhoto().equals(ceoPhoto)
+                    && !fileCeoPhoto.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getCeoPhoto(), 0);
             }
-            storageService.deleteByName(fileCeoPhoto.getOriginalFilename(), 0);
-            storageService.store(fileCeoPhoto, 0);
+            storageService.deleteByName(ceoPhoto, 0);
+            storageService.store(fileCeoPhoto, 0, ceoPhoto);
 
-            if (!companyModified.getThumbnailOneTopLeft().equals(fileThumbnailOneTopLeft.getOriginalFilename())
-                    && !(fileThumbnailOneTopLeft.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailOneTopLeft() == null)
+                    && !companyModified.getThumbnailOneTopLeft().equals(thumbnailOneTopLeft)
+                    && !fileThumbnailOneTopLeft.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailOneTopLeft(), 0);
             }
-            storageService.deleteByName(fileThumbnailOneTopLeft.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailOneTopLeft, 0);
+            storageService.deleteByName(thumbnailOneTopLeft, 0);
+            storageService.store(fileThumbnailOneTopLeft, 0, thumbnailOneTopLeft);
 
-            if (!companyModified.getThumbnailOneTopMiddle().equals(fileThumbnailOneTopMiddle.getOriginalFilename())
-                    && !(fileThumbnailOneTopMiddle.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailOneTopMiddle() == null)
+                    && !companyModified.getThumbnailOneTopMiddle().equals(thumbnailOneTopMiddle)
+                    && !fileThumbnailOneTopMiddle.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailOneTopMiddle(), 0);
             }
-            storageService.deleteByName(fileThumbnailOneTopMiddle.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailOneTopMiddle, 0);
+            storageService.deleteByName(thumbnailOneTopMiddle, 0);
+            storageService.store(fileThumbnailOneTopMiddle, 0, thumbnailOneTopMiddle);
 
-            if (!companyModified.getThumbnailOneTopRight().equals(fileThumbnailOneTopRight.getOriginalFilename())
-                    && !(fileThumbnailOneTopRight.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailOneTopRight() == null)
+                    && !companyModified.getThumbnailOneTopRight().equals(thumbnailOneTopRight)
+                    && !fileThumbnailOneTopRight.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailOneTopRight(), 0);
             }
-            storageService.deleteByName(fileThumbnailOneTopRight.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailOneTopRight, 0);
+            storageService.deleteByName(thumbnailOneTopRight, 0);
+            storageService.store(fileThumbnailOneTopRight, 0, thumbnailOneTopRight);
 
-            if (!companyModified.getThumbnailOneSideWords().equals(fileThumbnailOneSideWords.getOriginalFilename())
-                    && !(fileThumbnailOneSideWords.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailOneSideWords() == null)
+                    && !companyModified.getThumbnailOneSideWords().equals(thumbnailOneSideWords)
+                    && !fileThumbnailOneSideWords.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailOneSideWords(), 0);
             }
-            storageService.deleteByName(fileThumbnailOneSideWords.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailOneSideWords, 0);
+            storageService.deleteByName(thumbnailOneSideWords, 0);
+            storageService.store(fileThumbnailOneSideWords, 0, thumbnailOneSideWords);
 
-            if (!companyModified.getThumbnailTwoTopLeft().equals(fileThumbnailTwoTopLeft.getOriginalFilename())
-                    && !(fileThumbnailTwoTopLeft.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailTwoTopLeft() == null)
+                    && !companyModified.getThumbnailTwoTopLeft().equals(thumbnailTwoTopLeft)
+                    && !fileThumbnailTwoTopLeft.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailTwoTopLeft(), 0);
             }
-            storageService.deleteByName(fileThumbnailTwoTopLeft.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailTwoTopLeft, 0);
+            storageService.deleteByName(thumbnailTwoTopLeft, 0);
+            storageService.store(fileThumbnailTwoTopLeft, 0, thumbnailTwoTopLeft);
 
-            if (!companyModified.getThumbnailTwoTopMiddle().equals(fileThumbnailTwoTopMiddle.getOriginalFilename())
-                    && !(fileThumbnailTwoTopMiddle.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailTwoTopMiddle() == null)
+                    && !companyModified.getThumbnailTwoTopMiddle().equals(thumbnailTwoTopMiddle)
+                    && !fileThumbnailTwoTopMiddle.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailTwoTopMiddle(), 0);
             }
-            storageService.deleteByName(fileThumbnailTwoTopMiddle.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailTwoTopMiddle, 0);
+            storageService.deleteByName(thumbnailTwoTopMiddle, 0);
+            storageService.store(fileThumbnailTwoTopMiddle, 0, thumbnailTwoTopMiddle);
 
-            if (!companyModified.getThumbnailTwoTopRight().equals(fileThumbnailTwoTopRight.getOriginalFilename())
-                    && !(fileThumbnailTwoTopRight.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailTwoTopRight() == null)
+                    && !companyModified.getThumbnailTwoTopRight().equals(thumbnailTwoTopRight)
+                    && !fileThumbnailTwoTopRight.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailTwoTopRight(), 0);
             }
-            storageService.deleteByName(fileThumbnailTwoTopRight.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailTwoTopRight, 0);
+            storageService.deleteByName(thumbnailTwoTopRight, 0);
+            storageService.store(fileThumbnailTwoTopRight, 0, thumbnailTwoTopRight);
 
-            if (!companyModified.getThumbnailTwoSideWords().equals(fileThumbnailTwoSideWords.getOriginalFilename())
-                    && !(fileThumbnailTwoSideWords.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getThumbnailTwoSideWords() == null)
+                    && !companyModified.getThumbnailTwoSideWords().equals(thumbnailTwoSideWords)
+                    && !fileThumbnailTwoSideWords.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getThumbnailTwoSideWords(), 0);
             }
-            storageService.deleteByName(fileThumbnailTwoSideWords.getOriginalFilename(), 0);
-            storageService.store(fileThumbnailTwoSideWords, 0);
+            storageService.deleteByName(thumbnailTwoSideWords, 0);
+            storageService.store(fileThumbnailTwoSideWords, 0, thumbnailTwoSideWords);
 
-            if (!companyModified.getEndPhoto().equals(fileEndPhoto.getOriginalFilename())
-                    && !(fileEndPhoto.getOriginalFilename().isEmpty())) {
+            if (!(companyModified.getEndPhoto() == null)
+                    && !companyModified.getEndPhoto().equals(endPhoto)
+                    && !fileEndPhoto.getOriginalFilename().equals("")) {
                 storageService.deleteByName(companyModified.getEndPhoto(), 0);
             }
-            storageService.deleteByName(fileEndPhoto.getOriginalFilename(), 0);
-            storageService.store(fileEndPhoto, 0);
+            storageService.deleteByName(endPhoto, 0);
+            storageService.store(fileEndPhoto, 0, endPhoto);
+        } else {
+            storageService.store(filePictureFromSky, 0, pictureFromSky);
+            storageService.store(fileCompanyMap, 0, companyMap);
+            storageService.store(fileCeoPhoto, 0, ceoPhoto);
+            storageService.store(fileThumbnailOneTopLeft, 0, thumbnailOneTopLeft);
+            storageService.store(fileThumbnailOneTopMiddle, 0, thumbnailOneTopMiddle);
+            storageService.store(fileThumbnailOneTopRight, 0, thumbnailOneTopRight);
+            storageService.store(fileThumbnailOneSideWords, 0, thumbnailOneSideWords);
+            storageService.store(fileThumbnailTwoTopLeft, 0, thumbnailTwoTopLeft);
+            storageService.store(fileThumbnailTwoTopMiddle, 0, thumbnailTwoTopMiddle);
+            storageService.store(fileThumbnailTwoTopRight, 0, thumbnailTwoTopRight);
+            storageService.store(fileThumbnailTwoSideWords, 0, thumbnailTwoSideWords);
+            storageService.store(fileEndPhoto, 0, endPhoto);
         }
 
-        if (companySelected.getPictureFromSky() == null || companySelected.getPictureFromSky().equals("")) {
-            companySelected.setPictureFromSky(filePictureFromSky.getOriginalFilename());
+        if (filePictureFromSky.getOriginalFilename().equals("")) {
+            companySelected.setPictureFromSky(companySelected.getPictureFromSky());
+        } else {
+            companySelected.setPictureFromSky(pictureFromSky);
         }
 
-        if (companySelected.getCompanyMap() == null || companySelected.getCompanyMap().equals("")) {
-            companySelected.setCompanyMap(fileCompanyMap.getOriginalFilename());
+        if (fileCompanyMap.getOriginalFilename().equals("")) {
+            companySelected.setCompanyMap(companySelected.getCompanyMap());
+        } else {
+            companySelected.setCompanyMap(companyMap);
         }
 
-        if (companySelected.getCeoPhoto() == null || companySelected.getCeoPhoto().equals("")) {
-            companySelected.setCeoPhoto(filePictureFromSky.getOriginalFilename());
+        if (fileCeoPhoto.getOriginalFilename().equals("")) {
+            companySelected.setCeoPhoto(companySelected.getCeoPhoto());
+        } else {
+            companySelected.setCeoPhoto(ceoPhoto);
         }
 
-        if (companySelected.getThumbnailOneTopLeft() == null || companySelected.getThumbnailOneTopLeft().equals("")) {
-            companySelected.setThumbnailOneTopLeft(fileCompanyMap.getOriginalFilename());
+        if (fileThumbnailOneTopLeft.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailOneTopLeft(companySelected.getThumbnailOneTopLeft());
+        } else {
+            companySelected.setThumbnailOneTopLeft(thumbnailOneTopLeft);
         }
 
-        if (companySelected.getThumbnailOneTopMiddle() == null || companySelected.getThumbnailOneTopMiddle().equals("")) {
-            companySelected.setThumbnailOneTopMiddle(filePictureFromSky.getOriginalFilename());
+        if (fileThumbnailOneTopMiddle.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailOneTopMiddle(companySelected.getThumbnailOneTopMiddle());
+        } else {
+            companySelected.setThumbnailOneTopMiddle(thumbnailOneTopMiddle);
         }
 
-        if (companySelected.getThumbnailOneTopRight() == null || companySelected.getThumbnailOneTopRight().equals("")) {
-            companySelected.setThumbnailOneTopRight(fileCompanyMap.getOriginalFilename());
+        if (fileThumbnailOneTopRight.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailOneTopRight(companySelected.getThumbnailOneTopRight());
+        } else {
+            companySelected.setThumbnailOneTopRight(thumbnailOneTopRight);
         }
 
-        if (companySelected.getThumbnailOneSideWords() == null || companySelected.getThumbnailOneSideWords().equals("")) {
-            companySelected.setThumbnailOneSideWords(filePictureFromSky.getOriginalFilename());
+        if (fileThumbnailOneSideWords.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailOneSideWords(companySelected.getThumbnailOneSideWords());
+        } else {
+            companySelected.setThumbnailOneSideWords(thumbnailOneSideWords);
         }
 
-        if (companySelected.getThumbnailTwoTopLeft() == null || companySelected.getThumbnailTwoTopLeft().equals("")) {
-            companySelected.setThumbnailTwoTopLeft(fileCompanyMap.getOriginalFilename());
+        if (fileThumbnailTwoTopLeft.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailTwoTopLeft(companySelected.getThumbnailTwoTopLeft());
+        } else {
+            companySelected.setThumbnailTwoTopLeft(thumbnailTwoTopLeft);
         }
 
-        if (companySelected.getThumbnailTwoTopMiddle() == null || companySelected.getThumbnailTwoTopMiddle().equals("")) {
-            companySelected.setThumbnailTwoTopMiddle(filePictureFromSky.getOriginalFilename());
+        if (fileThumbnailTwoTopMiddle.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailTwoTopMiddle(companySelected.getThumbnailTwoTopMiddle());
+        } else {
+            companySelected.setThumbnailTwoTopMiddle(thumbnailTwoTopMiddle);
         }
 
-        if (companySelected.getThumbnailTwoTopRight() == null || companySelected.getThumbnailTwoTopRight().equals("")) {
-            companySelected.setThumbnailTwoTopRight(fileCompanyMap.getOriginalFilename());
+        if (fileThumbnailTwoTopRight.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailTwoTopRight(companySelected.getThumbnailTwoTopRight());
+        } else {
+            companySelected.setThumbnailTwoTopRight(thumbnailTwoTopRight);
         }
 
-        if (companySelected.getThumbnailTwoSideWords() == null || companySelected.getThumbnailTwoSideWords().equals("")) {
-            companySelected.setThumbnailTwoSideWords(filePictureFromSky.getOriginalFilename());
+        if (fileThumbnailTwoSideWords.getOriginalFilename().equals("")) {
+            companySelected.setThumbnailTwoSideWords(companySelected.getThumbnailTwoSideWords());
+        } else {
+            companySelected.setThumbnailTwoSideWords(thumbnailTwoSideWords);
         }
 
-        if (companySelected.getThumbnailTwoSideWords() == null || companySelected.getThumbnailTwoSideWords().equals("")) {
-            companySelected.setThumbnailTwoSideWords(fileCompanyMap.getOriginalFilename());
+        if (fileEndPhoto.getOriginalFilename().equals("")) {
+            companySelected.setEndPhoto(companySelected.getEndPhoto());
+        } else {
+            companySelected.setEndPhoto(endPhoto);
         }
 
         companyRepository.save(companySelected);

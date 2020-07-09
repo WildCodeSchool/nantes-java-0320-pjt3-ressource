@@ -7,7 +7,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 public interface StorageService {
 
@@ -21,7 +20,7 @@ public interface StorageService {
      * Store the file in the storage
      * @param file
      */
-    void store(MultipartFile file, int indexLocation);
+    void store(MultipartFile file, int indexLocation, String nameFile);
 
     /**
      * Return all the files in the storage
