@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div th:fragment="admin-modal (admin, header)" class="modal" id="modal1">
+<div th:fragment="admin-modal (admin, header)">
     <div class="modal-content">
         <div class="col s12">
-            <h4>ADD NEW ADMIN</h4>
+            <h4 th:text="${header}">ADD NEW ADMIN</h4>
         </div>
         <form action="/admin/admin/create" class="col s12" id="createForm" method="post" th:object="${admin}">
             <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>

@@ -87,7 +87,16 @@ public class AdminController {
     @GetMapping("/admin/admin")
     public String adminAdmin(Model model) {
 
-        List<Admin> admins = adminRepository.findAll();
+        List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
+        for (Admin admin : admins) {
+            Role role = admin.getRole();
+            String newRole = role.getRole();
+            if (newRole.length() > 5) {
+                role.setRole(newRole.substring(5));
+                admin.setRole(role);
+            }
+
+        }
         List<Role> roles = roleRepository.findAll();
         model.addAttribute("admin", new Admin());
         model.addAttribute("admins", admins);
