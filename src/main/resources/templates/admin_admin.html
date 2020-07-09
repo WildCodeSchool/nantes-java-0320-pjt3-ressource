@@ -80,11 +80,22 @@
             <td th:text="${admin.email}">alvin@gmail.com</td>
             <td th:text="${admin.role.role}">ALL</td>
             <td class="icons-admin">
-                <form action="/admin/admin/delete" method="post">
-                    <input type="hidden" th:value="${admin.id}">
-                    <button class="btn-icon"><i class="material-icons">delete</i></button>
-                </form>
-                <button class="btn-icon"><i class="material-icons">edit</i></button>
+                <button class="btn-icon modal-trigger" data-target="modal2"><i class="material-icons">delete</i></button>
+                <div class="modal" id="modal2">
+                    <div class="modal-content">
+                        <p>Are you sure you want to delete?</p>
+                        <p th:text="${admin.username}"></p>
+                    </div>
+                    <div class="modal-footer logout-footer">
+                        <form action="/admin/admin/delete" method="post">
+                            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+                            <input type="hidden" name="idAdmin" th:value="${admin.id}">
+                            <input class="modal-close btn" type="submit" th:value="delete" name="submit">
+                        </form>
+                        <input class="modal-close btn" type="submit" th:value="cancel" name="submit">
+                    </div>
+                </div>
+                <button class="btn-icon modal-trigger" data-target="modal1"><i class="material-icons">edit</i></button>
             </td>
         </tr>
         </tbody>

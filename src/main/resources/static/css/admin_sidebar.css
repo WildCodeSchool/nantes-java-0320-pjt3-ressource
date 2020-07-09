@@ -58,7 +58,7 @@ main {
     margin-right: 2rem;
 }
 
-.modal {
+.modal.sidebar {
     width:20%;
 }
 
