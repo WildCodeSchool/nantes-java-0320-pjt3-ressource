@@ -10,13 +10,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
+
 
 @Controller
 public class AdminController {
@@ -172,24 +176,24 @@ public class AdminController {
     }
 
     @PostMapping("/admin/products")
-    public String updateCompany(@RequestParam String reference,
-                                @RequestParam Long designNumber,
-                                @RequestParam String description,
-                                @RequestParam Integer width,
-                                @RequestParam Integer weight,
-                                @RequestParam Integer pieceLength,
-                                @RequestParam Integer collectionMOQ,
-                                @RequestParam Integer productionMOQ,
-                                @RequestParam Integer collectionLeadtime,
-                                @RequestParam Integer productionLeadtime,
-                                @RequestParam String washingComments,
-                                @RequestParam Long material,
+    public String updateProduct(@RequestParam String reference,
+                                @RequestParam(defaultValue = "", required = false) Long designNumber,
+                                @RequestParam(defaultValue = "", required = false) String description,
+                                @RequestParam(defaultValue = "", required = false) Integer width,
+                                @RequestParam(defaultValue = "", required = false) Integer weight,
+                                @RequestParam(defaultValue = "", required = false) Integer pieceLength,
+                                @RequestParam(defaultValue = "", required = false) Integer collectionMOQ,
+                                @RequestParam(defaultValue = "", required = false) Integer productionMOQ,
+                                @RequestParam(defaultValue = "", required = false) Integer collectionLeadtime,
+                                @RequestParam(defaultValue = "", required = false) Integer productionLeadtime,
+                                @RequestParam(defaultValue = "", required = false) String washingComments,
+                                @RequestParam(defaultValue = "", required = false) Long material,
                                 @RequestParam(value = "certifications", required = false) Long[] certifications,
                                 @RequestParam(value = "careLabels", required = false) Long[] careLabels,
-                                @RequestParam Long origin,
-                                @RequestParam Long price,
-                                @RequestParam Long fabricPattern,
-                                @RequestParam Long company,
+                                @RequestParam(defaultValue = "", required = false) Long origin,
+                                @RequestParam(defaultValue = "", required = false) Long price,
+                                @RequestParam(defaultValue = "", required = false) Long fabricPattern,
+                                @RequestParam(defaultValue = "", required = false) Long company,
                                 @RequestParam(value = "products", required = false) Long[] products,
                                 @RequestParam(defaultValue = "0", required = false) Long fiber1,
                                 @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber1,
@@ -204,10 +208,10 @@ public class AdminController {
                                 @RequestParam(defaultValue = "0", required = false) Long fiber6,
                                 @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber6,
                                 @RequestParam(value = "technicalProperty", required = false) Long[] technicalProperty,
-                                @RequestParam Long fabric,
-                                @RequestParam Long handFeel,
-                                @RequestParam Long finishing,
-                                @RequestParam Long look) {
+                                @RequestParam(defaultValue = "", required = false) Long fabric,
+                                @RequestParam(defaultValue = "", required = false) Long handFeel,
+                                @RequestParam(defaultValue = "", required = false) Long finishing,
+                                @RequestParam(defaultValue = "", required = false) Long look) {
 
         Optional<Product> optionalProductToUpdate = productRepository.findByReference(reference);
 
@@ -219,9 +223,18 @@ public class AdminController {
             productToUpdate.setReference(reference);
         }
 
-        List<Certification> certificationList = certificationRepository.findAllById(Arrays.asList(certifications));
-        List<CareLabel> careLabelList = careLabelRepository.findAllById(Arrays.asList(careLabels));
-        List<Product> productList = productRepository.findAllById(Arrays.asList(products));
+        if (certifications != null) {
+            List<Certification> certificationList = certificationRepository.findAllById(Arrays.asList(certifications));
+            productToUpdate.setCertifications(certificationList);
+        }
+        if (careLabels != null) {
+            List<CareLabel> careLabelList = careLabelRepository.findAllById(Arrays.asList(careLabels));
+            productToUpdate.setCareLabels(careLabelList);
+        }
+        if (products != null) {
+            List<Product> productList = productRepository.findAllById(Arrays.asList(products));
+            productToUpdate.setProducts(productList);
+        }
 
         productToUpdate.setDesignNumber(designNumber);
         productToUpdate.setDescription(description);
@@ -233,34 +246,59 @@ public class AdminController {
         productToUpdate.setCollectionLeadtime(collectionLeadtime);
         productToUpdate.setProductionLeadtime(productionLeadtime);
         productToUpdate.setWashingComments(washingComments);
-        productToUpdate.setMaterial(materialRepository.findById(material).get());
-        productToUpdate.setCertifications(certificationList);
-        productToUpdate.setCareLabels(careLabelList);
-        productToUpdate.setOrigin(originRepository.findById(origin).get());
-        productToUpdate.setPrice(priceRepository.findById(price).get());
-        productToUpdate.setFabricPattern(fabricPatternRepository.findById(fabricPattern).get());
-        productToUpdate.setCompany(companyRepository.findById(company).get());
-        productToUpdate.setProducts(productList);
+        if (material != null) {
+            productToUpdate.setMaterial(materialRepository.findById(material).get());
+        }
+        if (origin != null) {
+            productToUpdate.setOrigin(originRepository.findById(origin).get());
+        }
+        if (price != null) {
+            productToUpdate.setPrice(priceRepository.findById(price).get());
+        }
+        if (fabricPattern != null) {
+            productToUpdate.setFabricPattern(fabricPatternRepository.findById(fabricPattern).get());
+        }
+        if (company != null) {
+            productToUpdate.setCompany(companyRepository.findById(company).get());
+        }
         productToUpdate = productRepository.save(productToUpdate);
-
-        List<TechnicalProperty> technicalPropertyList = technicalPropertyRepository.findAllById(Arrays.asList(technicalProperty));
 
         Feature newFeature = new Feature();
 
-        newFeature.setFabric(fabricRepository.findById(fabric).get());
-        newFeature.setHandFeel(handFeelRepository.findById(handFeel).get());
-        newFeature.setFinishing(finishingRepository.findById(finishing).get());
-        newFeature.setLook(lookRepository.findById(look).get());
-        newFeature.setTechnicalProperties(technicalPropertyList);
+
+        if (productToUpdate.getFeature() != null) {
+            newFeature = productToUpdate.getFeature();
+        }
+
+        if (technicalProperty != null) {
+            List<TechnicalProperty> technicalPropertyList = technicalPropertyRepository.findAllById(Arrays.asList(technicalProperty));
+            newFeature.setTechnicalProperties(technicalPropertyList);
+        }
+        if (fabric != null) {
+            newFeature.setFabric(fabricRepository.findById(fabric).get());
+        }
+
+        if (handFeel != null) {
+            newFeature.setHandFeel(handFeelRepository.findById(handFeel).get());
+        }
+        if (finishing != null) {
+            newFeature.setFinishing(finishingRepository.findById(finishing).get());
+        }
+
+        if (look != null) {
+            newFeature.setLook(lookRepository.findById(look).get());
+        }
+
         Feature feature = featureRepository.save(newFeature);
 
         productToUpdate.setFeature(feature);
 
         List<Composition> compositionList = new ArrayList<>();
 
+        compositionRepository.deleteByProductId(productToUpdate.getId());
+
         if (fiber1 != 0) {
-            compositionList.add
-                    (new Composition(fiberRepository.findById(fiber1).get(), pourcentageFiber1, productToUpdate));
+            compositionList.add(new Composition(fiberRepository.findById(fiber1).get(), pourcentageFiber1, productToUpdate));
         }
         if (fiber2 != 0) {
             compositionList.add(new Composition(fiberRepository.findById(fiber2).get(), pourcentageFiber2, productToUpdate));
@@ -284,7 +322,7 @@ public class AdminController {
     }
 
     @PostMapping("/admin/products/search")
-    public String companySearch(Model model, @RequestParam String reference) {
+    public String productSearch(Model model, @RequestParam String reference) {
 
         Product productModified = new Product();
 
@@ -308,7 +346,6 @@ public class AdminController {
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("product", new Product());
-
         model.addAttribute("product", productModified);
 
         return "productAdmin";
