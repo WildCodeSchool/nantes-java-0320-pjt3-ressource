@@ -154,4 +154,10 @@ public class AdminController {
 
         return "productAdmin";
     }
+
+    @PostMapping("/admin/admin/delete")
+    public String deleteAdmin(@RequestParam Long idAdmin) {
+        adminRepository.deleteById(idAdmin);
+        return "redirect:/admin/admin";
+    }
 }

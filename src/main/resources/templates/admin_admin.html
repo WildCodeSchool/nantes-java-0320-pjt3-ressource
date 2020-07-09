@@ -79,9 +79,12 @@
         <tr th:each="admin : ${admins}">
             <td th:text="${admin.email}">alvin@gmail.com</td>
             <td th:text="${admin.role.role}">ALL</td>
-            <td>
-                <a href="#"><i class="material-icons">edit</i></a>
-                <a href="#"><i class="material-icons">delete</i></a>
+            <td class="icons-admin">
+                <form action="/admin/admin/delete" method="post">
+                    <input type="hidden" th:value="${admin.id}">
+                    <button class="btn-icon"><i class="material-icons">delete</i></button>
+                </form>
+                <button class="btn-icon"><i class="material-icons">edit</i></button>
             </td>
         </tr>
         </tbody>
