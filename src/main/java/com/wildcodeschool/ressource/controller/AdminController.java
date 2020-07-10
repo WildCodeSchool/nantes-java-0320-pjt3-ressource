@@ -87,7 +87,8 @@ public class AdminController {
     @GetMapping("/admin/admin")
     public String adminAdmin(Model model) {
 
-        List<Admin> admins = adminRepository.findAll();
+        List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
+
         List<Role> roles = roleRepository.findAll();
         model.addAttribute("admin", new Admin());
         model.addAttribute("admins", admins);
@@ -96,12 +97,26 @@ public class AdminController {
     }
 
     @PostMapping("/admin/admin/create")
-    public String adminCreate(@ModelAttribute Admin admin,
-                              @RequestParam Long role) {
+    public String adminCreate(@RequestParam(defaultValue = "", required = false) Long id,
+                              @RequestParam String username,
+                              @RequestParam String email,
+                              @RequestParam(defaultValue = "", required = false) String password,
+                              @RequestParam Long roleId) {
 
-        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        Admin admin = new Admin();
+        if (id != null) {
+            if(adminRepository.findById(id).isPresent()) {
+                admin = adminRepository.findById(id).get();
+            }
+        }
 
-        Optional<Role> optionalRole = roleRepository.findById(role);
+        admin.setEmail(email);
+        admin.setUsername(username);
+        if (!password.equals("")){
+            admin.setPassword(passwordEncoder.encode(password));
+        }
+
+        Optional<Role> optionalRole = roleRepository.findById(roleId);
 
         if (optionalRole.isPresent()) {
             admin.setRole(optionalRole.get());
@@ -332,6 +347,12 @@ public class AdminController {
         return "productAdmin";
     }
 
+    @PostMapping("/admin/admin/delete")
+    public String deleteAdmin(@RequestParam Long idAdmin) {
+        adminRepository.deleteById(idAdmin);
+        return "redirect:/admin/admin";
+    }
+
     // http://websystique.com/spring-security/spring-security-4-logout-example/
     @GetMapping(value = "/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
@@ -340,6 +361,7 @@ public class AdminController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login?logout";
+
     }
 
     @GetMapping("/admin/products/delete")
@@ -352,3 +374,4 @@ public class AdminController {
     }
 
 }
+
