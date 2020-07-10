@@ -66,3 +66,31 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label{
 input[type="text"]:not(.browser-default).validate + label, .input-field label {
     color:#000
 }
+
+.btn-icon {
+    background: transparent;
+    border: none;
+}
+
+.btn-icon:hover {
+    cursor: pointer;
+}
+
+.icons-admin {
+    display: flex;
+    margin: 0.2rem;
+    align-items: center;
+}
+
+.icons-admin form {
+    display: flex;
+    align-items: center;
+}
+
+.modal.deleteAdmin {
+    width:20%;
+}
+
+.logout-footer.modal-footer {
+    padding-left: 1.5rem;
+}

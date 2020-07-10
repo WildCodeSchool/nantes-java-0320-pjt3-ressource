@@ -14,84 +14,167 @@
 <main class="admin-product">
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
-        <form action="" class="col s10">
+        <form action="/admin/products/search" method="post">
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <div class="input-field col s6">
-                    <input class="validate" id="first_name" type="text">
-                    <label for="first_name">Search by reference</label>
+                    <input class="validate" id="referenceSearch" name="reference" type="text">
+                    <label for="referenceSearch">Search by reference</label>
                 </div>
             </div>
+        </form>
+        <form action="/admin/products" class="col s10" method="post" th:object="${product}">
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="reference" type="text">
+                    <input class="validate" id="reference" name="reference" th:field="*{reference}" type="text">
                     <label for="reference">Reference</label>
                 </div>
-                <div class="col l4"></div>
+                <div class="col s1 admin-product-delete">
+                    <a th:href="@{/admin/products/delete(id=${product.id})}"><i class="material-icons">delete</i></a>
+                </div>
+                <div class="col l3"></div>
                 <div class="input-field col l4">
-                    <select id="select-company" >
+                    <select id="company" name="company">
                         <option disabled selected value="">Select company</option>
-                        <option th:each="company: ${companies}" th:value="${company.id}" th:text="${company.name}">BRICKS</option>
+                        <option th:each="comp: ${companies}"
+                                th:selected="${product.company==comp}"
+                                th:text="${comp.name}"
+                                th:value="${comp.id}">
+                            BRICKS
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l12">
-                    <textarea class="materialize-textarea" id="description"></textarea>
+                    <textarea class="materialize-textarea" id="description" name="description"
+                              th:field="*{description}"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s4">
-                    <input class="validate" id="design_number" type="text">
-                    <label for="design_number">Design number</label>
+                    <input class="validate" id="designNumber" name="designNumber" th:field="*{designNumber}"
+                           type="text">
+                    <label for="designNumber">Design number</label>
                 </div>
                 <div class="input-field col s4">
-                    <select id="select_material">
+                    <select id="select_material" name="material">
                         <option disabled selected value="">Select material</option>
-                        <option th:each="material: ${materials}" th:value="${material.id}" th:text="${material.name}">Woven</option>
+                        <option th:each="mat: ${materials}"
+                                th:selected="${product.material==mat}"
+                                th:text="${mat.name}"
+                                th:value="${mat.id}">
+                            Woven
+                        </option>
                     </select>
                 </div>
                 <div class="input-field col s4">
-                    <select>
+                    <select name="fabricPattern">
                         <option disabled selected value="">Select Fabric Pattern</option>
-                        <option th:each="fabricPattern :${fabricPatterns}" th:value="${fabricPattern.id}" th:text="${fabricPattern.name}">FLEECE</option>
+                        <option th:each="fabricPattern :${fabricPatterns}"
+                                th:selected="${product.fabricPattern==fabricPattern}"
+                                th:text="${fabricPattern.name}"
+                                th:value="${fabricPattern.id}">FLEECE
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber1">
+                        <select id="fiber1" name="fiber1" th:if="${product.compositions.size() < 1}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber1" name="fiber1" th:if="${product.compositions.size() >= 1}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(0).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber1" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 1}">
+                        <input class="validate" id="pourcentage-fiber1" name="pourcentageFiber1" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(0).pourcentage}" type="number">
+                        <label for="pourcentage-fiber1">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 1}">
+                        <input class="validate" id="pourcentage-fiber1" name="pourcentageFiber1" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber1">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber2">
+                        <select id="fiber2" name="fiber2" th:if="${product.compositions.size() < 2}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber2" name="fiber2" th:if="${product.compositions.size() >= 2}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(1).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber2" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 2}">
+                        <input class="validate" id="pourcentage-fiber2" name="pourcentageFiber2" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(1).pourcentage}" type="number">
+                        <label for="pourcentage-fiber2">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 2}">
+                        <input class="validate" id="pourcentage-fiber2" name="pourcentageFiber2" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber2">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber3">
+                        <select id="fiber3" name="fiber3" th:if="${product.compositions.size() < 3}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber3" name="fiber3" th:if="${product.compositions.size() >= 3}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(2).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber3" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 3}">
+                        <input class="validate" id="pourcentage-fiber3" name="pourcentageFiber3" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(2).pourcentage}" type="number">
+                        <label for="pourcentage-fiber3">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 3}">
+                        <input class="validate" id="pourcentage-fiber3" name="pourcentageFiber3" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber3">Pourcentage</label>
                     </div>
                 </div>
@@ -99,151 +182,325 @@
             <div class="row col l12">
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber4">
+                        <select id="fiber4" name="fiber4" th:if="${product.compositions.size() < 4}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber4" name="fiber4" th:if="${product.compositions.size() >= 4}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(3).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber4" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 4}">
+                        <input class="validate" id="pourcentage-fiber4" name="pourcentageFiber4" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(3).pourcentage}" type="number">
+                        <label for="pourcentage-fiber4">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 4}">
+                        <input class="validate" id="pourcentage-fiber4" name="pourcentageFiber4" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber4">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber5">
+                        <select id="fiber5" name="fiber5" th:if="${product.compositions.size() < 5}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber5" name="fiber5" th:if="${product.compositions.size() >= 5}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(4).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber5" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 5}">
+                        <input class="validate" id="pourcentage-fiber5" name="pourcentageFiber5" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(4).pourcentage}" type="number">
+                        <label for="pourcentage-fiber5">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 5}">
+                        <input class="validate" id="pourcentage-fiber5" name="pourcentageFiber5" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber5">Pourcentage</label>
                     </div>
                 </div>
                 <div>
                     <div class="input-field col l3">
-                        <select id="fiber6">
+                        <select id="fiber6" name="fiber6" th:if="${product.compositions.size() < 6}">
                             <option disabled selected value="">Select fiber</option>
-                            <option th:each="fiber :${fibers}" th:value="fiber.id" th:text="${fiber.name}">ABACA</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}"
+                            >ABACA
+                            </option>
+                        </select>
+                        <select id="fiber6" name="fiber6" th:if="${product.compositions.size() == 6}">
+                            <option disabled selected value="">Select fiber</option>
+                            <option th:each="fiber :${fibers}"
+                                    th:selected="${product.compositions.get(5).fiber==fiber}"
+                                    th:text="${fiber.name}"
+                                    th:value="${fiber.id}">ABACA
+                            </option>
                         </select>
                     </div>
-                    <div class="input-field col l1">
-                        <input class="validate" id="pourcentage-fiber6" placeholder="%" type="number">
+                    <div class="input-field col l1" th:if="${product.compositions.size() >= 6}">
+                        <input class="validate" id="pourcentage-fiber6" name="pourcentageFiber6" placeholder="%"
+                               step="0.01"
+                               th:value="${product.compositions.get(5).pourcentage}" type="number">
+                        <label for="pourcentage-fiber6">Pourcentage</label>
+                    </div>
+                    <div class="input-field col l1" th:if="${product.compositions.size() < 4}">
+                        <input class="validate" id="pourcentage-fiber6" name="pourcentageFiber6" placeholder="%"
+                               step="0.01"
+                               type="number">
                         <label for="pourcentage-fiber6">Pourcentage</label>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="width" type="number">
+                    <input class="validate" id="width" name="width" th:field="*{width}" type="number">
                     <label for="width">Width</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="weight" type="number">
+                    <input class="validate" id="weight" name="weight" th:field="*{weight}" type="number">
                     <label for="weight">Weight</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="pieceLenght" type="number">
-                    <label for="pieceLenght">Piece Length</label>
+                    <input class="validate" id="pieceLength" name="pieceLength" th:field="*{pieceLength}" type="number">
+                    <label for="pieceLength">Piece Length</label>
                 </div>
                 <div class="input-field col l4">
-                    <select id="origin">
+                    <select id="origin" name="origin">
                         <option disabled selected value="">Select origin</option>
-                        <option th:each="origin : ${origins}" th:value="${origin.id}"th:text="${origin.country}" >Belgium</option>
+                        <option th:each="origin : ${origins}"
+                                th:selected="${product.origin==origin}"
+                                th:text="${origin.country}"
+                                th:value="${origin.id}">
+                            Belgium
+                        </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select id="price">
+                    <select id="price" name="price">
                         <option disabled selected value="">Select price range</option>
-                        <option th:each="price : ${prices}" th:value="${price.id}" th:text="|${price.price} Euros |">1 to 3,99</option>
+                        <option th:each="price : ${prices}"
+                                th:selected="${product.price==price}"
+                                th:text="|${price.price} Euros |"
+                                th:value="${price.id}">1
+                            to 3,99
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cMoq" type="number">
-                    <label for="cMoq">Collection MOQ</label>
+                    <input class="validate" id="collectionMOQ" name="collectionMOQ" th:field="*{collectionMOQ}"
+                           type="number">
+                    <label for="collectionMOQ">Collection MOQ</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="Pmoq" type="number">
-                    <label for="Pmoq">Production MOQ</label>
+                    <input class="validate" id="productionMOQ" name="productionMOQ" th:field="*{productionMOQ}"
+                           type="number">
+                    <label for="productionMOQ">Production MOQ</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <input class="validate" id="cLeadtime" type="number">
-                    <label for="cLeadtime">Collection Leadtime</label>
+                    <input class="validate" id="collectionLeadtime" name="collectionLeadtime"
+                           th:field="*{collectionLeadtime}"
+                           type="number">
+                    <label for="collectionLeadtime">Collection Leadtime</label>
                 </div>
                 <div class="input-field col l4">
-                    <input class="validate" id="pLeadtime" type="number">
-                    <label for="pLeadtime">Production Leadtime</label>
+                    <input class="validate" id="productionLeadtime" name="productionLeadtime"
+                           th:field="*{productionLeadtime}"
+                           type="number">
+                    <label for="productionLeadtime">Production Leadtime</label>
                 </div>
             </div>
             <div class="row">
                 <p>Carelabel symbol :</p>
                 <div class="input-field col l8">
-                    <select multiple class="icons">
+                    <select class="icons" multiple name="careLabels">
                         <option disabled value="">Select carelabel</option>
-                        <option th:each="carelabel: ${carelabels}" th:value="${carelabel.id}" th:text="${carelabel.label}" th:attr="data-icon=@{/image/carelabel/{image}(image=${carelabel.image})}">BLEACH IF NEEDED</option>
+                        <option th:attr="data-icon=@{/image/carelabel/{image}(image=${carelabel.image})}"
+                                th:each="carelabel: ${carelabels}"
+                                th:selected="${product.careLabels.contains(carelabel)}"
+                                th:text="${carelabel.label}"
+                                th:value="${carelabel.id}">BLEACH IF NEEDED
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row">
-                <p>Certification :</p>
                 <div class="input-field col l8">
-                    <select multiple>
+                    <textarea class="materialize-textarea" id="washingComments" name="washingComments"
+                              th:field="*{washingComments}"></textarea>
+                    <label for="washingComments">Washing comments</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l8">
+                    <select multiple name="certifications">
                         <option disabled value="">Select certification</option>
-                        //TODO mettre les icones des certification comme pour les carelabels
-                        <option th:each="certification : ${certifications}"  th:value="${certification.id}" th:text="${certification.name}" th:attr="data-icon=@{/image/logo_certification/{image}(image=${certification.image})}">GOTS</option>
+                        <option th:attr="data-icon=@{/image/logo_certification/{image}(image=${certification.image})}"
+                                th:each="certification : ${certifications}"
+                                th:selected="${product.certifications.contains(certification)}"
+                                th:text="${certification.name}"
+                                th:value="${certification.id}">GOTS
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row">
-                <p>Technical properties :</p>
                 <div class="input-field col l8">
-                    <select multiple>
+                    <select multiple name="technicalProperty" th:if="${product.feature eq null}">
                         <option disabled selected value="">Select your technical properties</option>
-                        <option th:each="technicalPropertie : ${technicalProperties}" th:value="${technicalPropertie.id}" th:text="${technicalPropertie.technicalProperty}">QUICK DRY</option>
+                        <option th:each="technicalPropertie : ${technicalProperties}"
+                                th:text="${technicalPropertie.technicalProperty}"
+                                th:value="${technicalPropertie.id}"
+                        >QUICK DRY
+                        </option>
+                    </select>
+                    <select multiple name="technicalProperty" th:if="${product.feature ne null}">
+                        <option disabled value="">Select your technical properties</option>
+                        <option th:each="technicalPropertie : ${technicalProperties}"
+                                th:selected="${product.feature.technicalProperties.contains(technicalPropertie)}"
+                                th:text="${technicalPropertie.technicalProperty}"
+                                th:value="${technicalPropertie.id}"
+                        >QUICK DRY
+                        </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="fabric" th:if="${product.feature eq null}">
                         <option disabled selected value="">Select fabric</option>
-                        <option th:each="fabric : ${fabrics}" th:value="${fabric.id}" th:text="${fabric.fabric}">CREPE</option>
+                        <option th:each="fabric : ${fabrics}"
+                                th:text="${fabric.fabric}"
+                                th:value="${fabric.id}"
+                        >CREPE
+                        </option>
+                    </select>
+                    <select name="fabric" th:if="${product.feature ne null}">
+                        <option disabled selected value="">Select fabric</option>
+                        <option th:each="fabric : ${fabrics}"
+                                th:selected="${product.feature.fabric==fabric}"
+                                th:text="${fabric.fabric}"
+                                th:value="${fabric.id}"
+                        >CREPE
+                        </option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col l4">
-                    <select>
+                    <select name="handFeel" th:if="${product.feature eq null}">
                         <option disabled selected value="">Select handfeel</option>
-                        <option th:each="handfeel : ${handfeels}" th:value="${handfeel.id}" th:text="${handfeel.handFeel}">DRY HANDFEEL</option>
+                        <option th:each="handfeel : ${handfeels}" th:text="${handfeel.handFeel}"
+                                th:value="${handfeel.id}"
+                        >DRY HANDFEEL
+                        </option>
+                    </select>
+                    <select name="handFeel" th:if="${product.feature ne null}">
+                        <option disabled selected value="">Select handfeel</option>
+                        <option th:each="handfeel : ${handfeels}" th:selected="${product.feature.handFeel==handfeel}"
+                                th:text="${handfeel.handFeel}"
+                                th:value="${handfeel.id}"
+                        >DRY HANDFEEL
+                        </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="finishing" th:if="${product.feature eq null}">
                         <option disabled selected value="">Select finishing</option>
-                        <option th:each="finishing : ${finishings}" th:value="${finishing.id}" th:text="${finishing.finishing}">NON IRON</option>
+                        <option th:each="finishing : ${finishings}" th:text="${finishing.finishing}"
+                                th:value="${finishing.id}"
+                        >NON IRON
+                        </option>
+                    </select>
+                    <select name="finishing" th:if="${product.feature ne null}">
+                        <option disabled selected value="">Select finishing</option>
+                        <option th:each="finishing : ${finishings}"
+                                th:selected="${product.feature.finishing==finishing}"
+                                th:text="${finishing.finishing}"
+                                th:value="${finishing.id}"
+                        >NON IRON
+                        </option>
                     </select>
                 </div>
                 <div class="input-field col l4">
-                    <select>
+                    <select name="look" th:if="${product.feature eq null}">
                         <option disabled selected value="">Select look</option>
-                        <option th:each="look : ${looks}" th:value="${look.id}" th:text="${look.look}">WORKWEAR</option>
+                        <option th:each="look : ${looks}"
+                                th:text="${look.look}"
+                                th:value="${look.id}"
+                        >WORKWEAR
+                        </option>
+                    </select>
+                    <select name="look" th:if="${product.feature ne null}">
+                        <option disabled selected value="">Select look</option>
+                        <option th:each="look : ${looks}"
+                                th:selected="${product.feature.look==look}"
+                                th:text="${look.look}"
+                                th:value="${look.id}"
+                        >WORKWEAR
+                        </option>
                     </select>
                 </div>
             </div>
-            <div class="col l6 file-field input-field">
-                <p>Picture : </p>
-                <div class="btn">
-                    <i class="large material-icons">archive</i>
-                    <input type="file">
+            <div class="row">
+                <div class="col l8 file-field input-field">
+                    <p>Picture : </p>
+                    <div class="btn">
+                        <i class="large material-icons">archive</i>
+                        <input name="imageProduct" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
                 </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <select multiple name="products" th:if="${product.products.size() < 1}">
+                        <option disabled value="">Select favorite product</option>
+                        <option th:each="prod : ${products}"
+                                th:text="${prod.reference}"
+                                th:value="${prod.id}"
+                        >GOTS
+                        </option>
+                    </select>
+                    <select multiple name="products" th:if="${product.products.size() > 1}">
+                        <option disabled value="">Select favorite product</option>
+                        <option th:each="prod : ${products}"
+                                th:selected="${product.products.contains(prod)}"
+                                th:text="${prod.reference}"
+                                th:value="${prod.id}">GOTS
+                        </option>
+                    </select>
                 </div>
             </div>
             <div class="row">

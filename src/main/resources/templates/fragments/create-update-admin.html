@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="admin-modal (admin, header, newAdmin, roles)">
+    <div class="modal-content">
+        <div class="col s12">
+            <h4 th:text="${header}">ADD NEW ADMIN</h4>
+        </div>
+        <form action="/admin/admin/create" class="col s12"  method="post" >
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="hidden" name="id" th:value="${admin.id}">
+                    <input class="validate" id="user_name" name="username" th:value="${admin.username}" type="text">
+                    <label for="user_name">Username</label>
+                    <span class="helper-text" data-error="Missing username"></span>
+                </div>
+                <div class="input-field col s6" >
+                    <select class="validate" name="roleId" th:if="${newAdmin}">
+                        <option disabled value="select">Choose your option</option>
+                        <option th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}" >ALL</option>
+                    </select>
+                    <select class="validate" name="roleId" th:if="${not newAdmin}">
+                        <option disabled value="select">Choose your option</option>
+                        <option th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}" th:selected="${role.id == admin.role.id}">ALL</option>
+                    </select>
+                    <span class="helper-text" id="select-error"></span>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="input-field col s6">
+                    <input class="validate" id="email" name="email" th:value="${admin.email}" type="email">
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="Missing email"></span>
+                </div>
+                <div class="input-field col s6" th:if="${newAdmin}">
+                    <input class="validate" id="password" name="password" type="password">
+                    <label for="password">Password</label>
+                    <span class="helper-text" data-error="Missing password"></span>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="input-field col s6" th:if="${newAdmin}">
+                    <input id="passwordConfirm" name="passwordConfirm"
+                           type="password">
+                    <label for="passwordConfirm">Confirm Password</label>
+                    <span class="helper-text" data-error="Missing password confirmation"></span>
+                </div>
+                <button class="btn-create col s2 offset-s10 waves-effect waves-green btn" id="create">Create
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -24,6 +24,12 @@ public class Composition {
 
     }
 
+    public Composition(Fiber fiber, Double pourcentage, Product product) {
+        this.fiber = fiber;
+        this.pourcentage = pourcentage;
+        this.product = product;
+    }
+
     public Long getId() {
         return id;
     }

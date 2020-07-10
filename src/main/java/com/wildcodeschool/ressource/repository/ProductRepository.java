@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -47,5 +48,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             nativeQuery = true)
     List<Long> findAllIdBySearching(@Param("search") String search);
 
+    Optional<Product> findByReference(String reference);
 }
 

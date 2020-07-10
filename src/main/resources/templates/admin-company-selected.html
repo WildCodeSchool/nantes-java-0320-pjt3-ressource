@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section id="newCompanySelected" th:object="${companySelected}">
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div id="legend-company-name" class="center-align light-green darken-1">Company's name</div>
+            </legend>
+            <div class="input-field col s12">
+                <input th:field="*{name}" class="validate" id="company-name" type="text">
+                <label class="active" for="company-name">Company's name</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s4 fieldset-gray">
+            <legend>
+                <div id="legend-company-logo" class="center-align grey lighten-2">company's logo</div>
+            </legend>
+            <div>
+                <div class="file-field input-field">
+                    <div class="file-path-wrapper">
+                        <input th:name="fileLogo" type="file">
+                        <input th:field="*{logo}" class="file-path validate" placeholder="upload your image" type="text">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s3 offset-s1 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">1</div>
+            </legend>
+            <div>
+                <div class="file-field input-field">
+                    <div class="file-path-wrapper">
+                        <input th:name="filePictureFromSky" type="file">
+                        <input th:field="*{pictureFromSky}" class="file-path validate" placeholder="upload your image" type="text">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s3 offset-s1 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">2</div>
+            </legend>
+            <div>
+                <div class="file-field input-field">
+                    <div class="file-path-wrapper">
+                        <input th:name="fileCompanyMap" type="file">
+                        <input th:field="*{companyMap}" class="file-path validate" placeholder="upload your image" type="text">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">3</div>
+            </legend>
+            <div class="input-field col s12">
+                <input th:field="*{address}" class="validate" id="address" type="text">
+                <label class="active" for="address">Address</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">4</div>
+            </legend>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{creationDate}" class="validate" id="date-of-creation" type="text">
+                    <label class="active" for="date-of-creation">Date of creation</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{knowhow}" class="validate" id="know-how" type="text">
+                    <label class="active" for="know-how">Know how</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{employeesNumber}" class="validate" id="employees" type="text">
+                    <label class="active" for="employees">Number of employees</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{industrialPark}" class="validate" id="industrial-park" type="text">
+                    <label class="active" for="industrial-park">Industrial park</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{averageProduction}" class="validate" id="production" type="text">
+                    <label class="active" for="production">Average of production</label>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="input-field">
+                    <input th:field="*{certifications}" class="validate" id="certifications" type="text">
+                    <label class="active" for="certifications">Certifications</label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="fieldset-gray col s12">
+            <legend>
+                <div class="center-align grey lighten-2">5</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileCeoPhoto" type="file">
+                    <input th:field="*{ceoPhoto}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">6</div>
+            </legend>
+            <div class="col s6">
+                <div class="input-field">
+                    <input th:field="*{ceoTitle}" class="validate" id="small-title" type="text">
+                    <label class="active" for="small-title">Short description on company</label>
+                </div>
+            </div>
+            <div class="col s5 offset-s1">
+                <div class="input-field">
+                    <input th:field="*{ceoName}" class="validate" id="ceo-name" type="text">
+                    <label class="active" for="ceo-name">CEO name</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <textarea th:field="*{ceoWords}" id="ceo-words" class="materialize-textarea"></textarea>
+                <label class="active" for="ceo-words">CEO words</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="fieldset-gray col s3">
+            <legend>
+                <div class="center-align grey lighten-2">7</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailOneTopLeft" type="file">
+                    <input th:field="*{thumbnailOneTopLeft}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="fieldset-gray col s3 offset-s1">
+            <legend>
+                <div class="center-align grey lighten-2">8</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailOneTopMiddle" type="file">
+                    <input th:field="*{thumbnailOneTopMiddle}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="fieldset-gray col s4 offset-s1">
+            <legend>
+                <div class="center-align grey lighten-2">9</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailOneTopRight" type="file">
+                    <input th:field="*{thumbnailOneTopRight}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">10</div>
+            </legend>
+            <div class="col s3">
+                <div class="input-field">
+                    <input th:field="*{serviceTopTitle}" class="validate" id="small-title-one" type="text">
+                    <label class="active" for="small-title-one">Short description</label>
+                </div>
+            </div>
+            <div class="col s3 offset-s1">
+                <div class="input-field">
+                    <input th:field="*{serviceTopName}" class="validate" id="one-head" type="text">
+                    <label class="active" for="one-head">Author's name</label>
+                </div>
+            </div>
+            <div class="col s4 offset-s1">
+                <div class="input-field">
+                    <input th:field="*{serviceTopFunction}" class="validate" id="one-name" type="text">
+                    <label class="active" for="one-name">Function of the author</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <textarea th:field="*{serviceTopWords}" id="one-words" class="materialize-textarea"></textarea>
+                <label class="active" for="one-words">Words of author</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s4 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">11</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailOneSideWords" type="file">
+                    <input th:field="*{thumbnailOneSideWords}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s3 offset-s1 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">12</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailTwoTopLeft" type="file">
+                    <input th:field="*{thumbnailTwoTopLeft}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s3 offset-s1 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">13</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailTwoTopMiddle" type="file">
+                    <input th:field="*{thumbnailTwoTopMiddle}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s3 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">14</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailTwoTopRight" type="file">
+                    <input th:field="*{thumbnailTwoTopRight}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s8 offset-s1 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">15</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileThumbnailTwoSideWords" type="file">
+                    <input th:field="*{thumbnailTwoSideWords}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s12 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">16</div>
+            </legend>
+            <div class="col s3">
+                <div class="input-field">
+                    <input th:field="*{serviceBottomTitle}" class="validate" id="small-title-two" type="text">
+                    <label class="active" for="small-title-two">Short description</label>
+                </div>
+            </div>
+            <div class="col s3 offset-s1">
+                <div class="input-field">
+                    <input th:field="*{serviceBottomName}" class="validate" id="two-head" type="text">
+                    <label class="active" for="two-head">Author's name</label>
+                </div>
+            </div>
+            <div class="col s4 offset-s1">
+                <div class="input-field">
+                    <input th:field="*{serviceBottomFunction}" class="validate" id="two-name" type="text">
+                    <label class="active" for="two-name">Function of the author</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <textarea th:field="*{serviceBottomWords}" id="two-words" class="materialize-textarea"></textarea>
+                <label class="active" for="two-words">Words of author</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <fieldset class="col s3 fieldset-gray">
+            <legend>
+                <div class="center-align grey lighten-2">17</div>
+            </legend>
+            <div class="file-field input-field">
+                <div class="file-path-wrapper">
+                    <input th:name="fileEndPhoto" type="file">
+                    <input th:field="*{endPhoto}" class="file-path validate" placeholder="upload your image" type="text">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="col s8 offset-s1 fieldset-green">
+            <legend>
+                <div class="center-align light-green darken-1">18</div>
+            </legend>
+            <div class="input-field">
+                <input th:field="*{endWords}" class="validate" id="end-words" type="text">
+                <label class="active" for="end-words">End words</label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="row">
+        <button class="col s3 offset-s9 btn waves-effect waves-light light-green darken-1" name="action" type="submit">Apply
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+</section>
+<script src="/js/admin-companies.js" type="text/JavaScript"></script>
+</body>
+</html>
