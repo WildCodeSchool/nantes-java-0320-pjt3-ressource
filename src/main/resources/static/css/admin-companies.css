@@ -6,7 +6,7 @@
     padding-left: 300px;
 }
 
-#legend-select-companies, #legend-company-name{
+#legend-select-companies, #legend-company-name, #legend-company-logo {
     width: max-content;
     padding: 0 1rem;
 }
@@ -21,7 +21,7 @@
 
 .form-admin-company legend div{
     border-radius: 10px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     width: 50px;
 }
 

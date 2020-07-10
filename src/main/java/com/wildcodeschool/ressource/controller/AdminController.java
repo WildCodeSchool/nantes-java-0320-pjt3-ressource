@@ -71,7 +71,6 @@ public class AdminController {
     private LookRepository lookRepository;
 
     @Autowired
-
     private ProductRepository productRepository;
 
     @Autowired
