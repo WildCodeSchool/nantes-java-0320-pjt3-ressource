@@ -14,8 +14,8 @@ public class StorageProperties {
      * Folder location for storing files
      */
 
-    private String locationCompany = "upload/company";
-    private String locationProducts = "upload/products";
+    private String locationCompany = "/upload/company";
+    private String locationProducts = "/upload/products";
 
     public String getLocationCompany() {
         return locationCompany;
