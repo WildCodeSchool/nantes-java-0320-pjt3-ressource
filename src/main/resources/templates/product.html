@@ -30,7 +30,7 @@
             </div>
             <div class="product-description">
                 <a th:href="@{/company?id={id}(id = ${product.company.id})}"><img
-                        th:src="@{image/logo_company/{company}(company= ${product.company.getLogo()})}"></a>
+                        th:src="@{photo/company/{file}(file = ${product.company.getLogo()})}"></a>
                 <h5 th:text="${product.reference}">COUNTRY</h5>
                 <p><span th:text="${product.feature.fabric.fabric}"></span> /
                     <span th:text="${product.feature.handFeel.handFeel}"></span> /

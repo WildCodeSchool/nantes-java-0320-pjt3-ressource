@@ -22,11 +22,11 @@
             <div class="company-container-main-grid">
                 <section class="company-situation">
                     <div class="company-map">
-                        <img th:src="@{image/company/{company}(company = *{companyMap})}" alt="map of company">
+                        <img th:src="@{photo/company/{file}(file = *{companyMap})}" alt="map of company">
                         <div class="company-filter-map" th:text="*{address}"></div>
                     </div>
                     <div class="company-from-the-sky">
-                        <img th:src="@{image/company/{company}(company = *{pictureFromSky})}" alt="picture of company from the sky">
+                        <img th:src="@{photo/company/{file}(file = *{pictureFromSky})}" alt="picture of company from the sky">
                     </div>
                 </section>
                 <section class="company-ceo">
@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                     <div class="company-ceo-photo">
-                        <img th:src="@{image/company/{company}(company = *{ceoPhoto})}" alt="ceo photo">
+                        <img th:src="@{photo/company/{file}(file = *{ceoPhoto})}" alt="ceo photo">
                     </div>
                     <div class="company-ceo-words">
                         <h2 th:text="*{ceoTitle}"></h2>
@@ -69,13 +69,13 @@
                 </section>
                 <section class="company-thumbnails-service-one">
                     <div class="company-thumbnails-service-one-left">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopLeft})}" alt="thumbnails of service one">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailOneTopLeft})}" alt="thumbnails of service one">
                     </div>
                     <div class="company-thumbnails-service-one-middle">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopMiddle})}" alt="thumbnails of service one">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailOneTopMiddle})}" alt="thumbnails of service one">
                     </div>
                     <div class="company-thumbnails-service-one-right">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailOneTopRight})}" alt="thumbnails of service one">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailOneTopRight})}" alt="thumbnails of service one">
                     </div>
                 </section>
                 <section class="company-container-service-one">
@@ -85,23 +85,23 @@
                         <p class="company-name-manager-service-one" th:text="|*{serviceTopName} - *{ServiceTopFunction}"></p>
                     </div>
                     <div class="company-photo-service-one">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailOneSideWords})}" alt="thumbnails of service one">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailOneSideWords})}" alt="thumbnails of service one">
                     </div>
                 </section>
                 <section class="company-thumbnails-service-two">
                     <div class="company-thumbnails-service-two-left">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopLeft})}" alt="thumbnails of service two">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailTwoTopLeft})}" alt="thumbnails of service two">
                     </div>
                     <div class="company-thumbnails-service-two-middle">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopMiddle})}" alt="thumbnails of service two">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailTwoTopMiddle})}" alt="thumbnails of service two">
                     </div>
                     <div class="company-thumbnails-service-two-right">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoTopRight})}" alt="thumbnails of service two">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailTwoTopRight})}" alt="thumbnails of service two">
                     </div>
                 </section>
                 <section class="company-container-service-two">
                     <div class="company-photo-service-two">
-                        <img th:src="@{image/company/{company}(company = *{thumbnailTwoSideWords})}" alt="thumbnails of service two">
+                        <img th:src="@{photo/company/{file}(file = *{thumbnailTwoSideWords})}" alt="thumbnails of service two">
                     </div>
                     <div class="company-words-service-two">
                         <h2 th:text="*{serviceBottomTitle}"></h2>
@@ -112,7 +112,7 @@
             </div>
             <section class="company-end-words">
                 <div class="company-end-photo">
-                    <img th:src="@{image/company/{company}(company = *{endPhoto})}" alt="last photo of company">
+                    <img th:src="@{photo/company/{file}(file = *{endPhoto})}" alt="last photo of company">
                     <p th:text="*{endWords}"></p>
                 </div>
             </section>

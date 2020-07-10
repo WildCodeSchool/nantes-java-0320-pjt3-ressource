@@ -15,6 +15,7 @@
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
         <form action="/admin/products/search" method="post">
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <div class="input-field col s6">
                     <input class="validate" id="referenceSearch" name="reference" type="text">
@@ -23,12 +24,16 @@
             </div>
         </form>
         <form action="/admin/products" class="col s10" method="post" th:object="${product}">
+            <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <div class="input-field col l4">
                     <input class="validate" id="reference" name="reference" th:field="*{reference}" type="text">
                     <label for="reference">Reference</label>
                 </div>
-                <div class="col l4"></div>
+                <div class="col s1 admin-product-delete">
+                    <a th:href="@{/admin/products/delete(id=${product.id})}"><i class="material-icons">delete</i></a>
+                </div>
+                <div class="col l3"></div>
                 <div class="input-field col l4">
                     <select id="company" name="company">
                         <option disabled selected value="">Select company</option>
