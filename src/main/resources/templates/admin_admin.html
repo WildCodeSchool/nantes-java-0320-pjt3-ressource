@@ -37,8 +37,8 @@
             <td th:text="${admin1.role.role}">ALL</td>
             <td class="icons-admin">
                 <button class="btn-icon modal-trigger" th:attr="data-target='modal'+ ${admin1.id}" ><i class="material-icons">edit</i></button>
-                <button class="btn-icon modal-trigger" data-target="modal2"><i class="material-icons">delete</i></button>
-                <div class="modal deleteAdmin" id="modal2">
+                <button class="btn-icon modal-trigger" th:attr="data-target='modalDelete'+ ${admin1.id}"><i class="material-icons">delete</i></button>
+                <div class="modal deleteAdmin" th:id="|modalDelete${admin1.id}|">
                     <div class="modal-content">
                         <p>Are you sure you want to delete?</p>
                         <p th:text="${admin1.username}"></p>
@@ -55,7 +55,7 @@
 
             </td>
             <td>
-                <div th:include="fragments/create-update-admin.html :: admin-modal (${admin1}, 'EDIT' + ${admin1.username},
+                <div th:include="fragments/create-update-admin.html :: admin-modal (${admin1}, 'EDIT ADMIN: ' + ${admin1.username},
                 ${false}, ${roles})" class="modal" th:id="|modal${admin1.id}|"></div>
             </td>
 
