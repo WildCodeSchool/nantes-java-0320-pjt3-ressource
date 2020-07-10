@@ -54,25 +54,6 @@ public class FileSystemStorageService implements StorageService {
     }
 
     /**
-     * Get a stream of all the paths in the storage.location directory
-     * (except the storage.location itself)
-     *
-     * @return a Stream<Path> the paths
-     * @throws StorageException if the storage.location can't be red
-     */
-    /*@Override
-    public Stream<Path> loadAll() {
-        try {
-            return Files.walk(this.rootLocation, 1)
-                    .filter(path -> !path.equals(this.rootLocation))
-                    .map(path -> this.rootLocation.relativize(path));
-        } catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
-        }
-
-    }*/
-
-    /**
      * Get the Path for the filename file in the storage.location directory
      *
      * @return Path

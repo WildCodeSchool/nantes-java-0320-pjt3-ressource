@@ -23,12 +23,6 @@ public interface StorageService {
     void store(MultipartFile file, int indexLocation, String nameFile);
 
     /**
-     * Return all the files in the storage
-     * @return
-     */
-    //Stream<Path> loadAll();
-
-    /**
      * Get the path to the filename in the storage
      * @param filename
      * @return Path to the file
