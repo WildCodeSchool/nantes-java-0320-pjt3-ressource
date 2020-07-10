@@ -71,6 +71,14 @@ input[type=number]:not(.browser-default):focus:not([readonly]) + label {
     color: #70ad47 !important;
 }
 
-[type="checkbox"]+span:not(.lever) {
+[type="checkbox"] + span:not(.lever) {
+    color: var(--color-bkg-button);
+}
+
+.material-icons {
+    line-height: 3;
+}
+
+.admin-product-delete a {
     color: var(--color-bkg-button);
 }
