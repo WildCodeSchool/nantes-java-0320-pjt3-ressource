@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,8 @@ public class FileSystemStorageService implements StorageService {
      */
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
-        this.rootLocation.add(Path.of(properties.getLocationCompany()));
-        this.rootLocation.add(Path.of(properties.getLocationProducts()));
+        this.rootLocation.add(Paths.get(properties.getLocationCompany()));
+        this.rootLocation.add(Paths.get(properties.getLocationProducts()));
     }
 
     /**
