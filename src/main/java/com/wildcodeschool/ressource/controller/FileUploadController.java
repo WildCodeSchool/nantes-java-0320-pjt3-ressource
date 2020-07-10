@@ -37,6 +37,7 @@ public class FileUploadController {
 
     @PostMapping("admin/upload/company")
     public String postCompany(@ModelAttribute Company companySelected,
+                              @RequestParam (defaultValue = "", required = false) MultipartFile fileLogo,
                               @RequestParam (defaultValue = "", required = false) MultipartFile filePictureFromSky,
                               @RequestParam (defaultValue = "", required = false) MultipartFile fileCompanyMap,
                               @RequestParam (defaultValue = "", required = false) MultipartFile fileCeoPhoto,
@@ -54,6 +55,7 @@ public class FileUploadController {
 
         String prefix = companySelected.getName() + "-";
 
+        String logo = prefix + fileLogo.getOriginalFilename();
         String pictureFromSky = prefix + filePictureFromSky.getOriginalFilename();
         String companyMap = prefix + fileCompanyMap.getOriginalFilename();
         String ceoPhoto = prefix + fileCeoPhoto.getOriginalFilename();
@@ -70,6 +72,14 @@ public class FileUploadController {
         if (optionalCompany.isPresent()) {
             Company companyModified = optionalCompany.get();
             companySelected.setId(companyModified.getId());
+
+            if (!(companyModified.getLogo() == null)
+                    && !companyModified.getLogo().equals(logo)
+                    && !fileLogo.getOriginalFilename().equals("")) {
+                storageService.deleteByName(companyModified.getLogo(), 0);
+            }
+            storageService.deleteByName(fileLogo.getOriginalFilename(), 0);
+            storageService.store(fileLogo, 0, logo);
 
             if (!(companyModified.getPictureFromSky() == null)
                 && !companyModified.getPictureFromSky().equals(pictureFromSky)
@@ -167,6 +177,7 @@ public class FileUploadController {
             storageService.deleteByName(endPhoto, 0);
             storageService.store(fileEndPhoto, 0, endPhoto);
         } else {
+            storageService.store(fileLogo, 0, logo);
             storageService.store(filePictureFromSky, 0, pictureFromSky);
             storageService.store(fileCompanyMap, 0, companyMap);
             storageService.store(fileCeoPhoto, 0, ceoPhoto);
@@ -179,6 +190,12 @@ public class FileUploadController {
             storageService.store(fileThumbnailTwoTopRight, 0, thumbnailTwoTopRight);
             storageService.store(fileThumbnailTwoSideWords, 0, thumbnailTwoSideWords);
             storageService.store(fileEndPhoto, 0, endPhoto);
+        }
+
+        if (fileLogo.getOriginalFilename().equals("")) {
+            companySelected.setLogo(companySelected.getLogo());
+        } else {
+            companySelected.setLogo(logo);
         }
 
         if (filePictureFromSky.getOriginalFilename().equals("")) {

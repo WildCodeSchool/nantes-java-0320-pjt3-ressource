@@ -22,7 +22,6 @@ public class CompanyController {
 
     @Autowired
     private CompanyRepository companyRepository;
-
     @Autowired
     private CareLabelRepository careLabelRepository;
     @Autowired
