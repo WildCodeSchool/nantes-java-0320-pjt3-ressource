@@ -10,12 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -71,7 +68,6 @@ public class AdminController {
     private LookRepository lookRepository;
 
     @Autowired
-
     private ProductRepository productRepository;
 
     @Autowired
@@ -251,7 +247,6 @@ public class AdminController {
 
         Feature newFeature = new Feature();
 
-
         if (productToUpdate.getFeature() != null) {
             newFeature = productToUpdate.getFeature();
         }
@@ -346,4 +341,14 @@ public class AdminController {
         }
         return "redirect:/login?logout";
     }
+
+    @GetMapping("/admin/products/delete")
+    public String deleteProduct(@RequestParam Long id){
+
+        compositionRepository.deleteByProductId(id);
+        productRepository.deleteById(id);
+
+        return "redirect:/admin/product";
+    }
+
 }
