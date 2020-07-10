@@ -86,3 +86,11 @@ input[type="text"]:not(.browser-default).validate + label, .input-field label {
     display: flex;
     align-items: center;
 }
+
+.modal.deleteAdmin {
+    width:20%;
+}
+
+.logout-footer.modal-footer {
+    padding-left: 1.5rem;
+}

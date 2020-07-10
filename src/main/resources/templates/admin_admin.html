@@ -21,7 +21,7 @@
         <i class="material-icons left">add</i>Add New Admin
     </button>
 
-    <div th:include="fragments/create-update-admin.html :: admin-modal (${admin}, 'ADD A NEW ADMIN')" class="modal" id="modal1"></div>
+    <div th:include="fragments/create-update-admin.html :: admin-modal (${admin}, 'ADD A NEW ADMIN', ${true}, ${roles})" class="modal" id="modal1"></div>
 
     <table class="striped admin-table-management">
         <thead>
@@ -36,8 +36,9 @@
             <td th:text="${admin1.email}">alvin@gmail.com</td>
             <td th:text="${admin1.role.role}">ALL</td>
             <td class="icons-admin">
+                <button class="btn-icon modal-trigger" th:attr="data-target='modal'+ ${admin1.id}" ><i class="material-icons">edit</i></button>
                 <button class="btn-icon modal-trigger" data-target="modal2"><i class="material-icons">delete</i></button>
-                <div class="modal" id="modal2">
+                <div class="modal deleteAdmin" id="modal2">
                     <div class="modal-content">
                         <p>Are you sure you want to delete?</p>
                         <p th:text="${admin1.username}"></p>
@@ -51,8 +52,11 @@
                         <input class="modal-close btn" type="submit" th:value="cancel" name="submit">
                     </div>
                 </div>
-                <button class="btn-icon modal-trigger" data-target="modal3"><i class="material-icons">edit</i></button>
-                <div th:include="fragments/create-update-admin.html :: admin-modal (${admin1}, 'EDIT' + ${admin1.username})" class="modal" id="modal3"></div>
+
+            </td>
+            <td>
+                <div th:include="fragments/create-update-admin.html :: admin-modal (${admin1}, 'EDIT' + ${admin1.username},
+                ${false}, ${roles})" class="modal" th:id="|modal${admin1.id}|"></div>
             </td>
 
         </tr>

@@ -88,15 +88,7 @@ public class AdminController {
     public String adminAdmin(Model model) {
 
         List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
-        for (Admin admin : admins) {
-            Role role = admin.getRole();
-            String newRole = role.getRole();
-            if (newRole.length() > 5) {
-                role.setRole(newRole.substring(5));
-                admin.setRole(role);
-            }
 
-        }
         List<Role> roles = roleRepository.findAll();
         model.addAttribute("admin", new Admin());
         model.addAttribute("admins", admins);
@@ -105,12 +97,26 @@ public class AdminController {
     }
 
     @PostMapping("/admin/admin/create")
-    public String adminCreate(@ModelAttribute Admin admin,
-                              @RequestParam Long role) {
+    public String adminCreate(@RequestParam(defaultValue = "", required = false) Long id,
+                              @RequestParam String username,
+                              @RequestParam String email,
+                              @RequestParam(defaultValue = "", required = false) String password,
+                              @RequestParam Long roleId) {
 
-        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        Admin admin = new Admin();
+        if (id != null) {
+            if(adminRepository.findById(id).isPresent()) {
+                admin = adminRepository.findById(id).get();
+            }
+        }
 
-        Optional<Role> optionalRole = roleRepository.findById(role);
+        admin.setEmail(email);
+        admin.setUsername(username);
+        if (!password.equals("")){
+            admin.setPassword(passwordEncoder.encode(password));
+        }
+
+        Optional<Role> optionalRole = roleRepository.findById(roleId);
 
         if (optionalRole.isPresent()) {
             admin.setRole(optionalRole.get());
