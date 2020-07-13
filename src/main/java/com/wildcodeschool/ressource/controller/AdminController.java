@@ -88,6 +88,7 @@ public class AdminController {
         return "admin_login";
     }
 
+
     @GetMapping("/admin/profile")
     public String adminProfile(Model model) {
         Admin admin = userService.getLoggedUsername();
@@ -106,10 +107,13 @@ public class AdminController {
     @GetMapping("/admin/admin")
     public String adminAdmin(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
+
         List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
 
         List<Role> roles = roleRepository.findAll();
-        model.addAttribute("admin", new Admin());
+        model.addAttribute("adminNew", new Admin());
         model.addAttribute("admins", admins);
         model.addAttribute("roles", roles);
         return "admin_admin";
@@ -148,8 +152,10 @@ public class AdminController {
     @GetMapping("/admin/companies")
     public String adminCompanies(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
         List<Company> companyList = companyRepository.findAll();
         model.addAttribute("companies", companyList);
+        model.addAttribute("admin", admin);
         return "admin-companies";
     }
 
@@ -172,6 +178,8 @@ public class AdminController {
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
         model.addAttribute("companies", companyRepository.findAll());
         model.addAttribute("materials", materialRepository.findAll());
         model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
@@ -187,7 +195,6 @@ public class AdminController {
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("product", new Product());
-
         return "productAdmin";
     }
 
@@ -332,7 +339,6 @@ public class AdminController {
         }
 
         compositionRepository.saveAll(compositionList);
-
         return "redirect:/admin/product";
     }
 
@@ -362,7 +368,6 @@ public class AdminController {
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("product", new Product());
         model.addAttribute("product", productModified);
-
         return "productAdmin";
     }
 
