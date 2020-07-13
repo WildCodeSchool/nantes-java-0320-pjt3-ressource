@@ -1,6 +1,5 @@
 @import url('style.css');
 
-
 h3 {
     font-family: var(--font-title);
     text-align: center;
@@ -196,12 +195,12 @@ h5 {
     top: 40%;
 }
 
-.arrow_prev_like, .fas fa-chevron-left {
+.arrow_prev_like {
     left: 10px;
     font-size: 3rem;
 }
 
-.arrow_next_like, .fa-chevron-right {
+.arrow_next_like{
     right: 25px;
     font-size: 3rem;
 }
@@ -212,12 +211,12 @@ h5 {
     top: 40%;
 }
 
-.arrow_prev_rev, .fas fa-chevron-left {
+.arrow_prev_rev {
     left: 10px;
     font-size: 3rem;
 }
 
-.arrow_next_rev, .fa-chevron-right {
+.arrow_next_rev {
     right: 25px;
     font-size: 3rem;
 }
@@ -229,6 +228,8 @@ h5 {
     }
 
     .product-description p {
+
+
         margin: 0.8rem;
     }
 
@@ -238,6 +239,10 @@ h5 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .product-text-top p, .product-text-top a{
+        font-size: 3.2vw;
     }
 
     .product-slideshow-container {
@@ -287,5 +292,42 @@ h5 {
     .product-section-top {
         display: grid;
     }
+
+    .slick-slider {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .slick-list.draggable {
+        margin-left: 1.5rem;
+    }
+
+    .arrow_prev_like, .arrow_next_like {
+        position: absolute;
+        top: 50%;
+        font-size: 2rem;
+    }
+
+    .arrow_next_like {
+        right: 10px;
+    }
+
+    .arrow_prev_like {
+        left: 10px;
+    }
+
+    .arrow_prev_rev, .arrow_next_rev{
+        font-size: 2rem;
+    }
+
+    .arrow_next_rev{
+        right: 10px;
+    }
+
+    .product-text-after-title{
+        margin: 1rem;
+    }
+
 }
+
 
