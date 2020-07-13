@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -130,37 +131,37 @@ public class ProductController {
 
 
     @GetMapping("/results/filter")
-    public String filter2(Model model, @RequestParam(defaultValue = "", required = false) Long material,
-                          @RequestParam(defaultValue = "", required = false) Long[] fabric,
-                          @RequestParam(defaultValue = "", required = false) Long[] fiber,
-                          @RequestParam(defaultValue = "", required = false) Long[] country,
-                          @RequestParam(defaultValue = "", required = false) Long[] supplier,
-                          @RequestParam(defaultValue = "", required = false) Long[] price,
+    public String filter2(Model model, @RequestParam(defaultValue = "", required = false) Long[] material,
+                          @RequestParam(value = "fabric", defaultValue = "", required = false) Long[] fabric,
+                          @RequestParam(value = "fiber", defaultValue = "", required = false) Long[] fiber,
+                          @RequestParam(value = "country", defaultValue = "", required = false) Long[] country,
+                          @RequestParam(value = "supplier", defaultValue = "", required = false) Long[] supplier,
+                          @RequestParam(value = "price", defaultValue = "", required = false) Long[] price,
                           @RequestParam(defaultValue = "75", required = false) Long sliderWeightMin,
                           @RequestParam(defaultValue = "200", required = false) Long sliderWeightMax,
                           @RequestParam(defaultValue = "30", required = false) Long sliderWidthMin,
                           @RequestParam(defaultValue = "500", required = false) Long sliderWidthMax,
-                          @RequestParam(defaultValue = "", required = false) Long[] certification,
+                          @RequestParam(value = "certification", defaultValue = "", required = false) Long[] certification,
                           @RequestParam(defaultValue = "", required = false) String search,
                           @RequestParam(defaultValue = "false", required = false) boolean submit) {
 
         List<Long> productsId = productRepository.findAllIdBySearching(search);
         List<Product> allProducts = productRepository.findAllByIdIn(productsId);
         List<Product> productsWFilter = allProducts.stream()
-                .filter(item -> ((material == null || item.getMaterial() != null &&
-                        item.getMaterial().getId().equals(material)) &&
+                .filter(item -> ((material.length == 0 || item.getMaterial() != null &&
+                        Arrays.asList(material).contains(item.getMaterial().getId())) &&
 
-                        (fabric == null || item.getFabricPattern() != null &&
-                                item.getFabricPattern().getId().equals(fabric)) &&
+                        (fabric.length == 0 || item.getFabricPattern() != null &&
+                                Arrays.asList(fabric).contains(item.getFabricPattern().getId())) &&
 
-                        (country == null || item.getOrigin() != null &&
-                                item.getOrigin().getId().equals(country)) &&
+                        (country.length == 0 || item.getOrigin() != null &&
+                                Arrays.asList(country).contains(item.getOrigin().getId())) &&
 
-                        (supplier == null || item.getCompany() != null &&
-                                item.getCompany().getId().equals(supplier)) &&
+                        (supplier.length == 0 || item.getCompany() != null &&
+                                Arrays.asList(supplier).contains(item.getCompany().getId())) &&
 
-                        (price == null || item.getPrice() != null &&
-                                item.getPrice().getId().equals(price)) &&
+                        (price.length == 0 || item.getPrice() != null &&
+                                Arrays.asList(price).contains(item.getPrice().getId())) &&
 
                         (item.getWeight() != null &&
                                 (item.getWeight() >= sliderWeightMin &&
@@ -171,23 +172,23 @@ public class ProductController {
                                         item.getWidth() <= sliderWidthMax))
                 ))
                 .filter(element -> {
-                    if (certification == null) {
+                    if (certification.length == 0) {
                         return true;
                     }
                     for (Certification cert : element.getCertifications()) {
 
-                        if (cert != null && cert.getId().equals(certification)) {
+                        if (cert != null && Arrays.asList(certification).contains(cert.getId())) {
                             return true;
                         }
                     }
                     return false;
                 })
                 .filter(element2 -> {
-                    if (fiber == null) {
+                    if (fiber.length == 0) {
                         return true;
                     }
                     for (Composition compo : element2.getCompositions()) {
-                        if (compo != null && compo.getFiber().getId().equals(fiber)) {
+                        if (compo != null && Arrays.asList(fiber).contains(compo.getFiber().getId())) {
                             return true;
                         }
                     }

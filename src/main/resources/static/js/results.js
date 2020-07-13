@@ -117,7 +117,6 @@ function radioFilter() {
     for (let radio in radiosClicked) {
         params += radio + "=" + radiosClicked[radio] + "&";
     }
-    console.log(params)
     fetch('/results/filter?' + params)
         .then(function (response) {
             return response.text()
