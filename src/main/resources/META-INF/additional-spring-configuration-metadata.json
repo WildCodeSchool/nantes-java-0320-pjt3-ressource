@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "upload.path.company",
+      "type": "java.lang.String",
+      "description": "Description for upload.path.company."
+  }
+] }
