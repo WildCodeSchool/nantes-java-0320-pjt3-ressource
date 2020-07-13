@@ -53,6 +53,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/image/**").permitAll()
                 .antMatchers("/fragments/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ALL")
+                .antMatchers("/admin/profile").hasRole("ALL")
                 .antMatchers("/admin/admin/create").hasRole("ALL")
                 .antMatchers("/admin/companies").hasRole("ALL")
                 .antMatchers("/admin/company/*").hasRole("ALL")
@@ -70,7 +71,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/admin/admin", true)
+                .defaultSuccessUrl("/admin/profile", true)
                 .and()
                 .logout()
                 .permitAll();
