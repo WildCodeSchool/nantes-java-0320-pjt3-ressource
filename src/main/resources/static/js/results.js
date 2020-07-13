@@ -230,15 +230,6 @@ filter.onclick = function () {
     $('body').toggleClass('color');
 };
 
-/* STICKY NAV BAR MOBILE*/
-$(window).on("scroll", function () {
-    if ($(window).scrollTop()) {
-        $('.results-header-mobile').addClass('sticky');
-    } else {
-        $('.results-header-mobile').removeClass('sticky');
-    }
-});
-
 /* SEARCH MODIFY ON MOBILE */
 let search = document.getElementById("search-icon-nav");
 let navMenu = document.getElementById("results-menu-nav");
