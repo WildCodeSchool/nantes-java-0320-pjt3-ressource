@@ -11,14 +11,15 @@
             <div class="user-view">
                 <h1>We<span>source</span></h1>
                 <div class="admin-header-user">
+
                     <a href="#"><span class="name" th:text="${admin.username}">John Doe</span></a>
                     <a href="#"><span class="name" th:text="${admin.role.role}">ALL</span></a>
                 </div>
             </div>
         </li>
         <li class="divider"></li>
-        <li><a href="/admin/admin"><i class="material-icons left">account_box</i>Admin</a></li>
-        <li><a href="/admin/companies"><i class="material-icons left">location_city</i>Companies</a></li>
+        <li><a href="/admin/admin" th:if="${admin.role.role} == 'ROLE_ALL'"><i class="material-icons left">account_box</i>Admin</a></li>
+        <li><a href="/admin/companies" th:if="${admin.role.role} != 'ROLE_PRODUCTS'"><i class="material-icons left">location_city</i>Companies</a></li>
         <li><a href="/admin/product"><i class="material-icons left">star</i>Products</a></li>
         <li><a class="modal-trigger" href="#modal-logout"><i class="material-icons left">exit_to_app</i>Logout</a></li>
     </ul>
