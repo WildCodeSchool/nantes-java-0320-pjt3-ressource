@@ -5,15 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<header th:fragment="admin-header">
+<header th:fragment="admin-header (admin)">
     <ul class="sidenav sidenav-fixed" id="sidenav-1">
         <li>
             <div class="user-view">
                 <h1>We<span>source</span></h1>
                 <div class="admin-header-user">
-                    <a href="#"><span class="name">John Doe</span></a>
-                    <a href="#"><span class="name">JDoe</span></a>
-                    <a href="#"><span class="name">ALL</span></a>
+                    <a href="#"><span class="name" th:text="${admin.username}">John Doe</span></a>
+                    <a href="#"><span class="name" th:text="${admin.role.role}">ALL</span></a>
                 </div>
             </div>
         </li>
