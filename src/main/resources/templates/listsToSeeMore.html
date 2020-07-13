@@ -10,7 +10,7 @@
         <label class="results-filters-radio" th:for="${list.name}">
             <span th:text="${list.name}"></span>
             <input class="results-filters-radio-input-supplier" name="supplier" th:id="${list.name}"
-                   th:value="${list.id}" type="radio">
+                   th:value="${list.id}" type="checkbox">
             <span class="checkmark"></span>
         </label>
     </div>
@@ -22,7 +22,7 @@
             <span th:text="${list.country}">Italy</span>
             <input class="results-filters-radio-input-origin" name="country" th:id="${list.country}"
                    th:value="${list.id}"
-                   type="radio">
+                   type="checkbox">
             <span class="checkmark"></span>
         </label>
     </div>
@@ -32,7 +32,7 @@
     <div class="results-filters-radio-table-compo" th:each="list : ${lists}">
         <input class="results-filters-radio-input-compo" name="fiber" th:id="${list.name}"
                th:value="${list.id}"
-               type="radio">
+               type="checkbox">
         <label class="results-filters-radio filter-table-item" th:for="${list.name}" th:text="${list.name}">Cotton</label>
     </div>
 </div>
@@ -43,7 +43,7 @@
             <span th:text="${list.name}">GOTS</span>
             <input class="results-filters-radio-input-cert" name="certification"
                    th:id="${list.name}" th:value="${list.id}"
-                   type="radio">
+                   type="checkbox">
             <span class="checkmark"></span>
         </label>
     </div>

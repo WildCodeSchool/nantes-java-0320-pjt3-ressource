@@ -6,6 +6,7 @@ let tag_weight_2 = document.getElementById("slider-weight-tag-2");
 let sliders = document.getElementsByClassName('slider');
 
 let radiosClicked = {};
+
 for (let i = 0; i < sliders.length; i++) {
 
     if (sliders[i].id === "slider-weight") {
@@ -31,17 +32,28 @@ for (let i = 0; i < sliders.length; i++) {
     };
 
     sliders[i].addEventListener('mouseup', function () {
-        filters(this);
+        filters(this, false, true);
     });
 
     sliders[i].addEventListener('touchend', function () {
-        filters(this);
+        filters(this, false, true);
     })
 }
 
 /* FUNCTION TO INSERT EACH RADIO ON THE DICTIONARY */
-function filters(radio) {
-    radiosClicked[radio.name] = radio.value;
+function filters(radio, out, slider) {
+    if (radiosClicked[radio.name] && out && !slider) {
+        radiosClicked[radio.name].pop(radio.value);
+    } else if (slider) {
+        radiosClicked[radio.name] = radio.value;
+    } else {
+        if (radiosClicked[radio.name]) {
+            radiosClicked[radio.name].push(radio.value);
+        } else {
+            radiosClicked[radio.name] = [radio.value];
+        }
+    }
+    //console.log(radiosClicked)
     radioFilter();
 }
 
@@ -51,26 +63,26 @@ function filters(radio) {
 initClicking();
 
 function initClicking() {
-    let radiosPrice = $('.results-filters-radio-input-price');
-    let divRadiosPrice = $('.results-filters-radio-table-price');
+    let radiosPrice = document.getElementsByClassName('results-filters-radio-input-price');
+    let divRadiosPrice = document.getElementsByClassName('results-filters-radio-table-price');
 
-    let radiosCompo = $('.results-filters-radio-input-compo');
-    let divRadiosCompo = $('.results-filters-radio-table-compo');
+    let radiosCompo = document.getElementsByClassName('results-filters-radio-input-compo');
+    let divRadiosCompo = document.getElementsByClassName('results-filters-radio-table-compo');
 
-    let radiosFabric = $('.results-filters-radio-input-fabric');
-    let divRadiosFabric = $('.results-filters-radio-table-fabric');
+    let radiosFabric = document.getElementsByClassName('results-filters-radio-input-fabric');
+    let divRadiosFabric = document.getElementsByClassName('results-filters-radio-table-fabric');
 
-    let radiosMaterial = $('.results-filters-radio-input-material');
-    let divRadiosMaterial = $('.results-filters-radio-table-material');
+    let radiosMaterial = document.getElementsByClassName('results-filters-radio-input-material');
+    let divRadiosMaterial = document.getElementsByClassName('results-filters-radio-table-material');
 
-    let radiosOrigin = $('.results-filters-radio-input-origin');
-    let divRadiosOrigin = $('.results-filters-radio-table-origin');
+    let radiosOrigin = document.getElementsByClassName('results-filters-radio-input-origin');
+    let divRadiosOrigin = document.getElementsByClassName('results-filters-radio-table-origin');
 
-    let radiosSupplier = $('.results-filters-radio-input-supplier');
-    let divRadiosSupplier = $('.results-filters-radio-table-supplier');
+    let radiosSupplier = document.getElementsByClassName('results-filters-radio-input-supplier');
+    let divRadiosSupplier = document.getElementsByClassName('results-filters-radio-table-supplier');
 
-    let radiosCert = $('.results-filters-radio-input-cert');
-    let divRadiosCert = $('.results-filters-radio-table-cert');
+    let radiosCert = document.getElementsByClassName('results-filters-radio-input-cert');
+    let divRadiosCert = document.getElementsByClassName('results-filters-radio-table-cert');
     clicking(radiosCompo, divRadiosCompo);
     clicking(radiosPrice, divRadiosPrice);
     clicking(radiosFabric, divRadiosFabric);
@@ -81,11 +93,19 @@ function initClicking() {
 }
 
 function clicking(radios, divRadios) {
-    radios.click(function () {
-        divRadios.removeClass("clicked");
-        $(this).filter(':checked').closest(divRadios).addClass("clicked");
-        filters(this);
-    });
+    for (let i = 0; i < radios.length; i++) {
+        radios[i].onclick = function () {
+
+            if (radios[i].checked === false) {
+                divRadios[i].classList.remove("clicked");
+                filters(this, true, false);
+            } else {
+                divRadios[i].classList.add("clicked");
+                filters(this, false, false);
+            }
+
+        };
+    }
 }
 
 /* FETCH TO UPDATE THE RESULTS WHEN EVENT ON FILTERS */
