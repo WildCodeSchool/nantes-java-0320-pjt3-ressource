@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/admin_admin.css}" type="text/css">
 </head>
 <body>
-<header th:replace="fragments/admin_header.html :: admin-header"></header>
+<header th:replace="fragments/admin_header.html :: admin-header(${admin})"></header>
 <main class="admin-admin">
     <h2>Profile</h2>
     <form action="/admin/profile" method="post" id="createForm">
