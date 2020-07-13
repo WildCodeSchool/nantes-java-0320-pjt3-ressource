@@ -131,16 +131,16 @@ public class ProductController {
 
     @GetMapping("/results/filter")
     public String filter2(Model model, @RequestParam(defaultValue = "", required = false) Long material,
-                          @RequestParam(defaultValue = "", required = false) Long fabric,
-                          @RequestParam(defaultValue = "", required = false) Long fiber,
-                          @RequestParam(defaultValue = "", required = false) Long country,
-                          @RequestParam(defaultValue = "", required = false) Long supplier,
-                          @RequestParam(defaultValue = "", required = false) Long price,
+                          @RequestParam(defaultValue = "", required = false) Long[] fabric,
+                          @RequestParam(defaultValue = "", required = false) Long[] fiber,
+                          @RequestParam(defaultValue = "", required = false) Long[] country,
+                          @RequestParam(defaultValue = "", required = false) Long[] supplier,
+                          @RequestParam(defaultValue = "", required = false) Long[] price,
                           @RequestParam(defaultValue = "75", required = false) Long sliderWeightMin,
                           @RequestParam(defaultValue = "200", required = false) Long sliderWeightMax,
                           @RequestParam(defaultValue = "30", required = false) Long sliderWidthMin,
                           @RequestParam(defaultValue = "500", required = false) Long sliderWidthMax,
-                          @RequestParam(defaultValue = "", required = false) Long certification,
+                          @RequestParam(defaultValue = "", required = false) Long[] certification,
                           @RequestParam(defaultValue = "", required = false) String search,
                           @RequestParam(defaultValue = "false", required = false) boolean submit) {
 

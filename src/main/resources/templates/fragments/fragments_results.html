@@ -19,7 +19,7 @@
                         <span th:text="${material.name}"></span>
                         <input class="results-filters-radio-input-material" id="material" name="material"
                                th:id="${material.name}" th:value="${material.id}"
-                               type="radio">
+                               type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="results-filters-radio-table-fabric" th:each="fabricPattern : ${fabricPatterns}">
                     <input class="results-filters-radio-input-fabric" name="fabric" th:id="${fabricPattern.name}"
                            th:value="${fabricPattern.id}"
-                           type="radio">
+                           type="checkbox">
                     <label class="results-filters-radio filter-table-item" th:for="${fabricPattern.name}"
                            th:text="${fabricPattern.name}">Taffata</label>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="results-filters-radio-table-compo" th:each="composition : ${compositions}">
                     <input class="results-filters-radio-input-compo" name="fiber" th:id="${composition.name}"
                            th:value="${composition.id}"
-                           type="radio">
+                           type="checkbox">
                     <label class="results-filters-radio filter-table-item" th:for="${composition.name}"
                            th:text="${composition.name}">Cotton</label>
                 </div>
@@ -59,7 +59,7 @@
                         <span th:text="${origin.country}">Italy</span>
                         <input class="results-filters-radio-input-origin" name="country" th:id="${origin.country}"
                                th:value="${origin.id}"
-                               type="radio">
+                               type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -74,7 +74,7 @@
                     <label class="results-filters-radio" th:for="${company.name}">
                         <span th:text="${company.name}"></span>
                         <input class="results-filters-radio-input-supplier" name="supplier" th:id="${company.name}"
-                               th:value="${company.id}" type="radio">
+                               th:value="${company.id}" type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -88,7 +88,7 @@
                 <div class="results-filters-radio-table-price" th:each="price : ${prices}">
                     <input class="results-filters-radio-input-price" name="price" th:id="${price.id}"
                            th:value="${price.id}"
-                           type="radio">
+                           type="checkbox">
                     <label class="results-filters-radio" th:for="${price.id}" th:text="${price.price}">1 to
                         3.99</label>
                 </div>
@@ -132,7 +132,7 @@
                         <span th:text="${certification.name}">GOTS</span>
                         <input class="results-filters-radio-input-cert" name="certification"
                                th:id="${certification.name}" th:value="${certification.id}"
-                               type="radio">
+                               type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </div>
