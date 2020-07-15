@@ -10,11 +10,7 @@
 </head>
 <body>
     <header th:replace="fragments/header.html :: header"></header>
-    <header class="company-header-mobile">
-        <div>
-            <h1><span>we</span>source</h1>
-        </div>
-    </header>
+    <header th:replace="fragments/header-mobile.html :: header-mobile"></header>
     <main class="company-main" th:object="${company}">
         <article class="company-top">
             <ul class="company-back-link">
@@ -129,10 +125,6 @@
         </article>
         <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
     </main>
-    <script crossorigin="anonymous"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
-    </script>
-    <script src="/js/home.js" type="text/javascript"></script>
+    <script src="/js/search-bar-mobile.js" type="text/javascript"></script>
 </body>
 </html>

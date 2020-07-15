@@ -10,7 +10,7 @@
     <script src="../static/js/sidebar.js"></script>
 </head>
 <body>
-<header th:replace="fragments/admin_header.html :: admin-header"></header>
+<header th:replace="fragments/admin_header.html :: admin-header (${admin}) "></header>
 <main class="admin-product">
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
