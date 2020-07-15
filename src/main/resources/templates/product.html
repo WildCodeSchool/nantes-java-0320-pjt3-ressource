@@ -21,7 +21,7 @@
         <div class="product-container-top">
             <div class="product-slideshow-container">
                 <div class="mySlides">
-                    <img th:src="@{image/product_images/{product}(product= ${product.imageProducts.get(0).image})}">
+                    <img th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}">
                 </div>
                 <!--
                 <a class="product-prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -79,7 +79,7 @@
                 <div class="card-product-image">
                     <a th:href="@{/product?reference={id}(id=${product.id})}"><img
                             th:alt="${product.imageProducts.get(0).image}"
-                            th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
+                            th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
