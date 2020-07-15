@@ -4,5 +4,11 @@
       "name": "upload.path.company",
       "type": "java.lang.String",
       "description": "Description for upload.path.company."
-  }
-] }
+    },
+    {
+      "name": "upload.path.products",
+      "type": "java.lang.String",
+      "description": "Description for upload.path.products."
+    }
+  ]
+}
