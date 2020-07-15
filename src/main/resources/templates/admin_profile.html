@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Profile</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+    <th:block th:include="fragments/head.html :: head"></th:block>
+    <link rel="stylesheet" th:href="@{/css/admin_admin.css}" type="text/css">
+</head>
+<body>
+
+<header th:replace="fragments/admin_header.html :: admin-header(${admin})"></header>
+
+<main class="admin-admin">
+    <h2>Profile</h2>
+    <form action="/admin/profile" method="post" id="createForm">
+        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+        <div class="row">
+            <div class="input-field col s8">
+                <input disabled th:value="${admin.username}" id="disabled" type="text" class="validate">
+                <label for="disabled">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s8">
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">New Password</label>
+                <span class="helper-text" data-error="Missing password"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s8">
+                <input id="passwordConfirm" type="password" class="validate">
+                <label for="passwordConfirm">Confirm Password</label>
+                <span class="helper-text" data-error="Missing password confirmation"></span>
+            </div>
+        </div>
+        <button class="btn-create col s2 offset-s10 waves-effect waves-green btn" id="create">Modify
+        </button>
+    </form>
+</main>
+<!--JavaScript at end of body for optimized loading-->
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js">
+</script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="/js/admin_profile.js" type="text/JavaScript"></script>
+</body>
+</html>

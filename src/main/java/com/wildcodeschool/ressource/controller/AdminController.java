@@ -3,6 +3,7 @@ package com.wildcodeschool.ressource.controller;
 
 import com.wildcodeschool.ressource.entity.*;
 import com.wildcodeschool.ressource.repository.*;
+import com.wildcodeschool.ressource.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -79,18 +80,40 @@ public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/login")
     public String adminLogin() {
         return "admin_login";
     }
 
+
+    @GetMapping("/admin/profile")
+    public String adminProfile(Model model) {
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
+        return "admin_profile";
+    }
+
+    @PostMapping("/admin/profile")
+    public String changePsw(@RequestParam String password) {
+        Admin admin = userService.getLoggedUsername();
+        admin.setPassword(passwordEncoder.encode(password));
+        adminRepository.save(admin);
+        return "redirect:/admin/profile";
+    }
+
     @GetMapping("/admin/admin")
     public String adminAdmin(Model model) {
+
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
 
         List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
 
         List<Role> roles = roleRepository.findAll();
-        model.addAttribute("admin", new Admin());
+        model.addAttribute("adminNew", new Admin());
         model.addAttribute("admins", admins);
         model.addAttribute("roles", roles);
         return "admin_admin";
@@ -129,8 +152,10 @@ public class AdminController {
     @GetMapping("/admin/companies")
     public String adminCompanies(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
         List<Company> companyList = companyRepository.findAll();
         model.addAttribute("companies", companyList);
+        model.addAttribute("admin", admin);
         return "admin-companies";
     }
 
@@ -153,6 +178,8 @@ public class AdminController {
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
         model.addAttribute("companies", companyRepository.findAll());
         model.addAttribute("materials", materialRepository.findAll());
         model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
@@ -168,7 +195,6 @@ public class AdminController {
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("product", new Product());
-
         return "productAdmin";
     }
 
@@ -313,7 +339,6 @@ public class AdminController {
         }
 
         compositionRepository.saveAll(compositionList);
-
         return "redirect:/admin/product";
     }
 
@@ -343,7 +368,6 @@ public class AdminController {
         model.addAttribute("products", productRepository.findAll());
         model.addAttribute("product", new Product());
         model.addAttribute("product", productModified);
-
         return "productAdmin";
     }
 

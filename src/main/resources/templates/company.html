@@ -10,6 +10,7 @@
 </head>
 <body>
     <header th:replace="fragments/header.html :: header"></header>
+    <header th:replace="fragments/header-mobile.html :: header-mobile"></header>
     <main class="company-main" th:object="${company}">
         <article class="company-top">
             <ul class="company-back-link">
@@ -122,6 +123,8 @@
     ${compositions}, ${origins}, ${companies}, ${prices}, ${certifications}, ${null}, ${products}, ${true}, *{name})">
             </div>
         </article>
+        <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
     </main>
+    <script src="/js/search-bar-mobile.js" type="text/javascript"></script>
 </body>
 </html>

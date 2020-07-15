@@ -13,9 +13,11 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
+    @Value("${upload.path.company}")
+    private String locationCompany;
 
-    private String locationCompany = "upload/company";
-    private String locationProducts = "upload/products";
+    @Value("${upload.path.products}")
+    private String locationProducts;
 
     public String getLocationCompany() {
         return locationCompany;

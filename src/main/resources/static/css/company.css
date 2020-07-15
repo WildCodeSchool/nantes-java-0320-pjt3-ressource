@@ -341,7 +341,7 @@
 
 /* RESULTS */
 .company-bottom {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 /*END RESULTS*/
 
@@ -350,6 +350,7 @@
 
     .company-back-link {
         margin-left: 2rem;
+        font-size: 3.2vw;
     }
 
     .company-situation {
