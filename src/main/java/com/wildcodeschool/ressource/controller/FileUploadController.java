@@ -1,19 +1,24 @@
 package com.wildcodeschool.ressource.controller;
 
 
-import com.wildcodeschool.ressource.entity.Company;
-import com.wildcodeschool.ressource.repository.CompanyRepository;
+import com.wildcodeschool.ressource.entity.*;
+import com.wildcodeschool.ressource.repository.*;
+import com.wildcodeschool.ressource.service.UserService;
 import com.wildcodeschool.ressource.storage.StorageFileNotFoundException;
 import com.wildcodeschool.ressource.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,12 +33,60 @@ public class FileUploadController {
     private final StorageService storageService;
 
     @Autowired
-    public FileUploadController(StorageService storageService) {
+    private FileUploadController(StorageService storageService) {
         this.storageService = storageService;
     }
 
     @Autowired
-    public CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ImgProductRepository imgProductRepository;
+
+    @Autowired
+    private MaterialRepository materialRepository;
+
+    @Autowired
+    private FabricPatternRepository fabricPatternRepository;
+
+    @Autowired
+    private FiberRepository fiberRepository;
+
+    @Autowired
+    private OriginRepository originRepository;
+
+    @Autowired
+    private PriceRepository priceRepository;
+
+    @Autowired
+    private CareLabelRepository careLabelRepository;
+
+    @Autowired
+    private CertificationRepository certificationRepository;
+
+    @Autowired
+    private TechnicalPropertyRepository technicalPropertyRepository;
+
+    @Autowired
+    private FabricRepository fabricRepository;
+
+    @Autowired
+    private HandFeelRepository handFeelRepository;
+
+    @Autowired
+    private FinishingRepository finishingRepository;
+
+    @Autowired
+    private LookRepository lookRepository;
+
+    @Autowired
+    private CompositionRepository compositionRepository;
+
+    @Autowired
+    private FeatureRepository featureRepository;
 
     @PostMapping("admin/upload/company")
     public String postCompany(@ModelAttribute Company companySelected,
@@ -312,4 +365,178 @@ public class FileUploadController {
         return ResponseEntity.notFound().build();
     }
 
+    @PostMapping("/admin/products")
+    public String updateProduct(@RequestParam String reference,
+                                @RequestParam(defaultValue = "", required = false) Long designNumber,
+                                @RequestParam(defaultValue = "", required = false) String description,
+                                @RequestParam(defaultValue = "", required = false) Integer width,
+                                @RequestParam(defaultValue = "", required = false) Integer weight,
+                                @RequestParam(defaultValue = "", required = false) Integer pieceLength,
+                                @RequestParam(defaultValue = "", required = false) Integer collectionMOQ,
+                                @RequestParam(defaultValue = "", required = false) Integer productionMOQ,
+                                @RequestParam(defaultValue = "", required = false) Integer collectionLeadtime,
+                                @RequestParam(defaultValue = "", required = false) Integer productionLeadtime,
+                                @RequestParam(defaultValue = "", required = false) String washingComments,
+                                @RequestParam(defaultValue = "", required = false) Long material,
+                                @RequestParam(value = "certifications", required = false) Long[] certifications,
+                                @RequestParam(value = "careLabels", required = false) Long[] careLabels,
+                                @RequestParam(defaultValue = "", required = false) Long origin,
+                                @RequestParam(defaultValue = "", required = false) Long price,
+                                @RequestParam(defaultValue = "", required = false) Long fabricPattern,
+                                @RequestParam(defaultValue = "", required = false) Long company,
+                                @RequestParam(value = "products", required = false) Long[] products,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber1,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber1,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber2,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber2,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber3,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber3,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber4,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber4,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber5,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber5,
+                                @RequestParam(defaultValue = "0", required = false) Long fiber6,
+                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber6,
+                                @RequestParam(value = "technicalProperty", required = false) Long[] technicalProperty,
+                                @RequestParam(defaultValue = "", required = false) Long fabric,
+                                @RequestParam(defaultValue = "", required = false) Long handFeel,
+                                @RequestParam(defaultValue = "", required = false) Long finishing,
+                                @RequestParam(defaultValue = "", required = false) Long look,
+                                @RequestParam(defaultValue = "", required = false) MultipartFile filePictureProduct) {
+
+        Optional<Product> optionalProductToUpdate = productRepository.findByReference(reference);
+
+        Product productToUpdate = new Product();
+
+        if (optionalProductToUpdate.isPresent()) {
+            productToUpdate = optionalProductToUpdate.get();
+        } else {
+            productToUpdate.setReference(reference);
+        }
+
+        if (certifications != null) {
+            List<Certification> certificationList = certificationRepository.findAllById(Arrays.asList(certifications));
+            productToUpdate.setCertifications(certificationList);
+        }
+        if (careLabels != null) {
+            List<CareLabel> careLabelList = careLabelRepository.findAllById(Arrays.asList(careLabels));
+            productToUpdate.setCareLabels(careLabelList);
+        }
+        if (products != null) {
+            List<Product> productList = productRepository.findAllById(Arrays.asList(products));
+            productToUpdate.setProducts(productList);
+        }
+
+        productToUpdate.setDesignNumber(designNumber);
+        productToUpdate.setDescription(description);
+        productToUpdate.setWidth(width);
+        productToUpdate.setWeight(weight);
+        productToUpdate.setPieceLength(pieceLength);
+        productToUpdate.setCollectionMOQ(collectionMOQ);
+        productToUpdate.setProductionMOQ(productionMOQ);
+        productToUpdate.setCollectionLeadtime(collectionLeadtime);
+        productToUpdate.setProductionLeadtime(productionLeadtime);
+        productToUpdate.setWashingComments(washingComments);
+        if (material != null) {
+            productToUpdate.setMaterial(materialRepository.findById(material).get());
+        }
+        if (origin != null) {
+            productToUpdate.setOrigin(originRepository.findById(origin).get());
+        }
+        if (price != null) {
+            productToUpdate.setPrice(priceRepository.findById(price).get());
+        }
+        if (fabricPattern != null) {
+            productToUpdate.setFabricPattern(fabricPatternRepository.findById(fabricPattern).get());
+        }
+        if (company != null) {
+            productToUpdate.setCompany(companyRepository.findById(company).get());
+        }
+        productToUpdate = productRepository.save(productToUpdate);
+
+        Feature newFeature = new Feature();
+
+        if (productToUpdate.getFeature() != null) {
+            newFeature = productToUpdate.getFeature();
+        }
+
+        if (technicalProperty != null) {
+            List<TechnicalProperty> technicalPropertyList = technicalPropertyRepository.findAllById(Arrays.asList(technicalProperty));
+            newFeature.setTechnicalProperties(technicalPropertyList);
+        }
+        if (fabric != null) {
+            newFeature.setFabric(fabricRepository.findById(fabric).get());
+        }
+
+        if (handFeel != null) {
+            newFeature.setHandFeel(handFeelRepository.findById(handFeel).get());
+        }
+        if (finishing != null) {
+            newFeature.setFinishing(finishingRepository.findById(finishing).get());
+        }
+
+        if (look != null) {
+            newFeature.setLook(lookRepository.findById(look).get());
+        }
+
+        Feature feature = featureRepository.save(newFeature);
+
+        productToUpdate.setFeature(feature);
+
+        List<Composition> compositionList = new ArrayList<>();
+
+        compositionRepository.deleteByProductId(productToUpdate.getId());
+
+        if (fiber1 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber1).get(), pourcentageFiber1, productToUpdate));
+        }
+        if (fiber2 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber2).get(), pourcentageFiber2, productToUpdate));
+        }
+        if (fiber3 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber3).get(), pourcentageFiber3, productToUpdate));
+        }
+        if (fiber4 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber4).get(), pourcentageFiber4, productToUpdate));
+        }
+        if (fiber5 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber5).get(), pourcentageFiber5, productToUpdate));
+        }
+        if (fiber6 != 0) {
+            compositionList.add(new Composition(fiberRepository.findById(fiber6).get(), pourcentageFiber6, productToUpdate));
+        }
+
+        compositionRepository.saveAll(compositionList);
+
+        List<ImageProduct> imageProduct = productToUpdate.getImageProducts();
+
+        String imageProductPrefixed = reference + "-" + filePictureProduct.getOriginalFilename();
+
+        ImageProduct newImageProduct;
+
+        if (imageProduct.size() > 0
+                && !imageProduct.get(0).getImage().equals(imageProductPrefixed)
+                && !filePictureProduct.getOriginalFilename().equals("")) {
+            storageService.deleteByName(imageProduct.get(0).getImage(), 1);
+            imageProduct.get(0).setImage(imageProductPrefixed);
+            newImageProduct = imageProduct.get(0);
+        } else {
+            if (!filePictureProduct.getOriginalFilename().equals("")) {
+                newImageProduct = new ImageProduct(imageProductPrefixed);
+                imageProduct.add(newImageProduct);
+            } else {
+                newImageProduct = imageProduct.get(0);
+            }
+        }
+
+        storageService.deleteByName(filePictureProduct.getOriginalFilename(), 1);
+
+        storageService.store(filePictureProduct, 1, imageProductPrefixed);
+
+        newImageProduct.setProduct(productToUpdate);
+
+        imgProductRepository.save(newImageProduct);
+
+        return "redirect:/admin/product";
+    }
 }

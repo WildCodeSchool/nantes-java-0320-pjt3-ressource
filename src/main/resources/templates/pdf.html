@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+        h5 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            width: 25%;
+            margin: auto;
+        }
+
+        .product-title img {
+            width: 11rem;
+            background: center;
+        }
+
+        .product-section-top {
+            min-height: min-content;
+        }
+
+        .product-container-top {
+            padding-top: 1.5rem;
+        }
+
+        /* Image */
+        /* Slideshow container */
+        .product-image {
+            width: 50%;
+            margin: auto;
+        }
+
+        .product-image img {
+            width: 100%;
+            background: center;
+        }
+
+        /* fin image*/
+
+        .product-description {
+            width: 100%;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+        }
+        .certs {
+            width: 60px;
+        }
+
+        .tdLabel, .feature, .tdCert {
+            text-align: center;
+        }
+
+        .label{
+            width: 30px;
+            height: 25px;
+        }
+
+        .first-line {
+            width: 24%;
+            text-align: start;
+        }
+        th {
+
+            font-size: 14px;
+        }
+
+        td {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            width: 10%;
+            text-align: start;
+        }
+
+        .second-line {
+            width: 19%;
+        }
+
+
+    </style>
+</head>
+<body>
+<main class="product-body">
+    <section class="product-section-top">
+        <div class="product-title">
+            <img th:src="@{{company}/{file}(file = ${product.company.logo}, company = ${uploadCompany})}">
+            <h5 th:text="${product.reference}">COUNTRY</h5>
+        </div>
+
+        <div class="product-container-top">
+            <div class="product-image">
+                <img th:src="@{{upload}/products/{image}(image = ${product.imageProducts.get(0).image}, upload = ${uploadProduct})}">
+            </div>
+            <div class="product-description">
+                <table>
+                    <tr>
+                        <th class="first-line">Fabric Reference:</th>
+                        <td>[(${product.reference})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Design Number:</th>
+                        <td class="second-line">[(${product.designNumber})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Material:</th>
+                        <td class="second-line" th:if="${product.material}">[(${product.material.name})]</td>
+                        <th class="first-line">Fabric Pattern:</th>
+                        <td th:if="${product.fabricPattern}">[(${product.fabricPattern.name})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Composition:</th>
+                        <td th:each="compo : ${product.compositions}">
+                            <span>[(${compo.fiber.name})]</span>
+                            <span>[(${compo.pourcentage})]%</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Width (cm):</th>
+                        <td class="second-line" >[(${product.width})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Weight (g/m2):</th>
+                        <td class="second-line" >[(${product.weight})]</td>
+                        <th class="first-line">Piece Length (in m):</th>
+                        <td>[(${product.pieceLength})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Fabric Origin:</th>
+                        <td class="second-line" th:if="${product.origin}">[(${product.origin.country})]</td>
+                        <th class="first-line">Price Range (in €):</th>
+                        <td>[(${product.price.price})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Collection MOQ:</th>
+                        <td>[(${product.collectionMOQ})]</td>
+                        <th class="first-line">Collection Leadtime:</th>
+                        <td>[(${product.collectionLeadtime})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Production MOQ:</th>
+                        <td class="second-line" >[(${product.productionMOQ})]</td>
+                        <th class="first-line">Production Leadtime:</th>
+                        <td>[(${product.productionLeadtime})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">CareLabel Symbol:</th>
+                        <td th:each="label: ${product.careLabels}">
+                            <table>
+                                <tr>
+                                    <td class="tdLabel"><img class="label" th:src="@{src/main/resources/static/image/carelabel/{label}(label = ${label.image})}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tdLabel">[(${label.label})]</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Washing Comments:</th>
+                        <td>[(${product.washingComments})]</td>
+                    </tr>
+                    <tr>
+                        <th class="first-line">Certifications:</th>
+                        <td th:each="cert: ${product.certifications}">
+                            <table>
+                                <tr>
+                                    <td class="tdCert"><img class="certs" th:src="@{src/main/resources/static/image/logo_certification/{certification}(certification = ${cert.image})}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tdCert">[(${cert.name})]</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="prodFeature">
+                        <th class="first-line">Features:</th>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.finishing}">[(${product.feature.finishing.finishing})]</span></td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.handFeel}">[(${product.feature.handFeel.handFeel})]</span></td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.look}">[(${product.feature.look.look})]</span></td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span></td>
+                        <td class="feature" th:if="${product.feature}" th:each="techProperty : ${product.feature.technicalProperties}">
+                            [(${techProperty.technicalProperty})]
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -48,7 +48,7 @@ public class Product {
     private Material material;
 
     @OneToMany(mappedBy = "product")
-    private List<ImageProduct> imageProducts;
+    private List<ImageProduct> imageProducts = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "product_certification",

@@ -23,7 +23,7 @@
         <div class="product-container-top">
             <div class="product-slideshow-container">
                 <div class="mySlides">
-                    <img th:src="@{image/product_images/{product}(product= ${product.imageProducts.get(0).image})}">
+                    <img th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}">
                 </div>
                 <!--
                 <a class="product-prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -53,7 +53,7 @@
                     <span th:each="certification : ${product.certifications}">
                     <img th:src="@{image/logo_certification/{image}(image= ${certification.image})}"></span>
                 </div>
-                <a href="#">Download the complete technical sheet</a>
+                <a th:href="@{/files/{productId}(productId = ${product.id})}" href="#">Download the complete technical sheet</a>
             </div>
         </div>
         <div class="product-button-top">
@@ -81,7 +81,7 @@
                 <div class="card-product-image">
                     <a th:href="@{/product?reference={id}(id=${product.id})}"><img
                             th:alt="${product.imageProducts.get(0).image}"
-                            th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
+                            th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
