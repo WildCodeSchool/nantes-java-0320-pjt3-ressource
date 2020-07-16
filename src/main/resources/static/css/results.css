@@ -360,6 +360,8 @@ select:-moz-focusring {
 @media only screen and (max-width: 767px) {
     /* -------------HEADER MOBILE ---------------*/
     .results-header-mobile {
+        position: fixed;
+        width: 100%;
         display: flex;
         flex-direction: column;
         background-color: var(--color-bkg-button);
@@ -369,6 +371,10 @@ select:-moz-focusring {
         border-radius: 0 0 25px 25px;
         overflow: hidden;
         z-index: 99;
+    }
+
+    .results-results {
+        padding-top: 20vh;
     }
 
     #mobile-filter {

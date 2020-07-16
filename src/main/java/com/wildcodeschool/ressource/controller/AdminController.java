@@ -83,10 +83,14 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ImgProductRepository imgProductRepository;
+
     @GetMapping("/login")
     public String adminLogin() {
         return "admin_login";
     }
+
 
     @GetMapping("/admin/profile")
     public String adminProfile(Model model) {
@@ -106,10 +110,13 @@ public class AdminController {
     @GetMapping("/admin/admin")
     public String adminAdmin(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
+
         List<Admin> admins = adminRepository.findAllByOrderByIdDesc();
 
         List<Role> roles = roleRepository.findAll();
-        model.addAttribute("admin", new Admin());
+        model.addAttribute("adminNew", new Admin());
         model.addAttribute("admins", admins);
         model.addAttribute("roles", roles);
         return "admin_admin";
@@ -148,8 +155,10 @@ public class AdminController {
     @GetMapping("/admin/companies")
     public String adminCompanies(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
         List<Company> companyList = companyRepository.findAll();
         model.addAttribute("companies", companyList);
+        model.addAttribute("admin", admin);
         return "admin-companies";
     }
 
@@ -172,6 +181,8 @@ public class AdminController {
     @GetMapping("/admin/product")
     public String adminProduct(Model model) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
         model.addAttribute("companies", companyRepository.findAll());
         model.addAttribute("materials", materialRepository.findAll());
         model.addAttribute("fabricPatterns", fabricPatternRepository.findAll());
@@ -186,154 +197,9 @@ public class AdminController {
         model.addAttribute("finishings", finishingRepository.findAll());
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("imageSelected", imgProductRepository.findAll().get(0));
         model.addAttribute("product", new Product());
-
         return "productAdmin";
-    }
-
-    @PostMapping("/admin/products")
-    public String updateProduct(@RequestParam String reference,
-                                @RequestParam(defaultValue = "", required = false) Long designNumber,
-                                @RequestParam(defaultValue = "", required = false) String description,
-                                @RequestParam(defaultValue = "", required = false) Integer width,
-                                @RequestParam(defaultValue = "", required = false) Integer weight,
-                                @RequestParam(defaultValue = "", required = false) Integer pieceLength,
-                                @RequestParam(defaultValue = "", required = false) Integer collectionMOQ,
-                                @RequestParam(defaultValue = "", required = false) Integer productionMOQ,
-                                @RequestParam(defaultValue = "", required = false) Integer collectionLeadtime,
-                                @RequestParam(defaultValue = "", required = false) Integer productionLeadtime,
-                                @RequestParam(defaultValue = "", required = false) String washingComments,
-                                @RequestParam(defaultValue = "", required = false) Long material,
-                                @RequestParam(value = "certifications", required = false) Long[] certifications,
-                                @RequestParam(value = "careLabels", required = false) Long[] careLabels,
-                                @RequestParam(defaultValue = "", required = false) Long origin,
-                                @RequestParam(defaultValue = "", required = false) Long price,
-                                @RequestParam(defaultValue = "", required = false) Long fabricPattern,
-                                @RequestParam(defaultValue = "", required = false) Long company,
-                                @RequestParam(value = "products", required = false) Long[] products,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber1,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber1,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber2,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber2,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber3,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber3,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber4,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber4,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber5,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber5,
-                                @RequestParam(defaultValue = "0", required = false) Long fiber6,
-                                @RequestParam(defaultValue = "0.0", required = false) Double pourcentageFiber6,
-                                @RequestParam(value = "technicalProperty", required = false) Long[] technicalProperty,
-                                @RequestParam(defaultValue = "", required = false) Long fabric,
-                                @RequestParam(defaultValue = "", required = false) Long handFeel,
-                                @RequestParam(defaultValue = "", required = false) Long finishing,
-                                @RequestParam(defaultValue = "", required = false) Long look) {
-
-        Optional<Product> optionalProductToUpdate = productRepository.findByReference(reference);
-
-        Product productToUpdate = new Product();
-
-        if (optionalProductToUpdate.isPresent()) {
-            productToUpdate = optionalProductToUpdate.get();
-        } else {
-            productToUpdate.setReference(reference);
-        }
-
-        if (certifications != null) {
-            List<Certification> certificationList = certificationRepository.findAllById(Arrays.asList(certifications));
-            productToUpdate.setCertifications(certificationList);
-        }
-        if (careLabels != null) {
-            List<CareLabel> careLabelList = careLabelRepository.findAllById(Arrays.asList(careLabels));
-            productToUpdate.setCareLabels(careLabelList);
-        }
-        if (products != null) {
-            List<Product> productList = productRepository.findAllById(Arrays.asList(products));
-            productToUpdate.setProducts(productList);
-        }
-
-        productToUpdate.setDesignNumber(designNumber);
-        productToUpdate.setDescription(description);
-        productToUpdate.setWidth(width);
-        productToUpdate.setWeight(weight);
-        productToUpdate.setPieceLength(pieceLength);
-        productToUpdate.setCollectionMOQ(collectionMOQ);
-        productToUpdate.setProductionMOQ(productionMOQ);
-        productToUpdate.setCollectionLeadtime(collectionLeadtime);
-        productToUpdate.setProductionLeadtime(productionLeadtime);
-        productToUpdate.setWashingComments(washingComments);
-        if (material != null) {
-            productToUpdate.setMaterial(materialRepository.findById(material).get());
-        }
-        if (origin != null) {
-            productToUpdate.setOrigin(originRepository.findById(origin).get());
-        }
-        if (price != null) {
-            productToUpdate.setPrice(priceRepository.findById(price).get());
-        }
-        if (fabricPattern != null) {
-            productToUpdate.setFabricPattern(fabricPatternRepository.findById(fabricPattern).get());
-        }
-        if (company != null) {
-            productToUpdate.setCompany(companyRepository.findById(company).get());
-        }
-        productToUpdate = productRepository.save(productToUpdate);
-
-        Feature newFeature = new Feature();
-
-        if (productToUpdate.getFeature() != null) {
-            newFeature = productToUpdate.getFeature();
-        }
-
-        if (technicalProperty != null) {
-            List<TechnicalProperty> technicalPropertyList = technicalPropertyRepository.findAllById(Arrays.asList(technicalProperty));
-            newFeature.setTechnicalProperties(technicalPropertyList);
-        }
-        if (fabric != null) {
-            newFeature.setFabric(fabricRepository.findById(fabric).get());
-        }
-
-        if (handFeel != null) {
-            newFeature.setHandFeel(handFeelRepository.findById(handFeel).get());
-        }
-        if (finishing != null) {
-            newFeature.setFinishing(finishingRepository.findById(finishing).get());
-        }
-
-        if (look != null) {
-            newFeature.setLook(lookRepository.findById(look).get());
-        }
-
-        Feature feature = featureRepository.save(newFeature);
-
-        productToUpdate.setFeature(feature);
-
-        List<Composition> compositionList = new ArrayList<>();
-
-        compositionRepository.deleteByProductId(productToUpdate.getId());
-
-        if (fiber1 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber1).get(), pourcentageFiber1, productToUpdate));
-        }
-        if (fiber2 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber2).get(), pourcentageFiber2, productToUpdate));
-        }
-        if (fiber3 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber3).get(), pourcentageFiber3, productToUpdate));
-        }
-        if (fiber4 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber4).get(), pourcentageFiber4, productToUpdate));
-        }
-        if (fiber5 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber5).get(), pourcentageFiber5, productToUpdate));
-        }
-        if (fiber6 != 0) {
-            compositionList.add(new Composition(fiberRepository.findById(fiber6).get(), pourcentageFiber6, productToUpdate));
-        }
-
-        compositionRepository.saveAll(compositionList);
-
-        return "redirect:/admin/product";
     }
 
     @PostMapping("/admin/products/search")
@@ -360,9 +226,7 @@ public class AdminController {
         model.addAttribute("finishings", finishingRepository.findAll());
         model.addAttribute("looks", lookRepository.findAll());
         model.addAttribute("products", productRepository.findAll());
-        model.addAttribute("product", new Product());
         model.addAttribute("product", productModified);
-
         return "productAdmin";
     }
 

@@ -4,11 +4,13 @@
     <th:block th:include="fragments/head.html :: head"></th:block>
     <title>Product</title>
     <link rel="stylesheet" th:href="@{css/product.css}" type="text/css">
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
     <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" type="text/css"/>
     <link href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <header th:replace="fragments/header.html :: header"></header>
+<header th:replace="fragments/header-mobile.html :: header-mobile"></header>
 <main class="product-body">
     <div class="product-text-top">
         <a href="/"><p>Home - </p></a>
@@ -21,7 +23,7 @@
         <div class="product-container-top">
             <div class="product-slideshow-container">
                 <div class="mySlides">
-                    <img th:src="@{image/product_images/{product}(product= ${product.imageProducts.get(0).image})}">
+                    <img th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}">
                 </div>
                 <!--
                 <a class="product-prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -79,7 +81,7 @@
                 <div class="card-product-image">
                     <a th:href="@{/product?reference={id}(id=${product.id})}"><img
                             th:alt="${product.imageProducts.get(0).image}"
-                            th:src="@{image/product_images/{product}(product = ${product.imageProducts.get(0).image})}"></a>
+                            th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}"></a>
                     <div class="card-product-image-hover">
                         <a><i class="fas fa-heart"></i></a>
                         <a><i class="fas fa-suitcase"></i></a>
@@ -379,6 +381,7 @@
             <span><i class="fas fa-chevron-right"></i></span>
         </div>
     </section>
+    <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>
 </main>
 <script crossorigin="anonymous"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -386,5 +389,5 @@
 </script>
 <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript"></script>
 <script src="js/productcar.js" type="text/javascript"></script>
-</body>
+<script src="/js/search-bar-mobile.js" type="text/javascript"></script></body>
 </html>

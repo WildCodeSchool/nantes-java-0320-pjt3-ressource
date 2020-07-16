@@ -10,7 +10,7 @@
     <script src="../static/js/sidebar.js"></script>
 </head>
 <body>
-<header th:replace="fragments/admin_header.html :: admin-header"></header>
+<header th:replace="fragments/admin_header.html :: admin-header (${admin}) "></header>
 <main class="admin-product">
     <h1>Product</h1>
     <section class="section-container product-admin-form" id="contact">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </form>
-        <form action="/admin/products" class="col s10" method="post" th:object="${product}">
+        <form action="/admin/products" class="col s10" method="post" th:object="${product}" enctype="multipart/form-data">
             <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <div class="input-field col l4">
@@ -476,10 +476,13 @@
                     <p>Picture : </p>
                     <div class="btn">
                         <i class="large material-icons">archive</i>
-                        <input name="imageProduct" type="file">
+                        <input name="filePictureProduct" type="file">
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                    <div class="file-path-wrapper" th:if="${product.imageProducts.size() > 0}">
+                        <input th:value="${product.imageProducts.get(0).image}" class="file-path validate" type="text">
+                    </div>
+                    <div class="file-path-wrapper" th:if="${product.imageProducts.size() == 0}">
+                        <input class="file-path validate" placeholder="upload your image" type="text">
                     </div>
                 </div>
             </div>

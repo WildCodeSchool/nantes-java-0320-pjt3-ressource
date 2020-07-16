@@ -70,6 +70,10 @@
     list-style-type: none;
 }
 
+.header-mobile {
+    display: none !important;
+}
+
 /* CARD PRODUCT */
 .card-product {
     padding: 0;
@@ -205,6 +209,51 @@
 /* END NAV MOBILE */
 /* MOBILE */
 @media only screen and (max-width: 767px) {
+
+    .header-header {
+        display: none;
+    }
+
+    .header-mobile div h1 {
+        font-family: var(--font-logo-thin);
+        letter-spacing: 0.15rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+    .header-mobile div h1 span {
+        font-family: var(--font-logo-bold);
+        font-weight: lighter;
+        font-size: 2.3rem;
+    }
+
+    .header-mobile {
+        display: block !important;
+        order: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 8vh !important;
+        min-height: 0 !important;
+        background-color: var(--color-bkg-button);
+        color: var(--color-font-light);
+        padding: 0.5rem 0;
+        border-radius: 0 0 25px 25px;
+        overflow: hidden;
+        z-index: 99;
+    }
+
+    .header-mobile h1 {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-text-top, .company-top {
+        margin-top: 12vh;
+    }
 
     .card-product {
         width: 90%;
