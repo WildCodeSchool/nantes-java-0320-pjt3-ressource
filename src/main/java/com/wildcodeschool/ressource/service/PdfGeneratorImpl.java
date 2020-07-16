@@ -29,7 +29,7 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
         context.setVariable("product", product);
         //TODO prendre le bon chemin application properties
         context.setVariable("upload", "upload");
-        final String html = templateEngine.process("pdf_hello", context);
+        final String html = templateEngine.process("pdf", context);
 
         final String outputFolder = "upload" + File.separator + "product.pdf";
 
