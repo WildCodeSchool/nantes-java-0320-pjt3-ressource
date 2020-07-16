@@ -300,6 +300,7 @@ h5 {
 
     .slick-list.draggable {
         margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
 
     .arrow_prev_like, .arrow_next_like {
