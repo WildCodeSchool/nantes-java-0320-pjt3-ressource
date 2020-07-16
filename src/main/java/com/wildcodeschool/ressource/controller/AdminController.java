@@ -205,6 +205,9 @@ public class AdminController {
     @PostMapping("/admin/products/search")
     public String productSearch(Model model, @RequestParam String reference) {
 
+        Admin admin = userService.getLoggedUsername();
+        model.addAttribute("admin", admin);
+
         Product productModified = new Product();
 
         Optional<Product> optionalProduct = productRepository.findByReference(reference);
@@ -250,6 +253,7 @@ public class AdminController {
     @GetMapping("/admin/products/delete")
     public String deleteProduct(@RequestParam Long id){
 
+        imgProductRepository.deleteByProductId(id);
         compositionRepository.deleteByProductId(id);
         productRepository.deleteById(id);
 

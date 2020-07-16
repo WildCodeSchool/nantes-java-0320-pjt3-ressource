@@ -82,3 +82,8 @@ input[type=number]:not(.browser-default):focus:not([readonly]) + label {
 .admin-product-delete a {
     color: var(--color-bkg-button);
 }
+
+.material-icons.prefix {
+    line-height: 1;
+    color: var(--color-bkg-button);
+}
