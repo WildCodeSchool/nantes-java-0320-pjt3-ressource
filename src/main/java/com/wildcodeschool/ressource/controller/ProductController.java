@@ -6,7 +6,6 @@ import com.wildcodeschool.ressource.repository.*;
 import com.wildcodeschool.ressource.service.PdfGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

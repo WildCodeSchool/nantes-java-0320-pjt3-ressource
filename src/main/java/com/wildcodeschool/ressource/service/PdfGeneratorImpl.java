@@ -1,8 +1,8 @@
 package com.wildcodeschool.ressource.service;
 
 import com.itextpdf.html2pdf.HtmlConverter;
-
 import com.wildcodeschool.ressource.entity.Product;
+import com.wildcodeschool.ressource.storage.StorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 
 @Service
@@ -22,15 +22,21 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
     @Autowired
     TemplateEngine templateEngine;
 
+    @Autowired
+    private StorageProperties properties;
+
     @Override
     public InputStreamResource html2PdfGenerator(Product product) {
 
         Context context = new Context();
         context.setVariable("product", product);
-        //TODO prendre le bon chemin application properties
-        context.setVariable("upload", "upload");
-        final String html = templateEngine.process("pdf", context);
 
+        String pathProduct = Paths.get(properties.getLocationProducts()).toString();
+        String pathCompany = Paths.get(properties.getLocationCompany()).toString();
+        context.setVariable("uploadProduct", pathProduct);
+        context.setVariable("uploadCompany", pathCompany);
+
+        final String html = templateEngine.process("pdf", context);
         final String outputFolder = "upload" + File.separator + "product.pdf";
 
 
