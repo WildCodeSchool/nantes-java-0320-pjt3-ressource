@@ -51,7 +51,7 @@
                     <span th:each="certification : ${product.certifications}">
                     <img th:src="@{image/logo_certification/{image}(image= ${certification.image})}"></span>
                 </div>
-                <a href="#">Download the complete technical sheet</a>
+                <a th:href="@{/files/{productId}(productId = ${product.id})}" href="#">Download the complete technical sheet</a>
             </div>
         </div>
         <div class="product-button-top">
