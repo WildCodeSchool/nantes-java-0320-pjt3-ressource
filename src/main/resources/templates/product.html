@@ -34,20 +34,22 @@
                 <a th:href="@{/company?id={id}(id = ${product.company.id})}"><img
                         th:src="@{photo/company/{file}(file = ${product.company.getLogo()})}"></a>
                 <h5 th:text="${product.reference}">COUNTRY</h5>
-                <p><span th:text="${product.feature.fabric.fabric}"></span> /
-                    <span th:text="${product.feature.handFeel.handFeel}"></span> /
-                    <span th:text="${product.feature.finishing.finishing}"></span> / <br>
-                    <span th:text="${product.feature.look.look}"></span> /
+                <p>
+                    <span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span> /
+                    <span th:if="${product.feature.handFeel}">[(${product.feature.handFeel.handFeel})]</span> /
+                    <span th:if="${product.feature.finishing}">[(${product.feature.finishing.finishing})]</span> / <br>
+                    <span th:if="${product.feature.look}">[(${product.feature.look.look})]</span> /
                     <span th:each="property : ${product.feature.technicalProperties}"
                           th:text="${property.technicalProperty}">Natural stretch</span>
+                </p>
                 <p><b><u>Composition: </u></b> <span th:each="composition : ${product.compositions}">
                         <span th:text="|${composition.pourcentage} % |"></span>
-                        <span th:text="|${composition.fiber.name} &nbsp;|"></span>
+                        <span th:if="${composition.fiber}">[(${composition.fiber.name})] &nbsp;</span>
                 </span></p>
                 <p><b><u>Usable width: </u></b><span
                         th:text="|${product.width} centimeters|"> 138 centimeters</span></p>
                 <p><b><u>Weight: </u></b> <span th:text="|${product.weight} grams / sqm |"></span></p>
-                <p><b><u>Price range: </u></b><span th:text="|${product.price.price} € |"> 13 to 15,99€</span></p>
+                <p><b><u>Price range: </u></b><span th:if="${product.price}">[(${product.price.price})]€</span></p>
                 <p><b><u>Certifications: </u></b></p>
                 <div class="product-logo-certif">
                     <span th:each="certification : ${product.certifications}">
@@ -71,8 +73,8 @@
             </div>
         </div>
     </section>
-    <section class="section-product-bot">
-        <h3>You may also like</h3>
+    <section th:if="${product.products.size() > 0 }" class="section-product-bot">
+        <h3 >You may also like</h3>
         <p class="product-text-after-title">These propositions are not the results of an algorithm and these fabrics
             were carefully selected by our team</p>
         <div class="product-carousel-bot">
@@ -95,10 +97,11 @@
                             <a><i class="fas fa-suitcase"></i></a>
                         </div>
                     </div>
-                    <p class="card-product-info-descr"><span th:text="${product.feature.fabric.fabric}"></span> /
-                        <span th:text="${product.feature.handFeel.handFeel}"></span> /
-                        <span th:text="${product.feature.finishing.finishing}"></span> /
-                        <span th:text="${product.feature.look.look}"></span> /
+                    <p class="card-product-info-descr">
+                        <span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span> /
+                        <span th:if="${product.feature.handFeel}">[(${product.feature.fabric.fabric})]</span> /
+                        <span th:if="${product.feature.finishing}">[(${product.feature.fabric.fabric})]</span> / <br>
+                        <span th:if="${product.feature.look}">[(${product.feature.fabric.fabric})]</span> /
                         <span th:each="property : ${product.feature.technicalProperties}"
                               th:text="${property.technicalProperty}">Natural stretch</span>
                     </p>

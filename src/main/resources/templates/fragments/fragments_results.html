@@ -183,15 +183,19 @@
                             <a><i class="fas fa-suitcase"></i></a>
                         </div>
                     </div>
-                    <p class="card-product-info-descr"><span th:text="|${product.feature.fabric.fabric} / |"></span>
-                        <a th:href="@{/results(search = ${product.feature.handFeel.handFeel})}"><span
-                                th:text="|${product.feature.handFeel.handFeel} / |"></span></a>
-                        <a th:href="@{/results(search = ${product.feature.finishing.finishing})}"><span
-                                th:text="|${product.feature.finishing.finishing} / |"></span></a>
-                        <a th:href="@{/results(search = ${product.feature.look.look})}"><span
-                                th:text="${product.feature.look.look}"></span></a> /
+                    <p class="card-product-info-descr">
+                        <span th:if="${product.feature.fabric}">
+                            <a th:href="@{/results(search = ${product.feature.fabric.fabric})}">
+                                <span th:text="|${product.feature.fabric.fabric} / |"></span></a>
+                        </span>
+                        <span th:if="${product.feature.handFeel}"> <a th:href="@{/results(search = ${product.feature.handFeel.handFeel})}"><span
+                        th:text="|${product.feature.handFeel.handFeel} / |"></span></a></span>
+                        <span th:if="${product.feature.finishing}"><a th:href="@{/results(search = ${product.feature.finishing.finishing})}"><span
+                                th:text="|${product.feature.finishing.finishing} / |"></span></a></span>
+                        <span th:if="${product.feature.look}"><a th:href="@{/results(search = ${product.feature.look.look})}"><span
+                                th:text="${product.feature.look.look}"></span></a></span>/
                         <a th:each="property : ${product.feature.technicalProperties}"
-                           th:href="@{/results(search = ${property.technicalProperty})}">
+                                th:href="@{/results(search = ${property.technicalProperty})}">
                             <span th:text="${property.technicalProperty}">Natural stretch</span></a>
                     </p>
                     <p class="card-product-info-compo">
