@@ -1,17 +1,25 @@
 package com.wildcodeschool.ressource.controller;
 
+
 import com.wildcodeschool.ressource.entity.*;
 import com.wildcodeschool.ressource.repository.*;
+import com.wildcodeschool.ressource.service.PdfGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +44,9 @@ public class ProductController {
     private CompanyRepository companyRepository;
     @Autowired
     private PriceRepository priceRepository;
+
+    @Autowired
+    private PdfGeneratorService pdfGeneratorService;
 
     @GetMapping("/results")
     public String result(Model model, @RequestParam(defaultValue = "", required = false) String search) {
@@ -125,10 +136,32 @@ public class ProductController {
     public String product(Model model, @RequestParam Long reference) {
 
         Optional<Product> optionalProduct = productRepository.findById(reference);
-        optionalProduct.ifPresent(product -> model.addAttribute("product", product));
+
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            model.addAttribute("product", product);
+        }
+
         return "product";
     }
 
+    /**
+     * Serving a file pdf for download
+     *
+     * @param productId
+     * @return the ResponseEntity
+     */
+    @GetMapping("/files/{productId:.+}")
+    @ResponseBody
+    public ResponseEntity<InputStreamResource> serveFile(@PathVariable Long productId) throws URISyntaxException, IOException {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+
+        Product product = optionalProduct.get();
+        InputStreamResource file = pdfGeneratorService.html2PdfGenerator(product);
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + product.getReference() + ".pdf" + "\"").body(file);
+    }
 
     @GetMapping("/results/filter")
     public String filter2(Model model, @RequestParam(defaultValue = "", required = false) Long[] material,

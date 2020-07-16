@@ -1,5 +1,8 @@
 package com.wildcodeschool.ressource.controller;
 
+
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,4 +13,5 @@ public class MainController {
     public String home(){
         return "home";
     }
+
 }

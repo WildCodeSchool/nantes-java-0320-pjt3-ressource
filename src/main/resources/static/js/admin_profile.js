@@ -1,3 +1,7 @@
+//Start for Materialize
+$(document).ready(function(){
+    $('.modal').modal();
+});
 
 let pass = document.getElementById("password");
 let passc = document.getElementById("passwordConfirm");
