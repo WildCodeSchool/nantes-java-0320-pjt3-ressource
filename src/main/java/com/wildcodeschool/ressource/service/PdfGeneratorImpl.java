@@ -57,7 +57,7 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
         context.setVariable("uploadCompany", pathCompany);
 
         final String html = templateEngine.process("pdf", context);
-        final String outputFolder = "upload" + File.separator + "product.pdf";
+        final String outputFolder = pathProduct + File.separator + "product.pdf";
 
 
         try {
