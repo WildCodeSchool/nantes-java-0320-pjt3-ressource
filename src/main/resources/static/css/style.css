@@ -74,6 +74,9 @@
     display: none !important;
 }
 
+.btn:focus {
+    background-color: var(--color-bkg-button);
+}
 /* CARD PRODUCT */
 .card-product {
     padding: 0;
