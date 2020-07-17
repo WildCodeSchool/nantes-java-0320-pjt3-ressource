@@ -31,8 +31,10 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
         Context context = new Context();
         context.setVariable("product", product);
 
-        String pathProduct = Paths.get(properties.getLocationProducts()).toString();
-        String pathCompany = Paths.get(properties.getLocationCompany()).toString();
+        //String pathProduct = Paths.get(properties.getLocationProducts()).toString();
+        String pathProduct = "upload/products";
+        //String pathCompany = Paths.get(properties.getLocationCompany()).toString();
+        String pathCompany = "upload/company";
         context.setVariable("uploadProduct", pathProduct);
         context.setVariable("uploadCompany", pathCompany);
 
