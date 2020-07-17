@@ -17,9 +17,16 @@
 <header th:replace="fragments/admin_header.html :: admin-header (${admin}) "></header>
 <main class="admin-admin">
     <h2>Admin Management</h2>
-    <button class="admin-btn-new waves-effect waves-light btn-large modal-trigger" data-target="modal1" href="#modal1">
-        <i class="material-icons left">add</i>Add New Admin
-    </button>
+    <div class="row">
+        <button class="admin-btn-new waves-effect waves-light btn-large modal-trigger col s2" data-target="modal1" href="#modal1">
+            <i class="material-icons left">add</i>Add New Admin
+        </button>
+        <form action="/admin/admin/search" method="get" class="input-field col s3 offset-s6">
+            <i class="material-icons prefix">search</i>
+            <input class="validate" id="search" name="admin" type="text">
+            <label for="search">Search by keyword</label>
+        </form>
+    </div>
 
     <div th:include="fragments/create-update-admin.html :: admin-modal (${adminNew}, 'ADD A NEW ADMIN', ${true}, ${roles})" class="modal" id="modal1"></div>
 

@@ -151,6 +151,22 @@ public class AdminController {
 
         return "redirect:/admin/admin";
     }
+    @GetMapping("/admin/admin/search")
+    public String adminSearch(Model model, @RequestParam String admin) {
+
+        Admin admin1 = userService.getLoggedUsername();
+
+        List<Role> roles = roleRepository.findAll();
+
+        List<Admin> adminsFound = adminRepository.findAllByIdIn(adminRepository.findAllSearch(admin));
+
+
+        model.addAttribute("adminNew", new Admin());
+        model.addAttribute("admins", adminsFound);
+        model.addAttribute("admin", admin1);
+        model.addAttribute("roles", roles);
+        return "admin_admin";
+    }
 
     @GetMapping("/admin/companies")
     public String adminCompanies(Model model) {
