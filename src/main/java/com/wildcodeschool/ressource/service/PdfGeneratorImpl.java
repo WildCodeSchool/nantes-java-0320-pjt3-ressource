@@ -37,8 +37,7 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
 
         String pathProduct = Paths.get(properties.getLocationProducts()).toString();
         String pathCompany = Paths.get(properties.getLocationCompany()).toString();
-<<<<<<< Updated upstream
-=======
+
         try {
             String logo = product.getCompany().getLogo();
             String suffixLogo = suffix(logo);
@@ -53,7 +52,7 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
         } catch (IOException e) {
             e.printStackTrace();
         }
->>>>>>> Stashed changes
+
         context.setVariable("uploadProduct", pathProduct);
         context.setVariable("uploadCompany", pathCompany);
 
