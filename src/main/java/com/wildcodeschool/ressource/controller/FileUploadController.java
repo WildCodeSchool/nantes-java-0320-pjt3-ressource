@@ -525,17 +525,20 @@ public class FileUploadController {
                 newImageProduct = new ImageProduct(imageProductPrefixed);
                 imageProduct.add(newImageProduct);
             } else {
-                newImageProduct = imageProduct.get(0);
+                newImageProduct = new ImageProduct();
             }
+        }
+
+        if (!filePictureProduct.getOriginalFilename().equals("")) {
+            newImageProduct.setProduct(productToUpdate);
+            imgProductRepository.save(newImageProduct);
         }
 
         storageService.deleteByName(filePictureProduct.getOriginalFilename(), 1);
 
         storageService.store(filePictureProduct, 1, imageProductPrefixed);
 
-        newImageProduct.setProduct(productToUpdate);
 
-        imgProductRepository.save(newImageProduct);
 
         return "redirect:/admin/product";
     }

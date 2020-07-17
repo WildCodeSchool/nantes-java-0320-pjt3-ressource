@@ -518,7 +518,9 @@ select:-moz-focusring {
         width: 100%;
         align-items: center;
     }
-
+    .filters-material {
+        margin-top: 9rem;
+    }
     .results-filters-radio-mobile {
         width: 100%;
         display: flex;
