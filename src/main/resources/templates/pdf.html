@@ -46,9 +46,11 @@
             width: 100%;
             margin-top: 20px;
         }
+
         table {
             width: 100%;
         }
+
         .certs {
             width: 60px;
         }
@@ -57,7 +59,7 @@
             text-align: center;
         }
 
-        .label{
+        .label {
             width: 30px;
             height: 25px;
         }
@@ -66,6 +68,7 @@
             width: 24%;
             text-align: start;
         }
+
         th {
 
             font-size: 14px;
@@ -122,11 +125,11 @@
                     </tr>
                     <tr>
                         <th class="first-line">Width (cm):</th>
-                        <td class="second-line" >[(${product.width})]</td>
+                        <td class="second-line">[(${product.width})]</td>
                     </tr>
                     <tr>
                         <th class="first-line">Weight (g/m2):</th>
-                        <td class="second-line" >[(${product.weight})]</td>
+                        <td class="second-line">[(${product.weight})]</td>
                         <th class="first-line">Piece Length (in m):</th>
                         <td>[(${product.pieceLength})]</td>
                     </tr>
@@ -144,19 +147,19 @@
                     </tr>
                     <tr>
                         <th class="first-line">Production MOQ:</th>
-                        <td class="second-line" >[(${product.productionMOQ})]</td>
+                        <td class="second-line">[(${product.productionMOQ})]</td>
                         <th class="first-line">Production Leadtime:</th>
                         <td>[(${product.productionLeadtime})]</td>
                     </tr>
                     <tr>
                         <th class="first-line">CareLabel Symbol:</th>
-                        <td th:each="label: ${product.careLabels}">
+                        <td th:each="entry: ${imageLabel}" th:with="label = ${entry.key}, image= ${entry.value}">
                             <table>
                                 <tr>
-                                    <td class="tdLabel"><img class="label" th:src="@{src/main/resources/static/image/carelabel/{label}(label = ${label.image})}"></td>
+                                    <td class="tdLabel"><img class="label" th:src="${image}"></td>
                                 </tr>
                                 <tr>
-                                    <td class="tdLabel">[(${label.label})]</td>
+                                    <td class="tdLabel">[(${label})]</td>
                                 </tr>
                             </table>
                         </td>
@@ -167,24 +170,29 @@
                     </tr>
                     <tr>
                         <th class="first-line">Certifications:</th>
-                        <td th:each="cert: ${product.certifications}">
+                        <td th:each="entry: ${imageCert}" th:with="cert = ${entry.key}, imgCert = ${entry.value}">
                             <table>
                                 <tr>
-                                    <td class="tdCert"><img class="certs" th:src="@{src/main/resources/static/image/logo_certification/{certification}(certification = ${cert.image})}"></td>
+                                    <td class="tdCert"><img class="certs" th:src="${imgCert}"></td>
                                 </tr>
                                 <tr>
-                                    <td class="tdCert">[(${cert.name})]</td>
+                                    <td class="tdCert">[(${cert})]</td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr class="prodFeature">
                         <th class="first-line">Features:</th>
-                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.finishing}">[(${product.feature.finishing.finishing})]</span></td>
-                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.handFeel}">[(${product.feature.handFeel.handFeel})]</span></td>
-                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.look}">[(${product.feature.look.look})]</span></td>
-                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span></td>
-                        <td class="feature" th:if="${product.feature}" th:each="techProperty : ${product.feature.technicalProperties}">
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.finishing}">[(${product.feature.finishing.finishing})]</span>
+                        </td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.handFeel}">[(${product.feature.handFeel.handFeel})]</span>
+                        </td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.look}">[(${product.feature.look.look})]</span>
+                        </td>
+                        <td class="feature" th:if="${product.feature}"><span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span>
+                        </td>
+                        <td class="feature" th:each="techProperty : ${product.feature.technicalProperties}"
+                            th:if="${product.feature}">
                             [(${techProperty.technicalProperty})]
                         </td>
                     </tr>
