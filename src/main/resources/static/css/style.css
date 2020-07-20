@@ -74,6 +74,7 @@
     display: none !important;
 }
 
+
 .btn:focus{
     background-color: var(--color-bkg-button) !important;
 }
