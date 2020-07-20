@@ -10,7 +10,7 @@
         <div class="col s12">
             <h4 th:text="${header}">ADD NEW ADMIN</h4>
         </div>
-        <form action="/admin/admin/create" class="col s12"  method="post" >
+        <form action="/admin/admin/create" class="col s12"  method="post" id="createForm">
             <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
             <div class="row">
                 <div class="input-field col s6">
@@ -50,7 +50,7 @@
                     <label for="passwordConfirm">Confirm Password</label>
                     <span class="helper-text" data-error="Missing password confirmation"></span>
                 </div>
-                <button class="btn-create col s2 offset-s10 waves-effect waves-green btn" id="create">Create
+                <button class="btn-create col s2 offset-s10 waves-effect waves-green btn" >Create
                 </button>
             </div>
         </form>

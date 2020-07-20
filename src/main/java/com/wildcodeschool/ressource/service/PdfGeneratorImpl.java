@@ -1,23 +1,28 @@
 package com.wildcodeschool.ressource.service;
 
 import com.itextpdf.html2pdf.HtmlConverter;
+import com.wildcodeschool.ressource.entity.CareLabel;
+import com.wildcodeschool.ressource.entity.Certification;
 import com.wildcodeschool.ressource.entity.Product;
 import com.wildcodeschool.ressource.storage.StorageProperties;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import java.io.*;
-import java.nio.file.Path;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -28,6 +33,12 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
 
     @Autowired
     private StorageProperties properties;
+
+    @Value("${path.certifications}")
+    private String pathCert;
+
+    @Value("${path.carelabel}")
+    private String pathLabel;
 
     @Override
     public InputStreamResource html2PdfGenerator(Product product) {
@@ -41,13 +52,32 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
         try {
             String logo = product.getCompany().getLogo();
             String suffixLogo = suffix(logo);
-            String imageLogo = "data:image/" + suffixLogo + ";base64," + convertToBase64(pathCompany + File.separator  + logo) ;
+            String imageLogo = "data:image/" + suffixLogo + ";base64," + convertToBase64(pathCompany + File.separator + logo);
             context.setVariable("imageLogo", imageLogo);
 
             String imgProduct = product.getImageProducts().get(0).getImage();
             String suffixProduct = suffix(imgProduct);
-            String imageProduct = "data:image/" + suffixProduct + ";base64," + convertToBase64(pathProduct + File.separator  + imgProduct) ;
+            String imageProduct = "data:image/" + suffixProduct + ";base64," + convertToBase64(pathProduct + File.separator + imgProduct);
             context.setVariable("imageProduct", imageProduct);
+
+            List<Certification> certifications = product.getCertifications();
+            Map<String, String> imgCert = new HashMap<>();
+            for (Certification cert : certifications) {
+                String suffixCert = suffix(cert.getImage());
+                String image = "data:image/" + suffixCert + ";base64," + convertToBase64(pathCert + File.separator + cert.getImage());
+                imgCert.put(cert.getName(), image);
+            }
+            context.setVariable("imageCert", imgCert);
+
+            List<CareLabel> labels = product.getCareLabels();
+            Map<String, String> imgLabel = new HashMap<>();
+            for (CareLabel label : labels) {
+                String suffixCert = suffix(label.getImage());
+                String image = "data:image/" + suffixCert + ";base64," + convertToBase64(pathLabel + File.separator + label.getImage());
+                imgLabel.put(label.getLabel(), image);
+            }
+            context.setVariable("imageLabel", imgLabel);
+
 
         } catch (IOException e) {
             e.printStackTrace();
