@@ -13,7 +13,7 @@
         <div class="card-product-image">
             <a href="/product" th:href="@{/product(reference = ${product.id})}"><img
                     th:alt="${product.imageProducts.get(0).image}"
-                    th:src="@{photo/products/{file}(file = ${product.imageProducts.get(0).image})}"></a>
+                    th:src="@{/photo/products/{file}(file = ${product.imageProducts.get(0).image})}"></a>
             <div class="card-product-image-hover">
                 <a><i class="fas fa-heart"></i></a>
                 <a><i class="fas fa-suitcase"></i></a>

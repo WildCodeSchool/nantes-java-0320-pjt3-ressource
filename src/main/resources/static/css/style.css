@@ -74,9 +74,11 @@
     display: none !important;
 }
 
-.btn:focus {
-    background-color: var(--color-bkg-button);
+
+.btn:focus{
+    background-color: var(--color-bkg-button) !important;
 }
+
 /* CARD PRODUCT */
 .card-product {
     padding: 0;

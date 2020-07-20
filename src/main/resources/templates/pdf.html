@@ -89,13 +89,13 @@
 <main class="product-body">
     <section class="product-section-top">
         <div class="product-title">
-            <img th:src="@{{company}/{file}(file = ${product.company.logo}, company = ${uploadCompany})}">
+            <img th:src="${imageLogo}">
             <h5 th:text="${product.reference}">COUNTRY</h5>
         </div>
 
         <div class="product-container-top">
             <div class="product-image">
-                <img th:src="@{{upload}/products/{image}(image = ${product.imageProducts.get(0).image}, upload = ${uploadProduct})}">
+                <img th:src="${imageProduct}">
             </div>
             <div class="product-description">
                 <table>
