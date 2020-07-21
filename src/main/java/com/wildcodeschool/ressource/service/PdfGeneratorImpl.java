@@ -7,6 +7,7 @@ import com.wildcodeschool.ressource.entity.Product;
 import com.wildcodeschool.ressource.storage.StorageProperties;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.ResourceLoader;
@@ -14,10 +15,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
@@ -62,10 +60,9 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
             Map<String, String> imgCert = new HashMap<>();
             for (Certification cert : certifications) {
                 String suffixCert = suffix(cert.getImage());
-                String resource = resourceLoader.getResource("classpath:static/image/logo_certification/" + cert.getImage())
-                        .getFile()
-                        .getPath();
-                String image = "data:image/" + suffixCert + ";base64," + convertToBase64(resource);
+                String resource = "classpath:static/image/logo_certification/" + cert.getImage();
+
+                String image = "data:image/" + suffixCert + ";base64," + convertToBase64FromInputStream(resource);
                 imgCert.put(cert.getName(), image);
             }
             context.setVariable("imageCert", imgCert);
@@ -75,10 +72,9 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
             for (CareLabel label : labels) {
                 String suffixCert = suffix(label.getImage());
 
-                String resource = resourceLoader.getResource("classpath:static/image/carelabel/" + label.getImage())
-                        .getFile()
-                        .getPath();
-                String image = "data:image/" + suffixCert + ";base64," + convertToBase64(resource);
+                String resource ="classpath:static/image/carelabel/" + label.getImage();
+
+                String image = "data:image/" + suffixCert + ";base64," + convertToBase64FromInputStream(resource);
                 imgLabel.put(label.getLabel(), image);
             }
             context.setVariable("imageLabel", imgLabel);
@@ -110,6 +106,12 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
     private String convertToBase64(String path) throws IOException {
         byte[] fileContent = FileUtils.readFileToByteArray(new File(path));
         return Base64.getEncoder().encodeToString(fileContent);
+    }
+
+    private String convertToBase64FromInputStream(String path) throws IOException {
+        InputStream finput = resourceLoader.getResource(path).getInputStream();
+        byte[] imageBytes = IOUtils.toByteArray(finput);
+        return Base64.getEncoder().encodeToString(imageBytes);
     }
 
     private String suffix(String file) {
