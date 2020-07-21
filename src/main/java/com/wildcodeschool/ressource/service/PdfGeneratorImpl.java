@@ -9,8 +9,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -33,6 +33,9 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
 
     @Autowired
     private StorageProperties properties;
+
+    @Autowired
+    ResourceLoader resourceLoader;
 
 
     @Override
@@ -59,7 +62,9 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
             Map<String, String> imgCert = new HashMap<>();
             for (Certification cert : certifications) {
                 String suffixCert = suffix(cert.getImage());
-                String resource = ResourceUtils.getFile("classpath:static/image/logo_certification/" + cert.getImage()).getPath();
+                String resource = resourceLoader.getResource("classpath:static/image/logo_certification/" + cert.getImage())
+                        .getFile()
+                        .getPath();
                 String image = "data:image/" + suffixCert + ";base64," + convertToBase64(resource);
                 imgCert.put(cert.getName(), image);
             }
@@ -69,7 +74,10 @@ public class PdfGeneratorImpl implements PdfGeneratorService {
             Map<String, String> imgLabel = new HashMap<>();
             for (CareLabel label : labels) {
                 String suffixCert = suffix(label.getImage());
-                String resource = ResourceUtils.getFile("classpath:static/image/carelabel/" + label.getImage()).getPath();
+
+                String resource = resourceLoader.getResource("classpath:static/image/carelabel/" + label.getImage())
+                        .getFile()
+                        .getPath();
                 String image = "data:image/" + suffixCert + ";base64," + convertToBase64(resource);
                 imgLabel.put(label.getLabel(), image);
             }
