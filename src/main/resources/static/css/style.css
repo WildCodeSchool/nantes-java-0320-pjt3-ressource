@@ -282,7 +282,13 @@
     .card-product-info {
         padding-top: 0.5rem;
     }
+    .card-product-image:hover > a img {
+        opacity: 1;
+    }
 
+    .card-product-image:hover > .card-product-image-hover {
+        display: none;
+    }
     /* -------------MENU BOTTOM MOBILE ---------------*/
     .results-menu-nav {
         display: flex;

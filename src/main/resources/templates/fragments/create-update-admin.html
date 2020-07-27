@@ -20,12 +20,12 @@
                     <span class="helper-text" data-error="Missing username"></span>
                 </div>
                 <div class="input-field col s6" >
-                    <select class="validate" name="roleId" th:if="${newAdmin}">
-                        <option disabled value="select">Choose your option</option>
+                    <select class="validate" name="roleId" th:if="${newAdmin}" id="roles">
+                        <option disabled value="0" selected>Choose your option</option>
                         <option th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}" >ALL</option>
                     </select>
                     <select class="validate" name="roleId" th:if="${not newAdmin}">
-                        <option disabled value="select">Choose your option</option>
+                        <option disabled value="0" >Choose your option</option>
                         <option th:each="role : ${roles}" th:text="${role.role}" th:value="${role.id}" th:selected="${role.id == admin.role.id}">ALL</option>
                     </select>
                     <span class="helper-text" id="select-error"></span>
