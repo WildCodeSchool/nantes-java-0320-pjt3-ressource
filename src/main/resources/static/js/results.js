@@ -43,7 +43,12 @@ for (let i = 0; i < sliders.length; i++) {
 /* FUNCTION TO INSERT EACH RADIO ON THE DICTIONARY */
 function filters(radio, out, slider) {
     if (radiosClicked[radio.name] && out && !slider) {
-        radiosClicked[radio.name].pop(radio.value);
+
+        const index = radiosClicked[radio.name].indexOf(radio.value);
+        if (index > -1) {
+            radiosClicked[radio.name].splice(index, 1);
+        }
+
     } else if (slider) {
         radiosClicked[radio.name] = radio.value;
     } else {
@@ -229,22 +234,3 @@ filter.onclick = function () {
     resultsResults.classList.toggle('active');
     $('body').toggleClass('color');
 };
-
-/* SEARCH MODIFY ON MOBILE */
-let search = document.getElementById("search-icon-nav");
-let navMenu = document.getElementById("results-menu-nav");
-let navSearch = document.getElementById("results-nav-search");
-let menuBack = document.getElementById("menu-nav-arrow-left");
-
-search.onclick = function () {
-    hideShow();
-};
-
-menuBack.onclick = function () {
-    hideShow();
-};
-
-function hideShow() {
-    navMenu.classList.toggle('hide');
-    navSearch.classList.toggle('show');
-}
