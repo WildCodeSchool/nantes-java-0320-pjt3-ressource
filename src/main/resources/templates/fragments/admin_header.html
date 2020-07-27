@@ -11,9 +11,8 @@
             <div class="user-view">
                 <h1>We<span>source</span></h1>
                 <div class="admin-header-user">
-
-                    <a href="#"><span class="name" th:text="${admin.username}">John Doe</span></a>
-                    <a href="#"><span class="name" th:text="${admin.role.role}">ALL</span></a>
+                    <a th:href="@{/admin/profile}" ><span class="name" th:text="${admin.username}">John Doe</span></a>
+                    <a th:href="@{/admin/profile}"><span class="name" th:text="${admin.role.role}">ALL</span></a>
                 </div>
             </div>
         </li>

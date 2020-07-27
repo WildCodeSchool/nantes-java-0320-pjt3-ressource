@@ -33,7 +33,7 @@ let selectRoles = document.getElementById("roles");
 
 form.addEventListener("submit", function (event) {
 
-    if (passc.value !== pass.value || passc.value === "" || pass.value === "" || username.value === "" || email.value === "" || selectRoles.value === "select") {
+    if (passc.value !== pass.value || passc.value === "" || pass.value === "" || username.value === "" || email.value === "" || selectRoles.value === "0") {
         event.preventDefault();
         if (username.value === "") {
             username.classList.remove("valid");
@@ -44,7 +44,7 @@ form.addEventListener("submit", function (event) {
         } else if (pass.value === "") {
             pass.classList.remove("valid");
             pass.classList.add("invalid");
-        } else if (selectRoles.value === "select") {
+        } else if (selectRoles.value === "0") {
             let span = document.getElementById("select-error");
             span.innerText = "Missing role selection";
             span.style.color = "red";

@@ -43,8 +43,8 @@
             <td th:text="${admin1.email}">alvin@gmail.com</td>
             <td th:text="${admin1.role.role}">ALL</td>
             <td class="icons-admin">
-                <button class="btn-icon modal-trigger" th:attr="data-target='modal'+ ${admin1.id}" ><i class="material-icons">edit</i></button>
-                <button class="btn-icon modal-trigger" th:attr="data-target='modalDelete'+ ${admin1.id}"><i class="material-icons">delete</i></button>
+                <button th:if="${admin1.id != admin.id}" class="btn-icon modal-trigger" th:attr="data-target='modal'+ ${admin1.id}" ><i class="material-icons">edit</i></button>
+                <button th:if="${admin1.id != admin.id}" class="btn-icon modal-trigger" th:attr="data-target='modalDelete'+ ${admin1.id}"><i class="material-icons">delete</i></button>
                 <div class="modal deleteAdmin" th:id="|modalDelete${admin1.id}|">
                     <div class="modal-content">
                         <p>Are you sure you want to delete?</p>
