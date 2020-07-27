@@ -120,7 +120,7 @@
         </article>
         <article class="company-bottom">
             <div th:block  th:replace="fragments/fragments_results.html :: results (${materials}, ${fabricPatterns},
-    ${compositions}, ${origins}, ${companies}, ${prices}, ${certifications}, ${null}, ${products}, ${true}, *{name})">
+    ${compositions}, ${origins}, ${companies}, ${prices}, ${certifications}, ${company.name}, ${products}, ${true}, *{name})">
             </div>
         </article>
         <th:block th:include="fragments/nav_mobile.html :: nav"> </th:block>

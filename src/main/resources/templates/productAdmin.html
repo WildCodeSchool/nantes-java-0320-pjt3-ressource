@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/productAdmin.css}" type="text/css">
-    <script src="../static/js/sidebar.js"></script>
 </head>
 <body>
 <header th:replace="fragments/admin_header.html :: admin-header (${admin}) "></header>
@@ -477,14 +476,15 @@
                     <p>Picture : </p>
                     <div class="btn">
                         <i class="large material-icons">archive</i>
-                        <input name="filePictureProduct" type="file">
+                        <input name="filePictureProduct" id="filePictureProduct" type="file">
                     </div>
                     <div class="file-path-wrapper" th:if="${product.imageProducts.size() > 0}">
                         <input th:value="${product.imageProducts.get(0).image}" class="file-path validate" type="text">
                     </div>
                     <div class="file-path-wrapper" th:if="${product.imageProducts.size() == 0}">
                         <input class="file-path validate" placeholder="upload your image" type="text" id="inputProductFile">
-                        <span class="helper-text" id="error" data-error="Missing image"></span>
+                        <span class="helper-text" id="error" ></span>
+
                     </div>
                 </div>
             </div>
