@@ -94,18 +94,24 @@
                         </div>
                     </div>
                     <p class="card-product-info-descr">
-                        <span th:if="${product.feature.fabric}">[(${product.feature.fabric.fabric})]</span> /
-                        <span th:if="${product.feature.handFeel}">[(${product.feature.fabric.fabric})]</span> /
-                        <span th:if="${product.feature.finishing}">[(${product.feature.fabric.fabric})]</span> / <br>
-                        <span th:if="${product.feature.look}">[(${product.feature.fabric.fabric})]</span> /
-                        <span th:each="property : ${product.feature.technicalProperties}"
-                              th:text="${property.technicalProperty}">Natural stretch</span>
+                        <span th:if="${product.feature.fabric}">
+                                <span th:text="|${product.feature.fabric.fabric} / |"></span>
+                        </span>
+                        <span th:if="${product.feature.handFeel}"><span
+                                th:text="|${product.feature.handFeel.handFeel} / |"></span></span>
+                        <span th:if="${product.feature.finishing}"><span
+                                th:text="|${product.feature.finishing.finishing} / |"></span></span>
+                        <span th:if="${product.feature.look}"><span
+                                th:text="${product.feature.look.look}"></span></span>/
+                        <a th:each="property : ${product.feature.technicalProperties}">
+                            <span th:text="${property.technicalProperty}">Natural stretch</span>
+                        </a>
                     </p>
                     <p class="card-product-info-compo">
-                            <span th:each="composition : ${product.compositions}">
-                                <span th:text="|${composition.pourcentage} % |"></span>
+                        <span th:each="composition : ${product.compositions}">
+                            <span th:text="|${composition.pourcentage} % |"></span>
                                 <span th:text="|${composition.fiber.name} &nbsp;|"></span>
-                            </span>
+                        </span>
                     </p>
                 </div>
             </div>
