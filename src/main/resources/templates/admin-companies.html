@@ -19,7 +19,7 @@
             <h5 class="center-align">Template of company page</h5>
             <img alt="image of companies template" src="/image/admin/img-admin-company.png">
         </div>
-        <form action="/admin/upload/company" enctype="multipart/form-data" class="form-admin-company col s7 offset-s5" method="post">
+        <form action="/admin/upload/company" enctype="multipart/form-data" class="form-admin-company col s7 offset-s5" id="new-company-admin" method="post">
             <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
             <div class="row">
                 <fieldset class="col s10 offset-s1 fieldset-gray">
