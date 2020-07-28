@@ -25,8 +25,9 @@
             <div>
                 <div class="file-field input-field">
                     <div class="file-path-wrapper">
-                        <input th:name="fileLogo" type="file">
-                        <input th:field="*{logo}" class="file-path validate" placeholder="upload your image" type="text">
+                        <input th:name="fileLogo" type="file" id="logo">
+                        <input th:field="*{logo}" class="file-path validate" id="input-logo" placeholder="upload your image" type="text">
+                        <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                     </div>
                 </div>
             </div>
@@ -38,8 +39,9 @@
             <div>
                 <div class="file-field input-field">
                     <div class="file-path-wrapper">
-                        <input th:name="filePictureFromSky" type="file">
-                        <input th:field="*{pictureFromSky}" class="file-path validate" placeholder="upload your image" type="text">
+                        <input th:name="filePictureFromSky" type="file" id="picFromSky">
+                        <input th:field="*{pictureFromSky}" class="file-path validate" id="input-picFromSky" placeholder="upload your image" type="text">
+                        <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                     </div>
                 </div>
             </div>
@@ -51,8 +53,9 @@
             <div>
                 <div class="file-field input-field">
                     <div class="file-path-wrapper">
-                        <input th:name="fileCompanyMap" type="file">
-                        <input th:field="*{companyMap}" class="file-path validate" placeholder="upload your image" type="text">
+                        <input th:name="fileCompanyMap" type="file" id="compMap">
+                        <input th:field="*{companyMap}" class="file-path validate" id="input-compMap" placeholder="upload your image" type="text">
+                        <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                     </div>
                 </div>
             </div>
@@ -119,8 +122,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileCeoPhoto" type="file">
-                    <input th:field="*{ceoPhoto}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileCeoPhoto" type="file" id="ceo-photo">
+                    <input th:field="*{ceoPhoto}" class="file-path validate" id="input-ceo-photo" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -155,8 +159,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailOneTopLeft" type="file">
-                    <input th:field="*{thumbnailOneTopLeft}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailOneTopLeft" type="file" id="thumbnailOneTopLeft">
+                    <input th:field="*{thumbnailOneTopLeft}" class="file-path validate" id="input-ThumbnailOneTopLeft" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -166,8 +171,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailOneTopMiddle" type="file">
-                    <input th:field="*{thumbnailOneTopMiddle}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailOneTopMiddle" type="file" id="thumbnailOneTopMiddle">
+                    <input th:field="*{thumbnailOneTopMiddle}" class="file-path validate"  id="input-ThumbnailOneTopMiddle" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -177,8 +183,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailOneTopRight" type="file">
-                    <input th:field="*{thumbnailOneTopRight}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailOneTopRight" type="file" id="thumbnailOneTopRight">
+                    <input th:field="*{thumbnailOneTopRight}" class="file-path validate" id="input-ThumbnailOneTopRight" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -219,8 +226,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailOneSideWords" type="file">
-                    <input th:field="*{thumbnailOneSideWords}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailOneSideWords" type="file" id="thumbnailSideWords">
+                    <input th:field="*{thumbnailOneSideWords}" class="file-path validate" id="input-ThumbnailSideWords" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -230,8 +238,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailTwoTopLeft" type="file">
-                    <input th:field="*{thumbnailTwoTopLeft}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailTwoTopLeft" type="file" id="thumbnailTwoTopLeft">
+                    <input th:field="*{thumbnailTwoTopLeft}" class="file-path validate" id="input-ThumbnailTwoTopLeft" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -241,8 +250,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailTwoTopMiddle" type="file">
-                    <input th:field="*{thumbnailTwoTopMiddle}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailTwoTopMiddle" type="file" id="thumbnailTwoTopMiddle">
+                    <input th:field="*{thumbnailTwoTopMiddle}" class="file-path validate" id="input-ThumbnailTwoTopMiddle" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -254,8 +264,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailTwoTopRight" type="file">
-                    <input th:field="*{thumbnailTwoTopRight}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailTwoTopRight" type="file" id="thumbnailTwoTopRight">
+                    <input th:field="*{thumbnailTwoTopRight}" class="file-path validate" id="input-ThumbnailTwoTopRight" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -265,8 +276,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileThumbnailTwoSideWords" type="file">
-                    <input th:field="*{thumbnailTwoSideWords}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileThumbnailTwoSideWords" type="file" id="thumbnailTwoSideWords">
+                    <input th:field="*{thumbnailTwoSideWords}" class="file-path validate" id="input-ThumbnailTwoSideWords" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
@@ -307,8 +319,9 @@
             </legend>
             <div class="file-field input-field">
                 <div class="file-path-wrapper">
-                    <input th:name="fileEndPhoto" type="file">
-                    <input th:field="*{endPhoto}" class="file-path validate" placeholder="upload your image" type="text">
+                    <input th:name="fileEndPhoto" type="file" id="endPhoto">
+                    <input th:field="*{endPhoto}" class="file-path validate" id="input-EndPhoto" placeholder="upload your image" type="text">
+                    <span class="helper-text" data-error="The size of the image must be less than 5MB" ></span>
                 </div>
             </div>
         </fieldset>
